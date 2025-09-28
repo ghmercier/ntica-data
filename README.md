@@ -1,8 +1,6 @@
-# <img height="18" width="18" src="https://cdn.simpleicons.org/python/00ccff99" /> tutorial template for AIML4OS projects
+# Module NTICA
 
-This repository provides a clean and modular template to build tutorials for projects in the **AIML4OS** project.
+Ce dépôt est destiné aux élèves du Master AMUR de l'École des Ponts, promo
+2025/2026, qui suivent le module NTICA.
 
-## Usage
-
-➡️ See [this tutorial](https://aiml4os.github.io/training-material-starting-pack/) on how to customize and deploy this template.
-
+Il est en cours de construction.

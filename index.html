@@ -6,12 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Public Statistician 1">
-<meta name="author" content="Public Statistician 2">
-<meta name="dcterms.date" content="2025-05-16">
-<meta name="description" content="This template is a fast starting pack for AIML4OS projects that use Python. For R projects, see this Github repository.">
+<meta name="author" content="Ghislain Mercier">
+<meta name="dcterms.date" content="2025-09-28">
+<meta name="description" content="Formation destinée aux élèves du master AMUR de l’École des Ponts, promo 2025-2026.">
 
-<title>Template for Python training material – Template for training resources in Python</title>
+<title>Module NTICA – Template for training resources in Python</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -35,7 +34,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./chapters/chapter1.html" rel="next">
-<link href="./resources/profile/main3.png" rel="icon" type="image/png">
+<link href="./resources/profile/logo-enpc-ip-rvb_vertical.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -51,8 +50,6 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/bootstrap/bootstrap-0b37c64f34216b628666a8dac638b53b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark-0b37c64f34216b628666a8dac638b53b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-0b37c64f34216b628666a8dac638b53b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -109,8 +106,8 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="./index.html" class="sidebar-logo-link">
-      <img src="./resources/profile/main3.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="./resources/profile/main3.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      <img src="./resources/profile/logo-enpc-ip-rvb_vertical.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./resources/profile/logo-enpc-ip-rvb_vertical.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -137,28 +134,20 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#what-is-this-template" id="toc-what-is-this-template" class="nav-link active" data-scroll-target="#what-is-this-template">What is this template?</a></li>
-  <li><a href="#how-to-use-it" id="toc-how-to-use-it" class="nav-link" data-scroll-target="#how-to-use-it">How to use it?</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/ghmercier/ntica-data/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ghmercier/ntica-data/blob/main/index.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/ghmercier/ntica-data/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
-<img src="resources/cover/main2.png" style="max-width:900px;width:100%"><br>
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Template for Python training material</h1>
+<h1 class="title">Module NTICA</h1>
 </div>
 
 <div>
   <div class="description">
-    <p>This template is a fast starting pack for AIML4OS projects that use <code>Python</code>. For <code>R</code> projects, see <a href="https://github.com/InseeFrLab/AIML4OS-template-quarto-r">this <code>Github</code> repository</a>.</p>
+    <p>Formation destinée aux élèves du master AMUR de l’École des Ponts, promo 2025-2026.</p>
   </div>
 </div>
 
@@ -166,29 +155,20 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-title-meta">
 
     <div>
-    <div class="quarto-title-meta-heading">Authors</div>
+    <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p><a href="https://github.com/publicstatistician1">Public Statistician 1</a> <a href="mailto:Public.Statistician1@statistics.org" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
-             <p><a href="https://github.com/publicstatistician2">Public Statistician 2</a> <a href="mailto:Public.Statistician2@statistics.org" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
+             <p><a href="https://github.com/ghmercier">Ghislain Mercier</a> <a href="mailto:ghislain.mercier@club-internet.fr" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 16, 2025</p>
+      <p class="date">September 28, 2025</p>
     </div>
   </div>
   
     
-    <div>
-    <div class="quarto-title-meta-heading">Doi</div>
-    <div class="quarto-title-meta-contents">
-      <p class="doi">
-        <a href="https://doi.org/10.1000/182">10.1000/182</a>
-      </p>
-    </div>
-  </div>
   </div>
   
 
@@ -196,18 +176,10 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="what-is-this-template" class="level1">
-<h1>What is this template?</h1>
-<p>This template is a Quarto Website customized for the AIML4OS project, designed to be used with <i class="fa-brands fa-python" aria-label="python"></i>.</p>
-</section>
-<section id="how-to-use-it" class="level1">
-<h1>How to use it?</h1>
-<p>See <a href="https://aiml4os.github.io/training-material-starting-pack/">this tutorial</a>.</p>
 
 
-</section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div>CC-BY 4.0</div></div></section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -622,4 +594,4 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ghmercier/ntica-data/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ghmercier/ntica-data/blob/main/index.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/ghmercier/ntica-data/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/ghmercier/ntica-data/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ghmercier/ntica-data/blob/main/index.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/ghmercier/ntica-data/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

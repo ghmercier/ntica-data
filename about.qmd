@@ -1,5 +1,7 @@
 ---
-title: "About"
+title: "À propos"
 ---
 
-About this site
+Ce site a été construit par Ghislain Mercier pour les élèves du Master AMUR
+de l'École des Ponts, promo 2025/2026. Il s'appuie sur les ressources du 
+SSP Cloud de l'INSEE.

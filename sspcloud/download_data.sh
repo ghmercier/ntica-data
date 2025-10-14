@@ -1,28 +1,26 @@
 #!/bin/bash
-echo "Executing the download_data.sh script"
 
-# === Description ===
-# This script downloads a data file from an S3 bucket using `mc` (MinIO client)
-# and stores it in the ~/work/data directory.
+# Set here files to download
+FILES=(
+    "s3/ghisl1m/villes/insee_data.csv"
+    "s3/ghisl1m/villes/v_departement_25.csv"
+)
 
-# === Config destination folder ===
+echo "Running download_data.sh..."
+
 DEST_DIR="$HOME/work/data"
-# Ensure destination folder exists
+
 mkdir -p "$DEST_DIR"
 
-# === Download a first file ===
-DATA_PATH="s3/donnees-insee/diffusion/ETAT_CIVIL/2020/DECES_COM_1019.csv"
-echo "Downloading $DATA_PATH to $DEST_FILE..."
-mc cp "$DATA_PATH" "$DEST_DIR"
+for SOURCE_FILE in "${FILES[@]}";do
+    echo -n "Downloading $SOURCE_FILE... "
+    mc cp "$SOURCE_FILE" "$DEST_DIR"
 
-# === Check success ===
-if [ $? -eq 0 ]; then
-  echo "✅ File downloaded successfully to $DEST_FILE"
-else
-  echo "❌ Failed to download file from $DATA_PATH"
-  exit 1
-fi
+    if [ $? -eq 0 ]; then
+	echo "ok."
+    else
+	echo "failed !"
+	exit 1
+    fi
 
-# === Download a second file ===
-# Repeat the code above for each file
-
+done

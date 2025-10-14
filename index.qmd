@@ -1,5 +1,5 @@
 ---
-title: "Module NTICA"
+title: "Travaux dirigés NTICA"
 format: html
 author:
   - name: Ghislain Mercier
@@ -8,5 +8,22 @@ author:
 date: "2025-10-12"
 ---
 
-Vous trouverez sur ce site quelques supports de travaux dirigés pour 
+Bienvenue à vous, chers élèves AMUR de la promo 2025/2026.
+
+Vous trouverez ci-dessous les liens vers les supports de TD pour  
 apprendre à manipuler des données publiques.
+
+## Le SSP Cloud
+
+Ces supports sont interactifs. En cliquant sur le bouton prévu à cet effet
+en haut de la page, vous pourrez les lancer dans le Datalab de la plateforme
+[SSPCloud](https://datalab.sspcloud.fr/) de l'INSEE. Vous n'aurez ainsi rien 
+à installer, disposerez de tous les modules nécessaires et aurez accès 
+directement aux données que nous manipulerons.
+
+Il vous faudra préalablement créer un compte gratuitement, en indiquant votre
+adresse email `@enpc.fr`.
+
+## Les supports de TD
+
+- [Premiers pas en CSV](/chapters/chapter1.html)

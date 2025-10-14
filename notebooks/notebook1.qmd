@@ -1,6 +1,6 @@
 ---
 title: "Premiers pas en CSV"
-format: html
+format: ipynb
 ---
 
 Dans ce chapitre, nous allons apprendre à manipuler un type de fichier texte

@@ -5,7 +5,9 @@ execute:
     eval: false
 ---
 
-Dans ce chapitre, nous allons apprendre à manipuler un type de fichier texte
+<a href="https://datalab.sspcloud.fr/launcher/ide/jupyter-python?name=ntica-travaux-diriges&version=2.3.22&s3=region-79669f20&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2Fghmercier%2Fntica-data%2Frefs%2Fheads%2Fmain%2Fsspcloud%2Finit-trainees.sh»&init.personalInitArgs=«notebooks%2Fnotebook1.ipynb»&git.repository=«https%3A%2F%2Fgithub.com%2Fghmercier%2Fntica-data%2F»&autoLaunch=true" target="_blank" rel="noopener" data-original-href="https://datalab.sspcloud.fr/launcher/ide/jupyter-python?name=ntica-travaux-diriges&version=2.3.22&s3=region-79669f20&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2Fghmercier%2Fntica-data%2Frefs%2Fheads%2Fmain%2Fsspcloud%2Finit-trainees.sh»&init.personalInitArgs=«notebooks%2Fnotebook1.ipynb»&git.repository=«https%3A%2F%2Fgithub.com%2Fghmercier%2Fntica-data%2F»&autoLaunch=true"><img src="https://custom-icon-badges.demolab.com/badge/SSP%20Cloud-Launch_with_Jupyter-blue?logo=py&logoColor=white" alt="Onyxia"></a>
+
+Dans ce TD, nous allons apprendre à manipuler un type de fichier texte
 très utilisé pour stocker et diffuser des données : le CSV.
 
 CSV est l'abréviation de *comma-separated values*, soit "valeurs séparées 
@@ -29,6 +31,18 @@ de l'INSEE :
 
 - *insee_data.csv*, généré avec l'outil [Statistiques locales](https://statistiques-locales.insee.fr/)
 - *v_departement_2025.csv*, l'un des fichiers du [COG 2025](https://www.insee.fr/fr/information/8377162)
+
+## Préambule
+
+Ce notebook est conçu pour être interactif. Dans les cellules prévues à cet
+effet, vous pouvez écrire du code en Python et l'exécuter en pressant 
+<kbd>SHIFT</kbd>+<kbd>ENTER</kbd>.
+
+Les variables restent en mémoire d'une cellule à l'autre. Essayez ci-dessous !
+
+```{python}
+# C'est à vous !
+```
 
 ## Première exploration des données
 
@@ -150,13 +164,18 @@ print("La dernière ville de la liste est : {}".format(libelle))
 
 #### Chargement de insee_data.csv
 
-Chargez les données dans une liste de dictionnaires 
+Chargez les données du fichier `insee_data.csv`dans une liste de dictionnaires 
 que vous nommerez `communes`.
 
-Affichez le nom et la population de la 10000^e^ ville de la liste.
+Affichez le nom et la population de la 10&nbsp;000^e^ ville de la liste.
 
 ```{python}
 # Entrez ici votre code
+```
+
+```{python}
+#| code-fold: true
+#| code-summary: "Solution"
 communes = []
 
 with open('/home/onyxia/work/data/insee_data.csv', 'r', encoding='utf-8') as mf:
@@ -174,12 +193,18 @@ print("La 10000e ville de la liste est : {}, {} habitants.".format(
 
 #### Chargement de v_departement_2025.csv
 
-Chargez les données dans une liste de dictionnaires que vous nommerez `depts`.
+Chargez les données du fichier `v_departement_2025.csv` dans une liste de 
+dictionnaires que vous nommerez `depts`.
 
 Affichez le nom en majuscule du 17^e^ département de la liste.
 
 ```{python}
 # Entrez ici votre code
+```
+
+```{python}
+#| code-fold: true
+#| code-summary: "Solution"
 depts = []
 
 with open('/home/onyxia/work/data/v_departement_2025.csv', 'r', encoding='utf-8') as mf:
@@ -207,7 +232,15 @@ contient le nombre approprié de clés. On stockera dans des listes à part les
 problèmes éventuels (si tout va bien, ces listes seront vides).
 
 ```{python}
-# De façon naïve, avec une boucle traditionnelle
+# Entrez ici votre code
+```
+
+```{python}
+#| code-fold: true
+#| code-summary: "Solution"
+
+# Pour les communes tout d'abord
+# On le fait de façon naïve, avec une boucle traditionnelle
 communes_avec_pb = []
 for com in communes:
     if len(com) != 4:
@@ -218,7 +251,8 @@ print("{} enregistrements problématiques dans la liste 'communes'".format(
     )
 )
 
-# De façon pythonique, avec une compréhension de liste
+# Pour les départements ensuite
+# On le fait e façon pythonique, avec une compréhension de liste
 dept_avec_pb = [dep for dep in depts if len(dep) != 7]
 
 print("{} enregistrements problématiques dans la liste 'dept'".format(
@@ -237,7 +271,14 @@ département auquel elle appartient, codé sur 2 caractères (3 pour l'outre-mer
 
 
 ```{python}
-# De façon naïve, avec une boucle traditionnelle
+# Entrez ici votre code
+```
+
+```{python}
+#| code-fold: true
+#| code-summary: "Solution"
+
+# Voici la façon naïve, avec une boucle traditionnelle
 pb_chef_lieu = []
 for dep in depts:
     codeinsee = dep['CHEFLIEU']
@@ -246,7 +287,7 @@ for dep in depts:
 
 pb_chef_lieu
 
-# De façon pythonique, avec une compréhension de liste
+# Et la même chose de façon pythonique, avec une compréhension de liste
 pb_chef_lieu = [ 
     dep for depts in depts 
     if  dep['CHEFLIEU'][:2] != dep['DEP']
@@ -273,7 +314,14 @@ caractères décimaux et qu'elle contient au moins un caractère, `False` sinon.
 
 
 ```{python}
-# De façon naïve, avec une boucle traditionnelle
+# Entrez ici votre code
+```
+
+```{python}
+#| code-fold: true
+#| code-summary: "Solution"
+
+# Voici la façon naïve, avec une boucle traditionnelle
 pb_nombre = []
 for com in communes:
     if not com['Population municipale 2022'].isdecimal():
@@ -283,7 +331,7 @@ for com in communes:
         pb_nombre.append(com)
 
 
-# De façon pythonique, avec une compréhension de liste
+# Et la même chose de façon pythonique, avec une compréhension de liste
 pb_nombre = [
     com for com in communes
     if not com['Population municipale 2022'].isdecimal()
@@ -294,9 +342,15 @@ print("{} communes avec données manquantes.".format(len(pb_nombre)))
 ```
 
 Ainsi donc, des données sont manquantes pour une vingtaine de communes...
-On les élimine de la liste `communes`.
+On les éliminera de la liste `communes`.
 
 ```{python}
+# Entrez ici votre code
+```
+
+```{python}
+#| code-fold: true
+#| code-summary: "Solution"
 print("Nombre d'enregistrements avant nettoyage : {}".format(len(communes)))
 
 for ville in pb_nombre:
@@ -317,10 +371,15 @@ print(type(communes[0]['Population municipale 2022']))
 ```
 
 Pour les utiliser dans des calculs, il faut d'abord les convertir en nombres 
-entiers.
+entiers. Allez-y !
 
 ```{python}
+# Entrez ici votre code
+```
 
+```{python}
+#| code-fold: true
+#| code-summary: "Solution"
 for c in communes:
     for champ in ['Population municipale 2022', 'Boulangerie-pâtisserie (en nombre) 2024']:
         c[champ] = int(c[champ])
@@ -339,7 +398,12 @@ pour répondre aux questions suivantes.
 Combien y a-t-il de boulangeries à Champs-sur-Marne (77083) ? 
 
 ```{python}
-# à vous de jouer
+# Entrez ici votre code
+```
+
+```{python}
+#| code-fold: true
+#| code-summary: "Solution"
 for c in communes:
     if c['Code'] == '77083':
         print("{} : {} boulangeries".format(
@@ -355,7 +419,12 @@ for c in communes:
 Quelles sont les villes ne comportant aucun habitant ? Pourquoi ?
 
 ```{python}
-# à vous de jouer
+# Entrez ici votre code
+```
+
+```{python}
+#| code-fold: true
+#| code-summary: "Solution"
 villes_mortes = [ 
     v for v in communes 
     if v['Population municipale 2022'] == 0
@@ -376,7 +445,12 @@ for v in villes_mortes:
 Quelles communes ont autant d'habitants que de caractères dans leur nom ?
 
 ```{python}
-# à vous de jouer
+# Entrez ici votre code
+```
+
+```{python}
+#| code-fold: true
+#| code-summary: "Solution"
 villes_lettres = [ 
     v for v in communes 
     if len(v['Libellé']) == v['Population municipale 2022']
@@ -401,7 +475,12 @@ Combien y a-t-il de boulangeries en France ? Quelle est la commune qui a la plus
 forte densité de boulangeries parmi les villes de plus de 5000 habitants ?
 
 ```{python}
-# à vous de jouer
+# Entrez ici votre code
+```
+
+```{python}
+#| code-fold: true
+#| code-summary: "Solution"
 nb_boul = sum([c['Boulangerie-pâtisserie (en nombre) 2024'] for c in communes])
 
 print("Boulangeries-pâtisseries en France en 2024 : {}".format(nb_boul))
@@ -430,7 +509,12 @@ Quelles communes contiennent le toponyme ['essart'](https://fr.wikipedia.org/wik
 dans leur nom ?
 
 ```{python}
-# à vous de jouer
+# Entrez ici votre code
+```
+
+```{python}
+#| code-fold: true
+#| code-summary: "Solution"
 essarts = []
 
 for com in communes:
@@ -452,7 +536,12 @@ Indice : on commencera par créer un dictionnaire associant à chaque chef-lieu
 sa population municipale.
 
 ```{python}
-# à vous de jouer
+## Entrez ici votre code
+```
+
+```{python}
+#| code-fold: true
+#| code-summary: "Solution"
 dico_cheflieu = {}
 resultats = {}
 
@@ -504,7 +593,12 @@ Quels sont les dix noms de ville le plus répandu ? (ie. ceux que le plus grand
 nombre de communes portent) ?
 
 ```{python}
-# À vous de jouer
+# Entrez ici votre code
+```
+
+```{python}
+#| code-fold: true
+#| code-summary: "Solution"
 dico_noms = {}
 
 for c in communes:
@@ -521,4 +615,3 @@ for ville, occurence in top10:
     print('- {} ({})'.format(ville, occurence))
 
 ```
-

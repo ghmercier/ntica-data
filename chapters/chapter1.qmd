@@ -109,7 +109,7 @@ import csv
 rows = []
 
 # On ouvre le fichier en mode lecture ('r') en spécifiant l'encodage ('utf-8'),
-with open('/home/onyxia/work/data/insee_data.csv', 'r', encoding='utf-8') as mf:
+with open('data/insee_data.csv', 'r', encoding='utf-8') as mf:
 
     # On crée un objet reader() qui lit une ligne du fichier qui lui est passé,
     # détecte les délimiteurs et renvoie la liste des champs qu'ils séparent 
@@ -142,7 +142,7 @@ Pour montrer l'intérêt, on ne conservera ici que les communes dont le champ
 # On crée une autre liste
 seinemarne = []
 
-with open('/home/onyxia/work/data/insee_data.csv', 'r', encoding='utf-8') as mf:
+with open('data/insee_data.csv', 'r', encoding='utf-8') as mf:
    
     # On utilise ici un objet DictReader()
     csv_reader = csv.DictReader(mf, delimiter=';')
@@ -178,7 +178,7 @@ Affichez le nom et la population de la 10&nbsp;000^e^ ville de la liste.
 #| code-summary: "Solution"
 communes = []
 
-with open('/home/onyxia/work/data/insee_data.csv', 'r', encoding='utf-8') as mf:
+with open('data/insee_data.csv', 'r', encoding='utf-8') as mf:
     csv_reader = csv.DictReader(mf, delimiter=';')
     for row in csv_reader:
         communes.append(row)
@@ -207,7 +207,7 @@ Affichez le nom en majuscule du 17^e^ département de la liste.
 #| code-summary: "Solution"
 depts = []
 
-with open('/home/onyxia/work/data/v_departement_2025.csv', 'r', encoding='utf-8') as mf:
+with open('data/v_departement_2025.csv', 'r', encoding='utf-8') as mf:
     csv_reader = csv.DictReader(mf, delimiter=',')
     for row in csv_reader:
         depts.append(row)

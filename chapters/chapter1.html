@@ -278,7 +278,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="liste-de-listes" class="level4">
 <h4 class="anchored" data-anchor-id="liste-de-listes">Liste de listes</h4>
 <p>On peut construire une <em>liste de listes</em> : la grande liste représente le tableau, elle contient plusieurs listes (autant que de lignes) dont chacun des élements représentent les valeurs des colonnes.</p>
-<div id="b7b668f1" class="cell" data-execution_count="1">
+<div id="7aed0fde" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># On importe le module CSV</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -308,7 +308,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="liste-de-dictionnaires">Liste de dictionnaires</h4>
 <p>Mais puisque notre fichier comporte un entête, il est intéressant de modéliser les données sous la forme d’une <em>liste de dictionnaires</em> : chaque ligne sera représentée par un dictionnaire qui fait correspondre aux noms des colonnes (ex: <code>Code</code>) leurs valeurs (ex: <code>'01001'</code>).</p>
 <p>Pour montrer l’intérêt, on ne conservera ici que les communes dont le champ <code>Code</code> commence par <code>'77'</code> (c’est-à-dire les communes de Seine-et-Marne).</p>
-<div id="c49a0210" class="cell" data-execution_count="2">
+<div id="cb4dc758" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># On crée une autre liste</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>seinemarne <span class="op">=</span> []</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -337,7 +337,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="chargement-de-insee_data.csv">Chargement de insee_data.csv</h4>
 <p>Chargez les données dans une liste de dictionnaires que vous nommerez <code>communes</code>.</p>
 <p>Affichez le nom et la population de la 10000<sup>e</sup> ville de la liste.</p>
-<div id="32637cf2" class="cell" data-execution_count="3">
+<div id="ee5117ca" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Entrez ici votre code</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>communes <span class="op">=</span> []</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -358,7 +358,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="chargement-de-v_departement_2025.csv">Chargement de v_departement_2025.csv</h4>
 <p>Chargez les données dans une liste de dictionnaires que vous nommerez <code>depts</code>.</p>
 <p>Affichez le nom en majuscule du 17<sup>e</sup> département de la liste.</p>
-<div id="7014e93e" class="cell" data-execution_count="4">
+<div id="8f8bd0cd" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Entrez ici votre code</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>depts <span class="op">=</span> []</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -380,7 +380,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="nombre-de-champs-pour-chaque-enregistrement">Nombre de champs pour chaque enregistrement</h3>
 <p>On va s’assurer que chaque enregistrement des listes <code>communes</code> et <code>depts</code> comporte le bon nombre de champs : 4 pour les communes, 7 pour les départements.</p>
 <p>Écrivez un programme qui vérifie pour les deux listes que chaque dictionnaire contient le nombre approprié de clés. On stockera dans des listes à part les problèmes éventuels (si tout va bien, ces listes seront vides).</p>
-<div id="e846c29a" class="cell" data-execution_count="5">
+<div id="26f38410" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># De façon naïve, avec une boucle traditionnelle</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>communes_avec_pb <span class="op">=</span> []</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> com <span class="kw">in</span> communes:</span>
@@ -405,7 +405,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="cohérence-géographique">Cohérence géographique</h3>
 <p>Dans la liste <code>depts</code>, on va vérifier que la commune désignée comme chef-lieu d’un département appartient bien à ce département.</p>
 <p>On se souviendra que le code INSEE d’une commune commence par le numéro du département auquel elle appartient, codé sur 2 caractères (3 pour l’outre-mer).</p>
-<div id="15a43fcd" class="cell" data-execution_count="6">
+<div id="249ff031" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># De façon naïve, avec une boucle traditionnelle</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>pb_chef_lieu <span class="op">=</span> []</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> dep <span class="kw">in</span> depts:</span>
@@ -430,7 +430,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Bien souvent, les données manquantes dans une série de données sont signalées par une chaîne de caractère spécifique (comme <code>N/A</code>) et non par l’absence de valeurs. Cela peut-être gênant.</p>
 <p>Dans la table <code>communes</code>, on va ainsi filtrer les enregistrements qui contiennent des valeurs non numériques dans les champs de données.</p>
 <p>On utilisera pour cela la méthode <code>is_decimal</code> dont disposent les objets de type natif <code>str</code> (cf <a href="https://docs.python.org/fr/3.12/library/stdtypes.html#string-methods">documentation</a>). Cette méthode renvoie <code>True</code> si tous les caractères d’une chaîne sont des caractères décimaux et qu’elle contient au moins un caractère, <code>False</code> sinon.</p>
-<div id="aefc128c" class="cell" data-execution_count="7">
+<div id="270b6a88" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># De façon naïve, avec une boucle traditionnelle</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>pb_nombre <span class="op">=</span> []</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> com <span class="kw">in</span> communes:</span>
@@ -451,7 +451,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="sc">{}</span><span class="st"> communes avec données manquantes."</span>.<span class="bu">format</span>(<span class="bu">len</span>(pb_nombre)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Ainsi donc, des données sont manquantes pour une vingtaine de communes… On les élimine de la liste <code>communes</code>.</p>
-<div id="76b97d3a" class="cell" data-execution_count="8">
+<div id="44d29840" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Nombre d'enregistrements avant nettoyage : </span><span class="sc">{}</span><span class="st">"</span>.<span class="bu">format</span>(<span class="bu">len</span>(communes)))</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ville <span class="kw">in</span> pb_nombre:</span>
@@ -463,11 +463,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="gestion-des-types" class="level3">
 <h3 class="anchored" data-anchor-id="gestion-des-types">Gestion des types</h3>
 <p>Dans la liste <code>communes</code>, les valeurs stockées dans les champs de données sont pour l’instant représentées par des chaînes de caractères.</p>
-<div id="5a1f60e6" class="cell" data-execution_count="9">
+<div id="31496e76" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(communes[<span class="dv">0</span>][<span class="st">'Population municipale 2022'</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Pour les utiliser dans des calculs, il faut d’abord les convertir en nombres entiers.</p>
-<div id="e798a8aa" class="cell" data-execution_count="10">
+<div id="c62bf071" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> c <span class="kw">in</span> communes:</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> champ <span class="kw">in</span> [<span class="st">'Population municipale 2022'</span>, <span class="st">'Boulangerie-pâtisserie (en nombre) 2024'</span>]:</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        c[champ] <span class="op">=</span> <span class="bu">int</span>(c[champ])</span>
@@ -482,7 +482,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="boulangeries-des-champs" class="level3">
 <h3 class="anchored" data-anchor-id="boulangeries-des-champs">Boulangeries de(s) Champs</h3>
 <p>Combien y a-t-il de boulangeries à Champs-sur-Marne (77083) ?</p>
-<div id="66e8bc39" class="cell" data-execution_count="11">
+<div id="2035f435" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># à vous de jouer</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> c <span class="kw">in</span> communes:</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> c[<span class="st">'Code'</span>] <span class="op">==</span> <span class="st">'77083'</span>:</span>
@@ -496,7 +496,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="villes-fantômes" class="level3">
 <h3 class="anchored" data-anchor-id="villes-fantômes">Villes-fantômes</h3>
 <p>Quelles sont les villes ne comportant aucun habitant ? Pourquoi ?</p>
-<div id="fb493616" class="cell" data-execution_count="12">
+<div id="44f24516" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># à vous de jouer</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>villes_mortes <span class="op">=</span> [ </span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    v <span class="cf">for</span> v <span class="kw">in</span> communes </span>
@@ -515,7 +515,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="habitants-de-caractères" class="level3">
 <h3 class="anchored" data-anchor-id="habitants-de-caractères">Habitants de caractères</h3>
 <p>Quelles communes ont autant d’habitants que de caractères dans leur nom ?</p>
-<div id="2c289cb4" class="cell" data-execution_count="13">
+<div id="a5f14648" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># à vous de jouer</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>villes_lettres <span class="op">=</span> [ </span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    v <span class="cf">for</span> v <span class="kw">in</span> communes </span>
@@ -537,7 +537,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="du-pain-du-pain" class="level3">
 <h3 class="anchored" data-anchor-id="du-pain-du-pain">Du pain, du pain</h3>
 <p>Combien y a-t-il de boulangeries en France ? Quelle est la commune qui a la plus forte densité de boulangeries parmi les villes de plus de 5000 habitants ?</p>
-<div id="79a6e148" class="cell" data-execution_count="14">
+<div id="cbeb0171" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># à vous de jouer</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>nb_boul <span class="op">=</span> <span class="bu">sum</span>([c[<span class="st">'Boulangerie-pâtisserie (en nombre) 2024'</span>] <span class="cf">for</span> c <span class="kw">in</span> communes])</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -564,7 +564,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="essartage" class="level3">
 <h3 class="anchored" data-anchor-id="essartage">Essartage</h3>
 <p>Quelles communes contiennent le toponyme <a href="https://fr.wikipedia.org/wiki/Essart">‘essart’</a> dans leur nom ?</p>
-<div id="2a7a3049" class="cell" data-execution_count="15">
+<div id="6533bdea" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># à vous de jouer</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>essarts <span class="op">=</span> []</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -582,7 +582,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="chef-lieu-chétif">Chef-lieu chétif</h3>
 <p>Dans quels départements le chef-lieu n’est-il pas la commune la plus peuplée ? Quelles sont les communes plus peuplées ?</p>
 <p>Indice : on commencera par créer un dictionnaire associant à chaque chef-lieu sa population municipale.</p>
-<div id="536c09d0" class="cell" data-execution_count="16">
+<div id="73fa2627" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># à vous de jouer</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>dico_cheflieu <span class="op">=</span> {}</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>resultats <span class="op">=</span> {}</span>
@@ -631,7 +631,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="nom-commun" class="level3">
 <h3 class="anchored" data-anchor-id="nom-commun">Nom commun</h3>
 <p>Quels sont les dix noms de ville le plus répandu ? (ie. ceux que le plus grand nombre de communes portent) ?</p>
-<div id="cc6b8c8b" class="cell" data-execution_count="17">
+<div id="b9da8d4b" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># À vous de jouer</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>dico_noms <span class="op">=</span> {}</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>

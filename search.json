@@ -1,22 +1,82 @@
 [
   {
-    "objectID": "chapters/chapter1.html",
-    "href": "chapters/chapter1.html",
-    "title": "Manipulations de tables",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Travaux dirigés NTICA",
     "section": "",
-    "text": "Les tables sont partout…",
+    "text": "Bienvenue à vous, chers élèves AMUR de la promo 2025/2026.\nVous trouverez ci-dessous les liens vers les supports de TD pour\napprendre à manipuler des données publiques.",
     "crumbs": [
-      "Traitement de tables"
+      "Accueil"
     ]
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Module NTICA",
-    "section": "",
-    "text": "Vous trouverez sur ce site quelques supports de travaux dirigés pour apprendre à manipuler des données publiques.",
+    "objectID": "index.html#le-ssp-cloud",
+    "href": "index.html#le-ssp-cloud",
+    "title": "Travaux dirigés NTICA",
+    "section": "Le SSP Cloud",
+    "text": "Le SSP Cloud\nCes supports sont interactifs. En cliquant sur le bouton prévu à cet effet en haut de la page, vous pourrez les lancer dans le Datalab de la plateforme SSPCloud de l’INSEE. Vous n’aurez ainsi rien à installer, disposerez de tous les modules nécessaires et aurez accès directement aux données que nous manipulerons.\nIl vous faudra préalablement créer un compte gratuitement, en indiquant votre adresse email @enpc.fr.",
     "crumbs": [
       "Accueil"
+    ]
+  },
+  {
+    "objectID": "index.html#les-supports-de-td",
+    "href": "index.html#les-supports-de-td",
+    "title": "Travaux dirigés NTICA",
+    "section": "Les supports de TD",
+    "text": "Les supports de TD\n\nPremiers pas en CSV",
+    "crumbs": [
+      "Accueil"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter1.html",
+    "href": "chapters/chapter1.html",
+    "title": "Premiers pas en CSV",
+    "section": "",
+    "text": "Dans ce chapitre, nous allons apprendre à manipuler un type de fichier texte très utilisé pour stocker et diffuser des données : le CSV.\nCSV est l’abréviation de comma-separated values, soit “valeurs séparées par des virgules” – même si, bien souvent, le délimiteur standard (la virgule) est remplacée par un autre délimiteur.\nUn fichier CSV reproduit la structure d’un tableau :\nUn module de la bibliothèque standard de Python est spécialement conçu pour faciliter l’interaction avec ce type de fichiers : le module csv.\nEn pratique, on utilise souvent des modules de plus haut niveau (comme pandas) pour travailler avec des tableaux (DataFrames).\nNous allons néanmoins nous entraîner à l’utiliser en explorant deux fichiers de l’INSEE :",
+    "crumbs": [
+      "Premier pas en CSV"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter1.html#première-exploration-des-données",
+    "href": "chapters/chapter1.html#première-exploration-des-données",
+    "title": "Premiers pas en CSV",
+    "section": "Première exploration des données",
+    "text": "Première exploration des données\nAvant tout, téléchargez les fichiers source sur votre ordinateur et ouvrez-les avec un éditeur de texte brut (comme Notepad++) pour en examiner la structure.\n\nExploration de insee_data.csv\nOn note que :\n\nLe fichier est encodé en UTF-8.\nles valeurs sont séparées par des points-virgules (;).\nLa 1ère ligne du fichier contient le nom des colonnes : c’est l’entête, ou header.\nLes 34 785 autres lignes contiennent les données, une ligne par commune.\n\nOn relève qu’il y a quatre colonnes :\n\nCode : le numéro INSEE de la commune.\nLibellé : le nom de la commune.\nPopulation municipale 2022 : la population de référence de la commune, millésime 2022, entrée en vigueur le 1er janvier 2025, donnée issue du recensement de la population.\nBoulangerie-pâtisserie (en nombre) 2024 : le nombre de boulangeries-pâtisseries que comptait la commune en 2024, donnée issue de la Base Permanente des Équipements (BPE).\n\n\n\nExploration de v_departement_2025.csv\nOn note que :\n\nLe fichier est encodé en UTF-8.\nles valeurs sont séparées par des virgules (,).\nLe fichier comporte un header.\nLes 101 autres lignes contiennent les données, une ligne par département.\n\nOn relève qu’il y a sept colonnes :\n\nREGION : code région.\nDEP : code département.\nCHEFLIEU : code de la commune chef-lieu.\nTNCC : Type de nom en clair (donne une indication grammaticale).\nNCC : Nom en clair, en majuscules.\nNCCENR : Nom en clair, en minuscules accentuées.\nLIBELLE : Nom en clair, en minuscules accentuées avec article.",
+    "crumbs": [
+      "Premier pas en CSV"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter1.html#chargement-des-données",
+    "href": "chapters/chapter1.html#chargement-des-données",
+    "title": "Premiers pas en CSV",
+    "section": "Chargement des données",
+    "text": "Chargement des données\n\nPrincipe\nOn peut modéliser les données avec Python de plusieurs manières.\n\nListe de listes\nOn peut construire une liste de listes : la grande liste représente le tableau, elle contient plusieurs listes (autant que de lignes) dont chacun des élements représentent les valeurs des colonnes.\n\n# On importe le module CSV\nimport csv\n\n# On crée la première liste\nrows = []\n\n# On ouvre le fichier en mode lecture ('r') en spécifiant l'encodage ('utf-8'),\nwith open('/home/onyxia/work/data/insee_data.csv', 'r', encoding='utf-8') as mf:\n\n    # On crée un objet reader() qui lit une ligne du fichier qui lui est passé,\n    # détecte les délimiteurs et renvoie la liste des champs qu'ils séparent \n    csv_reader = csv.reader(mf, delimiter=';')\n\n    # Cet objet est conçu comme un itérateur : à chaque fois qu'on l'appelle,\n    # il passe à la ligne suivante, jusqu'à la fin du fichier. \n    # On stocke ainsi toutes les listes renvoyées dans la première liste.\n    for row in csv_reader:\n        rows.append(row)\n\n# On affiche la valeur stockée 13e ligne, 2eme colonne\n# (pour mémoire, Python compte à partir de 0) :\nprint('La valeur à la 13e ligne, 2eme colonne est la suivante : ', end=None)\nprint(rows[12][1])\n\n\n\nListe de dictionnaires\nMais puisque notre fichier comporte un entête, il est intéressant de modéliser les données sous la forme d’une liste de dictionnaires : chaque ligne sera représentée par un dictionnaire qui fait correspondre aux noms des colonnes (ex: Code) leurs valeurs (ex: '01001').\nPour montrer l’intérêt, on ne conservera ici que les communes dont le champ Code commence par '77' (c’est-à-dire les communes de Seine-et-Marne).\n\n# On crée une autre liste\nseinemarne = []\n\nwith open('/home/onyxia/work/data/insee_data.csv', 'r', encoding='utf-8') as mf:\n   \n    # On utilise ici un objet DictReader()\n    csv_reader = csv.DictReader(mf, delimiter=';')\n    \n    # Les objets renvoyés à chaque appel sont donc des dictionnaires\n    for dico in csv_reader:\n        \n        # On utilise la méthode `startswith` dont disposent les objets de type \n        # natif `str` pour filtrer les éléments qui nous intéressent\n        if dico['Code'].startswith('77'):\n            seinemarne.append(dico)\n\n# On affiche le libellé du dernier élément de la liste ainsi constituée\nlibelle = seinemarne[-1]['Libellé']\nprint(\"La dernière ville de la liste est : {}\".format(libelle))\n\n\n\n\nÀ vous de jouer !\n\nChargement de insee_data.csv\nChargez les données dans une liste de dictionnaires que vous nommerez communes.\nAffichez le nom et la population de la 10000e ville de la liste.\n\n# Entrez ici votre code\ncommunes = []\n\nwith open('/home/onyxia/work/data/insee_data.csv', 'r', encoding='utf-8') as mf:\n    csv_reader = csv.DictReader(mf, delimiter=';')\n    for row in csv_reader:\n        communes.append(row)\n\n\nprint(\"La 10000e ville de la liste est : {}, {} habitants.\".format(\n    communes[9999]['Libellé'],\n    communes[9999]['Population municipale 2022']\n    )\n)\n\n\n\nChargement de v_departement_2025.csv\nChargez les données dans une liste de dictionnaires que vous nommerez depts.\nAffichez le nom en majuscule du 17e département de la liste.\n\n# Entrez ici votre code\ndepts = []\n\nwith open('/home/onyxia/work/data/v_departement_2025.csv', 'r', encoding='utf-8') as mf:\n    csv_reader = csv.DictReader(mf, delimiter=',')\n    for row in csv_reader:\n        depts.append(row)\n\nprint(\"Le 17eme département de la liste est : {}.\".format(depts[16]['NCC']))",
+    "crumbs": [
+      "Premier pas en CSV"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter1.html#vérification-et-nettoyage-des-données",
+    "href": "chapters/chapter1.html#vérification-et-nettoyage-des-données",
+    "title": "Premiers pas en CSV",
+    "section": "Vérification et nettoyage des données",
+    "text": "Vérification et nettoyage des données\nIl est utile de vérifier que les données ne présentent pas de “bizarreries” (éléments aberrants, valeurs manquantes, etc.).\nNous allons conduire quelques tests de cohérence.\n\nNombre de champs pour chaque enregistrement\nOn va s’assurer que chaque enregistrement des listes communes et depts comporte le bon nombre de champs : 4 pour les communes, 7 pour les départements.\nÉcrivez un programme qui vérifie pour les deux listes que chaque dictionnaire contient le nombre approprié de clés. On stockera dans des listes à part les problèmes éventuels (si tout va bien, ces listes seront vides).\n\n# De façon naïve, avec une boucle traditionnelle\ncommunes_avec_pb = []\nfor com in communes:\n    if len(com) != 4:\n        communes_avec_pb.append(com)\n\nprint(\"{} enregistrements problématiques dans la liste 'communes'\".format(\n    len(communes_avec_pb)\n    )\n)\n\n# De façon pythonique, avec une compréhension de liste\ndept_avec_pb = [dep for dep in depts if len(dep) != 7]\n\nprint(\"{} enregistrements problématiques dans la liste 'dept'\".format(\n    len(dept_avec_pb)\n    )\n)\n\n\n\nCohérence géographique\nDans la liste depts, on va vérifier que la commune désignée comme chef-lieu d’un département appartient bien à ce département.\nOn se souviendra que le code INSEE d’une commune commence par le numéro du département auquel elle appartient, codé sur 2 caractères (3 pour l’outre-mer).\n\n# De façon naïve, avec une boucle traditionnelle\npb_chef_lieu = []\nfor dep in depts:\n    codeinsee = dep['CHEFLIEU']\n    if codeinsee[:2] != dep['DEP'] and codeinsee[:3] != dep['DEP']:\n        pb_chef_lieu.append(dep)\n\npb_chef_lieu\n\n# De façon pythonique, avec une compréhension de liste\npb_chef_lieu = [ \n    dep for depts in depts \n    if  dep['CHEFLIEU'][:2] != dep['DEP']\n    and dep['CHEFLIEU'][:3] != dep['DEP']\n]\n\nprint(\"{} communes situées hors du département.\".format(len(pb_chef_lieu)))\n\n\n\nValeurs manquantes\nBien souvent, les données manquantes dans une série de données sont signalées par une chaîne de caractère spécifique (comme N/A) et non par l’absence de valeurs. Cela peut-être gênant.\nDans la table communes, on va ainsi filtrer les enregistrements qui contiennent des valeurs non numériques dans les champs de données.\nOn utilisera pour cela la méthode is_decimal dont disposent les objets de type natif str (cf documentation). Cette méthode renvoie True si tous les caractères d’une chaîne sont des caractères décimaux et qu’elle contient au moins un caractère, False sinon.\n\n# De façon naïve, avec une boucle traditionnelle\npb_nombre = []\nfor com in communes:\n    if not com['Population municipale 2022'].isdecimal():\n        pb_nombre.append(com)\n        next\n    elif not com['Boulangerie-pâtisserie (en nombre) 2024'].isdecimal():\n        pb_nombre.append(com)\n\n\n# De façon pythonique, avec une compréhension de liste\npb_nombre = [\n    com for com in communes\n    if not com['Population municipale 2022'].isdecimal()\n    or not com['Boulangerie-pâtisserie (en nombre) 2024'].isdecimal()\n]\n\nprint(\"{} communes avec données manquantes.\".format(len(pb_nombre)))\n\nAinsi donc, des données sont manquantes pour une vingtaine de communes… On les élimine de la liste communes.\n\nprint(\"Nombre d'enregistrements avant nettoyage : {}\".format(len(communes)))\n\nfor ville in pb_nombre:\n    communes.remove(ville)\n\nprint(\"Nombre d'enregistrements après nettoyage : {}\".format(len(communes)))\n\n\n\nGestion des types\nDans la liste communes, les valeurs stockées dans les champs de données sont pour l’instant représentées par des chaînes de caractères.\n\nprint(type(communes[0]['Population municipale 2022']))\n\nPour les utiliser dans des calculs, il faut d’abord les convertir en nombres entiers.\n\nfor c in communes:\n    for champ in ['Population municipale 2022', 'Boulangerie-pâtisserie (en nombre) 2024']:\n        c[champ] = int(c[champ])\n\nprint(type(communes[0]['Population municipale 2022']))",
+    "crumbs": [
+      "Premier pas en CSV"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter1.html#requêtes-sur-les-données",
+    "href": "chapters/chapter1.html#requêtes-sur-les-données",
+    "title": "Premiers pas en CSV",
+    "section": "Requêtes sur les données",
+    "text": "Requêtes sur les données\nUtilisez les deux tables communes et depts construites précédemment pour répondre aux questions suivantes.\n\nBoulangeries de(s) Champs\nCombien y a-t-il de boulangeries à Champs-sur-Marne (77083) ?\n\n# à vous de jouer\nfor c in communes:\n    if c['Code'] == '77083':\n        print(\"{} : {} boulangeries\".format(\n            c['Libellé'],\n            c['Boulangerie-pâtisserie (en nombre) 2024']\n            )\n        )\n\n\n\nVilles-fantômes\nQuelles sont les villes ne comportant aucun habitant ? Pourquoi ?\n\n# à vous de jouer\nvilles_mortes = [ \n    v for v in communes \n    if v['Population municipale 2022'] == 0\n]\n\nprint(\"Villes sans habitants :\")\n\n# Ce sont toutes des communes de la Meuse, non loin de Verdun : \n# souvenir de la Grande Guerre...\n\nfor v in villes_mortes: \n    print(\"- {} ({})\".format(v['Libellé'], v['Code']))\n\n\n\nHabitants de caractères\nQuelles communes ont autant d’habitants que de caractères dans leur nom ?\n\n# à vous de jouer\nvilles_lettres = [ \n    v for v in communes \n    if len(v['Libellé']) == v['Population municipale 2022']\n]\n\nprint(\"Villes qui ont autant d'habitants que de lettres dans leur nom :\")\n\nfor v in villes_lettres: \n    print(\"- {} ({}) : {} habitants, {} caractères\".format(\n        v['Libellé'], \n        v['Code'],\n        v['Population municipale 2022'],\n        len(v['Libellé'])\n        )\n    )\n\n\n\nDu pain, du pain\nCombien y a-t-il de boulangeries en France ? Quelle est la commune qui a la plus forte densité de boulangeries parmi les villes de plus de 5000 habitants ?\n\n# à vous de jouer\nnb_boul = sum([c['Boulangerie-pâtisserie (en nombre) 2024'] for c in communes])\n\nprint(\"Boulangeries-pâtisseries en France en 2024 : {}\".format(nb_boul))\n\ndensite_max = 0\nlaureat = ''\n\nfor com in communes:\n    boulang    = com['Boulangerie-pâtisserie (en nombre) 2024']\n    population = com['Population municipale 2022']\n    \n    if population &gt; 5000 and boulang/population*1000 &gt; densite_max:\n        densite_max = boulang/population*1000\n        laureat = com['Libellé']\n\nprint(\"Ville à la plus forte densité : {} ({:.1f} boulangeries/1000 hab)\".format(\n    laureat, \n    densite_max\n    )\n)\n\n\n\nEssartage\nQuelles communes contiennent le toponyme ‘essart’ dans leur nom ?\n\n# à vous de jouer\nessarts = []\n\nfor com in communes:\n    if 'essart' in com['Libellé'].lower():\n        essarts.append(com)\n\nprint(\"Villes avec le toponyme Essart :\")\n\nfor v in essarts:\n    print(\"- {name} ({code})\".format(code=v['Code'], name=v['Libellé']))\n\n\n\nChef-lieu chétif\nDans quels départements le chef-lieu n’est-il pas la commune la plus peuplée ? Quelles sont les communes plus peuplées ?\nIndice : on commencera par créer un dictionnaire associant à chaque chef-lieu sa population municipale.\n\n# à vous de jouer\ndico_cheflieu = {}\nresultats = {}\n\n# Création du dictionnaire qui associe le code d'un chef-lieu à sa population\nfor d in depts:\n    code = d['CHEFLIEU']\n    for c in communes:\n        if code == c['Code']:\n            dico_cheflieu[code] = c['Population municipale 2022']\n\n# Examen de chacune des communes\nfor c in communes:\n    code_insee  = c['Code']\n    population  = c['Population municipale 2022']\n    departement = 'XX'\n    \n    # On récupère le département : \n    # les trois premiers chiffres du code INSEE en outre-mer,\n    # les deux premiers chiffres sinon \n    if code_insee.startswith('97'):\n        departement = code_insee[:3]\n    else:\n        departement = code_insee[:2]\n    \n    # Quel est le chef-lieu de ce département ?\n    chl = '0000'\n    for d in depts:\n        if d['DEP'] == departement:\n            chl = d['CHEFLIEU']\n    \n    # On compare la population de la commune à celle du chef-lieu\n    if population &gt; dico_cheflieu[chl]:\n        # Si le département n'est pas déjà dans le dictionnaire, on l'ajoute\n        if departement not in resultats:\n            resultats[departement] = []\n        # Et on ajoute la ville à la liste\n        resultats[departement].append(c['Libellé'])\n\nprint(\"Départements comptant au moins une ville plus peuplée que le chef-lieu :\")\nfor k, v in sorted(resultats.items()):\n    print(\"- {} : \".format(k), end='')\n    print(', '.join(v))\n\n\n\nNom commun\nQuels sont les dix noms de ville le plus répandu ? (ie. ceux que le plus grand nombre de communes portent) ?\n\n# À vous de jouer\ndico_noms = {}\n\nfor c in communes:\n    nom = c['Libellé'].upper()\n    if nom in dico_noms:\n        dico_noms[nom]+=1\n    else:\n        dico_noms[nom]=1\n\ntop10 = sorted(dico_noms.items(), key=lambda x: x[1], reverse=True)[:10]\n\nprint('Top 10 des noms les plus répandus : ')\nfor ville, occurence in top10:\n    print('- {} ({})'.format(ville, occurence))",
+    "crumbs": [
+      "Premier pas en CSV"
     ]
   }
 ]

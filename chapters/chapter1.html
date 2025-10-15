@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Manipulations de tables – Supports pédagogiques du module NTICA</title>
+<title>Premiers pas en CSV – Supports pédagogiques du module NTICA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -88,7 +123,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/chapter1.html">Traitement de tables</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/chapter1.html">Premier pas en CSV</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -115,7 +150,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/chapter1.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Traitement de tables</span></a>
+ <span class="menu-text">Premier pas en CSV</span></a>
   </div>
 </li>
     </ul>
@@ -123,15 +158,47 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#première-exploration-des-données" id="toc-première-exploration-des-données" class="nav-link active" data-scroll-target="#première-exploration-des-données">Première exploration des données</a>
+  <ul class="collapse">
+  <li><a href="#exploration-de-insee_data.csv" id="toc-exploration-de-insee_data.csv" class="nav-link" data-scroll-target="#exploration-de-insee_data.csv">Exploration de insee_data.csv</a></li>
+  <li><a href="#exploration-de-v_departement_2025.csv" id="toc-exploration-de-v_departement_2025.csv" class="nav-link" data-scroll-target="#exploration-de-v_departement_2025.csv">Exploration de v_departement_2025.csv</a></li>
+  </ul></li>
+  <li><a href="#chargement-des-données" id="toc-chargement-des-données" class="nav-link" data-scroll-target="#chargement-des-données">Chargement des données</a>
+  <ul class="collapse">
+  <li><a href="#principe" id="toc-principe" class="nav-link" data-scroll-target="#principe">Principe</a></li>
+  <li><a href="#à-vous-de-jouer" id="toc-à-vous-de-jouer" class="nav-link" data-scroll-target="#à-vous-de-jouer">À vous de jouer !</a></li>
+  </ul></li>
+  <li><a href="#vérification-et-nettoyage-des-données" id="toc-vérification-et-nettoyage-des-données" class="nav-link" data-scroll-target="#vérification-et-nettoyage-des-données">Vérification et nettoyage des données</a>
+  <ul class="collapse">
+  <li><a href="#nombre-de-champs-pour-chaque-enregistrement" id="toc-nombre-de-champs-pour-chaque-enregistrement" class="nav-link" data-scroll-target="#nombre-de-champs-pour-chaque-enregistrement">Nombre de champs pour chaque enregistrement</a></li>
+  <li><a href="#cohérence-géographique" id="toc-cohérence-géographique" class="nav-link" data-scroll-target="#cohérence-géographique">Cohérence géographique</a></li>
+  <li><a href="#valeurs-manquantes" id="toc-valeurs-manquantes" class="nav-link" data-scroll-target="#valeurs-manquantes">Valeurs manquantes</a></li>
+  <li><a href="#gestion-des-types" id="toc-gestion-des-types" class="nav-link" data-scroll-target="#gestion-des-types">Gestion des types</a></li>
+  </ul></li>
+  <li><a href="#requêtes-sur-les-données" id="toc-requêtes-sur-les-données" class="nav-link" data-scroll-target="#requêtes-sur-les-données">Requêtes sur les données</a>
+  <ul class="collapse">
+  <li><a href="#boulangeries-des-champs" id="toc-boulangeries-des-champs" class="nav-link" data-scroll-target="#boulangeries-des-champs">Boulangeries de(s) Champs</a></li>
+  <li><a href="#villes-fantômes" id="toc-villes-fantômes" class="nav-link" data-scroll-target="#villes-fantômes">Villes-fantômes</a></li>
+  <li><a href="#habitants-de-caractères" id="toc-habitants-de-caractères" class="nav-link" data-scroll-target="#habitants-de-caractères">Habitants de caractères</a></li>
+  <li><a href="#du-pain-du-pain" id="toc-du-pain-du-pain" class="nav-link" data-scroll-target="#du-pain-du-pain">Du pain, du pain</a></li>
+  <li><a href="#essartage" id="toc-essartage" class="nav-link" data-scroll-target="#essartage">Essartage</a></li>
+  <li><a href="#chef-lieu-chétif" id="toc-chef-lieu-chétif" class="nav-link" data-scroll-target="#chef-lieu-chétif">Chef-lieu chétif</a></li>
+  <li><a href="#nom-commun" id="toc-nom-commun" class="nav-link" data-scroll-target="#nom-commun">Nom commun</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/ghmercier/ntica-data/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Manipulations de tables</h1>
+<h1 class="title">Premiers pas en CSV</h1>
 </div>
 
 
@@ -148,9 +215,443 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Les tables sont partout…</p>
+<p>Dans ce chapitre, nous allons apprendre à manipuler un type de fichier texte très utilisé pour stocker et diffuser des données : le CSV.</p>
+<p>CSV est l’abréviation de <em>comma-separated values</em>, soit “valeurs séparées par des virgules” – même si, bien souvent, le délimiteur standard (la virgule) est remplacée par un autre délimiteur.</p>
+<p>Un fichier CSV reproduit la structure d’un tableau :</p>
+<ul>
+<li>Chaque ligne du fichier représente une ligne du tableau.</li>
+<li>Dans chaque ligne figurent les valeurs stockées dans les colonnes, séparées par le délimiteur.</li>
+</ul>
+<p>Un module de la bibliothèque standard de Python est spécialement conçu pour faciliter l’interaction avec ce type de fichiers : le module <code>csv</code>.</p>
+<p>En pratique, on utilise souvent des modules de plus haut niveau (comme <code>pandas</code>) pour travailler avec des tableaux (<em>DataFrames</em>).</p>
+<p>Nous allons néanmoins nous entraîner à l’utiliser en explorant deux fichiers de l’INSEE :</p>
+<ul>
+<li><em>insee_data.csv</em>, généré avec l’outil <a href="https://statistiques-locales.insee.fr/">Statistiques locales</a></li>
+<li><em>v_departement_2025.csv</em>, l’un des fichiers du <a href="https://www.insee.fr/fr/information/8377162">COG 2025</a></li>
+</ul>
+<section id="première-exploration-des-données" class="level2">
+<h2 class="anchored" data-anchor-id="première-exploration-des-données">Première exploration des données</h2>
+<p>Avant tout, téléchargez les fichiers source sur votre ordinateur et ouvrez-les avec un éditeur de texte brut (comme Notepad++) pour en examiner la structure.</p>
+<section id="exploration-de-insee_data.csv" class="level3">
+<h3 class="anchored" data-anchor-id="exploration-de-insee_data.csv">Exploration de insee_data.csv</h3>
+<p>On note que :</p>
+<ul>
+<li>Le fichier est encodé en UTF-8.</li>
+<li>les valeurs sont séparées par des <strong>points-virgules</strong> (<code>;</code>).</li>
+<li>La 1<sup>ère</sup> ligne du fichier contient le nom des colonnes : c’est l’entête, ou <code>header</code>.</li>
+<li>Les 34&nbsp;785 autres lignes contiennent les données, une ligne par commune.</li>
+</ul>
+<p>On relève qu’il y a quatre colonnes :</p>
+<ul>
+<li><code>Code</code> : le numéro INSEE de la commune.</li>
+<li><code>Libellé</code> : le nom de la commune.</li>
+<li><code>Population municipale 2022</code> : la population de référence de la commune, millésime 2022, entrée en vigueur le 1<sup>er</sup> janvier 2025, donnée issue du recensement de la population.</li>
+<li><code>Boulangerie-pâtisserie (en nombre) 2024</code> : le nombre de boulangeries-pâtisseries que comptait la commune en 2024, donnée issue de la Base Permanente des Équipements (BPE).</li>
+</ul>
+</section>
+<section id="exploration-de-v_departement_2025.csv" class="level3">
+<h3 class="anchored" data-anchor-id="exploration-de-v_departement_2025.csv">Exploration de v_departement_2025.csv</h3>
+<p>On note que :</p>
+<ul>
+<li>Le fichier est encodé en UTF-8.</li>
+<li>les valeurs sont séparées par des <strong>virgules</strong> (<code>,</code>).</li>
+<li>Le fichier comporte un <code>header</code>.</li>
+<li>Les 101 autres lignes contiennent les données, une ligne par département.</li>
+</ul>
+<p>On relève qu’il y a sept colonnes :</p>
+<ul>
+<li><code>REGION</code> : code région.</li>
+<li><code>DEP</code> : code département.</li>
+<li><code>CHEFLIEU</code> : code de la commune chef-lieu.</li>
+<li><code>TNCC</code> : Type de nom en clair (donne une indication grammaticale).</li>
+<li><code>NCC</code> : Nom en clair, en majuscules.</li>
+<li><code>NCCENR</code> : Nom en clair, en minuscules accentuées.</li>
+<li><code>LIBELLE</code> : Nom en clair, en minuscules accentuées avec article.</li>
+</ul>
+</section>
+</section>
+<section id="chargement-des-données" class="level2">
+<h2 class="anchored" data-anchor-id="chargement-des-données">Chargement des données</h2>
+<section id="principe" class="level3">
+<h3 class="anchored" data-anchor-id="principe">Principe</h3>
+<p>On peut modéliser les données avec Python de plusieurs manières.</p>
+<section id="liste-de-listes" class="level4">
+<h4 class="anchored" data-anchor-id="liste-de-listes">Liste de listes</h4>
+<p>On peut construire une <em>liste de listes</em> : la grande liste représente le tableau, elle contient plusieurs listes (autant que de lignes) dont chacun des élements représentent les valeurs des colonnes.</p>
+<div id="b7b668f1" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># On importe le module CSV</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># On crée la première liste</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> []</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># On ouvre le fichier en mode lecture ('r') en spécifiant l'encodage ('utf-8'),</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'/home/onyxia/work/data/insee_data.csv'</span>, <span class="st">'r'</span>, encoding<span class="op">=</span><span class="st">'utf-8'</span>) <span class="im">as</span> mf:</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># On crée un objet reader() qui lit une ligne du fichier qui lui est passé,</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># détecte les délimiteurs et renvoie la liste des champs qu'ils séparent </span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    csv_reader <span class="op">=</span> csv.reader(mf, delimiter<span class="op">=</span><span class="st">';'</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Cet objet est conçu comme un itérateur : à chaque fois qu'on l'appelle,</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># il passe à la ligne suivante, jusqu'à la fin du fichier. </span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># On stocke ainsi toutes les listes renvoyées dans la première liste.</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> row <span class="kw">in</span> csv_reader:</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        rows.append(row)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co"># On affiche la valeur stockée 13e ligne, 2eme colonne</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co"># (pour mémoire, Python compte à partir de 0) :</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'La valeur à la 13e ligne, 2eme colonne est la suivante : '</span>, end<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(rows[<span class="dv">12</span>][<span class="dv">1</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="liste-de-dictionnaires" class="level4">
+<h4 class="anchored" data-anchor-id="liste-de-dictionnaires">Liste de dictionnaires</h4>
+<p>Mais puisque notre fichier comporte un entête, il est intéressant de modéliser les données sous la forme d’une <em>liste de dictionnaires</em> : chaque ligne sera représentée par un dictionnaire qui fait correspondre aux noms des colonnes (ex: <code>Code</code>) leurs valeurs (ex: <code>'01001'</code>).</p>
+<p>Pour montrer l’intérêt, on ne conservera ici que les communes dont le champ <code>Code</code> commence par <code>'77'</code> (c’est-à-dire les communes de Seine-et-Marne).</p>
+<div id="c49a0210" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># On crée une autre liste</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>seinemarne <span class="op">=</span> []</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'/home/onyxia/work/data/insee_data.csv'</span>, <span class="st">'r'</span>, encoding<span class="op">=</span><span class="st">'utf-8'</span>) <span class="im">as</span> mf:</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># On utilise ici un objet DictReader()</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    csv_reader <span class="op">=</span> csv.DictReader(mf, delimiter<span class="op">=</span><span class="st">';'</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Les objets renvoyés à chaque appel sont donc des dictionnaires</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> dico <span class="kw">in</span> csv_reader:</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># On utilise la méthode `startswith` dont disposent les objets de type </span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        <span class="co"># natif `str` pour filtrer les éléments qui nous intéressent</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> dico[<span class="st">'Code'</span>].startswith(<span class="st">'77'</span>):</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>            seinemarne.append(dico)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co"># On affiche le libellé du dernier élément de la liste ainsi constituée</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>libelle <span class="op">=</span> seinemarne[<span class="op">-</span><span class="dv">1</span>][<span class="st">'Libellé'</span>]</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"La dernière ville de la liste est : </span><span class="sc">{}</span><span class="st">"</span>.<span class="bu">format</span>(libelle))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="à-vous-de-jouer" class="level3">
+<h3 class="anchored" data-anchor-id="à-vous-de-jouer">À vous de jouer !</h3>
+<section id="chargement-de-insee_data.csv" class="level4">
+<h4 class="anchored" data-anchor-id="chargement-de-insee_data.csv">Chargement de insee_data.csv</h4>
+<p>Chargez les données dans une liste de dictionnaires que vous nommerez <code>communes</code>.</p>
+<p>Affichez le nom et la population de la 10000<sup>e</sup> ville de la liste.</p>
+<div id="32637cf2" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Entrez ici votre code</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>communes <span class="op">=</span> []</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'/home/onyxia/work/data/insee_data.csv'</span>, <span class="st">'r'</span>, encoding<span class="op">=</span><span class="st">'utf-8'</span>) <span class="im">as</span> mf:</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    csv_reader <span class="op">=</span> csv.DictReader(mf, delimiter<span class="op">=</span><span class="st">';'</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> row <span class="kw">in</span> csv_reader:</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        communes.append(row)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"La 10000e ville de la liste est : </span><span class="sc">{}</span><span class="st">, </span><span class="sc">{}</span><span class="st"> habitants."</span>.<span class="bu">format</span>(</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    communes[<span class="dv">9999</span>][<span class="st">'Libellé'</span>],</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    communes[<span class="dv">9999</span>][<span class="st">'Population municipale 2022'</span>]</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="chargement-de-v_departement_2025.csv" class="level4">
+<h4 class="anchored" data-anchor-id="chargement-de-v_departement_2025.csv">Chargement de v_departement_2025.csv</h4>
+<p>Chargez les données dans une liste de dictionnaires que vous nommerez <code>depts</code>.</p>
+<p>Affichez le nom en majuscule du 17<sup>e</sup> département de la liste.</p>
+<div id="7014e93e" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Entrez ici votre code</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>depts <span class="op">=</span> []</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'/home/onyxia/work/data/v_departement_2025.csv'</span>, <span class="st">'r'</span>, encoding<span class="op">=</span><span class="st">'utf-8'</span>) <span class="im">as</span> mf:</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    csv_reader <span class="op">=</span> csv.DictReader(mf, delimiter<span class="op">=</span><span class="st">','</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> row <span class="kw">in</span> csv_reader:</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        depts.append(row)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Le 17eme département de la liste est : </span><span class="sc">{}</span><span class="st">."</span>.<span class="bu">format</span>(depts[<span class="dv">16</span>][<span class="st">'NCC'</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+</section>
+<section id="vérification-et-nettoyage-des-données" class="level2">
+<h2 class="anchored" data-anchor-id="vérification-et-nettoyage-des-données">Vérification et nettoyage des données</h2>
+<p>Il est utile de vérifier que les données ne présentent pas de “bizarreries” (éléments aberrants, valeurs manquantes, etc.).</p>
+<p>Nous allons conduire quelques tests de cohérence.</p>
+<section id="nombre-de-champs-pour-chaque-enregistrement" class="level3">
+<h3 class="anchored" data-anchor-id="nombre-de-champs-pour-chaque-enregistrement">Nombre de champs pour chaque enregistrement</h3>
+<p>On va s’assurer que chaque enregistrement des listes <code>communes</code> et <code>depts</code> comporte le bon nombre de champs : 4 pour les communes, 7 pour les départements.</p>
+<p>Écrivez un programme qui vérifie pour les deux listes que chaque dictionnaire contient le nombre approprié de clés. On stockera dans des listes à part les problèmes éventuels (si tout va bien, ces listes seront vides).</p>
+<div id="e846c29a" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># De façon naïve, avec une boucle traditionnelle</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>communes_avec_pb <span class="op">=</span> []</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> com <span class="kw">in</span> communes:</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(com) <span class="op">!=</span> <span class="dv">4</span>:</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        communes_avec_pb.append(com)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="sc">{}</span><span class="st"> enregistrements problématiques dans la liste 'communes'"</span>.<span class="bu">format</span>(</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">len</span>(communes_avec_pb)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># De façon pythonique, avec une compréhension de liste</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>dept_avec_pb <span class="op">=</span> [dep <span class="cf">for</span> dep <span class="kw">in</span> depts <span class="cf">if</span> <span class="bu">len</span>(dep) <span class="op">!=</span> <span class="dv">7</span>]</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="sc">{}</span><span class="st"> enregistrements problématiques dans la liste 'dept'"</span>.<span class="bu">format</span>(</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">len</span>(dept_avec_pb)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="cohérence-géographique" class="level3">
+<h3 class="anchored" data-anchor-id="cohérence-géographique">Cohérence géographique</h3>
+<p>Dans la liste <code>depts</code>, on va vérifier que la commune désignée comme chef-lieu d’un département appartient bien à ce département.</p>
+<p>On se souviendra que le code INSEE d’une commune commence par le numéro du département auquel elle appartient, codé sur 2 caractères (3 pour l’outre-mer).</p>
+<div id="15a43fcd" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># De façon naïve, avec une boucle traditionnelle</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>pb_chef_lieu <span class="op">=</span> []</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> dep <span class="kw">in</span> depts:</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    codeinsee <span class="op">=</span> dep[<span class="st">'CHEFLIEU'</span>]</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> codeinsee[:<span class="dv">2</span>] <span class="op">!=</span> dep[<span class="st">'DEP'</span>] <span class="kw">and</span> codeinsee[:<span class="dv">3</span>] <span class="op">!=</span> dep[<span class="st">'DEP'</span>]:</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        pb_chef_lieu.append(dep)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>pb_chef_lieu</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># De façon pythonique, avec une compréhension de liste</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>pb_chef_lieu <span class="op">=</span> [ </span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    dep <span class="cf">for</span> depts <span class="kw">in</span> depts </span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>  dep[<span class="st">'CHEFLIEU'</span>][:<span class="dv">2</span>] <span class="op">!=</span> dep[<span class="st">'DEP'</span>]</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">and</span> dep[<span class="st">'CHEFLIEU'</span>][:<span class="dv">3</span>] <span class="op">!=</span> dep[<span class="st">'DEP'</span>]</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="sc">{}</span><span class="st"> communes situées hors du département."</span>.<span class="bu">format</span>(<span class="bu">len</span>(pb_chef_lieu)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="valeurs-manquantes" class="level3">
+<h3 class="anchored" data-anchor-id="valeurs-manquantes">Valeurs manquantes</h3>
+<p>Bien souvent, les données manquantes dans une série de données sont signalées par une chaîne de caractère spécifique (comme <code>N/A</code>) et non par l’absence de valeurs. Cela peut-être gênant.</p>
+<p>Dans la table <code>communes</code>, on va ainsi filtrer les enregistrements qui contiennent des valeurs non numériques dans les champs de données.</p>
+<p>On utilisera pour cela la méthode <code>is_decimal</code> dont disposent les objets de type natif <code>str</code> (cf <a href="https://docs.python.org/fr/3.12/library/stdtypes.html#string-methods">documentation</a>). Cette méthode renvoie <code>True</code> si tous les caractères d’une chaîne sont des caractères décimaux et qu’elle contient au moins un caractère, <code>False</code> sinon.</p>
+<div id="aefc128c" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># De façon naïve, avec une boucle traditionnelle</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>pb_nombre <span class="op">=</span> []</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> com <span class="kw">in</span> communes:</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> com[<span class="st">'Population municipale 2022'</span>].isdecimal():</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        pb_nombre.append(com)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">next</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> <span class="kw">not</span> com[<span class="st">'Boulangerie-pâtisserie (en nombre) 2024'</span>].isdecimal():</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        pb_nombre.append(com)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co"># De façon pythonique, avec une compréhension de liste</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>pb_nombre <span class="op">=</span> [</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    com <span class="cf">for</span> com <span class="kw">in</span> communes</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> com[<span class="st">'Population municipale 2022'</span>].isdecimal()</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">or</span> <span class="kw">not</span> com[<span class="st">'Boulangerie-pâtisserie (en nombre) 2024'</span>].isdecimal()</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="sc">{}</span><span class="st"> communes avec données manquantes."</span>.<span class="bu">format</span>(<span class="bu">len</span>(pb_nombre)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Ainsi donc, des données sont manquantes pour une vingtaine de communes… On les élimine de la liste <code>communes</code>.</p>
+<div id="76b97d3a" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Nombre d'enregistrements avant nettoyage : </span><span class="sc">{}</span><span class="st">"</span>.<span class="bu">format</span>(<span class="bu">len</span>(communes)))</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ville <span class="kw">in</span> pb_nombre:</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    communes.remove(ville)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Nombre d'enregistrements après nettoyage : </span><span class="sc">{}</span><span class="st">"</span>.<span class="bu">format</span>(<span class="bu">len</span>(communes)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="gestion-des-types" class="level3">
+<h3 class="anchored" data-anchor-id="gestion-des-types">Gestion des types</h3>
+<p>Dans la liste <code>communes</code>, les valeurs stockées dans les champs de données sont pour l’instant représentées par des chaînes de caractères.</p>
+<div id="5a1f60e6" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(communes[<span class="dv">0</span>][<span class="st">'Population municipale 2022'</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Pour les utiliser dans des calculs, il faut d’abord les convertir en nombres entiers.</p>
+<div id="e798a8aa" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> c <span class="kw">in</span> communes:</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> champ <span class="kw">in</span> [<span class="st">'Population municipale 2022'</span>, <span class="st">'Boulangerie-pâtisserie (en nombre) 2024'</span>]:</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        c[champ] <span class="op">=</span> <span class="bu">int</span>(c[champ])</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(communes[<span class="dv">0</span>][<span class="st">'Population municipale 2022'</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="requêtes-sur-les-données" class="level2">
+<h2 class="anchored" data-anchor-id="requêtes-sur-les-données">Requêtes sur les données</h2>
+<p>Utilisez les deux tables <code>communes</code> et <code>depts</code> construites précédemment pour répondre aux questions suivantes.</p>
+<section id="boulangeries-des-champs" class="level3">
+<h3 class="anchored" data-anchor-id="boulangeries-des-champs">Boulangeries de(s) Champs</h3>
+<p>Combien y a-t-il de boulangeries à Champs-sur-Marne (77083) ?</p>
+<div id="66e8bc39" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># à vous de jouer</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> c <span class="kw">in</span> communes:</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> c[<span class="st">'Code'</span>] <span class="op">==</span> <span class="st">'77083'</span>:</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"</span><span class="sc">{}</span><span class="st"> : </span><span class="sc">{}</span><span class="st"> boulangeries"</span>.<span class="bu">format</span>(</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>            c[<span class="st">'Libellé'</span>],</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>            c[<span class="st">'Boulangerie-pâtisserie (en nombre) 2024'</span>]</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>        )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="villes-fantômes" class="level3">
+<h3 class="anchored" data-anchor-id="villes-fantômes">Villes-fantômes</h3>
+<p>Quelles sont les villes ne comportant aucun habitant ? Pourquoi ?</p>
+<div id="fb493616" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># à vous de jouer</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>villes_mortes <span class="op">=</span> [ </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    v <span class="cf">for</span> v <span class="kw">in</span> communes </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> v[<span class="st">'Population municipale 2022'</span>] <span class="op">==</span> <span class="dv">0</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Villes sans habitants :"</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Ce sont toutes des communes de la Meuse, non loin de Verdun : </span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co"># souvenir de la Grande Guerre...</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> v <span class="kw">in</span> villes_mortes: </span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"- </span><span class="sc">{}</span><span class="st"> (</span><span class="sc">{}</span><span class="st">)"</span>.<span class="bu">format</span>(v[<span class="st">'Libellé'</span>], v[<span class="st">'Code'</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="habitants-de-caractères" class="level3">
+<h3 class="anchored" data-anchor-id="habitants-de-caractères">Habitants de caractères</h3>
+<p>Quelles communes ont autant d’habitants que de caractères dans leur nom ?</p>
+<div id="2c289cb4" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># à vous de jouer</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>villes_lettres <span class="op">=</span> [ </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    v <span class="cf">for</span> v <span class="kw">in</span> communes </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(v[<span class="st">'Libellé'</span>]) <span class="op">==</span> v[<span class="st">'Population municipale 2022'</span>]</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Villes qui ont autant d'habitants que de lettres dans leur nom :"</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> v <span class="kw">in</span> villes_lettres: </span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"- </span><span class="sc">{}</span><span class="st"> (</span><span class="sc">{}</span><span class="st">) : </span><span class="sc">{}</span><span class="st"> habitants, </span><span class="sc">{}</span><span class="st"> caractères"</span>.<span class="bu">format</span>(</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>        v[<span class="st">'Libellé'</span>], </span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>        v[<span class="st">'Code'</span>],</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>        v[<span class="st">'Population municipale 2022'</span>],</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>        <span class="bu">len</span>(v[<span class="st">'Libellé'</span>])</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="du-pain-du-pain" class="level3">
+<h3 class="anchored" data-anchor-id="du-pain-du-pain">Du pain, du pain</h3>
+<p>Combien y a-t-il de boulangeries en France ? Quelle est la commune qui a la plus forte densité de boulangeries parmi les villes de plus de 5000 habitants ?</p>
+<div id="79a6e148" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># à vous de jouer</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>nb_boul <span class="op">=</span> <span class="bu">sum</span>([c[<span class="st">'Boulangerie-pâtisserie (en nombre) 2024'</span>] <span class="cf">for</span> c <span class="kw">in</span> communes])</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Boulangeries-pâtisseries en France en 2024 : </span><span class="sc">{}</span><span class="st">"</span>.<span class="bu">format</span>(nb_boul))</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>densite_max <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>laureat <span class="op">=</span> <span class="st">''</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> com <span class="kw">in</span> communes:</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    boulang    <span class="op">=</span> com[<span class="st">'Boulangerie-pâtisserie (en nombre) 2024'</span>]</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    population <span class="op">=</span> com[<span class="st">'Population municipale 2022'</span>]</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> population <span class="op">&gt;</span> <span class="dv">5000</span> <span class="kw">and</span> boulang<span class="op">/</span>population<span class="op">*</span><span class="dv">1000</span> <span class="op">&gt;</span> densite_max:</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>        densite_max <span class="op">=</span> boulang<span class="op">/</span>population<span class="op">*</span><span class="dv">1000</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>        laureat <span class="op">=</span> com[<span class="st">'Libellé'</span>]</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Ville à la plus forte densité : </span><span class="sc">{}</span><span class="st"> (</span><span class="sc">{:.1f}</span><span class="st"> boulangeries/1000 hab)"</span>.<span class="bu">format</span>(</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>    laureat, </span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>    densite_max</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="essartage" class="level3">
+<h3 class="anchored" data-anchor-id="essartage">Essartage</h3>
+<p>Quelles communes contiennent le toponyme <a href="https://fr.wikipedia.org/wiki/Essart">‘essart’</a> dans leur nom ?</p>
+<div id="2a7a3049" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># à vous de jouer</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>essarts <span class="op">=</span> []</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> com <span class="kw">in</span> communes:</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">'essart'</span> <span class="kw">in</span> com[<span class="st">'Libellé'</span>].lower():</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>        essarts.append(com)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Villes avec le toponyme Essart :"</span>)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> v <span class="kw">in</span> essarts:</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"- </span><span class="sc">{name}</span><span class="st"> (</span><span class="sc">{code}</span><span class="st">)"</span>.<span class="bu">format</span>(code<span class="op">=</span>v[<span class="st">'Code'</span>], name<span class="op">=</span>v[<span class="st">'Libellé'</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="chef-lieu-chétif" class="level3">
+<h3 class="anchored" data-anchor-id="chef-lieu-chétif">Chef-lieu chétif</h3>
+<p>Dans quels départements le chef-lieu n’est-il pas la commune la plus peuplée ? Quelles sont les communes plus peuplées ?</p>
+<p>Indice : on commencera par créer un dictionnaire associant à chaque chef-lieu sa population municipale.</p>
+<div id="536c09d0" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># à vous de jouer</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>dico_cheflieu <span class="op">=</span> {}</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>resultats <span class="op">=</span> {}</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Création du dictionnaire qui associe le code d'un chef-lieu à sa population</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> d <span class="kw">in</span> depts:</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    code <span class="op">=</span> d[<span class="st">'CHEFLIEU'</span>]</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> c <span class="kw">in</span> communes:</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> code <span class="op">==</span> c[<span class="st">'Code'</span>]:</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>            dico_cheflieu[code] <span class="op">=</span> c[<span class="st">'Population municipale 2022'</span>]</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Examen de chacune des communes</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> c <span class="kw">in</span> communes:</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>    code_insee  <span class="op">=</span> c[<span class="st">'Code'</span>]</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    population  <span class="op">=</span> c[<span class="st">'Population municipale 2022'</span>]</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>    departement <span class="op">=</span> <span class="st">'XX'</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># On récupère le département : </span></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># les trois premiers chiffres du code INSEE en outre-mer,</span></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># les deux premiers chiffres sinon </span></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> code_insee.startswith(<span class="st">'97'</span>):</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>        departement <span class="op">=</span> code_insee[:<span class="dv">3</span>]</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>        departement <span class="op">=</span> code_insee[:<span class="dv">2</span>]</span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Quel est le chef-lieu de ce département ?</span></span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>    chl <span class="op">=</span> <span class="st">'0000'</span></span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> d <span class="kw">in</span> depts:</span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> d[<span class="st">'DEP'</span>] <span class="op">==</span> departement:</span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>            chl <span class="op">=</span> d[<span class="st">'CHEFLIEU'</span>]</span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># On compare la population de la commune à celle du chef-lieu</span></span>
+<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> population <span class="op">&gt;</span> dico_cheflieu[chl]:</span>
+<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Si le département n'est pas déjà dans le dictionnaire, on l'ajoute</span></span>
+<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> departement <span class="kw">not</span> <span class="kw">in</span> resultats:</span>
+<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a>            resultats[departement] <span class="op">=</span> []</span>
+<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Et on ajoute la ville à la liste</span></span>
+<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a>        resultats[departement].append(c[<span class="st">'Libellé'</span>])</span>
+<span id="cb16-39"><a href="#cb16-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-40"><a href="#cb16-40" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Départements comptant au moins une ville plus peuplée que le chef-lieu :"</span>)</span>
+<span id="cb16-41"><a href="#cb16-41" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k, v <span class="kw">in</span> <span class="bu">sorted</span>(resultats.items()):</span>
+<span id="cb16-42"><a href="#cb16-42" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"- </span><span class="sc">{}</span><span class="st"> : "</span>.<span class="bu">format</span>(k), end<span class="op">=</span><span class="st">''</span>)</span>
+<span id="cb16-43"><a href="#cb16-43" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">', '</span>.join(v))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="nom-commun" class="level3">
+<h3 class="anchored" data-anchor-id="nom-commun">Nom commun</h3>
+<p>Quels sont les dix noms de ville le plus répandu ? (ie. ceux que le plus grand nombre de communes portent) ?</p>
+<div id="cc6b8c8b" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># À vous de jouer</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>dico_noms <span class="op">=</span> {}</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> c <span class="kw">in</span> communes:</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    nom <span class="op">=</span> c[<span class="st">'Libellé'</span>].upper()</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> nom <span class="kw">in</span> dico_noms:</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>        dico_noms[nom]<span class="op">+=</span><span class="dv">1</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>        dico_noms[nom]<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>top10 <span class="op">=</span> <span class="bu">sorted</span>(dico_noms.items(), key<span class="op">=</span><span class="kw">lambda</span> x: x[<span class="dv">1</span>], reverse<span class="op">=</span><span class="va">True</span>)[:<span class="dv">10</span>]</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Top 10 des noms les plus répandus : '</span>)</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ville, occurence <span class="kw">in</span> top10:</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'- </span><span class="sc">{}</span><span class="st"> (</span><span class="sc">{}</span><span class="st">)'</span>.<span class="bu">format</span>(ville, occurence))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -567,4 +1068,4 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/ghmercier/ntica-data/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ghmercier/ntica-data/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

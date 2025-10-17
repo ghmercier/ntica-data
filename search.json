@@ -114,7 +114,7 @@
     "href": "index.html#le-ssp-cloud",
     "title": "Travaux dirigés NTICA",
     "section": "Le SSP Cloud",
-    "text": "Le SSP Cloud\nCes supports sont interactifs. En cliquant sur le bouton prévu à cet effet en haut de la page, vous pourrez les lancer dans le Datalab de la plateforme SSPCloud de l’INSEE. Vous n’aurez ainsi rien à installer, disposerez de tous les modules nécessaires et aurez accès directement aux données que nous manipulerons.\nIl vous faudra préalablement créer un compte gratuitement, en indiquant votre adresse email @eleves.enpc.fr.",
+    "text": "Le SSP Cloud\nCes supports sont interactifs. En cliquant sur le bouton prévu à cet effet en haut de la page, vous pourrez les lancer dans le Datalab de la plateforme SSPCloud de l’INSEE.\nCela présente plusieurs avantages :\n\nVous n’avez ainsi rien à installer\nVous disposerez de tous les modules requis aux bonnes versions\nVous aurez accès directement aux données nécessaires\n\nIl vous faudra préalablement créer un compte gratuitement, en indiquant votre adresse email @eleves.enpc.fr.",
     "crumbs": [
       "Accueil"
     ]

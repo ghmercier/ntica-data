@@ -104,7 +104,7 @@
     "href": "index.html",
     "title": "Travaux dirigés NTICA",
     "section": "",
-    "text": "Bienvenue à vous, chers élèves AMUR de la promo 2025/2026.\nVous trouverez ci-dessous les liens vers les supports de TD pour\napprendre à manipuler des données publiques.",
+    "text": "Bienvenue à vous, chers élèves AMUR de la promo 2025/2026.\nVous trouverez ci-dessous les liens vers les supports de TD pour apprendre à manipuler des données publiques.",
     "crumbs": [
       "Accueil"
     ]
@@ -114,7 +114,7 @@
     "href": "index.html#le-ssp-cloud",
     "title": "Travaux dirigés NTICA",
     "section": "Le SSP Cloud",
-    "text": "Le SSP Cloud\nCes supports sont interactifs. En cliquant sur le bouton prévu à cet effet en haut de la page, vous pourrez les lancer dans le Datalab de la plateforme SSPCloud de l’INSEE. Vous n’aurez ainsi rien à installer, disposerez de tous les modules nécessaires et aurez accès directement aux données que nous manipulerons.\nIl vous faudra préalablement créer un compte gratuitement, en indiquant votre adresse email @enpc.fr.",
+    "text": "Le SSP Cloud\nCes supports sont interactifs. En cliquant sur le bouton prévu à cet effet en haut de la page, vous pourrez les lancer dans le Datalab de la plateforme SSPCloud de l’INSEE. Vous n’aurez ainsi rien à installer, disposerez de tous les modules nécessaires et aurez accès directement aux données que nous manipulerons.\nIl vous faudra préalablement créer un compte gratuitement, en indiquant votre adresse email @eleves.enpc.fr.",
     "crumbs": [
       "Accueil"
     ]
@@ -124,7 +124,7 @@
     "href": "index.html#les-supports-de-td",
     "title": "Travaux dirigés NTICA",
     "section": "Les supports de TD",
-    "text": "Les supports de TD\n\nPremiers pas en CSV",
+    "text": "Les supports de TD\n\nIntroduction à QGIS\nTraitement de fichiers CSV",
     "crumbs": [
       "Accueil"
     ]
@@ -204,7 +204,7 @@
     "href": "chapters/qgis-intro.html#création-du-projet",
     "title": "Premier pas avec QGIS",
     "section": "Création du projet",
-    "text": "Création du projet\nLancer QGIS, créer un nouveau projet.\n\nMenu Projet → Nouveau",
+    "text": "Création du projet\nLancer QGIS, créer un nouveau projet.\n\nProjet → Nouveau",
     "crumbs": [
       "Premier pas avec QGIS"
     ]
@@ -214,7 +214,7 @@
     "href": "chapters/qgis-intro.html#ajout-dun-fond-de-carte",
     "title": "Premier pas avec QGIS",
     "section": "Ajout d’un fond de carte",
-    "text": "Ajout d’un fond de carte\nAjouter le fond de carte OpenStreetMap.\n\nMenu Couche → Ajouter une couche → Ajouter une couche XYZ\nListe déroulante Connexions XYZ → OpenStreetMap\nBouton Ajouter\n\nDans le coin inférieur droit, remarquez qu’un SCR a été automatiquement défini : EPSG:3857. C’est celui de la première couche ajoutée.\nSi nous devions ajouter des couches exprimées dans un autre SCR, QGIS ferait la conversion de manière transparente, à condition qu’il puisse déterminer sans ambiguité le SCR de la couche fournie.\n\n\nSCR, Késako ?\n\nUn système de coordonnées de référence est le référentiel qui donne du sens aux valeurs numériques que prennent des coordonnées géographiques (latitude, longitude, altitude). On pourra se référer utilement à la documentation. de QGIS.",
+    "text": "Ajout d’un fond de carte\nAjouter le fond de carte OpenStreetMap.\n\nCouche → Ajouter une couche → Ajouter une couche XYZ\nConnexions XYZ → OpenStreetMap\nAjouter\n\nDans le coin inférieur droit, remarquez qu’un SCR a été automatiquement défini : EPSG:3857. C’est celui de la première couche ajoutée. Si nous devions ajouter des couches exprimées dans un autre SCR, QGIS ferait la conversion de manière transparente, à condition qu’il puisse déterminer sans ambiguité le SCR de la couche fournie.\n\n\nSCR, Késako ?\n\nUn système de coordonnées de référence est le référentiel qui donne du sens aux valeurs numériques que prennent des coordonnées géographiques (latitude, longitude, altitude). On pourra se référer utilement à la documentation. de QGIS.",
     "crumbs": [
       "Premier pas avec QGIS"
     ]

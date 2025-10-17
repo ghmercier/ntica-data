@@ -1,35 +1,5 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Travaux dirigés NTICA",
-    "section": "",
-    "text": "Bienvenue à vous, chers élèves AMUR de la promo 2025/2026.\nVous trouverez ci-dessous les liens vers les supports de TD pour\napprendre à manipuler des données publiques.",
-    "crumbs": [
-      "Accueil"
-    ]
-  },
-  {
-    "objectID": "index.html#le-ssp-cloud",
-    "href": "index.html#le-ssp-cloud",
-    "title": "Travaux dirigés NTICA",
-    "section": "Le SSP Cloud",
-    "text": "Le SSP Cloud\nCes supports sont interactifs. En cliquant sur le bouton prévu à cet effet en haut de la page, vous pourrez les lancer dans le Datalab de la plateforme SSPCloud de l’INSEE. Vous n’aurez ainsi rien à installer, disposerez de tous les modules nécessaires et aurez accès directement aux données que nous manipulerons.\nIl vous faudra préalablement créer un compte gratuitement, en indiquant votre adresse email @enpc.fr.",
-    "crumbs": [
-      "Accueil"
-    ]
-  },
-  {
-    "objectID": "index.html#les-supports-de-td",
-    "href": "index.html#les-supports-de-td",
-    "title": "Travaux dirigés NTICA",
-    "section": "Les supports de TD",
-    "text": "Les supports de TD\n\nPremiers pas en CSV",
-    "crumbs": [
-      "Accueil"
-    ]
-  },
-  {
     "objectID": "chapters/chapter1.html",
     "href": "chapters/chapter1.html",
     "title": "Premiers pas en CSV",
@@ -87,6 +57,136 @@
     "text": "Requêtes sur les données\nUtilisez les deux tables communes et depts construites précédemment pour répondre aux questions suivantes.\n\nBoulangeries de(s) Champs\nCombien y a-t-il de boulangeries à Champs-sur-Marne (77083) ?\n\n# Entrez ici votre code\n\n\n\nSolution\nfor c in communes:\n    if c['Code'] == '77083':\n        print(\"{} : {} boulangeries\".format(\n            c['Libellé'],\n            c['Boulangerie-pâtisserie (en nombre) 2024']\n            )\n        )\n\n\n\n\nVilles-fantômes\nQuelles sont les villes ne comportant aucun habitant ? Pourquoi ?\n\n# Entrez ici votre code\n\n\n\nSolution\nvilles_mortes = [ \n    v for v in communes \n    if v['Population municipale 2022'] == 0\n]\n\nprint(\"Villes sans habitants :\")\n\n# Ce sont toutes des communes de la Meuse, non loin de Verdun : \n# souvenir de la Grande Guerre...\n\nfor v in villes_mortes: \n    print(\"- {} ({})\".format(v['Libellé'], v['Code']))\n\n\n\n\nHabitants de caractères\nQuelles communes ont autant d’habitants que de caractères dans leur nom ?\n\n# Entrez ici votre code\n\n\n\nSolution\nvilles_lettres = [ \n    v for v in communes \n    if len(v['Libellé']) == v['Population municipale 2022']\n]\n\nprint(\"Villes qui ont autant d'habitants que de lettres dans leur nom :\")\n\nfor v in villes_lettres: \n    print(\"- {} ({}) : {} habitants, {} caractères\".format(\n        v['Libellé'], \n        v['Code'],\n        v['Population municipale 2022'],\n        len(v['Libellé'])\n        )\n    )\n\n\n\n\nDu pain, du pain\nCombien y a-t-il de boulangeries en France ? Quelle est la commune qui a la plus forte densité de boulangeries parmi les villes de plus de 5000 habitants ?\n\n# Entrez ici votre code\n\n\n\nSolution\nnb_boul = sum([c['Boulangerie-pâtisserie (en nombre) 2024'] for c in communes])\n\nprint(\"Boulangeries-pâtisseries en France en 2024 : {}\".format(nb_boul))\n\ndensite_max = 0\nlaureat = ''\n\nfor com in communes:\n    boulang    = com['Boulangerie-pâtisserie (en nombre) 2024']\n    population = com['Population municipale 2022']\n    \n    if population &gt; 5000 and boulang/population*1000 &gt; densite_max:\n        densite_max = boulang/population*1000\n        laureat = com['Libellé']\n\nprint(\"Ville à la plus forte densité : {} ({:.1f} boulangeries/1000 hab)\".format(\n    laureat, \n    densite_max\n    )\n)\n\n\n\n\nEssartage\nQuelles communes contiennent le toponyme ‘essart’ dans leur nom ?\n\n# Entrez ici votre code\n\n\n\nSolution\nessarts = []\n\nfor com in communes:\n    if 'essart' in com['Libellé'].lower():\n        essarts.append(com)\n\nprint(\"Villes avec le toponyme Essart :\")\n\nfor v in essarts:\n    print(\"- {name} ({code})\".format(code=v['Code'], name=v['Libellé']))\n\n\n\n\nChef-lieu chétif\nDans quels départements le chef-lieu n’est-il pas la commune la plus peuplée ? Quelles sont les communes plus peuplées ?\nIndice : on commencera par créer un dictionnaire associant à chaque chef-lieu sa population municipale.\n\n## Entrez ici votre code\n\n\n\nSolution\ndico_cheflieu = {}\nresultats = {}\n\n# Création du dictionnaire qui associe le code d'un chef-lieu à sa population\nfor d in depts:\n    code = d['CHEFLIEU']\n    for c in communes:\n        if code == c['Code']:\n            dico_cheflieu[code] = c['Population municipale 2022']\n\n# Examen de chacune des communes\nfor c in communes:\n    code_insee  = c['Code']\n    population  = c['Population municipale 2022']\n    departement = 'XX'\n    \n    # On récupère le département : \n    # les trois premiers chiffres du code INSEE en outre-mer,\n    # les deux premiers chiffres sinon \n    if code_insee.startswith('97'):\n        departement = code_insee[:3]\n    else:\n        departement = code_insee[:2]\n    \n    # Quel est le chef-lieu de ce département ?\n    chl = '0000'\n    for d in depts:\n        if d['DEP'] == departement:\n            chl = d['CHEFLIEU']\n    \n    # On compare la population de la commune à celle du chef-lieu\n    if population &gt; dico_cheflieu[chl]:\n        # Si le département n'est pas déjà dans le dictionnaire, on l'ajoute\n        if departement not in resultats:\n            resultats[departement] = []\n        # Et on ajoute la ville à la liste\n        resultats[departement].append(c['Libellé'])\n\nprint(\"Départements comptant au moins une ville plus peuplée que le chef-lieu :\")\nfor k, v in sorted(resultats.items()):\n    print(\"- {} : \".format(k), end='')\n    print(', '.join(v))\n\n\n\n\nNom commun\nQuels sont les dix noms de ville le plus répandu ? (ie. ceux que le plus grand nombre de communes portent) ?\n\n# Entrez ici votre code\n\n\n\nSolution\ndico_noms = {}\n\nfor c in communes:\n    nom = c['Libellé'].upper()\n    if nom in dico_noms:\n        dico_noms[nom]+=1\n    else:\n        dico_noms[nom]=1\n\ntop10 = sorted(dico_noms.items(), key=lambda x: x[1], reverse=True)[:10]\n\nprint('Top 10 des noms les plus répandus : ')\nfor ville, occurence in top10:\n    print('- {} ({})'.format(ville, occurence))",
     "crumbs": [
       "Premier pas en CSV"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Travaux dirigés NTICA",
+    "section": "",
+    "text": "Bienvenue à vous, chers élèves AMUR de la promo 2025/2026.\nVous trouverez ci-dessous les liens vers les supports de TD pour\napprendre à manipuler des données publiques.",
+    "crumbs": [
+      "Accueil"
+    ]
+  },
+  {
+    "objectID": "index.html#le-ssp-cloud",
+    "href": "index.html#le-ssp-cloud",
+    "title": "Travaux dirigés NTICA",
+    "section": "Le SSP Cloud",
+    "text": "Le SSP Cloud\nCes supports sont interactifs. En cliquant sur le bouton prévu à cet effet en haut de la page, vous pourrez les lancer dans le Datalab de la plateforme SSPCloud de l’INSEE. Vous n’aurez ainsi rien à installer, disposerez de tous les modules nécessaires et aurez accès directement aux données que nous manipulerons.\nIl vous faudra préalablement créer un compte gratuitement, en indiquant votre adresse email @enpc.fr.",
+    "crumbs": [
+      "Accueil"
+    ]
+  },
+  {
+    "objectID": "index.html#les-supports-de-td",
+    "href": "index.html#les-supports-de-td",
+    "title": "Travaux dirigés NTICA",
+    "section": "Les supports de TD",
+    "text": "Les supports de TD\n\nPremiers pas en CSV",
+    "crumbs": [
+      "Accueil"
+    ]
+  },
+  {
+    "objectID": "chapters/outils-quotidiens.html",
+    "href": "chapters/outils-quotidiens.html",
+    "title": "Les outils du quotidien",
+    "section": "",
+    "text": "En informatique, de nombreux logiciels libres et gratuits existent. Il répondent efficacement aux besoins de la vie courante et sont souvent bien meilleurs que les outils intégrés à Windows ou Mac OS.\nVoici quelques propositions. On pourra également se référer au catalogue publié par l’État des logiciels libres recommandés pour l’administration.",
+    "crumbs": [
+      "Les outils du quotidien"
+    ]
+  },
+  {
+    "objectID": "chapters/outils-quotidiens.html#compressiondécompression",
+    "href": "chapters/outils-quotidiens.html#compressiondécompression",
+    "title": "Les outils du quotidien",
+    "section": "Compression/décompression",
+    "text": "Compression/décompression\nRéduire le volume des données avant de les stocker ou de les transférer. Quelques formats usuels : zip, rar, 7z, tar.gz…\n\n7z, capable de traiter une grande variété de formats.",
+    "crumbs": [
+      "Les outils du quotidien"
+    ]
+  },
+  {
+    "objectID": "chapters/outils-quotidiens.html#visualisation-dimages",
+    "href": "chapters/outils-quotidiens.html#visualisation-dimages",
+    "title": "Les outils du quotidien",
+    "section": "Visualisation d’images",
+    "text": "Visualisation d’images\nNaviguer rapidement dans une série d’images.\n\nNomacs, existe en version portable.\nIrfanview, un visualisateur très léger.",
+    "crumbs": [
+      "Les outils du quotidien"
+    ]
+  },
+  {
+    "objectID": "chapters/outils-quotidiens.html#capture-décran",
+    "href": "chapters/outils-quotidiens.html#capture-décran",
+    "title": "Les outils du quotidien",
+    "section": "Capture d’écran",
+    "text": "Capture d’écran\nSauvegarder tout ou partie de son écran, en annotant rapidement ce que l’on voit.\n\nGreenshot, pour Windows.\nFlameshot, multi-plateformes.",
+    "crumbs": [
+      "Les outils du quotidien"
+    ]
+  },
+  {
+    "objectID": "chapters/outils-quotidiens.html#retouche-dimages",
+    "href": "chapters/outils-quotidiens.html#retouche-dimages",
+    "title": "Les outils du quotidien",
+    "section": "Retouche d’images",
+    "text": "Retouche d’images\nModifier des images raster : recadrer, redimensionner, ajuster les couleurs, etc.\n\nGimp, aussi efficace que Photoshop pour les besoins courants.",
+    "crumbs": [
+      "Les outils du quotidien"
+    ]
+  },
+  {
+    "objectID": "chapters/outils-quotidiens.html#dessin",
+    "href": "chapters/outils-quotidiens.html#dessin",
+    "title": "Les outils du quotidien",
+    "section": "Dessin",
+    "text": "Dessin\nDessiner en vectoriel (ex. repérer une parcelle sur une photo, ajouter des textes, etc.) plus proprement qu’en utilisant Paint ou Powerpoint.\n\nInkscape",
+    "crumbs": [
+      "Les outils du quotidien"
+    ]
+  },
+  {
+    "objectID": "chapters/outils-quotidiens.html#éditeur-de-texte",
+    "href": "chapters/outils-quotidiens.html#éditeur-de-texte",
+    "title": "Les outils du quotidien",
+    "section": "Éditeur de texte",
+    "text": "Éditeur de texte\nÉditer du texte brut (ie. sans mise en forme), avec des fonctionnalités avancées : coloration syntaxique, expressions régulières, etc.\n\nNotepad++, très complet.\nNotepad2, simple et efficace au quotidien.",
+    "crumbs": [
+      "Les outils du quotidien"
+    ]
+  },
+  {
+    "objectID": "chapters/outils-quotidiens.html#visionneuse-de-pdf",
+    "href": "chapters/outils-quotidiens.html#visionneuse-de-pdf",
+    "title": "Les outils du quotidien",
+    "section": "Visionneuse de PDF",
+    "text": "Visionneuse de PDF\nOuvrir rapidement des fichiers PDF.\n\nSumatra PDF, beaucoup plus léger qu’Acrobat Reader.",
+    "crumbs": [
+      "Les outils du quotidien"
+    ]
+  },
+  {
+    "objectID": "chapters/outils-quotidiens.html#édition-de-pdf",
+    "href": "chapters/outils-quotidiens.html#édition-de-pdf",
+    "title": "Les outils du quotidien",
+    "section": "Édition de PDF",
+    "text": "Édition de PDF\nDécouper ou fusionner des fichiers PDF.\n\nPDF Sam Basic",
+    "crumbs": [
+      "Les outils du quotidien"
+    ]
+  },
+  {
+    "objectID": "chapters/outils-quotidiens.html#cartographie",
+    "href": "chapters/outils-quotidiens.html#cartographie",
+    "title": "Les outils du quotidien",
+    "section": "Cartographie",
+    "text": "Cartographie\nFaire des cartes simples ou complexes.\n\nQGIS, client de référence, application de bureau.\nuMap, service en ligne pour des cartes simples et rapides.\nMagrit, un outil de cartographie thématique simple et intuitif développé par le CNRS.",
+    "crumbs": [
+      "Les outils du quotidien"
     ]
   }
 ]

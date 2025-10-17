@@ -17,9 +17,13 @@ manipuler des données publiques.
 
 Ces supports sont interactifs. En cliquant sur le bouton prévu à cet effet
 en haut de la page, vous pourrez les lancer dans le Datalab de la plateforme
-[SSPCloud](https://datalab.sspcloud.fr/) de l'INSEE. Vous n'aurez ainsi rien 
-à installer, disposerez de tous les modules nécessaires et aurez accès 
-directement aux données que nous manipulerons.
+[SSPCloud](https://datalab.sspcloud.fr/) de l'INSEE. 
+
+Cela présente plusieurs avantages : 
+
+- Vous n'avez ainsi rien à installer
+- Vous disposerez de tous les modules requis aux bonnes versions
+- Vous aurez accès directement aux données nécessaires 
 
 Il vous faudra préalablement créer un compte gratuitement, en indiquant votre
 adresse email `@eleves.enpc.fr`.

@@ -75,7 +75,7 @@ Avec la couche sélectionnée :
 
 ### Couches vectorielles
 
-Télécharger la [géodatabase](ade_simplifiee.gpkg) préparée spécialement 
+Télécharger la [géodatabase](/resources/intro-qgis/ade_simplifiee.gpkg) préparée spécialement 
 pour ce TP. Elle contient quelques données issues de la base 
 [AdminExpress](https://geoservices.ign.fr/adminexpress) de l'IGN.
 
@@ -92,12 +92,12 @@ techniques, se référer à la
 [documentation](https://docs.qgis.org/3.40/fr/docs/user_manual/managing_data_source/supported_data.html#geopackage).
 </details>
 
-Ajouter la couche `communes` contenue dans la Géodatabase.
+Ajouter la couche `communes` contenue dans la géodatabase.
 
 - **Couche → Ajouter une couche → Ajouter une couche vecteur**
 - **Source → Jeux de données vectorielles**
-- **Aller chercher le ficher `ade_simplifie.gpkg`**
-- **Dans la fenêtre qui s'affiche, sélectionner la couche `commune`**
+- Aller chercher le ficher `ade_simplifie.gpkg`
+- Dans la fenêtre qui s'affiche, sélectionner la couche `commune`
 
 ![](/resources/intro-qgis/2_communes.jpg)
 
@@ -117,42 +117,40 @@ Avec la couche sélectionnée :
 
 ### Explorer les données
 
-À chaque objet de la couche `communes` correspondent des données.
-On peut les afficher pour un objet donné avec l'outil 
-**Identifier des données** accessible par la barre d'outils.
-Pour les communes, un champ important est le `code_insee`. 
-C'est lui qui identifie la commune de manière unique, 
-on en aura besoin ultérieurement.
-
+À chaque objet de la couche `communes` correspondent des données. On peut 
+les consulter avec l'outil **Identifier des données** accessible par la 
+barre d'outils. Pour les communes, un champ important est le `code_insee`. 
+C'est lui qui identifie la commune de manière unique, on en aura besoin 
+ultérieurement.
 
 <details>
 <summary>De l'importance des métadonnées</summary>
 
 Même si les intitulés des champs sont ici clairs, il est de bonne pratique
-de toujours consulter les métadonnées d'une source de données pour
-s'assurer d'avoir bien tout compris. Dans le cas présent, on ira voir sur le 
+de toujours consulter les métadonnées d'une source pour s'assurer 
+d'avoir bien tout compris. Dans le cas présent, on ira voir sur le 
 [site de l'IGN](https://geoservices.ign.fr/documentation/donnees/vecteur/adminexpress),
 à la page ADMIN Express.
 </details>
 
 ![](/resources/intro-qgis/4_metadonnees.jpg)
 
-Une autre manière d'explorer la couche est d'afficher sa table d'attributs 
-(<kbd>F6</kbd>).
+Une autre manière d'explorer la couche est d'afficher sa table d'attributs.
 
-- **Couche → Ouvrir la table d'attributs**
+- **Couche → Ouvrir la table d'attributs** ou <kbd>F6</kbd>.
 
 ### Sélection manuelle
 
 On peut sélectionner manuellement une ou plusieurs entités à l'aide
 de l'outil de la barre des tâches.
 
-Noter dans le menu déroulant les modes de sélections possibles:
-rectangle de sélection, polygone, main levée, par rayon.
+On notera : 
 
-Noter les raccourcis-claviers utiles. Pour ajouter des objets à la sélection 
-courante, maintenir <kbd>SHIFT</kbd>. Pour retrancher des objets à la 
-sélection courante, maintenir <kbd>CTRL</kbd>.
+- dans le menu déroulant, les modes de sélections sont possibles:
+  rectangle de sélection, polygone, main levée, par rayon.
+- des raccourcis-claviers utiles : <kbd>SHIFT</kbd> pour ajouter 
+  des objets à la sélection courante, <kbd>CTRL</kbd> pour les 
+  retrancher.
 
 Sélectionner les trois communes de Champs-sur-Marne, Noisiel et Émerainville.
 
@@ -186,9 +184,9 @@ Un SIG est capable de calculer la superficie de chaque polygone. On va
 vérifier que la superficie calculée est cohérente avec la superficie 
 cadastrale renseignée dans la table attributaire.
 
-Ouvrir la table d'attributs (<kbd>F6</kbd>), puis la calculatrice de champs 
-(bouton en forme de boulier dans la barre d'outils, également 
-<kbd>CTRL</kbd>+<kbd>I</kbd>).
+Ouvrir la table d'attributs <kbd>F6</kbd>, puis la calculatrice de champs 
+via le bouton en forme de boulier dans la barre d'outils, également 
+<kbd>CTRL</kbd>+<kbd>I</kbd>.
 
 Dans la fenêtre qui s'ouvre : 
 * Indiquer le nom du champ à créer (on peut l'appeler `superficie`)
@@ -365,7 +363,7 @@ très différentes selon les choix opérés...
 
 
 
-## Mise en page et export
+## Export
 
 Exportons notre carte en PDF. Il faut pour cela créer une mise en page.
 

@@ -12,22 +12,20 @@ territoire.
 
 Lancer QGIS, créer un nouveau projet. 
 
-1. Menu **Projet → Nouveau**
+1. **Projet → Nouveau**
 
 ## Ajout d'un fond de carte
 
 Ajouter le fond de carte OpenStreetMap.
 
-1. Menu **Couche → Ajouter une couche → Ajouter une couche XYZ**
-1. Liste déroulante **Connexions XYZ → OpenStreetMap**
-1. Bouton **Ajouter**
+1. **Couche → Ajouter une couche → Ajouter une couche XYZ**
+1. **Connexions XYZ → OpenStreetMap**
+1. **Ajouter**
 
 Dans le coin inférieur droit, remarquez qu'un 
 <abbr title="Système de coordonnées de référence">SCR</abbr>
 a été automatiquement défini : EPSG:3857. C'est celui de la première couche
-ajoutée.
-
-Si nous devions ajouter des couches exprimées dans un autre SCR, 
+ajoutée. Si nous devions ajouter des couches exprimées dans un autre SCR, 
 QGIS ferait la conversion de manière transparente, à condition qu'il
 puisse déterminer sans ambiguité le SCR de la couche fournie.
 
@@ -41,3 +39,4 @@ On pourra se référer utilement à la
 de QGIS.
 </details>
 
+![](/resources/intro-qgis/1_scr.jpg)

@@ -45,9 +45,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-0b37c64f34216b628666a8dac638b53b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-0b37c64f34216b628666a8dac638b53b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-0b37c64f34216b628666a8dac638b53b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-533b9ae3c010999c496e3372658dddf2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-533b9ae3c010999c496e3372658dddf2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-533b9ae3c010999c496e3372658dddf2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -143,6 +143,7 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#création-du-projet" id="toc-création-du-projet" class="nav-link active" data-scroll-target="#création-du-projet">Création du projet</a></li>
   <li><a href="#ajout-dun-fond-de-carte" id="toc-ajout-dun-fond-de-carte" class="nav-link" data-scroll-target="#ajout-dun-fond-de-carte">Ajout d’un fond de carte</a></li>
+  <li><a href="#ajout-dune-première-couche-vectorielle" id="toc-ajout-dune-première-couche-vectorielle" class="nav-link" data-scroll-target="#ajout-dune-première-couche-vectorielle">Ajout d’une première couche vectorielle</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/ghmercier/ntica-data/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -192,6 +193,31 @@ SCR, Késako ?
 Un système de coordonnées de référence est le référentiel qui donne du sens aux valeurs numériques que prennent des coordonnées géographiques (latitude, longitude, altitude). On pourra se référer utilement à la <a href="https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_projections/working_with_projections.html">documentation</a>. de QGIS.
 </details>
 <p><img src="../resources/intro-qgis/1_scr.jpg" class="img-fluid"></p>
+</section>
+<section id="ajout-dune-première-couche-vectorielle" class="level2">
+<h2 class="anchored" data-anchor-id="ajout-dune-première-couche-vectorielle">Ajout d’une première couche vectorielle</h2>
+<p>Télécharger la <a href="ade_simplifiee.gpkg">géodatabase</a> préparée spécialement pour ce TP. Elle contient quelques données issues de la base <a href="https://geoservices.ign.fr/adminexpress">AdminExpress</a> de l’IGN.</p>
+<details>
+<summary>
+Géodatabase, ESRI Shapefile ?
+</summary>
+Plusieurs formats existent pour stocker de l’information géographique. QGIS travaille par défaut avec des géodatabases. Vous trouverez souvent des fichiers au format ESRI Shapefile. On retiendra qu’une géodatabase (extension <code>gpkg</code>) est capable de stocker plusieurs couches dans un même fichier, alors que le format ESRI Shapefile (extension principale <code>shp</code>) crée six différents fichiers pour stocker l’information d’une seule couche vectorielle. Pour les détails techniques, se référer à la <a href="https://docs.qgis.org/3.40/fr/docs/user_manual/managing_data_source/supported_data.html#geopackage">documentation</a>.
+</details>
+<p>Ajouter la couche <code>communes</code> contenue dans la Géodatabase.</p>
+<ol type="1">
+<li><strong>Couche → Ajouter une couche → Ajouter une couche vecteur</strong></li>
+<li><strong>Source → Jeux de données vectorielles</strong></li>
+<li>Aller chercher le ficher <code>ade_simplifie.gpkg</code></li>
+<li>Dans la fenêtre qui s’affiche, sélectionner la couche <code>commune</code></li>
+</ol>
+<p><img src="../resources/intro-qgis/2_communes.jpg" class="img-fluid"></p>
+<p>On va modifier la symbologie de la couche pour ne conserver que les contours de chaque objet, sans ce vilain fond opaque, puis ajouter des étiquettes donnant le nom de la commune (on pourra personnaliser la police et le corps).</p>
+<p>Avec la couche sélectionnée :</p>
+<ol type="1">
+<li><strong>Couche → Propriétés de la couche</strong></li>
+<li><strong>Symbologie → Remplissage simple → Style de remplissage → Pas de remplissage</strong></li>
+<li><strong>Étiquettes → Étiquettes simples → Valeur → <code>nom_officiel</code></strong></li>
+</ol>
 
 
 </section>

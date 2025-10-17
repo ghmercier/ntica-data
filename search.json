@@ -218,5 +218,15 @@
     "crumbs": [
       "Premier pas avec QGIS"
     ]
+  },
+  {
+    "objectID": "chapters/qgis-intro.html#ajout-dune-première-couche-vectorielle",
+    "href": "chapters/qgis-intro.html#ajout-dune-première-couche-vectorielle",
+    "title": "Premier pas avec QGIS",
+    "section": "Ajout d’une première couche vectorielle",
+    "text": "Ajout d’une première couche vectorielle\nTélécharger la géodatabase préparée spécialement pour ce TP. Elle contient quelques données issues de la base AdminExpress de l’IGN.\n\n\nGéodatabase, ESRI Shapefile ?\n\nPlusieurs formats existent pour stocker de l’information géographique. QGIS travaille par défaut avec des géodatabases. Vous trouverez souvent des fichiers au format ESRI Shapefile. On retiendra qu’une géodatabase (extension gpkg) est capable de stocker plusieurs couches dans un même fichier, alors que le format ESRI Shapefile (extension principale shp) crée six différents fichiers pour stocker l’information d’une seule couche vectorielle. Pour les détails techniques, se référer à la documentation.\n\nAjouter la couche communes contenue dans la Géodatabase.\n\nCouche → Ajouter une couche → Ajouter une couche vecteur\nSource → Jeux de données vectorielles\nAller chercher le ficher ade_simplifie.gpkg\nDans la fenêtre qui s’affiche, sélectionner la couche commune\n\n\nOn va modifier la symbologie de la couche pour ne conserver que les contours de chaque objet, sans ce vilain fond opaque, puis ajouter des étiquettes donnant le nom de la commune (on pourra personnaliser la police et le corps).\nAvec la couche sélectionnée :\n\nCouche → Propriétés de la couche\nSymbologie → Remplissage simple → Style de remplissage → Pas de remplissage\nÉtiquettes → Étiquettes simples → Valeur → nom_officiel",
+    "crumbs": [
+      "Premier pas avec QGIS"
+    ]
   }
 ]

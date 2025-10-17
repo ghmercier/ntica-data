@@ -19,57 +19,71 @@ Android. La dernière version (3.44.3) disponible sur le
 Pour utiliser l'installateur officiel, il faut disposer des droits 
 administrateurs sur l'ordinateur cible. Si on ne les a pas, on peut
 télécharger une version portable que l'on placera dans son répertoire
-utilisateur ou sur une clé 
-administrateurs sur l'ordinateur que l'on utilise. Parfois, on ne 
-Si l'on se trouve dans ce cas, on peut télécharger une version portable
-du logiciel que l'on placera dans son répertoire local ou sur une clé USB.
-
-Une version portable de QGIS est disponible sur le blog 
-[SIG & Territoires](https://www.sigterritoires.fr/index.php/version-portable-de-qgis-3-44-0/).
+utilisateur ou sur une clé USB. Une version portable de QGIS est disponible sur
+le blog [SIG & Territoires](https://www.sigterritoires.fr/index.php/version-portable-de-qgis-3-44-0/).
 
 
 
-## Création du projet
+## Mise en place
 
 Lancer QGIS, créer un nouveau projet. 
 
-1. **Projet → Nouveau**
+- **Projet → Nouveau**
 
 
 
-## Ajout d'un fond de carte
+### Fond de carte
+
+#### Ajout
 
 Ajouter le fond de carte OpenStreetMap.
 
-1. **Couche → Ajouter une couche → Ajouter une couche XYZ**
-1. **Connexions XYZ → OpenStreetMap**
-1. **Ajouter**
+- **Couche → Ajouter une couche → Ajouter une couche XYZ**
+- **Connexions XYZ → OpenStreetMap**
+- **Ajouter**
 
 Dans le coin inférieur droit, remarquez qu'un 
 <abbr title="Système de coordonnées de référence">SCR</abbr>
-a été automatiquement défini : EPSG:3857. C'est celui de la première couche
-ajoutée. Si nous devions ajouter des couches exprimées dans un autre SCR, 
-QGIS ferait la conversion de manière transparente, à condition qu'il
-puisse déterminer sans ambiguité le SCR de la couche fournie.
+a été automatiquement défini : `EPSG:3857`. C'est celui de la première couche
+ajoutée. 
+
+Si nous devions ajouter des couches exprimées dans un autre SCR, QGIS ferait la
+conversion de manière transparente, à condition qu'il puisse déterminer sans
+ambiguité le SCR de la couche fournie.
 
 <details>
 <summary>SCR, Késako ?</summary>
 Un système de coordonnées de référence est le référentiel qui donne du sens 
 aux valeurs numériques que prennent des coordonnées géographiques 
 (latitude, longitude, altitude). On pourra se référer utilement à la 
-[documentation](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_projections/working_with_projections.html).
+[documentation](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_projections/working_with_projections.html)
 de QGIS.
 </details>
 
 ![](/resources/intro-qgis/1_scr.jpg)
 
 
+#### Réglages
 
-## Ajout d'une première couche vectorielle
+Pour mieux voir les entités vectorielles que l'on ajoutera par la suite, on 
+peut déjà rendre le fond de plan transparent et le passer en niveau de gris.
+
+Avec la couche sélectionnée :
+
+- **Couche → Propriétés de la couche**
+- **Transparence → Opacité globale → 50%**
+- **Symbologie → Rendu de couche → Niveaux de gris → [Par clarté]**
+
+![](/resources/intro-qgis/3_fond_plan.jpg)
+
+
+
+### Couche vectorielle
 
 Télécharger la [géodatabase](ade_simplifiee.gpkg) préparée spécialement 
 pour ce TP. Elle contient quelques données issues de la base 
 [AdminExpress](https://geoservices.ign.fr/adminexpress) de l'IGN.
+
 
 <details>
 <summary>Géodatabase, ESRI Shapefile ?</summary>
@@ -83,14 +97,20 @@ techniques, se référer à la
 [documentation](https://docs.qgis.org/3.40/fr/docs/user_manual/managing_data_source/supported_data.html#geopackage).
 </details>
 
+
+#### Ajout
+
 Ajouter la couche `communes` contenue dans la Géodatabase.
 
-1. **Couche → Ajouter une couche → Ajouter une couche vecteur**
-1. **Source → Jeux de données vectorielles**
-1. Aller chercher le ficher `ade_simplifie.gpkg`
-1. Dans la fenêtre qui s'affiche, sélectionner la couche `commune`
+- **Couche → Ajouter une couche → Ajouter une couche vecteur**
+- **Source → Jeux de données vectorielles**
+- **Aller chercher le ficher `ade_simplifie.gpkg`**
+- **Dans la fenêtre qui s'affiche, sélectionner la couche `commune`**
 
 ![](/resources/intro-qgis/2_communes.jpg)
+
+
+#### Ajustements
 
 On va modifier la symbologie de la couche pour ne conserver que les contours 
 de chaque objet, sans ce vilain fond opaque, puis ajouter des étiquettes 
@@ -98,29 +118,13 @@ donnant le nom de la commune (on pourra personnaliser la police et le corps).
 
 Avec la couche sélectionnée :
 
-1. **Couche → Propriétés de la couche**
-1. **Symbologie → Remplissage simple → Style de remplissage → Pas de remplissage**
-1. **Étiquettes → Étiquettes simples → Valeur → `nom_officiel`**
+- **Couche → Propriétés de la couche**
+- **Symbologie → Remplissage simple → Style de remplissage → Pas de remplissage**
+- **Étiquettes → Étiquettes simples → Valeur → `nom_officiel`**
 
 
 
-## Transparence du fond de plan
-
-Pour mieux voir nos entités vectorielles, on peut rendre le fond de plan 
-transparent et le passer en niveau de gris.
-
-Avec la couche sélectionnée :
-
-1. **Couche → Propriétés de la couche**
-1. **Transparence → Opacité globale → 50%**
-1. **Symbologie → Rendu de couche → Niveaux de gris → [Par clarté]**
-
-![](/resources/intro-qgis/3_fond_plan.jpg)
-
-
-
-
-## Exploration des données
+#### Explorations
 
 À chaque objet de la couche `communes` correspondent des données.
 On peut les afficher pour un objet donné avec l'outil 
@@ -145,11 +149,12 @@ s'assurer d'avoir bien tout compris. Dans le cas présent, on ira voir sur le
 Une autre manière d'explorer la couche est d'afficher sa table d'attributs 
 (<kbd>F6</kbd>).
 
-1. **Couche → Ouvrir la table d'attributs**
+- **Couche → Ouvrir la table d'attributs**
 
 
+### Manipulations
 
-## Sélection manuelle de données
+### Sélection manuelle
 
 On peut sélectionner manuellement une ou plusieurs entités à l'aide
 de l'outil de la barre des tâches.
@@ -167,12 +172,12 @@ Sélectionner les trois communes de Champs-sur-Marne, Noisiel et Émerainville.
 
 
 
-## Statistiques descriptives
+### Statistiques descriptives
 
 On peut calculer aisément certains agrégats (moyenne, médiane, etc.) sur les
 attributs des entités sélectionnés.
 
-1. **Vue → Résumé statistique**
+- **Vue → Résumé statistique**
 
 
 <details>
@@ -190,7 +195,7 @@ attributs des entités sélectionnés.
 
 
 
-## Premiers calculs géométriques
+### Calculs géométriques
 
 Un SIG est capable de calculer la superficie de chaque polygone. On va 
 vérifier que la superficie calculée est cohérente avec la superficie 
@@ -240,16 +245,16 @@ pour des calculs ponctuels sur la carte.
 
 
 
-## Affichage par catégories
+### Affichage par catégories
 
 On va désormais colorer les communes différemment en fonction de l'EPCI 
 auquel elles appartiennent.
 
-1. **Couche → Propriétés de la couche → Symbologie → [catégorisé]**
-1. **Valeur → [codes_siren_des_epci]**
-1. **Symboles → Remplissage simple → Style de remplissage → [continue]**
-1. Bouton **Classer**
-1. Bouton **Appliquer** 
+- **Couche → Propriétés de la couche → Symbologie → [catégorisé]**
+- **Valeur → [codes_siren_des_epci]**
+- **Symboles → Remplissage simple → Style de remplissage → [continue]**
+- Bouton **Classer**
+- Bouton **Appliquer** 
 
 On voit nettement se dessiner les 7 EPCI présents dans la base.
 
@@ -267,26 +272,26 @@ appartient bien à deux EPCI en même temps (Métropole du Grand Paris + EPT).
 
 
 
-## Sélection avancée de données
+### Sélection avancée
 
 On va désormais sélectionner toutes les communes appartenant à la CA Paris
 Vallée de la Marne en testant deux méthodes.
 
 
-### Sélection par attributs
+#### Sélection par attributs
 
 On peut sélectionner l'ensemble des entités de la couche des communes
 dont le champ `code_siren_des_epci` contient la valeur `200057958`
 grâce à la sélection par expression (<kbd>CTRL</kbd>+<kbd>F3</kbd>)
 
-1. **Éditer → Sélection → Sélectionner des entités à l'aide d'une sélection**
-1. **Expression → ["codes_siren_des_epci" = '200057958']**
+- **Éditer → Sélection → Sélectionner des entités à l'aide d'une sélection**
+- **Expression → ["codes_siren_des_epci" = '200057958']**
 
 ![](/resources/intro-qgis/9_select_attr.jpg)
 
 
 
-### Sélection par géométrie
+#### Sélection par géométrie
 
 On peut aussi sélectionner l'ensemble des entités de la couche des communes 
 qui sont situées *à l'intérieur* du polygone représentant la CA Paris 
@@ -298,30 +303,30 @@ le style qui convient. Pour cela, se référer au début du TD.
 
 Sélectionner ensuite le polygone représentant la CA Paris Vallée de la Marne.
 
-1. **Vecteur → Outils de recherche → Sélection par localisation**
-1. **Sélectionner les entités depuis → `ade_simplifiee - communes`**
-1. **Où les entités → `est à l'intérieur`**
-1. **En comparant les entité de → `ade_simplifiee - epci`**
-1. cocher la case `entités sélectionnées uniquement`
+- **Vecteur → Outils de recherche → Sélection par localisation**
+- **Sélectionner les entités depuis → `ade_simplifiee - communes`**
+- **Où les entités → `est à l'intérieur`**
+- **En comparant les entité de → `ade_simplifiee - epci`**
+- cocher la case `entités sélectionnées uniquement`
 
 ![](/resources/intro-qgis/10_select_geo.jpg)
 
 
 
-## Export vers une nouvelle couche
+### Export
 
 Créons maintenant un couche contenant uniquement les 12 communes de la CA
 Paris Vallée de la Marne. On sauvegardera cette couche dans notre
 géodatabase initiale.
 
-1. **Panneau des couches → ** clic-droit couche `communes`
-1. **Exporter → Sauvegarder les entités sélectionnées sous**
+- **Panneau des couches → ** clic-droit couche `communes`
+- **Exporter → Sauvegarder les entités sélectionnées sous**
 
 ![](/resources/intro-qgis/11_export.jpg)
 
 
 
-## Jointure attributaire
+### Jointure attributaire
 
 Représentons désormais les différences de population entre les communes.
 
@@ -341,27 +346,27 @@ des communes à celle des communes.
 
 Avec la couche des chefs-lieux sélectionnés :
 
-1. **Couche → Propriétés de la couche → Jointures**
-1. Cliquer le bouton <kbd>+</kbd>
-1. **Joindre la couche → `ade_simplifiee - communes`, `ade_simplifie`**
-1. **Champ de jointure → `code_insee`**
-1. **Champ dans la couche cible → `code_insee_de_la_commune`**
-1. **Champs joints → `population`**
+- **Couche → Propriétés de la couche → Jointures**
+- Cliquer le bouton <kbd>+</kbd>
+- **Joindre la couche → `ade_simplifiee - communes`, `ade_simplifie`**
+- **Champ de jointure → `code_insee`**
+- **Champ dans la couche cible → `code_insee_de_la_commune`**
+- **Champs joints → `population`**
 
 ![](/resources/intro-qgis/12_jointure.jpg)
 
 
 
-## Affichage gradué
+### Affichage gradué
 
 On peut désormais modifier la symbologie et faire varier la taille des 
 points en fonction de la valeur du champ population.
 
-1. **Couche → Propriétés de la couche → Symbologie**
+- **Couche → Propriétés de la couche → Symbologie**
 2. Sélectionner `gradué`
-1. **Valeur → `xxx_population`**
-1. **Méthode → Taille**
-1. **Mode → intervalle égal**
+- **Valeur → `xxx_population`**
+- **Méthode → Taille**
+- **Mode → intervalle égal**
 
 
 <details>
@@ -379,15 +384,15 @@ très différentes selon les choix opérés...
 
 Exportons notre carte en PDF. Il faut pour cela créer une mise en page.
 
-1. **Projet →  Nouvelle mise en page**
+- **Projet →  Nouvelle mise en page**
 
 Dans la fenêtre qui s'ouvre : 
-* Insérer un bloc carte
-* Insérer un bloc de texte pour le titre
-* Insérer un bloc légende
-* Insérer une échelle graphique
-* Insérer une flèche indiquant le nord
-* ...
+- Insérer un bloc carte
+- Insérer un bloc de texte pour le titre
+- Insérer un bloc légende
+- Insérer une échelle graphique
+- Insérer une flèche indiquant le nord
+- ...
 
 Une fois tous les paramètres ajustés, exporter la carte en PDF.
 

@@ -3,6 +3,7 @@ project:
   render:
     - index.qmd
     - chapters/chapter1.qmd
+    - chapters/outils-quotidiens.qmd
     - notebooks/notebook1.qmd
 
 website:
@@ -16,6 +17,8 @@ website:
     contents:
       - href: index.qmd
         text: Accueil
+      - href: chapters/outils-quotidiens.qmd
+        text: Les outils du quotidien
       - href: chapters/chapter1.qmd
         text: Premier pas en CSV
 

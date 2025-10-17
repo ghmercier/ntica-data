@@ -31,12 +31,49 @@ puisse déterminer sans ambiguité le SCR de la couche fournie.
 
 <details>
 <summary>SCR, Késako ?</summary>
-Un système de coordonnées de référence est le référentiel 
-qui donne du sens aux valeurs numériques que prennent des 
-coordonnées géographiques (latitude, longitude, altitude).
-On pourra se référer utilement à la 
+Un système de coordonnées de référence est le référentiel qui donne du sens 
+aux valeurs numériques que prennent des coordonnées géographiques 
+(latitude, longitude, altitude). On pourra se référer utilement à la 
 [documentation](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_projections/working_with_projections.html).
 de QGIS.
 </details>
 
 ![](/resources/intro-qgis/1_scr.jpg)
+
+## Ajout d'une première couche vectorielle
+
+Télécharger la [géodatabase](ade_simplifiee.gpkg) préparée spécialement 
+pour ce TP. Elle contient quelques données issues de la base 
+[AdminExpress](https://geoservices.ign.fr/adminexpress) de l'IGN.
+
+<details>
+<summary>Géodatabase, ESRI Shapefile ?</summary>
+Plusieurs formats existent pour stocker de l'information géographique. QGIS
+travaille par défaut avec des géodatabases. Vous trouverez souvent des fichiers
+au format ESRI Shapefile. On retiendra qu'une géodatabase (extension `gpkg`)
+est capable de stocker plusieurs couches dans un même fichier, alors que le
+format ESRI Shapefile (extension principale `shp`) crée six différents fichiers
+pour stocker l'information d'une seule couche vectorielle. Pour les détails
+techniques, se référer à la
+[documentation](https://docs.qgis.org/3.40/fr/docs/user_manual/managing_data_source/supported_data.html#geopackage).
+</details>
+
+Ajouter la couche `communes` contenue dans la Géodatabase.
+
+1. **Couche → Ajouter une couche → Ajouter une couche vecteur**
+1. **Source → Jeux de données vectorielles**
+1. Aller chercher le ficher `ade_simplifie.gpkg`
+1. Dans la fenêtre qui s'affiche, sélectionner la couche `commune`
+
+![](/resources/intro-qgis/2_communes.jpg)
+
+On va modifier la symbologie de la couche pour ne conserver que les contours 
+de chaque objet, sans ce vilain fond opaque, puis ajouter des étiquettes 
+donnant le nom de la commune (on pourra personnaliser la police et le corps).
+
+Avec la couche sélectionnée :
+
+1. **Couche → Propriétés de la couche**
+1. **Symbologie → Remplissage simple → Style de remplissage → Pas de remplissage**
+1. **Étiquettes → Étiquettes simples → Valeur → `nom_officiel`**
+

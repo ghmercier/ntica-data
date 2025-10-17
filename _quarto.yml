@@ -4,6 +4,7 @@ project:
     - index.qmd
     - chapters/chapter1.qmd
     - chapters/outils-quotidiens.qmd
+    - chapters/qgis-intro.qmd
     - notebooks/notebook1.qmd
 
 website:
@@ -15,12 +16,11 @@ website:
   sidebar:
     search: false
     contents:
-      - href: index.qmd
-        text: Accueil
-      - href: chapters/outils-quotidiens.qmd
-        text: Les outils du quotidien
-      - href: chapters/chapter1.qmd
-        text: Premier pas en CSV
+      - text: Accueil
+        href: index.qmd
+      - chapters/outils-quotidiens.qmd
+      - chapters/qgis-intro.qmd
+      - chapters/chapter1.qmd
 
 format:
   html:

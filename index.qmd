@@ -8,14 +8,13 @@ author:
 date: "2025-10-17"
 ---
 
-Bienvenue à vous, chers élèves AMUR de la promo 2025/2026.
+Bienvenue à vous, chers élèves AMUR de la promo 2025/2026. Vous trouverez
+ci-dessous les liens vers les supports pour vous aider à manipuler et 
+cartographier des données. 
 
-Vous trouverez ci-dessous les liens vers les supports de TD pour apprendre à
-manipuler des données publiques.
+## Préalable : le SSP Cloud
 
-## Le SSP Cloud
-
-Ces supports sont interactifs. En cliquant sur le bouton prévu à cet effet
+Certains supports sont interactifs. En cliquant sur le bouton prévu à cet effet
 en haut de la page, vous pourrez les lancer dans le Datalab de la plateforme
 [SSPCloud](https://datalab.sspcloud.fr/) de l'INSEE. 
 
@@ -28,7 +27,7 @@ Cela présente plusieurs avantages :
 Il vous faudra préalablement créer un compte gratuitement, en indiquant votre
 adresse email `@eleves.enpc.fr`.
 
-## Les pages de ce site
+## Les supports 
 
 - [Les outils du quotidien](/chapters/outils-quotidiens.html)
 - [Introduction à QGIS](/chapters/qgis-intro.html)

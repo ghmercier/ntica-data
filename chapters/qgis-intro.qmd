@@ -32,9 +32,7 @@ Lancer QGIS, créer un nouveau projet.
 
 
 
-### Fond de carte
-
-#### Ajout
+### Fond de plan 
 
 Ajouter le fond de carte OpenStreetMap.
 
@@ -63,8 +61,6 @@ de QGIS.
 ![](/resources/intro-qgis/1_scr.jpg)
 
 
-#### Réglages
-
 Pour mieux voir les entités vectorielles que l'on ajoutera par la suite, on 
 peut déjà rendre le fond de plan transparent et le passer en niveau de gris.
 
@@ -77,8 +73,7 @@ Avec la couche sélectionnée :
 ![](/resources/intro-qgis/3_fond_plan.jpg)
 
 
-
-### Couche vectorielle
+### Couches vectorielles
 
 Télécharger la [géodatabase](ade_simplifiee.gpkg) préparée spécialement 
 pour ce TP. Elle contient quelques données issues de la base 
@@ -97,9 +92,6 @@ techniques, se référer à la
 [documentation](https://docs.qgis.org/3.40/fr/docs/user_manual/managing_data_source/supported_data.html#geopackage).
 </details>
 
-
-#### Ajout
-
 Ajouter la couche `communes` contenue dans la Géodatabase.
 
 - **Couche → Ajouter une couche → Ajouter une couche vecteur**
@@ -108,9 +100,6 @@ Ajouter la couche `communes` contenue dans la Géodatabase.
 - **Dans la fenêtre qui s'affiche, sélectionner la couche `commune`**
 
 ![](/resources/intro-qgis/2_communes.jpg)
-
-
-#### Ajustements
 
 On va modifier la symbologie de la couche pour ne conserver que les contours 
 de chaque objet, sans ce vilain fond opaque, puis ajouter des étiquettes 
@@ -124,7 +113,9 @@ Avec la couche sélectionnée :
 
 
 
-#### Explorations
+## Manipulations
+
+### Explorer les données
 
 À chaque objet de la couche `communes` correspondent des données.
 On peut les afficher pour un objet donné avec l'outil 
@@ -151,9 +142,6 @@ Une autre manière d'explorer la couche est d'afficher sa table d'attributs
 
 - **Couche → Ouvrir la table d'attributs**
 
-
-### Manipulations
-
 ### Sélection manuelle
 
 On peut sélectionner manuellement une ou plusieurs entités à l'aide
@@ -171,14 +159,12 @@ Sélectionner les trois communes de Champs-sur-Marne, Noisiel et Émerainville.
 ![](/resources/intro-qgis/5_selection_manuelle.jpg)
 
 
-
 ### Statistiques descriptives
 
 On peut calculer aisément certains agrégats (moyenne, médiane, etc.) sur les
 attributs des entités sélectionnés.
 
 - **Vue → Résumé statistique**
-
 
 <details>
 <summary>Quelle est la population totale de ces trois communes ?</summary>
@@ -192,7 +178,6 @@ attributs des entités sélectionnés.
 </details>
 
 ![](/resources/intro-qgis/6_statistiques.jpg)
-
 
 
 ### Calculs géométriques

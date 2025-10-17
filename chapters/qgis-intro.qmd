@@ -3,10 +3,31 @@ title: "Introduction à QGIS"
 format: html
 ---
 
-Nous allons créer sans attendre notre première carte : un fond de plan
+Dans ce chapitre, nous allons créer une première carte : un fond de plan
 cartographique centré sur la CA Paris Vallée de la Marne, sur lequel nous
 allons superposer des couches vectorielles de description administrative du
 territoire.
+
+
+
+## Installer QGIS
+
+QGIS est un logiciel SIG compatible avec Linux, Unix, Mac OS X, Windows et
+Android. La dernière version (3.44.3) disponible sur le
+[site officiel](https://qgis.org/download/).
+
+Pour utiliser l'installateur officiel, il faut disposer des droits 
+administrateurs sur l'ordinateur cible. Si on ne les a pas, on peut
+télécharger une version portable que l'on placera dans son répertoire
+utilisateur ou sur une clé 
+administrateurs sur l'ordinateur que l'on utilise. Parfois, on ne 
+Si l'on se trouve dans ce cas, on peut télécharger une version portable
+du logiciel que l'on placera dans son répertoire local ou sur une clé USB.
+
+Une version portable de QGIS est disponible sur le blog 
+[SIG & Territoires](https://www.sigterritoires.fr/index.php/version-portable-de-qgis-3-44-0/).
+
+
 
 ## Création du projet
 

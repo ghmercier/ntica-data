@@ -5,7 +5,7 @@ author:
   - name: Ghislain Mercier
     url: https://github.com/ghmercier
     email: ghislain.mercier@club-internet.fr
-date: "2025-10-12"
+date: "2025-10-17"
 ---
 
 Bienvenue à vous, chers élèves AMUR de la promo 2025/2026.
@@ -28,7 +28,8 @@ Cela présente plusieurs avantages :
 Il vous faudra préalablement créer un compte gratuitement, en indiquant votre
 adresse email `@eleves.enpc.fr`.
 
-## Les supports de TD
+## Les pages de ce site
 
+- [Les outils du quotidien](/chapters/outils-quotidiens.html)
 - [Introduction à QGIS](/chapters/qgis-intro.html)
 - [Traitement de fichiers CSV](/chapters/chapter1.html)

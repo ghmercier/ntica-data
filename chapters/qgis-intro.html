@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Premier pas avec QGIS – Supports pédagogiques du module NTICA</title>
+<title>Introduction à QGIS – Supports pédagogiques du module NTICA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -89,7 +89,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/qgis-intro.html">Premier pas avec QGIS</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/qgis-intro.html">Introduction à QGIS</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -122,7 +122,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/qgis-intro.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Premier pas avec QGIS</span></a>
+ <span class="menu-text">Introduction à QGIS</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -144,6 +144,21 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#création-du-projet" id="toc-création-du-projet" class="nav-link active" data-scroll-target="#création-du-projet">Création du projet</a></li>
   <li><a href="#ajout-dun-fond-de-carte" id="toc-ajout-dun-fond-de-carte" class="nav-link" data-scroll-target="#ajout-dun-fond-de-carte">Ajout d’un fond de carte</a></li>
   <li><a href="#ajout-dune-première-couche-vectorielle" id="toc-ajout-dune-première-couche-vectorielle" class="nav-link" data-scroll-target="#ajout-dune-première-couche-vectorielle">Ajout d’une première couche vectorielle</a></li>
+  <li><a href="#transparence-du-fond-de-plan" id="toc-transparence-du-fond-de-plan" class="nav-link" data-scroll-target="#transparence-du-fond-de-plan">Transparence du fond de plan</a></li>
+  <li><a href="#exploration-des-données" id="toc-exploration-des-données" class="nav-link" data-scroll-target="#exploration-des-données">Exploration des données</a></li>
+  <li><a href="#sélection-manuelle-de-données" id="toc-sélection-manuelle-de-données" class="nav-link" data-scroll-target="#sélection-manuelle-de-données">Sélection manuelle de données</a></li>
+  <li><a href="#statistiques-descriptives" id="toc-statistiques-descriptives" class="nav-link" data-scroll-target="#statistiques-descriptives">Statistiques descriptives</a></li>
+  <li><a href="#premiers-calculs-géométriques" id="toc-premiers-calculs-géométriques" class="nav-link" data-scroll-target="#premiers-calculs-géométriques">Premiers calculs géométriques</a></li>
+  <li><a href="#affichage-par-catégories" id="toc-affichage-par-catégories" class="nav-link" data-scroll-target="#affichage-par-catégories">Affichage par catégories</a></li>
+  <li><a href="#sélection-avancée-de-données" id="toc-sélection-avancée-de-données" class="nav-link" data-scroll-target="#sélection-avancée-de-données">Sélection avancée de données</a>
+  <ul class="collapse">
+  <li><a href="#sélection-par-attributs" id="toc-sélection-par-attributs" class="nav-link" data-scroll-target="#sélection-par-attributs">Sélection par attributs</a></li>
+  <li><a href="#sélection-par-géométrie" id="toc-sélection-par-géométrie" class="nav-link" data-scroll-target="#sélection-par-géométrie">Sélection par géométrie</a></li>
+  </ul></li>
+  <li><a href="#export-vers-une-nouvelle-couche" id="toc-export-vers-une-nouvelle-couche" class="nav-link" data-scroll-target="#export-vers-une-nouvelle-couche">Export vers une nouvelle couche</a></li>
+  <li><a href="#jointure-attributaire" id="toc-jointure-attributaire" class="nav-link" data-scroll-target="#jointure-attributaire">Jointure attributaire</a></li>
+  <li><a href="#affichage-gradué" id="toc-affichage-gradué" class="nav-link" data-scroll-target="#affichage-gradué">Affichage gradué</a></li>
+  <li><a href="#mise-en-page-et-export" id="toc-mise-en-page-et-export" class="nav-link" data-scroll-target="#mise-en-page-et-export">Mise en page et export</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/ghmercier/ntica-data/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -152,7 +167,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Premier pas avec QGIS</h1>
+<h1 class="title">Introduction à QGIS</h1>
 </div>
 
 
@@ -218,6 +233,182 @@ Plusieurs formats existent pour stocker de l’information géographique. QGIS t
 <li><strong>Symbologie → Remplissage simple → Style de remplissage → Pas de remplissage</strong></li>
 <li><strong>Étiquettes → Étiquettes simples → Valeur → <code>nom_officiel</code></strong></li>
 </ol>
+</section>
+<section id="transparence-du-fond-de-plan" class="level2">
+<h2 class="anchored" data-anchor-id="transparence-du-fond-de-plan">Transparence du fond de plan</h2>
+<p>Pour mieux voir nos entités vectorielles, on peut rendre le fond de plan transparent et le passer en niveau de gris.</p>
+<p>Avec la couche sélectionnée :</p>
+<ol type="1">
+<li><strong>Couche → Propriétés de la couche</strong></li>
+<li><strong>Transparence → Opacité globale → 50%</strong></li>
+<li><strong>Symbologie → Rendu de couche → Niveaux de gris → [Par clarté]</strong></li>
+</ol>
+<p><img src="../resources/intro-qgis/3_fond_plan.jpg" class="img-fluid"></p>
+</section>
+<section id="exploration-des-données" class="level2">
+<h2 class="anchored" data-anchor-id="exploration-des-données">Exploration des données</h2>
+<p>À chaque objet de la couche <code>communes</code> correspondent des données. On peut les afficher pour un objet donné avec l’outil <strong>Identifier des données</strong> accessible par la barre d’outils. Pour les communes, un champ important est le <code>code_insee</code>. C’est lui qui identifie la commune de manière unique, on en aura besoin ultérieurement.</p>
+<details>
+<summary>
+De l’importance des métadonnées
+</summary>
+Même si les intitulés des champs sont ici clairs, il est de bonne pratique de toujours consulter les métadonnées d’une source de données pour s’assurer d’avoir bien tout compris. Dans le cas présent, on ira voir sur le <a href="https://geoservices.ign.fr/documentation/donnees/vecteur/adminexpress">site de l’IGN</a>, à la page ADMIN Express.
+</details>
+<p><img src="../resources/intro-qgis/4_metadonnees.jpg" class="img-fluid"></p>
+<p>Une autre manière d’explorer la couche est d’afficher sa table d’attributs (<kbd>F6</kbd>).</p>
+<ol type="1">
+<li><strong>Couche → Ouvrir la table d’attributs</strong></li>
+</ol>
+</section>
+<section id="sélection-manuelle-de-données" class="level2">
+<h2 class="anchored" data-anchor-id="sélection-manuelle-de-données">Sélection manuelle de données</h2>
+<p>On peut sélectionner manuellement une ou plusieurs entités à l’aide de l’outil de la barre des tâches.</p>
+<p>Noter dans le menu déroulant les modes de sélections possibles: rectangle de sélection, polygone, main levée, par rayon.</p>
+<p>Noter les raccourcis-claviers utiles. Pour ajouter des objets à la sélection courante, maintenir <kbd>SHIFT</kbd>. Pour retrancher des objets à la sélection courante, maintenir <kbd>CTRL</kbd>.</p>
+<p>Sélectionner les trois communes de Champs-sur-Marne, Noisiel et Émerainville.</p>
+<p><img src="../resources/intro-qgis/5_selection_manuelle.jpg" class="img-fluid"></p>
+</section>
+<section id="statistiques-descriptives" class="level2">
+<h2 class="anchored" data-anchor-id="statistiques-descriptives">Statistiques descriptives</h2>
+<p>On peut calculer aisément certains agrégats (moyenne, médiane, etc.) sur les attributs des entités sélectionnés.</p>
+<ol type="1">
+<li><strong>Vue → Résumé statistique</strong></li>
+</ol>
+<details>
+<summary>
+Quelle est la population totale de ces trois communes ?
+</summary>
+50 124 habitants (au 1er janvier 2022).
+</details>
+<details>
+<summary>
+Quelle est la superficie cadastrale totale de ces trois communes ?
+</summary>
+1 710 hectares.
+</details>
+<p><img src="../resources/intro-qgis/6_statistiques.jpg" class="img-fluid"></p>
+</section>
+<section id="premiers-calculs-géométriques" class="level2">
+<h2 class="anchored" data-anchor-id="premiers-calculs-géométriques">Premiers calculs géométriques</h2>
+<p>Un SIG est capable de calculer la superficie de chaque polygone. On va vérifier que la superficie calculée est cohérente avec la superficie cadastrale renseignée dans la table attributaire.</p>
+<p>Ouvrir la table d’attributs (<kbd>F6</kbd>), puis la calculatrice de champs (bouton en forme de boulier dans la barre d’outils, également <kbd>CTRL</kbd>+<kbd>I</kbd>).</p>
+<p>Dans la fenêtre qui s’ouvre : * Indiquer le nom du champ à créer (on peut l’appeler <code>superficie</code>) * Sélectionner la case <code>champ virtuel</code> (ie. le champ ne sera pas persistent) * Indiquer le type du champ (<code>entier</code>) * Renseigner la formule pour calculer le champ : area(<span class="citation" data-cites="geometry">@geometry</span>) * Valider</p>
+<details>
+<summary>
+Quelle sera l’unité du champ <code>superficie</code> ?
+</summary>
+Il dépend bien sûr de l’unité employée par le SCR de la carte. Pour le nôtre, c’est le mètre. Le champ <code>superficie</code> sera donc exprimé en mètres-carrés. On pourra diviser par 10000 pour le convertir en hectares.
+</details>
+<p><img src="../resources/intro-qgis/7_superficie.jpg" class="img-fluid"></p>
+<p>Le champ <code>superficie</code> figure bien désormais dans la table attributaire. On peut calculer la superficie des trois communes de la même manière qu’on a calculé celle de la population.</p>
+<details>
+<summary>
+Quelle est la superficie calculée totale de ces trois communes ?
+</summary>
+1 737,29 ha. L’écart est de 17,29 ha avec la superficie cadastrale, marge &lt;1%.
+</details>
+<p>On peut également utiliser l’outil de mesure de longueur (<kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>M</kbd>) ou d’aires (<kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>J</kbd>) pour des calculs ponctuels sur la carte.</p>
+</section>
+<section id="affichage-par-catégories" class="level2">
+<h2 class="anchored" data-anchor-id="affichage-par-catégories">Affichage par catégories</h2>
+<p>On va désormais colorer les communes différemment en fonction de l’EPCI auquel elles appartiennent.</p>
+<ol type="1">
+<li><strong>Couche → Propriétés de la couche → Symbologie → [catégorisé]</strong></li>
+<li><strong>Valeur → [codes_siren_des_epci]</strong></li>
+<li><strong>Symboles → Remplissage simple → Style de remplissage → [continue]</strong></li>
+<li>Bouton <strong>Classer</strong></li>
+<li>Bouton <strong>Appliquer</strong></li>
+</ol>
+<p>On voit nettement se dessiner les 7 EPCI présents dans la base.</p>
+<p><img src="../resources/intro-qgis/8_epci.jpg" class="img-fluid"></p>
+<details>
+<summary>
+Millefeuille administratif ?
+</summary>
+Vous noterez dans la légende que le champ <code>codes_siren_des_epci</code> contient parfois deux numéros SIREN : certaines communes appartient bien à deux EPCI en même temps (Métropole du Grand Paris + EPT).
+</details>
+</section>
+<section id="sélection-avancée-de-données" class="level2">
+<h2 class="anchored" data-anchor-id="sélection-avancée-de-données">Sélection avancée de données</h2>
+<p>On va désormais sélectionner toutes les communes appartenant à la CA Paris Vallée de la Marne en testant deux méthodes.</p>
+<section id="sélection-par-attributs" class="level3">
+<h3 class="anchored" data-anchor-id="sélection-par-attributs">Sélection par attributs</h3>
+<p>On peut sélectionner l’ensemble des entités de la couche des communes dont le champ <code>code_siren_des_epci</code> contient la valeur <code>200057958</code> grâce à la sélection par expression (<kbd>CTRL</kbd>+<kbd>F3</kbd>)</p>
+<ol type="1">
+<li><strong>Éditer → Sélection → Sélectionner des entités à l’aide d’une sélection</strong></li>
+<li><strong>Expression → [“codes_siren_des_epci” = ‘200057958’]</strong></li>
+</ol>
+<p><img src="../resources/intro-qgis/9_select_attr.jpg" class="img-fluid"></p>
+</section>
+<section id="sélection-par-géométrie" class="level3">
+<h3 class="anchored" data-anchor-id="sélection-par-géométrie">Sélection par géométrie</h3>
+<p>On peut aussi sélectionner l’ensemble des entités de la couche des communes qui sont situées <em>à l’intérieur</em> du polygone représentant la CA Paris Vallée de la Marne dans la couche des EPCI.</p>
+<p>Pour cela, on va ajouter la couche vectorielle des EPCI qui figure dans la même géodatabase que la couche des communes et lui appliquer le style qui convient. Pour cela, se référer au début du TD.</p>
+<p>Sélectionner ensuite le polygone représentant la CA Paris Vallée de la Marne.</p>
+<ol type="1">
+<li><strong>Vecteur → Outils de recherche → Sélection par localisation</strong></li>
+<li><strong>Sélectionner les entités depuis → <code>ade_simplifiee - communes</code></strong></li>
+<li><strong>Où les entités → <code>est à l'intérieur</code></strong></li>
+<li><strong>En comparant les entité de → <code>ade_simplifiee - epci</code></strong></li>
+<li>cocher la case <code>entités sélectionnées uniquement</code></li>
+</ol>
+<p><img src="../resources/intro-qgis/10_select_geo.jpg" class="img-fluid"></p>
+</section>
+</section>
+<section id="export-vers-une-nouvelle-couche" class="level2">
+<h2 class="anchored" data-anchor-id="export-vers-une-nouvelle-couche">Export vers une nouvelle couche</h2>
+<p>Créons maintenant un couche contenant uniquement les 12 communes de la CA Paris Vallée de la Marne. On sauvegardera cette couche dans notre géodatabase initiale.</p>
+<ol type="1">
+<li><strong>Panneau des couches → </strong> clic-droit couche <code>communes</code></li>
+<li><strong>Exporter → Sauvegarder les entités sélectionnées sous</strong></li>
+</ol>
+<p><img src="../resources/intro-qgis/11_export.jpg" class="img-fluid"></p>
+</section>
+<section id="jointure-attributaire" class="level2">
+<h2 class="anchored" data-anchor-id="jointure-attributaire">Jointure attributaire</h2>
+<p>Représentons désormais les différences de population entre les communes.</p>
+<p>On serait tenté de faire varier les couleurs des polygones du plus clair au plus foncé&nbsp;: les géomaticiens appellent ces cartes des <em>cartes teintées</em>, ou <em>cartes choroplèthes</em>. Mais pas de choroplèthes avec des données stock… on fera donc varier la taille de points représentant les communes.</p>
+<p>Dans la géodatabase initiale, charger la couche <code>chef_lieu_de_commune</code>. Elle contient un semis de points, un pour chaque chef-lieu (c’est-à-dire la mairie).</p>
+<p>Ouvrir la table attributaire : constater qu’il y a bien un champ <code>code_insee_de_la_commune</code>, mais pas (encore) de champ <code>population</code>… Qu’à cela ne tienne : on va l’ajouter, en joignant la table des chefs-lieux des communes à celle des communes.</p>
+<p>Avec la couche des chefs-lieux sélectionnés :</p>
+<ol type="1">
+<li><strong>Couche → Propriétés de la couche → Jointures</strong></li>
+<li>Cliquer le bouton <kbd>+</kbd></li>
+<li><strong>Joindre la couche → <code>ade_simplifiee - communes</code>, <code>ade_simplifie</code></strong></li>
+<li><strong>Champ de jointure → <code>code_insee</code></strong></li>
+<li><strong>Champ dans la couche cible → <code>code_insee_de_la_commune</code></strong></li>
+<li><strong>Champs joints → <code>population</code></strong></li>
+</ol>
+<p><img src="../resources/intro-qgis/12_jointure.jpg" class="img-fluid"></p>
+</section>
+<section id="affichage-gradué" class="level2">
+<h2 class="anchored" data-anchor-id="affichage-gradué">Affichage gradué</h2>
+<p>On peut désormais modifier la symbologie et faire varier la taille des points en fonction de la valeur du champ population.</p>
+<ol type="1">
+<li><strong>Couche → Propriétés de la couche → Symbologie</strong></li>
+<li>Sélectionner <code>gradué</code></li>
+<li><strong>Valeur → <code>xxx_population</code></strong></li>
+<li><strong>Méthode → Taille</strong></li>
+<li><strong>Mode → intervalle égal</strong></li>
+</ol>
+<details>
+<summary>
+Discrétisation
+</summary>
+On comprend bien que le choix des seuils, du nombre de catégories, etc. est stratégique, et qu’on peut faire dire à des mêmes données des choses très différentes selon les choix opérés…
+</details>
+<p><img src="../resources/intro-qgis/13_gradue.jpg" class="img-fluid"></p>
+</section>
+<section id="mise-en-page-et-export" class="level2">
+<h2 class="anchored" data-anchor-id="mise-en-page-et-export">Mise en page et export</h2>
+<p>Exportons notre carte en PDF. Il faut pour cela créer une mise en page.</p>
+<ol type="1">
+<li><strong>Projet → Nouvelle mise en page</strong></li>
+</ol>
+<p>Dans la fenêtre qui s’ouvre : * Insérer un bloc carte * Insérer un bloc de texte pour le titre * Insérer un bloc légende * Insérer une échelle graphique * Insérer une flèche indiquant le nord * …</p>
+<p>Une fois tous les paramètres ajustés, exporter la carte en PDF.</p>
+<p><img src="../resources/intro-qgis/14_mise_en_page.jpg" class="img-fluid"></p>
+<p><img src="../resources/intro-qgis/15_export.jpg" class="img-fluid"></p>
 
 
 </section>

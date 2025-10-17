@@ -45,9 +45,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-0b37c64f34216b628666a8dac638b53b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-0b37c64f34216b628666a8dac638b53b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-0b37c64f34216b628666a8dac638b53b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-533b9ae3c010999c496e3372658dddf2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-533b9ae3c010999c496e3372658dddf2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-533b9ae3c010999c496e3372658dddf2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -144,9 +144,12 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#installer-qgis" id="toc-installer-qgis" class="nav-link active" data-scroll-target="#installer-qgis">Installer QGIS</a></li>
   <li><a href="#mise-en-place" id="toc-mise-en-place" class="nav-link" data-scroll-target="#mise-en-place">Mise en place</a>
   <ul class="collapse">
-  <li><a href="#fond-de-carte" id="toc-fond-de-carte" class="nav-link" data-scroll-target="#fond-de-carte">Fond de carte</a></li>
-  <li><a href="#couche-vectorielle" id="toc-couche-vectorielle" class="nav-link" data-scroll-target="#couche-vectorielle">Couche vectorielle</a></li>
-  <li><a href="#manipulations" id="toc-manipulations" class="nav-link" data-scroll-target="#manipulations">Manipulations</a></li>
+  <li><a href="#fond-de-plan" id="toc-fond-de-plan" class="nav-link" data-scroll-target="#fond-de-plan">Fond de plan</a></li>
+  <li><a href="#couches-vectorielles" id="toc-couches-vectorielles" class="nav-link" data-scroll-target="#couches-vectorielles">Couches vectorielles</a></li>
+  </ul></li>
+  <li><a href="#manipulations" id="toc-manipulations" class="nav-link" data-scroll-target="#manipulations">Manipulations</a>
+  <ul class="collapse">
+  <li><a href="#explorer-les-données" id="toc-explorer-les-données" class="nav-link" data-scroll-target="#explorer-les-données">Explorer les données</a></li>
   <li><a href="#sélection-manuelle" id="toc-sélection-manuelle" class="nav-link" data-scroll-target="#sélection-manuelle">Sélection manuelle</a></li>
   <li><a href="#statistiques-descriptives" id="toc-statistiques-descriptives" class="nav-link" data-scroll-target="#statistiques-descriptives">Statistiques descriptives</a></li>
   <li><a href="#calculs-géométriques" id="toc-calculs-géométriques" class="nav-link" data-scroll-target="#calculs-géométriques">Calculs géométriques</a></li>
@@ -194,10 +197,8 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li><strong>Projet → Nouveau</strong></li>
 </ul>
-<section id="fond-de-carte" class="level3">
-<h3 class="anchored" data-anchor-id="fond-de-carte">Fond de carte</h3>
-<section id="ajout" class="level4">
-<h4 class="anchored" data-anchor-id="ajout">Ajout</h4>
+<section id="fond-de-plan" class="level3">
+<h3 class="anchored" data-anchor-id="fond-de-plan">Fond de plan</h3>
 <p>Ajouter le fond de carte OpenStreetMap.</p>
 <ul>
 <li><strong>Couche → Ajouter une couche → Ajouter une couche XYZ</strong></li>
@@ -213,9 +214,6 @@ SCR, Késako ?
 Un système de coordonnées de référence est le référentiel qui donne du sens aux valeurs numériques que prennent des coordonnées géographiques (latitude, longitude, altitude). On pourra se référer utilement à la <a href="https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_projections/working_with_projections.html">documentation</a> de QGIS.
 </details>
 <p><img src="../resources/intro-qgis/1_scr.jpg" class="img-fluid"></p>
-</section>
-<section id="réglages" class="level4">
-<h4 class="anchored" data-anchor-id="réglages">Réglages</h4>
 <p>Pour mieux voir les entités vectorielles que l’on ajoutera par la suite, on peut déjà rendre le fond de plan transparent et le passer en niveau de gris.</p>
 <p>Avec la couche sélectionnée :</p>
 <ul>
@@ -225,9 +223,8 @@ Un système de coordonnées de référence est le référentiel qui donne du sen
 </ul>
 <p><img src="../resources/intro-qgis/3_fond_plan.jpg" class="img-fluid"></p>
 </section>
-</section>
-<section id="couche-vectorielle" class="level3">
-<h3 class="anchored" data-anchor-id="couche-vectorielle">Couche vectorielle</h3>
+<section id="couches-vectorielles" class="level3">
+<h3 class="anchored" data-anchor-id="couches-vectorielles">Couches vectorielles</h3>
 <p>Télécharger la <a href="ade_simplifiee.gpkg">géodatabase</a> préparée spécialement pour ce TP. Elle contient quelques données issues de la base <a href="https://geoservices.ign.fr/adminexpress">AdminExpress</a> de l’IGN.</p>
 <details>
 <summary>
@@ -235,8 +232,6 @@ Géodatabase, ESRI Shapefile ?
 </summary>
 Plusieurs formats existent pour stocker de l’information géographique. QGIS travaille par défaut avec des géodatabases. Vous trouverez souvent des fichiers au format ESRI Shapefile. On retiendra qu’une géodatabase (extension <code>gpkg</code>) est capable de stocker plusieurs couches dans un même fichier, alors que le format ESRI Shapefile (extension principale <code>shp</code>) crée six différents fichiers pour stocker l’information d’une seule couche vectorielle. Pour les détails techniques, se référer à la <a href="https://docs.qgis.org/3.40/fr/docs/user_manual/managing_data_source/supported_data.html#geopackage">documentation</a>.
 </details>
-<section id="ajout-1" class="level4">
-<h4 class="anchored" data-anchor-id="ajout-1">Ajout</h4>
 <p>Ajouter la couche <code>communes</code> contenue dans la Géodatabase.</p>
 <ul>
 <li><strong>Couche → Ajouter une couche → Ajouter une couche vecteur</strong></li>
@@ -245,9 +240,6 @@ Plusieurs formats existent pour stocker de l’information géographique. QGIS t
 <li><strong>Dans la fenêtre qui s’affiche, sélectionner la couche <code>commune</code></strong></li>
 </ul>
 <p><img src="../resources/intro-qgis/2_communes.jpg" class="img-fluid"></p>
-</section>
-<section id="ajustements" class="level4">
-<h4 class="anchored" data-anchor-id="ajustements">Ajustements</h4>
 <p>On va modifier la symbologie de la couche pour ne conserver que les contours de chaque objet, sans ce vilain fond opaque, puis ajouter des étiquettes donnant le nom de la commune (on pourra personnaliser la police et le corps).</p>
 <p>Avec la couche sélectionnée :</p>
 <ul>
@@ -256,8 +248,11 @@ Plusieurs formats existent pour stocker de l’information géographique. QGIS t
 <li><strong>Étiquettes → Étiquettes simples → Valeur → <code>nom_officiel</code></strong></li>
 </ul>
 </section>
-<section id="explorations" class="level4">
-<h4 class="anchored" data-anchor-id="explorations">Explorations</h4>
+</section>
+<section id="manipulations" class="level2">
+<h2 class="anchored" data-anchor-id="manipulations">Manipulations</h2>
+<section id="explorer-les-données" class="level3">
+<h3 class="anchored" data-anchor-id="explorer-les-données">Explorer les données</h3>
 <p>À chaque objet de la couche <code>communes</code> correspondent des données. On peut les afficher pour un objet donné avec l’outil <strong>Identifier des données</strong> accessible par la barre d’outils. Pour les communes, un champ important est le <code>code_insee</code>. C’est lui qui identifie la commune de manière unique, on en aura besoin ultérieurement.</p>
 <details>
 <summary>
@@ -270,10 +265,6 @@ Même si les intitulés des champs sont ici clairs, il est de bonne pratique de 
 <ul>
 <li><strong>Couche → Ouvrir la table d’attributs</strong></li>
 </ul>
-</section>
-</section>
-<section id="manipulations" class="level3">
-<h3 class="anchored" data-anchor-id="manipulations">Manipulations</h3>
 </section>
 <section id="sélection-manuelle" class="level3">
 <h3 class="anchored" data-anchor-id="sélection-manuelle">Sélection manuelle</h3>

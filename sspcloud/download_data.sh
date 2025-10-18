@@ -2,8 +2,8 @@
 
 # Set here files to download
 FILES=(
-    "s3/ghisl1m/villes/insee_data.csv"
-    "s3/ghisl1m/villes/v_departement_2025.csv"
+    "s3/ghisl1m/diffusion/insee_data.csv"
+    "s3/ghisl1m/diffusion/v_departement_2025.csv"
 )
 
 echo "Running download_data.sh..."

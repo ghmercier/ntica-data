@@ -100,36 +100,6 @@
     ]
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Travaux dirigés NTICA",
-    "section": "",
-    "text": "Bienvenue à vous, chers élèves AMUR de la promo 2025/2026. Vous trouverez ci-dessous les liens vers les supports pour vous aider à manipuler et cartographier des données.",
-    "crumbs": [
-      "Accueil"
-    ]
-  },
-  {
-    "objectID": "index.html#préalable-le-ssp-cloud",
-    "href": "index.html#préalable-le-ssp-cloud",
-    "title": "Travaux dirigés NTICA",
-    "section": "Préalable : le SSP Cloud",
-    "text": "Préalable : le SSP Cloud\nCertains supports sont interactifs. En cliquant sur le bouton prévu à cet effet en haut de la page, vous pourrez les lancer dans le Datalab de la plateforme SSPCloud de l’INSEE.\nCela présente plusieurs avantages :\n\nVous n’avez ainsi rien à installer\nVous disposerez de tous les modules requis aux bonnes versions\nVous aurez accès directement aux données nécessaires\n\nIl vous faudra préalablement créer un compte gratuitement, en indiquant votre adresse email @eleves.enpc.fr.",
-    "crumbs": [
-      "Accueil"
-    ]
-  },
-  {
-    "objectID": "index.html#les-supports",
-    "href": "index.html#les-supports",
-    "title": "Travaux dirigés NTICA",
-    "section": "Les supports",
-    "text": "Les supports\n\nLes outils du quotidien\nIntroduction à QGIS\nTraitement de fichiers CSV",
-    "crumbs": [
-      "Accueil"
-    ]
-  },
-  {
     "objectID": "chapters/chapter1.html",
     "href": "chapters/chapter1.html",
     "title": "Traitement de fichiers CSV",
@@ -188,6 +158,50 @@
     "crumbs": [
       "Traitement de fichiers CSV"
     ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Travaux dirigés NTICA",
+    "section": "",
+    "text": "Bienvenue à vous, chers élèves AMUR de la promo 2025/2026. Vous trouverez ci-dessous les liens vers les supports pour vous aider à manipuler et cartographier des données.",
+    "crumbs": [
+      "Accueil"
+    ]
+  },
+  {
+    "objectID": "index.html#préalable-le-ssp-cloud",
+    "href": "index.html#préalable-le-ssp-cloud",
+    "title": "Travaux dirigés NTICA",
+    "section": "Préalable : le SSP Cloud",
+    "text": "Préalable : le SSP Cloud\nCertains supports sont interactifs. En cliquant sur le bouton prévu à cet effet en haut de la page, vous pourrez les lancer dans le Datalab de la plateforme SSPCloud de l’INSEE.\nCela présente plusieurs avantages :\n\nVous n’avez ainsi rien à installer\nVous disposerez de tous les modules requis aux bonnes versions\nVous aurez accès directement aux données nécessaires\n\nIl vous faudra préalablement créer un compte gratuitement, en indiquant votre adresse email @eleves.enpc.fr.",
+    "crumbs": [
+      "Accueil"
+    ]
+  },
+  {
+    "objectID": "index.html#les-supports",
+    "href": "index.html#les-supports",
+    "title": "Travaux dirigés NTICA",
+    "section": "Les supports",
+    "text": "Les supports\n\nLes outils du quotidien\nIntroduction à QGIS\nTraitement de fichiers CSV\nTD PLU Bioclimatique",
+    "crumbs": [
+      "Accueil"
+    ]
+  },
+  {
+    "objectID": "chapters/plu-bioclimatique.html",
+    "href": "chapters/plu-bioclimatique.html",
+    "title": "TD PLU Bioclimatique",
+    "section": "",
+    "text": "Dans ce TD, nous allons mettre en pratique certaines compétences acquises dans les cours précédents et en acquérir de nouvelles sur un cas d’étude : le plan local d’urbanisme (PLU) bioclimatique parisien.\nPour mémoire, la Ville de Paris a adopté en novembre 2024 son nouveau PLU, appelé « PLU Bioclimatique ». La mise en révision avait été engagée en décembre 2020. Après une phase de concertation, le Conseil de Paris avait arrêté un projet de PLU en juin 2023, projet qui a été ensuite soumis à enquête publique en janvier/février 2024.\nÀ cette époque, le projet de PLU mis à la disposition du public consistait en une multitude de fichiers PDF : pas de géoportail, pas de couches en open-data… Logique, car ce n’était qu’un projet. Pour exploiter les données, il fallait donc se débrouiller."
+  },
+  {
+    "objectID": "chapters/plu-bioclimatique.html#les-planches-au-12000e",
+    "href": "chapters/plu-bioclimatique.html#les-planches-au-12000e",
+    "title": "TD PLU Bioclimatique",
+    "section": "Les planches au 1/2000e",
+    "text": "Les planches au 1/2000e\nDans le PLU, une pièce clé est l’atlas des planches au 1/2000, qui regroupe les règles d’urbanismes applicables sur le territoire parisien.\nIl est aujourd’hui accessible sur le site Règles d’urbanisme de Paris.\nSur ce site, une carte interactive permet de télécharger la planche PDF correspondant au point sur lequel on a cliqué.\nQuestion : comment télécharger les 134 fichiers PDF ?\n\n\nSolution\n\nOn remarque tout d’abord qu’une liste des planches est disponible.\nC’est un fichier PDF qui compile les liens vers les 134 planches. Problème : les liens ne sont pas apparents. On peut toujours cliquer manuellement sur les 134 liens, mais c’est long…\nPour l’éviter, plusieurs options :\n\nSolution NoCode : extraire la liste des liens avec un utilitaire en ligne comme Supertool\nSolution Code : extraire la liste des liens avec un court script Python, par exemple en utilisant la librairie PyMuPDF\n\n\n# Test de code"
   },
   {
     "objectID": "chapters/qgis-intro.html",

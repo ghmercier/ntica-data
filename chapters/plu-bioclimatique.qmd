@@ -1,0 +1,54 @@
+---
+title: "TD PLU Bioclimatique"
+format: html
+---
+
+Dans ce TD, nous allons mettre en pratique certaines compétences acquises
+dans les cours précédents et en acquérir de nouvelles sur un cas d'étude : 
+le plan local d'urbanisme (PLU) bioclimatique parisien.
+
+Pour mémoire, la Ville de Paris a adopté en novembre 2024 son nouveau PLU,
+appelé « PLU Bioclimatique ». La mise en révision avait été engagée en
+décembre 2020. Après une phase de concertation, le Conseil de Paris avait
+arrêté un projet de PLU en juin 2023, projet qui a été ensuite soumis à 
+enquête publique en janvier/février 2024. 
+
+À cette époque, le projet de PLU mis à la disposition du public consistait
+en une multitude de fichiers PDF : pas de géoportail, pas de couches en 
+open-data… Logique, car ce n'était qu'un projet. Pour exploiter les données,
+il fallait donc se débrouiller.
+
+## Les planches au 1/2000e
+
+Dans le PLU, une pièce clé est l'atlas des planches au 1/2000, qui
+regroupe les règles d'urbanismes applicables sur le territoire parisien.
+
+Il est aujourd'hui accessible sur le site 
+[Règles d'urbanisme de Paris](https://regles-urbanisme.paris.fr/plu-bioclimatique/jsp/site/Portal.jsp?document_id=198&portlet_id=45#consultation_html).
+
+Sur ce site, une carte interactive permet de télécharger la planche PDF correspondant au point sur lequel on a cliqué.
+
+Question : comment télécharger les 134 fichiers PDF ?
+
+<details>
+
+<summary>Solution</summary>
+
+On remarque tout d'abord qu'une 
+[liste des planches](https://regles-urbanisme.paris.fr/plu-bioclimatique/servlet/plugins/document/resource?id=751&id_attribute=93&working_content=true) 
+est disponible.
+
+C'est un fichier PDF qui compile les liens vers les 134 planches. 
+Problème : les liens ne sont pas apparents. 
+On peut toujours cliquer manuellement sur les 134 liens, mais c'est long...
+
+Pour l'éviter, plusieurs options : 
+
+- Solution NoCode : extraire la liste des liens avec un utilitaire en ligne comme [Supertool](https://supertool.org/fr/extract-urls-and-links-from-pdfs/)
+- Solution Code : extraire la liste des liens avec un court script Python, par exemple en utilisant la librairie [`PyMuPDF`](https://github.com/pymupdf/pymupdf)
+
+```{python}
+# Test de code
+```
+
+</details>

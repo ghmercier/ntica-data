@@ -4,6 +4,7 @@
 FILES=(
     "s3/ghisl1m/diffusion/insee_data.csv"
     "s3/ghisl1m/diffusion/v_departement_2025.csv"
+    "s3/ghisl1m/diffusion/Consultation_des_planches_au_1_sur_2000.pdf"
 )
 
 echo "Running download_data.sh..."

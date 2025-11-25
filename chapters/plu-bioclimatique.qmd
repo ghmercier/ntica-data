@@ -28,7 +28,7 @@ territoire parisien. Elles représentent une traduction graphique du
 règlement écrit.
 
 Cet atlas est aujourd'hui accessible en ligne sur le site 
-[Règles d'urbanisme de Paris](https://regles-urbanisme.paris.fr/plu-bioclimatique/jsp/site/Portal.jsp?document_id=198&portlet_id=45#consultation_html).
+[Règles d'urbanisme de Paris](https://regles-urbanisme.paris.fr/).
 
 
 
@@ -44,7 +44,7 @@ la télécharger, la traiter et la géoréférencer.
 - Dans la pop-up qui surgit, cliquer sur Vue pour télécharger la planche
   au format PDF.
 
-![](/resources/plu-bio/atlas_planches.jpeg)
+[![](/resources/plu-bio/atlas_planches.jpeg)](https://regles-urbanisme.paris.fr/plu-bioclimatique/jsp/site/Portal.jsp?document_id=198&portlet_id=45#consultation_html)
 
 
 #### Traitement
@@ -52,7 +52,7 @@ la télécharger, la traiter et la géoréférencer.
 Nous avons un fichier PDF. Il nous faut le convertir au format image, 
 puis éliminer le cartouche pour ne conserver que la carte. On peut par
 exemple utiliser GIMP. Pour aller plus vite, l'image retraitée est
-téléchargeable [ici](/resources/plu-bio/D_O5.jpg).
+téléchargeable [ici](https://www.normalesup.org/~gmercier/D_05.jpg).
 
 ![](/resources/plu-bio/gimp_rognage.jpeg)
 
@@ -120,7 +120,7 @@ Appliquer ensuite la transformation. La carte s'affiche à son emplacement à
 Paris, on peut vérifier la qualité du géoréférencement en appliquant une
 légère transparence.
 
-![](/resources/plu-bio/carte-georeferencee.jpeg)
+![](/resources/plu-bio/carte_georeferencee.jpeg)
 
 
 ### Toutes les planches

@@ -218,7 +218,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="les-planches-graphiques-au-12000e" class="level2">
 <h2 class="anchored" data-anchor-id="les-planches-graphiques-au-12000e">Les planches graphiques au 1/2000e</h2>
 <p>Dans le PLU, l’une des pièces-clés est l’atlas des planches au 1/2000e. Ces planches regroupent toutes les règles d’urbanisme applicables sur le territoire parisien. Elles représentent une traduction graphique du règlement écrit.</p>
-<p>Cet atlas est aujourd’hui accessible en ligne sur le site <a href="https://regles-urbanisme.paris.fr/plu-bioclimatique/jsp/site/Portal.jsp?document_id=198&amp;portlet_id=45#consultation_html">Règles d’urbanisme de Paris</a>.</p>
+<p>Cet atlas est aujourd’hui accessible en ligne sur le site <a href="https://regles-urbanisme.paris.fr/">Règles d’urbanisme de Paris</a>.</p>
 <section id="une-première-planche" class="level3">
 <h3 class="anchored" data-anchor-id="une-première-planche">Une première planche</h3>
 <p>Notre objectif : afficher la planche D-05 dans QGIS. Pour cela, on va la télécharger, la traiter et la géoréférencer.</p>
@@ -228,11 +228,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Cliquer sur la carte interactive dans le rectangle D-05</li>
 <li>Dans la pop-up qui surgit, cliquer sur Vue pour télécharger la planche au format PDF.</li>
 </ul>
-<p><img src="../resources/plu-bio/atlas_planches.jpeg" class="img-fluid"></p>
+<p><a href="https://regles-urbanisme.paris.fr/plu-bioclimatique/jsp/site/Portal.jsp?document_id=198&amp;portlet_id=45#consultation_html"><img src="../resources/plu-bio/atlas_planches.jpeg" class="img-fluid"></a></p>
 </section>
 <section id="traitement" class="level4">
 <h4 class="anchored" data-anchor-id="traitement">Traitement</h4>
-<p>Nous avons un fichier PDF. Il nous faut le convertir au format image, puis éliminer le cartouche pour ne conserver que la carte. On peut par exemple utiliser GIMP. Pour aller plus vite, l’image retraitée est téléchargeable <a href="../resources/plu-bio/D_O5.jpg">ici</a>.</p>
+<p>Nous avons un fichier PDF. Il nous faut le convertir au format image, puis éliminer le cartouche pour ne conserver que la carte. On peut par exemple utiliser GIMP. Pour aller plus vite, l’image retraitée est téléchargeable <a href="https://www.normalesup.org/~gmercier/D_05.jpg">ici</a>.</p>
 <p><img src="../resources/plu-bio/gimp_rognage.jpeg" class="img-fluid"></p>
 </section>
 <section id="géoréférencement" class="level4">
@@ -268,7 +268,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Les points de contrôles utilisés dans l’image ci-dessous sont téléchargeables <a href="../resources/plu-bio/D_05.jpg.points">ici</a>.</p>
 <p><img src="../resources/plu-bio/points-de-controles.jpeg" class="img-fluid"></p>
 <p>Appliquer ensuite la transformation. La carte s’affiche à son emplacement à Paris, on peut vérifier la qualité du géoréférencement en appliquant une légère transparence.</p>
-<p><img src="../resources/plu-bio/carte-georeferencee.jpeg" class="img-fluid"></p>
+<p><img src="../resources/plu-bio/carte_georeferencee.jpeg" class="img-fluid"></p>
 </section>
 </section>
 </section>
@@ -286,7 +286,7 @@ Solution
 <li>Solution NoCode : extraire la liste des liens avec un utilitaire en ligne comme <a href="https://supertool.org/fr/extract-urls-and-links-from-pdfs/">Supertool</a>.</li>
 <li>Solution Code : extraire la liste des liens avec un court script Python, qui mobilise la librairie <a href="https://github.com/pymupdf/pymupdf"><code>PyMuPDF</code></a>.</li>
 </ul>
-<div id="063f485c" class="cell" data-execution_count="1">
+<div id="6d10e034" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test de code</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </details>

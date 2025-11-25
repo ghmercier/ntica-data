@@ -31,12 +31,14 @@ L'atlas est accessible sur le site
 [Règles d'urbanisme de Paris](https://regles-urbanisme.paris.fr/plu-bioclimatique/jsp/site/Portal.jsp?document_id=198&portlet_id=45#consultation_html).
 Une carte interactive permet le téléchargement des planches au format PDF.
 
-![](/ressources/plu-bio/atlas_planches.jpeg)
+![](/resources/plu-bio/atlas_planches.jpeg)
 
 ### Géoréférencement d'une planche
 
 Nous allons télécharger la planche D-03, la traiter et la géoréférencer
 pour l'afficher sur QGIS.
+
+
 
 ### Géoréférencement de toutes les planches
 

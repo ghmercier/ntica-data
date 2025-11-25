@@ -5,7 +5,7 @@ author:
   - name: Ghislain Mercier
     url: https://github.com/ghmercier
     email: ghislain.mercier@club-internet.fr
-date: "2025-10-17"
+date: "2025-11-25"
 ---
 
 Bienvenue à vous, chers élèves AMUR de la promo 2025/2026. Vous trouverez

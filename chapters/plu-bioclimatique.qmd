@@ -3,76 +3,124 @@ title: "TD PLU Bioclimatique"
 format: html
 ---
 
-Dans ce TD, nous allons mettre en pratique certaines compétences acquises
-dans les cours précédents et en acquérir de nouvelles sur un cas d'étude : 
-le **PLU Bioclimatique** parisien.
+Dans ce TD, nous allons mettre en pratique quelques compétences acquises
+dans les séances précédentes — et en acquérir de nouvelles — sur un cas
+d'étude: le PLU Bioclimatique parisien.
 
 Pour mémoire, la Ville de Paris a adopté en novembre 2024 son nouveau plan
-local d'urbanisme, appelé « PLU Bioclimatique ». 
-
-La mise en révision avait été engagée en décembre 2020. Après une phase de
-concertation, le Conseil de Paris avait arrêté en juin 2023 un projet de
-PLU, qui a fait l'objet d'une enquête publique au tout début de 2024.
+local d'urbanisme. La mise en révision avait été engagée en décembre 2020.
+Après une phase de concertation, le Conseil de Paris avait arrêté en juin
+2023 un projet de PLU, qui a fait l'objet d'une enquête publique au tout
+début de 2024.
 
 À cette époque, le dossier d'enquête publique consistait en une multitude
-de gros fichiers PDF : pas de géoportail, pas de couches SIG… Si l'on
+de gros fichiers PDF: pas de géoportail, pas de couches SIG… Si l'on
 voulait exploiter les données, il fallait se débrouiller.
 
 Nous allons voir comment !
 
+
 ## Les planches graphiques au 1/2000e
 
-Dans le PLU, l'une des pièce-clés est **l'atlas des planches au 1/2000e.**
+Dans le PLU, l'une des pièces-clés est l'atlas des planches au 1/2000e.
+Ces planches regroupent toutes les règles d'urbanisme applicables sur le
+territoire parisien. Elles représentent une traduction graphique du
+règlement écrit.
 
-Traduction graphique du règlement écrit, ces planches regroupent 
-les règles d'urbanisme applicables sur le territoire parisien.
-
-L'atlas est accessible sur le site 
+Cet atlas est aujourd'hui accessible en ligne sur le site 
 [Règles d'urbanisme de Paris](https://regles-urbanisme.paris.fr/plu-bioclimatique/jsp/site/Portal.jsp?document_id=198&portlet_id=45#consultation_html).
-Une carte interactive permet le téléchargement des planches au format PDF.
+
+
+
+### Une première planche
+
+Notre objectif : afficher la planche D-05 dans QGIS. Pour cela, on va
+la télécharger, la traiter et la géoréférencer.
+
+
+#### Téléchargement
+
+- Cliquer sur la carte interactive dans le rectangle D-05
+- Dans la pop-up qui surgit, cliquer sur Vue pour télécharger la planche
+  au format PDF.
 
 ![](/resources/plu-bio/atlas_planches.jpeg)
 
-### Une planche
 
-Notre objectif : afficher la planche D-03 dans QGIS. Pour cela, on va
-la télécharger, la traiter et la géoréférencer.
+#### Traitement
 
-#### Préparation de l'environnement
+Nous avons un fichier PDF. Il nous faut le convertir au format image, 
+puis éliminer le cartouche pour ne conserver que la carte. On peut par
+exemple utiliser GIMP. Pour aller plus vite, l'image retraitée est
+téléchargeable [ici](/resources/plu-bio/D_O5.jpg).
+
+![](/resources/plu-bio/gimp_rognage.jpeg)
+
+
+#### Géoréférencement
+
+Géoréférencer une image, c'est associer à chacun des pixels qui la composent
+une coordonnée géographique. Pour cela, il suffit de donner à QGIS les
+coordonnées géographiques de quelques points de contrôle (aussi appelés
+points d'appuis). Il se charge d'interpoler tous les autres.
+
+
+##### Couche de référence
+
+La qualité du géoréférencement dépend donc en grande partie du choix des
+points de contrôle. Pour être le plus précis possible, on va charger dans
+QGIS l'une des couches utilisée par l'APUR pour établir les cartes du PLU:
+la couche de 
+l'[emprise bâtie de Paris](https://opendata.apur.org/datasets/Apur::emprise-batie-paris/about)".
+
+Ce sera l'occasion d'apprendre comment utiliser des géoservices pour
+afficher un flux sans téléchargement préalable, puisque l'APUR utilise 
+ArcGIS Server.
 
 - Créer un projet vide dans QGIS
 - Sélectionner le SCR 2154 (RGF93v1 / Lambert-93)
-
-Géoréférencer une image, c'est associer à chacun des pixels qui la composent
-une coordonnée géographique. Pour cela, il faudra donner à QGIS les
-coordonnées géographiques de quelques points de contrôle, il calculera le 
-reste.
-
-Pour faciliter la recherche des points de contrôle, il vaut mieux choisir
-une couche de référence qui soit proche des données représentées sur
-l'image. On affichera ici la couche 
-"[Emprise bâtie Paris](https://opendata.apur.org/datasets/Apur::emprise-batie-paris/about)" 
-maintenue par l'APUR. Ce sera l'occasion de voir comment utiliser des
-géoservices sans télécharger préalablement de données, puisque l'APUR
-utilise ArcGIS Server.
-
 - Couche > Ajouter une couche > Ajouter une couche de serveur ArcGIS REST
 - URL du serveur : https://carto2.apur.org/apur/rest/services/OPENDATA/ 
-- Ajouter la couche Emprise batie Paris au format raster, plus rapide
 
 ![](/resources/plu-bio/arcgis_rest.jpeg)
+
+- Couche `Emprise batie Paris` au format raster = plus rapide.
+
 ![](/resources/plu-bio/arcgis_emprises.jpeg)
 
-#### Prétraitement de l'image
 
-Il nous faut convertir l'image en JPEG et éliminer le cartouche autour de 
-la carte. On utilise pour cela GIMP.
+##### Géocodage
 
-![](/resources/gimp_rognage.jpeg)
+Ouvrir l'outil de géoréférencement.
 
-Téléchargez [ici](/resources/plu-bio/D_O5.jpg) l'image retraitée.
+- Couche > Géoréférencer
+- Fichier > Ouvrir un raster
+- Choisir le fichier `D_05.jpg`
 
-#### Géoréférencement
+On définit ensuite les paramètres de la transformation, en conservant les
+paramètres proposés par défaut (transformation linéaire, ré-échantillonnage
+plus proche voisin) mais en cochant la case "créer seulement un fichier
+World".
+
+![](/resources/plu-bio/parametres_transformation.jpeg)
+
+Puis, avec l'outil prévu à cet effet, sélectionner des points de contrôle,
+en cliquant successivement sur un point de l'image puis le même point sur la
+carte. On peut ici se contenter de trois points non alignés et distants les
+uns des autres. À partir de 3 points, QGIS calcule les erreurs de
+géoréférencement: en règle générale, il est bon d'avoir des écarts
+inférieurs à 10 pixels.
+
+Les points de contrôles utilisés dans l'image ci-dessous sont
+téléchargeables [ici](/resources/plu-bio/D_05.jpg.points).
+
+![](/resources/plu-bio/points-de-controles.jpeg)
+
+Appliquer ensuite la transformation. La carte s'affiche à son emplacement à
+Paris, on peut vérifier la qualité du géoréférencement en appliquant une
+légère transparence.
+
+![](/resources/plu-bio/carte-georeferencee.jpeg)
 
 
 ### Toutes les planches

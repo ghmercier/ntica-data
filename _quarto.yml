@@ -22,6 +22,7 @@ website:
       - chapters/outils-quotidiens.qmd
       - chapters/qgis-intro.qmd
       - chapters/chapter1.qmd
+      - chapters/plu-bioclimatique.qmd
 
 format:
   html:

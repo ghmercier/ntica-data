@@ -211,9 +211,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Dans ce TD, nous allons mettre en pratique quelques compétences acquises dans les séances précédentes — et en acquérir de nouvelles — sur un cas d’étude: le PLU Bioclimatique parisien.</p>
+<p>Dans ce TD, nous allons mettre en pratique quelques compétences acquises dans les séances précédentes — et en acquérir de nouvelles — sur un cas d’étude : le PLU Bioclimatique parisien.</p>
 <p>Pour mémoire, la Ville de Paris a adopté en novembre 2024 son nouveau plan local d’urbanisme. La mise en révision avait été engagée en décembre 2020. Après une phase de concertation, le Conseil de Paris avait arrêté en juin 2023 un projet de PLU, qui a fait l’objet d’une enquête publique au tout début de 2024.</p>
-<p>À cette époque, le dossier d’enquête publique consistait en une multitude de gros fichiers PDF: pas de géoportail, pas de couches SIG… Si l’on voulait exploiter les données, il fallait se débrouiller.</p>
+<p>À cette époque, le dossier d’enquête publique consistait en une multitude de gros fichiers PDF : pas de géoportail, pas de couches SIG… Si l’on voulait exploiter les données, il fallait se débrouiller.</p>
 <p>Nous allons voir comment !</p>
 <section id="les-planches-graphiques-au-12000e" class="level2">
 <h2 class="anchored" data-anchor-id="les-planches-graphiques-au-12000e">Les planches graphiques au 1/2000e</h2>
@@ -237,20 +237,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="géoréférencement" class="level4">
 <h4 class="anchored" data-anchor-id="géoréférencement">Géoréférencement</h4>
-<p>Géoréférencer une image, c’est associer à chacun des pixels qui la composent une coordonnée géographique. Pour cela, il suffit de donner à QGIS les coordonnées géographiques de quelques points de contrôle (aussi appelés points d’appuis). Il se charge d’interpoler tous les autres.</p>
+<p>Géoréférencer une image, c’est associer à chacun des pixels qui la composent une coordonnée géographique. Pour cela, il suffit de donner à QGIS les coordonnées de quelques points de contrôle (aussi appelés points d’appuis). Il se charge d’interpoler tous les autres.</p>
 <section id="couche-de-référence" class="level5">
 <h5 class="anchored" data-anchor-id="couche-de-référence">Couche de référence</h5>
-<p>La qualité du géoréférencement dépend donc en grande partie du choix des points de contrôle. Pour être le plus précis possible, on va charger dans QGIS l’une des couches utilisée par l’APUR pour établir les cartes du PLU: la couche de l’<a href="https://opendata.apur.org/datasets/Apur::emprise-batie-paris/about">emprise bâtie de Paris</a>“.</p>
+<p>La qualité du géoréférencement dépend donc en grande partie du choix des points de contrôle. Pour être le plus précis possible, on va charger dans QGIS l’une des couches utilisée par l’APUR pour établir les cartes du PLU : la couche de l’<a href="https://opendata.apur.org/datasets/Apur::emprise-batie-paris/about">emprise bâtie de Paris</a>.</p>
 <p>Ce sera l’occasion d’apprendre comment utiliser des géoservices pour afficher un flux sans téléchargement préalable, puisque l’APUR utilise ArcGIS Server.</p>
 <ul>
 <li>Créer un projet vide dans QGIS</li>
 <li>Sélectionner le SCR 2154 (RGF93v1 / Lambert-93)</li>
 <li>Couche &gt; Ajouter une couche &gt; Ajouter une couche de serveur ArcGIS REST</li>
-<li>URL du serveur : https://carto2.apur.org/apur/rest/services/OPENDATA/</li>
+<li>URL du serveur : <a href="https://carto2.apur.org/apur/rest/services/OPENDATA/">https://carto2.apur.org/apur/rest/services/OPENDATA/</a></li>
 </ul>
 <p><img src="../resources/plu-bio/arcgis_rest.jpeg" class="img-fluid"></p>
 <ul>
-<li>Couche <code>Emprise batie Paris</code> au format raster = plus rapide.</li>
+<li>Sélectionner la couche <code>EMPRISE_BATIE_PARIS</code>, <code>Période de construction</code>, celle au format raster, cela se chargera plus rapidement.</li>
 </ul>
 <p><img src="../resources/plu-bio/arcgis_emprises.jpeg" class="img-fluid"></p>
 </section>
@@ -264,8 +264,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>On définit ensuite les paramètres de la transformation, en conservant les paramètres proposés par défaut (transformation linéaire, ré-échantillonnage plus proche voisin) mais en cochant la case “créer seulement un fichier World”.</p>
 <p><img src="../resources/plu-bio/parametres_transformation.jpeg" class="img-fluid"></p>
-<p>Puis, avec l’outil prévu à cet effet, sélectionner des points de contrôle, en cliquant successivement sur un point de l’image puis le même point sur la carte. On peut ici se contenter de trois points non alignés et distants les uns des autres. À partir de 3 points, QGIS calcule les erreurs de géoréférencement: en règle générale, il est bon d’avoir des écarts inférieurs à 10 pixels.</p>
-<p>Les points de contrôles utilisés dans l’image ci-dessous sont téléchargeables <a href="../resources/plu-bio/D_05.jpg.points">ici</a>.</p>
+<p>Puis, avec l’outil prévu à cet effet, sélectionner des points de contrôle, en cliquant successivement sur un point de l’image puis le même point sur la carte. On peut ici se contenter de trois points non alignés et distants les uns des autres. À partir de 3 points, QGIS calcule les erreurs de géoréférencement : en règle générale, il est bon d’avoir des écarts inférieurs à 10 pixels.</p>
+<p>Les points de contrôles utilisés dans l’image ci-dessous sont téléchargeables <a href="../resources/plu-bio/D_05.jpg.points">ici</a>. On peut les charger si on le souhaite.</p>
 <p><img src="../resources/plu-bio/points-de-controles.jpeg" class="img-fluid"></p>
 <p>Appliquer ensuite la transformation. La carte s’affiche à son emplacement à Paris, on peut vérifier la qualité du géoréférencement en appliquant une légère transparence.</p>
 <p><img src="../resources/plu-bio/carte_georeferencee.jpeg" class="img-fluid"></p>
@@ -286,7 +286,7 @@ Solution
 <li>Solution NoCode : extraire la liste des liens avec un utilitaire en ligne comme <a href="https://supertool.org/fr/extract-urls-and-links-from-pdfs/">Supertool</a>.</li>
 <li>Solution Code : extraire la liste des liens avec un court script Python, qui mobilise la librairie <a href="https://github.com/pymupdf/pymupdf"><code>PyMuPDF</code></a>.</li>
 </ul>
-<div id="6d10e034" class="cell" data-execution_count="1">
+<div id="81f2e1ac" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test de code</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </details>

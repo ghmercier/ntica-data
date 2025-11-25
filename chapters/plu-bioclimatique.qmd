@@ -5,30 +5,43 @@ format: html
 
 Dans ce TD, nous allons mettre en pratique certaines compétences acquises
 dans les cours précédents et en acquérir de nouvelles sur un cas d'étude : 
-le plan local d'urbanisme (PLU) bioclimatique parisien.
+le **PLU Bioclimatique** parisien.
 
-Pour mémoire, la Ville de Paris a adopté en novembre 2024 son nouveau PLU,
-appelé « PLU Bioclimatique ». La mise en révision avait été engagée en
-décembre 2020. Après une phase de concertation, le Conseil de Paris avait
-arrêté un projet de PLU en juin 2023, projet qui a été ensuite soumis à 
-enquête publique en janvier/février 2024. 
+Pour mémoire, la Ville de Paris a adopté en novembre 2024 son nouveau plan
+local d'urbanisme, appelé « PLU Bioclimatique ». 
 
-À cette époque, le projet de PLU mis à la disposition du public consistait
-en une multitude de fichiers PDF : pas de géoportail, pas de couches en 
-open-data… Logique, car ce n'était qu'un projet. Pour exploiter les données,
-il fallait donc se débrouiller.
+La mise en révision avait été engagée en décembre 2020. Après une phase de
+concertation, le Conseil de Paris avait arrêté en juin 2023 un projet de
+PLU, qui a fait l'objet d'une enquête publique au tout début de 2024.
 
-## Les planches au 1/2000e
+À cette époque, le dossier d'enquête publique consistait en une multitude
+de gros fichiers PDF : pas de géoportail, pas de couches SIG… Si l'on
+voulait exploiter les données, il fallait se débrouiller.
 
-Dans le PLU, une pièce clé est l'atlas des planches au 1/2000, qui
-regroupe les règles d'urbanismes applicables sur le territoire parisien.
+Nous allons voir comment !
 
-Il est aujourd'hui accessible sur le site 
+## Les planches graphiques au 1/2000e
+
+Dans le PLU, l'une des pièce-clés est **l'atlas des planches au 1/2000e.**
+
+Traduction graphique du règlement écrit, ces planches regroupent 
+les règles d'urbanisme applicables sur le territoire parisien.
+
+L'atlas est accessible sur le site 
 [Règles d'urbanisme de Paris](https://regles-urbanisme.paris.fr/plu-bioclimatique/jsp/site/Portal.jsp?document_id=198&portlet_id=45#consultation_html).
+Une carte interactive permet le téléchargement des planches au format PDF.
 
-Sur ce site, une carte interactive permet de télécharger la planche PDF correspondant au point sur lequel on a cliqué.
+![](/ressources/plu-bio/atlas_planches.jpeg)
 
-Question : comment télécharger les 134 fichiers PDF ?
+### Géoréférencement d'une planche
+
+Nous allons télécharger la planche D-03, la traiter et la géoréférencer
+pour l'afficher sur QGIS.
+
+### Géoréférencement de toutes les planches
+
+Nous avons téléchargé 1 planche. Comment télécharger l'ensemble de l'atlas,
+composé de 134 planches ?
 
 <details>
 
@@ -44,8 +57,10 @@ On peut toujours cliquer manuellement sur les 134 liens, mais c'est long...
 
 Pour l'éviter, plusieurs options : 
 
-- Solution NoCode : extraire la liste des liens avec un utilitaire en ligne comme [Supertool](https://supertool.org/fr/extract-urls-and-links-from-pdfs/)
-- Solution Code : extraire la liste des liens avec un court script Python, par exemple en utilisant la librairie [`PyMuPDF`](https://github.com/pymupdf/pymupdf)
+- Solution NoCode : extraire la liste des liens avec un utilitaire en ligne
+  comme [Supertool](https://supertool.org/fr/extract-urls-and-links-from-pdfs/).
+- Solution Code : extraire la liste des liens avec un court script Python, 
+  qui mobilise la librairie [`PyMuPDF`](https://github.com/pymupdf/pymupdf).
 
 ```{python}
 # Test de code

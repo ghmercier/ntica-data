@@ -33,14 +33,49 @@ Une carte interactive permet le téléchargement des planches au format PDF.
 
 ![](/resources/plu-bio/atlas_planches.jpeg)
 
-### Géoréférencement d'une planche
+### Une planche
 
-Nous allons télécharger la planche D-03, la traiter et la géoréférencer
-pour l'afficher sur QGIS.
+Notre objectif : afficher la planche D-03 dans QGIS. Pour cela, on va
+la télécharger, la traiter et la géoréférencer.
+
+#### Préparation de l'environnement
+
+- Créer un projet vide dans QGIS
+- Sélectionner le SCR 2154 (RGF93v1 / Lambert-93)
+
+Géoréférencer une image, c'est associer à chacun des pixels qui la composent
+une coordonnée géographique. Pour cela, il faudra donner à QGIS les
+coordonnées géographiques de quelques points de contrôle, il calculera le 
+reste.
+
+Pour faciliter la recherche des points de contrôle, il vaut mieux choisir
+une couche de référence qui soit proche des données représentées sur
+l'image. On affichera ici la couche 
+"[Emprise bâtie Paris](https://opendata.apur.org/datasets/Apur::emprise-batie-paris/about)" 
+maintenue par l'APUR. Ce sera l'occasion de voir comment utiliser des
+géoservices sans télécharger préalablement de données, puisque l'APUR
+utilise ArcGIS Server.
+
+- Couche > Ajouter une couche > Ajouter une couche de serveur ArcGIS REST
+- URL du serveur : https://carto2.apur.org/apur/rest/services/OPENDATA/ 
+- Ajouter la couche Emprise batie Paris au format raster, plus rapide
+
+![](/resources/plu-bio/arcgis_rest.jpeg)
+![](/resources/plu-bio/arcgis_emprises.jpeg)
+
+#### Prétraitement de l'image
+
+Il nous faut convertir l'image en JPEG et éliminer le cartouche autour de 
+la carte. On utilise pour cela GIMP.
+
+![](/resources/gimp_rognage.jpeg)
+
+Téléchargez [ici](/resources/plu-bio/D_O5.jpg) l'image retraitée.
+
+#### Géoréférencement
 
 
-
-### Géoréférencement de toutes les planches
+### Toutes les planches
 
 Nous avons téléchargé 1 planche. Comment télécharger l'ensemble de l'atlas,
 composé de 134 planches ?

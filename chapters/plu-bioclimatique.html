@@ -176,8 +176,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#les-planches-graphiques-au-12000e" id="toc-les-planches-graphiques-au-12000e" class="nav-link active" data-scroll-target="#les-planches-graphiques-au-12000e">Les planches graphiques au 1/2000e</a>
   <ul class="collapse">
-  <li><a href="#géoréférencement-dune-planche" id="toc-géoréférencement-dune-planche" class="nav-link" data-scroll-target="#géoréférencement-dune-planche">Géoréférencement d’une planche</a></li>
-  <li><a href="#géoréférencement-de-toutes-les-planches" id="toc-géoréférencement-de-toutes-les-planches" class="nav-link" data-scroll-target="#géoréférencement-de-toutes-les-planches">Géoréférencement de toutes les planches</a></li>
+  <li><a href="#une-planche" id="toc-une-planche" class="nav-link" data-scroll-target="#une-planche">Une planche</a></li>
+  <li><a href="#toutes-les-planches" id="toc-toutes-les-planches" class="nav-link" data-scroll-target="#toutes-les-planches">Toutes les planches</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/ghmercier/ntica-data/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
@@ -215,12 +215,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Traduction graphique du règlement écrit, ces planches regroupent les règles d’urbanisme applicables sur le territoire parisien.</p>
 <p>L’atlas est accessible sur le site <a href="https://regles-urbanisme.paris.fr/plu-bioclimatique/jsp/site/Portal.jsp?document_id=198&amp;portlet_id=45#consultation_html">Règles d’urbanisme de Paris</a>. Une carte interactive permet le téléchargement des planches au format PDF.</p>
 <p><img src="../resources/plu-bio/atlas_planches.jpeg" class="img-fluid"></p>
-<section id="géoréférencement-dune-planche" class="level3">
-<h3 class="anchored" data-anchor-id="géoréférencement-dune-planche">Géoréférencement d’une planche</h3>
-<p>Nous allons télécharger la planche D-03, la traiter et la géoréférencer pour l’afficher sur QGIS.</p>
+<section id="une-planche" class="level3">
+<h3 class="anchored" data-anchor-id="une-planche">Une planche</h3>
+<p>Notre objectif : afficher la planche D-03 dans QGIS. Pour cela, on va la télécharger, la traiter et la géoréférencer.</p>
+<section id="préparation-de-lenvironnement" class="level4">
+<h4 class="anchored" data-anchor-id="préparation-de-lenvironnement">Préparation de l’environnement</h4>
+<ul>
+<li>Créer un projet vide dans QGIS</li>
+<li>Sélectionner le SCR 2154 (RGF93v1 / Lambert-93)</li>
+</ul>
+<p>Géoréférencer une image, c’est associer à chacun des pixels qui la composent une coordonnée géographique. Pour cela, il faudra donner à QGIS les coordonnées géographiques de quelques points de contrôle, il calculera le reste.</p>
+<p>Pour faciliter la recherche des points de contrôle, il vaut mieux choisir une couche de référence qui soit proche des données représentées sur l’image. On affichera ici la couche “<a href="https://opendata.apur.org/datasets/Apur::emprise-batie-paris/about">Emprise bâtie Paris</a>” maintenue par l’APUR. Ce sera l’occasion de voir comment utiliser des géoservices sans télécharger préalablement de données, puisque l’APUR utilise ArcGIS Server.</p>
+<ul>
+<li>Couche &gt; Ajouter une couche &gt; Ajouter une couche de serveur ArcGIS REST</li>
+<li>URL du serveur : https://carto2.apur.org/apur/rest/services/OPENDATA/</li>
+<li>Ajouter la couche Emprise batie Paris au format raster, plus rapide</li>
+</ul>
+<p><img src="../resources/plu-bio/arcgis_rest.jpeg" class="img-fluid"> <img src="../resources/plu-bio/arcgis_emprises.jpeg" class="img-fluid"></p>
 </section>
-<section id="géoréférencement-de-toutes-les-planches" class="level3">
-<h3 class="anchored" data-anchor-id="géoréférencement-de-toutes-les-planches">Géoréférencement de toutes les planches</h3>
+<section id="prétraitement-de-limage" class="level4">
+<h4 class="anchored" data-anchor-id="prétraitement-de-limage">Prétraitement de l’image</h4>
+<p>Il nous faut convertir l’image en JPEG et éliminer le cartouche autour de la carte. On utilise pour cela GIMP.</p>
+<p><img src="../resources/gimp_rognage.jpeg" class="img-fluid"></p>
+<p>Téléchargez <a href="../resources/plu-bio/D_O5.jpg">ici</a> l’image retraitée.</p>
+</section>
+<section id="géoréférencement" class="level4">
+<h4 class="anchored" data-anchor-id="géoréférencement">Géoréférencement</h4>
+</section>
+</section>
+<section id="toutes-les-planches" class="level3">
+<h3 class="anchored" data-anchor-id="toutes-les-planches">Toutes les planches</h3>
 <p>Nous avons téléchargé 1 planche. Comment télécharger l’ensemble de l’atlas, composé de 134 planches ?</p>
 <details>
 <summary>
@@ -233,7 +257,7 @@ Solution
 <li>Solution NoCode : extraire la liste des liens avec un utilitaire en ligne comme <a href="https://supertool.org/fr/extract-urls-and-links-from-pdfs/">Supertool</a>.</li>
 <li>Solution Code : extraire la liste des liens avec un court script Python, qui mobilise la librairie <a href="https://github.com/pymupdf/pymupdf"><code>PyMuPDF</code></a>.</li>
 </ul>
-<div id="c18edab7" class="cell" data-execution_count="1">
+<div id="771bc151" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test de code</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </details>

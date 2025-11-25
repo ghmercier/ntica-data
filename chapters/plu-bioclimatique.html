@@ -174,7 +174,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#les-planches-au-12000e" id="toc-les-planches-au-12000e" class="nav-link active" data-scroll-target="#les-planches-au-12000e">Les planches au 1/2000e</a></li>
+  <li><a href="#les-planches-graphiques-au-12000e" id="toc-les-planches-graphiques-au-12000e" class="nav-link active" data-scroll-target="#les-planches-graphiques-au-12000e">Les planches graphiques au 1/2000e</a>
+  <ul class="collapse">
+  <li><a href="#géoréférencement-dune-planche" id="toc-géoréférencement-dune-planche" class="nav-link" data-scroll-target="#géoréférencement-dune-planche">Géoréférencement d’une planche</a></li>
+  <li><a href="#géoréférencement-de-toutes-les-planches" id="toc-géoréférencement-de-toutes-les-planches" class="nav-link" data-scroll-target="#géoréférencement-de-toutes-les-planches">Géoréférencement de toutes les planches</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/ghmercier/ntica-data/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -200,15 +204,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Dans ce TD, nous allons mettre en pratique certaines compétences acquises dans les cours précédents et en acquérir de nouvelles sur un cas d’étude : le plan local d’urbanisme (PLU) bioclimatique parisien.</p>
-<p>Pour mémoire, la Ville de Paris a adopté en novembre 2024 son nouveau PLU, appelé « PLU Bioclimatique ». La mise en révision avait été engagée en décembre 2020. Après une phase de concertation, le Conseil de Paris avait arrêté un projet de PLU en juin 2023, projet qui a été ensuite soumis à enquête publique en janvier/février 2024.</p>
-<p>À cette époque, le projet de PLU mis à la disposition du public consistait en une multitude de fichiers PDF : pas de géoportail, pas de couches en open-data… Logique, car ce n’était qu’un projet. Pour exploiter les données, il fallait donc se débrouiller.</p>
-<section id="les-planches-au-12000e" class="level2">
-<h2 class="anchored" data-anchor-id="les-planches-au-12000e">Les planches au 1/2000e</h2>
-<p>Dans le PLU, une pièce clé est l’atlas des planches au 1/2000, qui regroupe les règles d’urbanismes applicables sur le territoire parisien.</p>
-<p>Il est aujourd’hui accessible sur le site <a href="https://regles-urbanisme.paris.fr/plu-bioclimatique/jsp/site/Portal.jsp?document_id=198&amp;portlet_id=45#consultation_html">Règles d’urbanisme de Paris</a>.</p>
-<p>Sur ce site, une carte interactive permet de télécharger la planche PDF correspondant au point sur lequel on a cliqué.</p>
-<p>Question : comment télécharger les 134 fichiers PDF ?</p>
+<p>Dans ce TD, nous allons mettre en pratique certaines compétences acquises dans les cours précédents et en acquérir de nouvelles sur un cas d’étude : le <strong>PLU Bioclimatique</strong> parisien.</p>
+<p>Pour mémoire, la Ville de Paris a adopté en novembre 2024 son nouveau plan local d’urbanisme, appelé « PLU Bioclimatique ».</p>
+<p>La mise en révision avait été engagée en décembre 2020. Après une phase de concertation, le Conseil de Paris avait arrêté en juin 2023 un projet de PLU, qui a fait l’objet d’une enquête publique au tout début de 2024.</p>
+<p>À cette époque, le dossier d’enquête publique consistait en une multitude de gros fichiers PDF : pas de géoportail, pas de couches SIG… Si l’on voulait exploiter les données, il fallait se débrouiller.</p>
+<p>Nous allons voir comment !</p>
+<section id="les-planches-graphiques-au-12000e" class="level2">
+<h2 class="anchored" data-anchor-id="les-planches-graphiques-au-12000e">Les planches graphiques au 1/2000e</h2>
+<p>Dans le PLU, l’une des pièce-clés est <strong>l’atlas des planches au 1/2000e.</strong></p>
+<p>Traduction graphique du règlement écrit, ces planches regroupent les règles d’urbanisme applicables sur le territoire parisien.</p>
+<p>L’atlas est accessible sur le site <a href="https://regles-urbanisme.paris.fr/plu-bioclimatique/jsp/site/Portal.jsp?document_id=198&amp;portlet_id=45#consultation_html">Règles d’urbanisme de Paris</a>. Une carte interactive permet le téléchargement des planches au format PDF.</p>
+<p><img src="../ressources/plu-bio/atlas_planches.jpeg" class="img-fluid"></p>
+<section id="géoréférencement-dune-planche" class="level3">
+<h3 class="anchored" data-anchor-id="géoréférencement-dune-planche">Géoréférencement d’une planche</h3>
+<p>Nous allons télécharger la planche D-03, la traiter et la géoréférencer pour l’afficher sur QGIS.</p>
+</section>
+<section id="géoréférencement-de-toutes-les-planches" class="level3">
+<h3 class="anchored" data-anchor-id="géoréférencement-de-toutes-les-planches">Géoréférencement de toutes les planches</h3>
+<p>Nous avons téléchargé 1 planche. Comment télécharger l’ensemble de l’atlas, composé de 134 planches ?</p>
 <details>
 <summary>
 Solution
@@ -217,15 +230,16 @@ Solution
 <p>C’est un fichier PDF qui compile les liens vers les 134 planches. Problème : les liens ne sont pas apparents. On peut toujours cliquer manuellement sur les 134 liens, mais c’est long…</p>
 <p>Pour l’éviter, plusieurs options :</p>
 <ul>
-<li>Solution NoCode : extraire la liste des liens avec un utilitaire en ligne comme <a href="https://supertool.org/fr/extract-urls-and-links-from-pdfs/">Supertool</a></li>
-<li>Solution Code : extraire la liste des liens avec un court script Python, par exemple en utilisant la librairie <a href="https://github.com/pymupdf/pymupdf"><code>PyMuPDF</code></a></li>
+<li>Solution NoCode : extraire la liste des liens avec un utilitaire en ligne comme <a href="https://supertool.org/fr/extract-urls-and-links-from-pdfs/">Supertool</a>.</li>
+<li>Solution Code : extraire la liste des liens avec un court script Python, qui mobilise la librairie <a href="https://github.com/pymupdf/pymupdf"><code>PyMuPDF</code></a>.</li>
 </ul>
-<div id="6d98888b" class="cell" data-execution_count="1">
+<div id="6052af57" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test de code</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </details>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

@@ -32,7 +32,7 @@ Cet atlas est aujourd'hui accessible en ligne sur le site
 
 
 
-### Une première planche
+### Une planche
 
 Notre objectif : afficher la planche D-05 dans QGIS. Pour cela, on va
 la télécharger, la traiter et la géoréférencer.
@@ -125,32 +125,118 @@ légère transparence.
 ![](/resources/plu-bio/carte_georeferencee.jpeg)
 
 
-### Toutes les planches
+##### Fichier World
 
-Nous avons téléchargé 1 planche. Comment télécharger l'ensemble de l'atlas,
-composé de 134 planches ?
+Par curiosité, et parce que cela nous sera utile plus tard, allons voir dans
+le dossier contenant l'image `D_05.jpg`. On remarque qu'un nouveau fichier a
+été créé : `D_05.wld`. Grâce à ce fichier, QGIS est capable de transformer
+la coordonnée d'un pixel de l'image en coordonnée géographique. On peut
+l'ouvrir avec un éditeur de texte. 
 
-<details>
+![](/resources/plu-bio/fichier_world.jpeg)
 
-<summary>Solution</summary>
+On retiendra :
+- que les valeurs A et D sont des facteurs **d'échelle**, ie. donnent la
+  taille d'un pixel dans les unités du SCR utilisé. Ici, 1 pixel sur l'image
+  correspond donc à 0,169 m dans la réalité.
+- que les valeurs B et C sont des termes de **rotation**. Ici, l'image n'a
+  pas besoin d'être tournée, elle est bien au nord.
+- que les valeurs E et F sont des termes de **translation**, ie. donnent la
+  coordonnée géographique du point supérieur gauche de la carte. On peut le
+  vérifier sur l'image ci-dessous.
 
-On remarque tout d'abord qu'une 
+![](/resources/plu-bio/point_reference.jpeg)
+
+Pour les *gory details*, se référer à 
+[cette page](https://pro.arcgis.com/en/pro-app/latest/help/data/imagery/world-files-for-raster-datasets.htm)
+
+
+
+### Plein de planches
+
+Nous avons traité une seule planche seule. Comment procéder si l'on devait
+traiter l'ensemble des planches du PLU ? On se contentera d'esquisser les
+solutions.
+
+
+#### Téléchargement
+
+On voit sur le site du PLU qu'une 
 [liste des planches](https://regles-urbanisme.paris.fr/plu-bioclimatique/servlet/plugins/document/resource?id=751&id_attribute=93&working_content=true) 
-est disponible.
+est disponible, avec les liens vers chacune des 134 planches.
 
-C'est un fichier PDF qui compile les liens vers les 134 planches. 
-Problème : les liens ne sont pas apparents. 
-On peut toujours cliquer manuellement sur les 134 liens, mais c'est long...
+Le problème est que ces liens ne sont pas apparents… Pas de panique, il y a
+d'autres solutions que de cliquer manuellement sur chaque ligne.
 
-Pour l'éviter, plusieurs options : 
-
-- Solution NoCode : extraire la liste des liens avec un utilitaire en ligne
-  comme [Supertool](https://supertool.org/fr/extract-urls-and-links-from-pdfs/).
-- Solution Code : extraire la liste des liens avec un court script Python, 
-  qui mobilise la librairie [`PyMuPDF`](https://github.com/pymupdf/pymupdf).
+- Solution sans code : extraire la liste des liens avec un utilitaire en
+  ligne comme 
+  [Supertool](https://supertool.org/fr/extract-urls-and-links-from-pdfs/).
+- Solution avec code : extraire la liste des liens avec un court script
+  Python et la libraire [`PyMuPDF`](https://github.com/pymupdf/pymupdf).
 
 ```{python}
-# Test de code
+# Quelque chose comme cela
+import pymupdf
+
+doc = pymupdf.open('Consultation_des_planches_au_1_sur_2000.pdf')
+for page in doc:
+   for link in page/.get_links():
+       print(l['uri'])
+
 ```
 
-</details>
+Voici un 
+[fichier texte](/resources/plu-bio/liste_urls.txt)) 
+avec la liste des liens ainsi obtenue. Si on l'ouvre avec un
+éditeur, on observe que les liens sont cassés. Le prestataire de la Ville de
+Paris dont le nom figure dans les métadonnées du PDF a oublié de substituer
+au nom du serveur de test celui utilisé en production. On le fait pour lui
+grâce à la commande Find/Replace.
+
+![](/resources/plu-bio/liste_urls_replace_all.jpeg)
+
+Ceci fait, il est possible de télécharger tous les fichiers avec une boucle
+en ligne de commande.
+
+```{sh}
+while read url; do wget --content-disposition $url;done < liste_urls.txt
+
+```
+
+
+#### Traitement
+
+Toutes les planches PDF sont bâties sur le même modèle. Il serait donc aisé
+d'automatiser la conversion en JPG et le rognage du cartouche. Photoshop
+sait très bien le faire, GIMP également, mais avec un plugin. Le plus rapide
+serait d'utiliser ImageMagick en ligne de commande.
+
+```{sh}
+# La commande pour les curieux
+convert -density D_05.pdf D_05.jpg
+convert D_05.jpg -crop 6492x4723+232+136 +repage crop/D_05.jpg
+
+```
+
+
+#### Géoréférencement
+
+Pour géoréférencer les images obtenues, il faudrait simplement créer les
+fichiers World. Pour cela, on peut remarquer que les planches sont espacées
+très régulièrement : chaque planche est décalée de 750m en latitude et de
+1000m en longitude. Il suffit de modifier les termes de translation
+(paramètres E et F) en conséquence, en laissant le facteur d'échelle et 
+les termes de rotation inchangés.
+
+![](/resources/plu-bio/batch_fichier_world.jpeg)
+
+Faisons le test sur un exemple : 
+
+- Télécharger le fichier [`E_05.jpg`](https://www.normalesup.org/~gmercier/E_05.jpg).
+- Copier le fichier `D_05.wld` en un fichier `E_05.wld`
+- Ouvrir le fichier `E_05.wld` et ajouter 1000 au nombre de la 5e ligne
+- QGIS > Couches > Ajouter une couche Raster > `E_05.jpg`
+
+Miracle : la couche est parfaitement ajustée !
+
+![](/resources/plu-bio/ajustement_parfait.jpeg)

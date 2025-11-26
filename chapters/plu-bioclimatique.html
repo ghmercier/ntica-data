@@ -181,7 +181,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#les-planches-graphiques-au-12000e" id="toc-les-planches-graphiques-au-12000e" class="nav-link active" data-scroll-target="#les-planches-graphiques-au-12000e">Les planches graphiques au 1/2000e</a>
+  <li><a href="#les-planches-graphiques-au-12000e" id="toc-les-planches-graphiques-au-12000e" class="nav-link active" data-scroll-target="#les-planches-graphiques-au-12000e">Les planches graphiques au 1/2000<sup>e</sup></a>
   <ul class="collapse">
   <li><a href="#une-planche" id="toc-une-planche" class="nav-link" data-scroll-target="#une-planche">Une planche</a></li>
   <li><a href="#plein-de-planches" id="toc-plein-de-planches" class="nav-link" data-scroll-target="#plein-de-planches">Plein de planches</a></li>
@@ -211,119 +211,143 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Dans ce TD, nous allons mettre en pratique quelques compétences acquises dans les séances précédentes — et en acquérir de nouvelles — sur un cas d’étude : le PLU Bioclimatique parisien.</p>
+<p>Dans ce TD, nous allons mettre en pratique quelques compétences acquises dans les séances précédentes et en acquérir de nouvelles sur un cas d’étude : le PLU Bioclimatique parisien.</p>
 <p>Pour mémoire, la Ville de Paris a adopté en novembre 2024 son nouveau plan local d’urbanisme. La mise en révision avait été engagée en décembre 2020. Après une phase de concertation, le Conseil de Paris avait arrêté en juin 2023 un projet de PLU, qui a fait l’objet d’une enquête publique au tout début de 2024.</p>
-<p>À cette époque, le dossier d’enquête publique consistait en une multitude de gros fichiers PDF : pas de géoportail, pas de couches SIG… Si l’on voulait exploiter les données, il fallait se débrouiller.</p>
+<p>À cette époque, le dossier d’enquête publique consistait en une multitude de gros fichiers PDF : pas de géoportail, pas de couches SIG… Si l’on voulait exploiter les données, il fallait <strong>se débrouiller</strong>.</p>
 <p>Nous allons voir comment !</p>
 <section id="les-planches-graphiques-au-12000e" class="level2">
-<h2 class="anchored" data-anchor-id="les-planches-graphiques-au-12000e">Les planches graphiques au 1/2000e</h2>
-<p>Dans le PLU, l’une des pièces-clés est l’atlas des planches au 1/2000e. Ces planches regroupent toutes les règles d’urbanisme applicables sur le territoire parisien. Elles représentent une traduction graphique du règlement écrit.</p>
-<p>Cet atlas est aujourd’hui accessible en ligne sur le site <a href="https://regles-urbanisme.paris.fr/">Règles d’urbanisme de Paris</a>.</p>
+<h2 class="anchored" data-anchor-id="les-planches-graphiques-au-12000e">Les planches graphiques au 1/2000<sup>e</sup></h2>
+<p>Dans le PLU, l’une des pièces-clés est l’atlas des planches au 1/2000<sup>e</sup>. Ces cartes regroupent les règles d’urbanisme applicables sur le territoire parisien. Elles représentent une traduction graphique du règlement écrit.</p>
+<p>L’atlas est aujourd’hui accessible en ligne sur le site des <a href="https://regles-urbanisme.paris.fr/">Règles d’urbanisme de Paris</a>.</p>
 <section id="une-planche" class="level3">
 <h3 class="anchored" data-anchor-id="une-planche">Une planche</h3>
-<p>Notre objectif : afficher la planche D-05 dans QGIS. Pour cela, on va la télécharger, la traiter et la géoréférencer.</p>
+<p>Notre objectif va être d’afficher une des planches dans QGIS. On pourra ainsi superposer d’autres couches pour nos analyses. Pour cela, on va télécharger l’image de la carte, la traiter et la géoréférencer.</p>
 <section id="téléchargement" class="level4">
 <h4 class="anchored" data-anchor-id="téléchargement">Téléchargement</h4>
+<p>J’ai choisi la planche D-05, qui représente une partie du 8<sup>e</sup> arrondissement.</p>
 <ul>
-<li>Cliquer sur la carte interactive dans le rectangle D-05</li>
-<li>Dans la pop-up qui surgit, cliquer sur Vue pour télécharger la planche au format PDF.</li>
+<li>Sur le site des Règles d’urbanisme de Paris, dans l’onglet <a href="https://regles-urbanisme.paris.fr/plu-bioclimatique/jsp/site/Portal.jsp?document_id=198&amp;portlet_id=45">Documentations</a>, trouver le plan de repérage de l’atlas.</li>
+<li>Cliquer sur le rectangle D-05.</li>
+<li>Dans la pop-up qui surgit, cliquer sur <strong>Vue</strong> pour télécharger la planche au format PDF.</li>
 </ul>
 <p><a href="https://regles-urbanisme.paris.fr/plu-bioclimatique/jsp/site/Portal.jsp?document_id=198&amp;portlet_id=45#consultation_html"><img src="../resources/plu-bio/atlas_planches.jpeg" class="img-fluid"></a></p>
 </section>
 <section id="traitement" class="level4">
 <h4 class="anchored" data-anchor-id="traitement">Traitement</h4>
-<p>Nous avons un fichier PDF. Il nous faut le convertir au format image, puis éliminer le cartouche pour ne conserver que la carte. On peut par exemple utiliser GIMP. Pour aller plus vite, l’image retraitée est téléchargeable <a href="https://www.normalesup.org/~gmercier/D_05.jpg">ici</a>.</p>
+<p>Nous avons un fichier PDF. Il nous faut le convertir au format image, puis éliminer le cartouche afin de ne conserver que la carte. On peut par exemple utiliser GIMP, ou Photoshop.</p>
+<p>Pour aller plus vite, l’image déjà traitée est téléchargeable <a href="https://www.normalesup.org/~gmercier/D_05.jpg">ici</a>.</p>
 <p><img src="../resources/plu-bio/gimp_rognage.jpeg" class="img-fluid"></p>
 </section>
 <section id="géoréférencement" class="level4">
 <h4 class="anchored" data-anchor-id="géoréférencement">Géoréférencement</h4>
-<p>Géoréférencer une image, c’est associer à chacun des pixels qui la composent une coordonnée géographique. Pour cela, il suffit de donner à QGIS les coordonnées de quelques points de contrôle (aussi appelés points d’appuis). Il se charge d’interpoler tous les autres.</p>
+<p>Géoréférencer une image, c’est associer à chacun des pixels qui la composent une coordonnée géographique. Pour cela, il suffit de donner à QGIS les coordonnées de quelques <strong>points de contrôle</strong> (aussi appelés points d’appuis). Il se charge d’interpoler tous les autres.</p>
 <section id="couche-de-référence" class="level5">
 <h5 class="anchored" data-anchor-id="couche-de-référence">Couche de référence</h5>
-<p>La qualité du géoréférencement dépend donc en grande partie du choix des points de contrôle. Pour être le plus précis possible, on va charger dans QGIS l’une des couches utilisée par l’APUR pour établir les cartes du PLU : la couche de l’<a href="https://opendata.apur.org/datasets/Apur::emprise-batie-paris/about">emprise bâtie de Paris</a>.</p>
-<p>Ce sera l’occasion d’apprendre comment utiliser des géoservices pour afficher un flux sans téléchargement préalable, puisque l’APUR utilise ArcGIS Server.</p>
+<p>La qualité du géoréférencement dépend donc en grande partie du choix des points de contrôle. Pour être le plus précis possible, on va charger dans QGIS l’une des couches utilisée par l’Atelier parisien d’urbanisme (APUR) pour établir les cartes du PLU : la couche de l’<a href="https://opendata.apur.org/datasets/Apur::emprise-batie-paris/about">emprise bâtie de Paris</a>.</p>
+<p>Ce sera l’occasion d’apprendre comment utiliser des géoservices, c’est-à-dire des flux de données sans téléchargement préalable, puisque l’APUR utilise ArcGIS Server.</p>
 <ul>
 <li>Créer un projet vide dans QGIS</li>
 <li>Sélectionner le SCR 2154 (RGF93v1 / Lambert-93)</li>
-<li>Couche &gt; Ajouter une couche &gt; Ajouter une couche de serveur ArcGIS REST</li>
+<li><strong>Couche &gt; Ajouter une couche de serveur ArcGIS REST</strong></li>
 <li>URL du serveur : <a href="https://carto2.apur.org/apur/rest/services/OPENDATA/">https://carto2.apur.org/apur/rest/services/OPENDATA/</a></li>
 </ul>
 <p><img src="../resources/plu-bio/arcgis_rest.jpeg" class="img-fluid"></p>
-<ul>
-<li>Sélectionner la couche <code>EMPRISE_BATIE_PARIS</code>, <code>Période de construction</code>, celle au format raster, cela se chargera plus rapidement.</li>
-</ul>
+<p>Dans la liste des couches qui s’affiche, trouver <strong>EMPRISE_BATIE_PARIS</strong> et ajouter le 2<sup>e</sup> <strong>Période de construction</strong>. C’est un flux image et non un flux vectoriel, cela se chargera plus rapidement.</p>
 <p><img src="../resources/plu-bio/arcgis_emprises.jpeg" class="img-fluid"></p>
 </section>
 <section id="géocodage" class="level5">
 <h5 class="anchored" data-anchor-id="géocodage">Géocodage</h5>
-<p>Ouvrir l’outil de géoréférencement.</p>
+<p>Ouvrir l’outil de géoréférencement :</p>
 <ul>
-<li>Couche &gt; Géoréférencer</li>
-<li>Fichier &gt; Ouvrir un raster</li>
+<li><strong>Couche &gt; Géoréférencer</strong></li>
+</ul>
+<p>Puis, dans la nouvelle fenêtre qui s’ouvre :</p>
+<ul>
+<li><strong>Fichier &gt; Ouvrir un raster</strong></li>
 <li>Choisir le fichier <code>D_05.jpg</code></li>
 </ul>
-<p>On définit ensuite les paramètres de la transformation, en conservant les paramètres proposés par défaut (transformation linéaire, ré-échantillonnage plus proche voisin) mais en cochant la case “créer seulement un fichier World”.</p>
+<p>On définit ensuite les paramètres de la transformation.</p>
+<p>On conservera les paramètres proposés par défaut :</p>
+<ul>
+<li>Type de transformation : <strong>Linéaire</strong></li>
+<li>Mode de ré-échantillonnage : <strong>Plus proche voisin</strong></li>
+</ul>
+<p>Mais on cochera la case <strong>Créer seulement un fichier World</strong>.</p>
+<p>Traduction : le fichier que l’on a est très propre, l’image n’a pas été déformée, la projection source est très certainement la même que la projection cible = on a seulement besoin de réduire/agrandir, tourner, translater l’image et non de la tordre pour l’ajuster.</p>
 <p><img src="../resources/plu-bio/parametres_transformation.jpeg" class="img-fluid"></p>
-<p>Puis, avec l’outil prévu à cet effet, sélectionner des points de contrôle, en cliquant successivement sur un point de l’image puis le même point sur la carte. On peut ici se contenter de trois points non alignés et distants les uns des autres. À partir de 3 points, QGIS calcule les erreurs de géoréférencement : en règle générale, il est bon d’avoir des écarts inférieurs à 10 pixels.</p>
-<p>Les points de contrôles utilisés dans l’image ci-dessous sont téléchargeables <a href="../resources/plu-bio/D_05.jpg.points">ici</a>. On peut les charger si on le souhaite.</p>
+<p>Puis, avec l’outil prévu à cet effet, sélectionner des points de contrôle, en cliquant successivement sur un point de l’image puis le même point sur la carte. On peut ici se contenter de <strong>trois points</strong> non alignés et distants les uns des autres. À partir de 3 points, QGIS calcule les erreurs de géoréférencement : en règle générale, il est bon d’avoir des écarts inférieurs à 10 pixels.</p>
 <p><img src="../resources/plu-bio/points-de-controles.jpeg" class="img-fluid"></p>
-<p>Appliquer ensuite la transformation. La carte s’affiche à son emplacement à Paris, on peut vérifier la qualité du géoréférencement en appliquant une légère transparence.</p>
+<p>Les points de contrôles utilisés dans l’image ci-dessous sont téléchargeables <a href="../resources/plu-bio/D_05.jpg.points">ici</a>. On peut les charger si on le souhaite.</p>
+<p>Appliquer ensuite la transformation. La carte s’affiche à son emplacement à Paris, on peut vérifier la qualité du géoréférencement en affichant notre couche de référence et en appliquant une légère transparence à l’image recalée.</p>
 <p><img src="../resources/plu-bio/carte_georeferencee.jpeg" class="img-fluid"></p>
 </section>
 <section id="fichier-world" class="level5">
 <h5 class="anchored" data-anchor-id="fichier-world">Fichier World</h5>
-<p>Par curiosité, et parce que cela nous sera utile plus tard, allons voir dans le dossier contenant l’image <code>D_05.jpg</code>. On remarque qu’un nouveau fichier a été créé : <code>D_05.wld</code>. Grâce à ce fichier, QGIS est capable de transformer la coordonnée d’un pixel de l’image en coordonnée géographique. On peut l’ouvrir avec un éditeur de texte.</p>
+<p>Par curiosité, et parce que cela nous sera utile plus tard, allons voir dans le dossier contenant l’image <code>D_05.jpg</code>. On remarque qu’un nouveau fichier a été créé : <code>D_05.wld</code>. C’est en lisant ce fichier que QGIS est capable de transformer la coordonnée d’un pixel de l’image (ex : 234, 545) en une coordonnée géographique (ex: 647&nbsp;770, 6&nbsp;864&nbsp;143).</p>
+<p>On peut ouvrir ce fichier avec un éditeur de texte.</p>
 <p><img src="../resources/plu-bio/fichier_world.jpeg" class="img-fluid"></p>
-<p>On retiendra : - que les valeurs A et D sont des facteurs <strong>d’échelle</strong>, ie. donnent la taille d’un pixel dans les unités du SCR utilisé. Ici, 1 pixel sur l’image correspond donc à 0,169 m dans la réalité. - que les valeurs B et C sont des termes de <strong>rotation</strong>. Ici, l’image n’a pas besoin d’être tournée, elle est bien au nord. - que les valeurs E et F sont des termes de <strong>translation</strong>, ie. donnent la coordonnée géographique du point supérieur gauche de la carte. On peut le vérifier sur l’image ci-dessous.</p>
+<p>On retiendra :</p>
+<ul>
+<li>que les valeurs A et D sont des facteurs <strong>d’échelle</strong>, c’est-à-dire qu’ils donnent la taille d’un pixel dans les unités du SCR utilisé. Dans notre cas, 1 pixel sur l’image = 0,169 m dans la réalité.</li>
+<li>que les valeurs B et C sont des termes de <strong>rotation</strong>. Dans notre cas, l’image n’a pas besoin d’être pivotée, elle est bien au nord, les termes sont donc nuls.</li>
+<li>que les valeurs E et F sont des termes de <strong>translation</strong>, c’est-à-dire qu’ils donnent la coordonnée géographique du point supérieur gauche de la carte. On peut le vérifier sur l’image ci-dessous.</li>
+</ul>
+<p>Pour les <em>gory details</em>, se référer à <a href="https://pro.arcgis.com/en/pro-app/latest/help/data/imagery/world-files-for-raster-datasets.htm">cette page</a>.</p>
 <p><img src="../resources/plu-bio/point_reference.jpeg" class="img-fluid"></p>
-<p>Pour les <em>gory details</em>, se référer à <a href="https://pro.arcgis.com/en/pro-app/latest/help/data/imagery/world-files-for-raster-datasets.htm">cette page</a></p>
 </section>
 </section>
 </section>
 <section id="plein-de-planches" class="level3">
 <h3 class="anchored" data-anchor-id="plein-de-planches">Plein de planches</h3>
-<p>Nous avons traité une seule planche seule. Comment procéder si l’on devait traiter l’ensemble des planches du PLU ? On se contentera d’esquisser les solutions.</p>
+<p>Nous avons traité une seule planche. Comment pourrait-on procéder si l’on voulait géoréférencer <strong>toutes</strong> les planches du PLU ? Il y a heureusement des solutions pour automatiser ce qu’on vient de faire manuellement, on va les esquisser ci-dessous.</p>
 <section id="téléchargement-1" class="level4">
 <h4 class="anchored" data-anchor-id="téléchargement-1">Téléchargement</h4>
-<p>On voit sur le site du PLU qu’une <a href="https://regles-urbanisme.paris.fr/plu-bioclimatique/servlet/plugins/document/resource?id=751&amp;id_attribute=93&amp;working_content=true">liste des planches</a> est disponible, avec les liens vers chacune des 134 planches.</p>
-<p>Le problème est que ces liens ne sont pas apparents… Pas de panique, il y a d’autres solutions que de cliquer manuellement sur chaque ligne.</p>
+<p>On voit sur le site du PLU qu’un fichier avec la <a href="https://regles-urbanisme.paris.fr/plu-bioclimatique/servlet/plugins/document/resource?id=751&amp;id_attribute=93&amp;working_content=true">liste des planches</a> est disponible.</p>
+<p>C’est un fichier PDF qui contient les liens vers chacune des 134 planches. Problème : il ne sont pas apparent… On doit donc les extraire.</p>
 <ul>
-<li>Solution sans code : extraire la liste des liens avec un utilitaire en ligne comme <a href="https://supertool.org/fr/extract-urls-and-links-from-pdfs/">Supertool</a>.</li>
-<li>Solution avec code : extraire la liste des liens avec un court script Python et la libraire <a href="https://github.com/pymupdf/pymupdf"><code>PyMuPDF</code></a>.</li>
+<li>Solution sans code : extraction avec un utilitaire en ligne comme <a href="https://supertool.org/fr/extract-urls-and-links-from-pdfs/">Supertool</a>.</li>
+<li>Solution avec code : extraction avec un mini script qui utilise la libraire <a href="https://github.com/pymupdf/pymupdf"><code>PyMuPDF</code></a>.</li>
 </ul>
-<div id="16293c32" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Quelque chose comme cela</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pymupdf</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>doc <span class="op">=</span> pymupdf.<span class="bu">open</span>(<span class="st">'Consultation_des_planches_au_1_sur_2000.pdf'</span>)</span>
+<div id="581f67e6" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pymupdf</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>doc <span class="op">=</span> pymupdf.<span class="bu">open</span>(<span class="st">'Consultation_des_planches_au_1_sur_2000.pdf'</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> page <span class="kw">in</span> doc:</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>   <span class="cf">for</span> link <span class="kw">in</span> page.get_links():</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>       <span class="bu">print</span>(l[<span class="st">'uri'</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>       url <span class="op">=</span> link[<span class="st">'uri'</span>]</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>       <span class="co"># Do something with url</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Voici un <a href="../resources/plu-bio/liste_urls.txt">fichier texte</a>) avec la liste des liens ainsi obtenue. Si on l’ouvre avec un éditeur, on observe que les liens sont cassés. Le prestataire de la Ville de Paris dont le nom figure dans les métadonnées du PDF a oublié de substituer au nom du serveur de test celui utilisé en production. On le fait pour lui grâce à la commande Find/Replace.</p>
+<p>Voici un <a href="../resources/plu-bio/liste_urls.txt">fichier texte</a> avec la liste des liens extraits. Mais on voit qu’ils sont cassés : le prestataire IT de la Ville de Paris (dont le nom figure dans les métadonnées du PDF) a oublié de substituer au nom du serveur de test celui utilisé en production !</p>
+<p>On peut s’en charger grâce à la commande Find/Replace d’un éditeur de texte, ou à un coup de ligne de commande.</p>
+<pre class="{sh}"><code>cat liste_urls.txt | sed -e 's/k04-siteplubioclimatique.form.apps.paris.md/regles-urbanisme.paris.fr/'
+</code></pre>
 <p><img src="../resources/plu-bio/liste_urls_replace_all.jpeg" class="img-fluid"></p>
 <p>Ceci fait, il est possible de télécharger tous les fichiers avec une boucle en ligne de commande.</p>
-<pre class="{sh}"><code>while read url; do wget --content-disposition $url;done &lt; liste_urls.txt
+<pre class="{sh}"><code>while read url; do wget --content-disposition $url; done &lt; liste_urls.txt
 </code></pre>
 </section>
 <section id="traitement-1" class="level4">
 <h4 class="anchored" data-anchor-id="traitement-1">Traitement</h4>
-<p>Toutes les planches PDF sont bâties sur le même modèle. Il serait donc aisé d’automatiser la conversion en JPG et le rognage du cartouche. Photoshop sait très bien le faire, GIMP également, mais avec un plugin. Le plus rapide serait d’utiliser ImageMagick en ligne de commande.</p>
-<pre class="{sh}"><code># La commande pour les curieux
+<p>Toutes les planches PDF sont bâties sur le même modèle, il est donc aisé d’automatiser la conversion en JPG et le rognage du cartouche.</p>
+<p>Photoshop sait très bien le faire, GIMP également, mais avec un plugin. Le plus rapide serait d’utiliser <a href="https://imagemagick.org/">ImageMagick</a> en ligne de commande.</p>
+<pre class="{sh}"><code># Pour les curieux, la commande pour convertir et recadrer
+# le fichier PDF qu'on a utilisé plus haut
 convert -density D_05.pdf D_05.jpg
 convert D_05.jpg -crop 6492x4723+232+136 +repage crop/D_05.jpg
 </code></pre>
 </section>
 <section id="géoréférencement-1" class="level4">
 <h4 class="anchored" data-anchor-id="géoréférencement-1">Géoréférencement</h4>
-<p>Pour géoréférencer les images obtenues, il faudrait simplement créer les fichiers World. Pour cela, on peut remarquer que les planches sont espacées très régulièrement : chaque planche est décalée de 750m en latitude et de 1000m en longitude. Il suffit de modifier les termes de translation (paramètres E et F) en conséquence, en laissant le facteur d’échelle et les termes de rotation inchangés.</p>
+<p>Pour géoréférencer les images obtenues, il faudrait simplement créer les fichiers World correspondant à chaque planche.</p>
+<p>Pour cela, on remarque que les planches sont espacées très régulièrement : en fait, chaque planche est décalée de 750m en latitude et de 1000m en longitude. Pour générer les fichiers World, on pourrait donc partir des coordonnées de D_05 et recalculer les termes de translation (paramètres E et F) des autres planches, en laissant le facteur d’échelle et les termes de rotation inchangés.</p>
 <p><img src="../resources/plu-bio/batch_fichier_world.jpeg" class="img-fluid"></p>
 <p>Faisons le test sur un exemple :</p>
 <ul>
 <li>Télécharger le fichier <a href="https://www.normalesup.org/~gmercier/E_05.jpg"><code>E_05.jpg</code></a>.</li>
 <li>Copier le fichier <code>D_05.wld</code> en un fichier <code>E_05.wld</code></li>
 <li>Ouvrir le fichier <code>E_05.wld</code> et ajouter 1000 au nombre de la 5e ligne</li>
-<li>QGIS &gt; Couches &gt; Ajouter une couche Raster &gt; <code>E_05.jpg</code></li>
+<li>Ajouter la couche <code>E_05.jpg</code> dans QGIS : <strong>Couches &gt; Ajouter une couche Raster </strong></li>
 </ul>
 <p>Miracle : la couche est parfaitement ajustée !</p>
 <p><img src="../resources/plu-bio/ajustement_parfait.jpeg" class="img-fluid"></p>

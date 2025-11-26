@@ -1,6 +1,8 @@
 ---
 title: "TD PLU Bioclimatique"
 format: html
+execute:
+    eval: false
 ---
 
 Dans ce TD, nous allons mettre en pratique quelques compétences acquises
@@ -180,7 +182,7 @@ import pymupdf
 
 doc = pymupdf.open('Consultation_des_planches_au_1_sur_2000.pdf')
 for page in doc:
-   for link in page/.get_links():
+   for link in page.get_links():
        print(l['uri'])
 
 ```

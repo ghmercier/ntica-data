@@ -183,8 +183,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#les-planches-graphiques-au-12000e" id="toc-les-planches-graphiques-au-12000e" class="nav-link active" data-scroll-target="#les-planches-graphiques-au-12000e">Les planches graphiques au 1/2000e</a>
   <ul class="collapse">
-  <li><a href="#une-première-planche" id="toc-une-première-planche" class="nav-link" data-scroll-target="#une-première-planche">Une première planche</a></li>
-  <li><a href="#toutes-les-planches" id="toc-toutes-les-planches" class="nav-link" data-scroll-target="#toutes-les-planches">Toutes les planches</a></li>
+  <li><a href="#une-planche" id="toc-une-planche" class="nav-link" data-scroll-target="#une-planche">Une planche</a></li>
+  <li><a href="#plein-de-planches" id="toc-plein-de-planches" class="nav-link" data-scroll-target="#plein-de-planches">Plein de planches</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/ghmercier/ntica-data/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
@@ -219,8 +219,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="les-planches-graphiques-au-12000e">Les planches graphiques au 1/2000e</h2>
 <p>Dans le PLU, l’une des pièces-clés est l’atlas des planches au 1/2000e. Ces planches regroupent toutes les règles d’urbanisme applicables sur le territoire parisien. Elles représentent une traduction graphique du règlement écrit.</p>
 <p>Cet atlas est aujourd’hui accessible en ligne sur le site <a href="https://regles-urbanisme.paris.fr/">Règles d’urbanisme de Paris</a>.</p>
-<section id="une-première-planche" class="level3">
-<h3 class="anchored" data-anchor-id="une-première-planche">Une première planche</h3>
+<section id="une-planche" class="level3">
+<h3 class="anchored" data-anchor-id="une-planche">Une planche</h3>
 <p>Notre objectif : afficher la planche D-05 dans QGIS. Pour cela, on va la télécharger, la traiter et la géoréférencer.</p>
 <section id="téléchargement" class="level4">
 <h4 class="anchored" data-anchor-id="téléchargement">Téléchargement</h4>
@@ -270,28 +270,66 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Appliquer ensuite la transformation. La carte s’affiche à son emplacement à Paris, on peut vérifier la qualité du géoréférencement en appliquant une légère transparence.</p>
 <p><img src="../resources/plu-bio/carte_georeferencee.jpeg" class="img-fluid"></p>
 </section>
+<section id="fichier-world" class="level5">
+<h5 class="anchored" data-anchor-id="fichier-world">Fichier World</h5>
+<p>Par curiosité, et parce que cela nous sera utile plus tard, allons voir dans le dossier contenant l’image <code>D_05.jpg</code>. On remarque qu’un nouveau fichier a été créé : <code>D_05.wld</code>. Grâce à ce fichier, QGIS est capable de transformer la coordonnée d’un pixel de l’image en coordonnée géographique. On peut l’ouvrir avec un éditeur de texte.</p>
+<p><img src="../resources/plu-bio/fichier_world.jpeg" class="img-fluid"></p>
+<p>On retiendra : - que les valeurs A et D sont des facteurs <strong>d’échelle</strong>, ie. donnent la taille d’un pixel dans les unités du SCR utilisé. Ici, 1 pixel sur l’image correspond donc à 0,169 m dans la réalité. - que les valeurs B et C sont des termes de <strong>rotation</strong>. Ici, l’image n’a pas besoin d’être tournée, elle est bien au nord. - que les valeurs E et F sont des termes de <strong>translation</strong>, ie. donnent la coordonnée géographique du point supérieur gauche de la carte. On peut le vérifier sur l’image ci-dessous.</p>
+<p><img src="../resources/plu-bio/point_reference.jpeg" class="img-fluid"></p>
+<p>Pour les <em>gory details</em>, se référer à <a href="https://pro.arcgis.com/en/pro-app/latest/help/data/imagery/world-files-for-raster-datasets.htm">cette page</a></p>
 </section>
 </section>
-<section id="toutes-les-planches" class="level3">
-<h3 class="anchored" data-anchor-id="toutes-les-planches">Toutes les planches</h3>
-<p>Nous avons téléchargé 1 planche. Comment télécharger l’ensemble de l’atlas, composé de 134 planches ?</p>
-<details>
-<summary>
-Solution
-</summary>
-<p>On remarque tout d’abord qu’une <a href="https://regles-urbanisme.paris.fr/plu-bioclimatique/servlet/plugins/document/resource?id=751&amp;id_attribute=93&amp;working_content=true">liste des planches</a> est disponible.</p>
-<p>C’est un fichier PDF qui compile les liens vers les 134 planches. Problème : les liens ne sont pas apparents. On peut toujours cliquer manuellement sur les 134 liens, mais c’est long…</p>
-<p>Pour l’éviter, plusieurs options :</p>
+</section>
+<section id="plein-de-planches" class="level3">
+<h3 class="anchored" data-anchor-id="plein-de-planches">Plein de planches</h3>
+<p>Nous avons traité une seule planche seule. Comment procéder si l’on devait traiter l’ensemble des planches du PLU ? On se contentera d’esquisser les solutions.</p>
+<section id="téléchargement-1" class="level4">
+<h4 class="anchored" data-anchor-id="téléchargement-1">Téléchargement</h4>
+<p>On voit sur le site du PLU qu’une <a href="https://regles-urbanisme.paris.fr/plu-bioclimatique/servlet/plugins/document/resource?id=751&amp;id_attribute=93&amp;working_content=true">liste des planches</a> est disponible, avec les liens vers chacune des 134 planches.</p>
+<p>Le problème est que ces liens ne sont pas apparents… Pas de panique, il y a d’autres solutions que de cliquer manuellement sur chaque ligne.</p>
 <ul>
-<li>Solution NoCode : extraire la liste des liens avec un utilitaire en ligne comme <a href="https://supertool.org/fr/extract-urls-and-links-from-pdfs/">Supertool</a>.</li>
-<li>Solution Code : extraire la liste des liens avec un court script Python, qui mobilise la librairie <a href="https://github.com/pymupdf/pymupdf"><code>PyMuPDF</code></a>.</li>
+<li>Solution sans code : extraire la liste des liens avec un utilitaire en ligne comme <a href="https://supertool.org/fr/extract-urls-and-links-from-pdfs/">Supertool</a>.</li>
+<li>Solution avec code : extraire la liste des liens avec un court script Python et la libraire <a href="https://github.com/pymupdf/pymupdf"><code>PyMuPDF</code></a>.</li>
 </ul>
-<div id="81f2e1ac" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test de code</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="16293c32" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Quelque chose comme cela</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pymupdf</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>doc <span class="op">=</span> pymupdf.<span class="bu">open</span>(<span class="st">'Consultation_des_planches_au_1_sur_2000.pdf'</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> page <span class="kw">in</span> doc:</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>   <span class="cf">for</span> link <span class="kw">in</span> page.get_links():</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>       <span class="bu">print</span>(l[<span class="st">'uri'</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</details>
+<p>Voici un <a href="../resources/plu-bio/liste_urls.txt">fichier texte</a>) avec la liste des liens ainsi obtenue. Si on l’ouvre avec un éditeur, on observe que les liens sont cassés. Le prestataire de la Ville de Paris dont le nom figure dans les métadonnées du PDF a oublié de substituer au nom du serveur de test celui utilisé en production. On le fait pour lui grâce à la commande Find/Replace.</p>
+<p><img src="../resources/plu-bio/liste_urls_replace_all.jpeg" class="img-fluid"></p>
+<p>Ceci fait, il est possible de télécharger tous les fichiers avec une boucle en ligne de commande.</p>
+<pre class="{sh}"><code>while read url; do wget --content-disposition $url;done &lt; liste_urls.txt
+</code></pre>
+</section>
+<section id="traitement-1" class="level4">
+<h4 class="anchored" data-anchor-id="traitement-1">Traitement</h4>
+<p>Toutes les planches PDF sont bâties sur le même modèle. Il serait donc aisé d’automatiser la conversion en JPG et le rognage du cartouche. Photoshop sait très bien le faire, GIMP également, mais avec un plugin. Le plus rapide serait d’utiliser ImageMagick en ligne de commande.</p>
+<pre class="{sh}"><code># La commande pour les curieux
+convert -density D_05.pdf D_05.jpg
+convert D_05.jpg -crop 6492x4723+232+136 +repage crop/D_05.jpg
+</code></pre>
+</section>
+<section id="géoréférencement-1" class="level4">
+<h4 class="anchored" data-anchor-id="géoréférencement-1">Géoréférencement</h4>
+<p>Pour géoréférencer les images obtenues, il faudrait simplement créer les fichiers World. Pour cela, on peut remarquer que les planches sont espacées très régulièrement : chaque planche est décalée de 750m en latitude et de 1000m en longitude. Il suffit de modifier les termes de translation (paramètres E et F) en conséquence, en laissant le facteur d’échelle et les termes de rotation inchangés.</p>
+<p><img src="../resources/plu-bio/batch_fichier_world.jpeg" class="img-fluid"></p>
+<p>Faisons le test sur un exemple :</p>
+<ul>
+<li>Télécharger le fichier <a href="https://www.normalesup.org/~gmercier/E_05.jpg"><code>E_05.jpg</code></a>.</li>
+<li>Copier le fichier <code>D_05.wld</code> en un fichier <code>E_05.wld</code></li>
+<li>Ouvrir le fichier <code>E_05.wld</code> et ajouter 1000 au nombre de la 5e ligne</li>
+<li>QGIS &gt; Couches &gt; Ajouter une couche Raster &gt; <code>E_05.jpg</code></li>
+</ul>
+<p>Miracle : la couche est parfaitement ajustée !</p>
+<p><img src="../resources/plu-bio/ajustement_parfait.jpeg" class="img-fluid"></p>
 
 
+</section>
 </section>
 </section>
 

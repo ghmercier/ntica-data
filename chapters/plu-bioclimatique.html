@@ -189,7 +189,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#les-emplacements-réservés" id="toc-les-emplacements-réservés" class="nav-link" data-scroll-target="#les-emplacements-réservés">Les emplacements réservés</a>
   <ul class="collapse">
   <li><a href="#une-page" id="toc-une-page" class="nav-link" data-scroll-target="#une-page">Une page</a></li>
-  <li><a href="#toutes-les-pages" id="toc-toutes-les-pages" class="nav-link" data-scroll-target="#toutes-les-pages">Toutes les pages</a></li>
+  <li><a href="#pleins-de-pages" id="toc-pleins-de-pages" class="nav-link" data-scroll-target="#pleins-de-pages">Pleins de pages</a></li>
   </ul></li>
   <li><a href="#références" id="toc-références" class="nav-link" data-scroll-target="#références">Références</a>
   <ul class="collapse">
@@ -318,7 +318,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Solution sans code : extraction avec un utilitaire en ligne comme <a href="https://supertool.org/fr/extract-urls-and-links-from-pdfs/">Supertool</a>.</li>
 <li>Solution avec code : extraction avec un mini script qui utilise la libraire <a href="https://github.com/pymupdf/pymupdf"><code>PyMuPDF</code></a>.</li>
 </ul>
-<div id="6e6cc5cb" class="cell" data-execution_count="1">
+<div id="fbc5fa72" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pymupdf</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>doc <span class="op">=</span> pymupdf.<span class="bu">open</span>(<span class="st">'Consultation_des_planches_au_1_sur_2000.pdf'</span>)</span>
@@ -366,18 +366,18 @@ convert D_05.jpg -crop 6492x4720+232+136 +repage crop/D_05.jpg
 </section>
 <section id="les-emplacements-réservés" class="level2">
 <h2 class="anchored" data-anchor-id="les-emplacements-réservés">Les emplacements réservés</h2>
-<p>Le règlement du PLU liste dans son annexe V les emplacements réservés en vue de la réalisation de certains types de logements : logements locatifs sociaux et logements en BRS.</p>
-<p>Cette liste est donnée sous la forme d’un tableau avec des adresses qui s’étend sur 33 pages d’un fichier PDF. Notre objectif va être de construire le semis de points des emplacements réservés à charger sous QGIS. Pour cela, il faut extraire les pages intéressantes, récupérer les données textuelles , nettoyer le fichier, géocoder les adresses puis charger la couche.</p>
+<p>Le règlement du PLU liste dans son annexe V “<em>les emplacements réservés en vue de la réalisation de certains types de logements</em>” : logements locatifs sociaux et logements en BRS.</p>
+<p>Cette liste est donnée sous la forme d’un tableau avec des adresses qui s’étend sur 33 pages d’un fichier PDF. Notre objectif va être de construire le semis de points des emplacements réservés à charger sous QGIS. Pour cela, il faut <strong>extraire</strong> les pages intéressantes, <strong>récupérer</strong> les données textuelles, <strong>nettoyer</strong> le fichier, <strong>géocoder</strong> les adresses, <strong>charger</strong> la couche et <strong>vérifier</strong> que tout va bien.</p>
 <section id="une-page" class="level3">
 <h3 class="anchored" data-anchor-id="une-page">Une page</h3>
-<p>Comme dans la partie précédente, on va commencer par se faire la main sur une seule page d’adresses, avant de voir comment généraliser. On restera dans le 8<sup>e</sup> arrondissement.</p>
+<p>Comme dans la partie précédente, on va se faire la main sur une seule page d’adresses, avant de voir comment généraliser. On restera dans le 8<sup>e</sup> arrondissement.</p>
 <section id="extraction" class="level4">
 <h4 class="anchored" data-anchor-id="extraction">Extraction</h4>
 <ul>
 <li>Sur le site Règles d’urbanisme de Paris, dans l’onglet <a href="https://regles-urbanisme.paris.fr/plu-bioclimatique/jsp/site/Portal.jsp?document_id=198&amp;portlet_id=45">Documentations</a>, télécharger le volume 1 du Tome 2 du règlement.</li>
 <li>Extraire la page 51 du PDF.</li>
 </ul>
-<p>Pour extraire la page, on peut utiliser <a href="https://pdfsam.org/fr/pdfsam-basic/">PDF Sam Basic</a>, ou bien <a href="https://qpdf.sourceforge.io/">QPDF</a> en ligne de commande.</p>
+<p>Pour extraire la page, on peut utiliser par exemple Adobe Pro, <a href="https://pdfsam.org/fr/pdfsam-basic/">PDF Sam Basic</a>, ou bien <a href="https://qpdf.sourceforge.io/">QPDF</a> si on préfère la ligne de commande.</p>
 <pre class="{sh}"><code>qpdf --empty --pages REG2A1.pdf 51 -- p51.pdf
 </code></pre>
 <p>La page extraite est téléchargeable <a href="../resources/plu-bio/p51.pdf">ici</a> si besoin.</p>
@@ -385,22 +385,19 @@ convert D_05.jpg -crop 6492x4720+232+136 +repage crop/D_05.jpg
 <section id="conversion" class="level4">
 <h4 class="anchored" data-anchor-id="conversion">Conversion</h4>
 <p>En examinant la page, on s’aperçoit que le texte a été transformé en image lors de la création du PDF : on ne peut directement copier/coller, il faut au préalable une étape de reconnaissance optique de caractères (OCR en anglais) pour récupérer le texte.</p>
+<p><img src="../resources/plu-bio/pdf_mode_image.jpeg" class="img-fluid"></p>
 <p>Plusieurs options s’offrent à nous :</p>
 <ul>
 <li>Si on dispose d’<strong>Acrobat Pro</strong> (version payante du célèbre lecteur de PDF), on peut utiliser la fonction Scan et OCR.</li>
-</ul>
-<p><img src="../resources/plu-bio/acrobatpro.jpeg" class="img-fluid"></p>
-<ul>
 <li>Si on aime les GAFAM, on peut recourir à <strong>un LLM généraliste</strong> comme ChatGPT, Gemini, DeepSeek ou Le Chat.</li>
 </ul>
 <p><img src="../resources/plu-bio/ocr_gemini.jpeg" class="img-fluid"></p>
 <ul>
-<li>On peut aussi faire appel à des <strong>services plus spécialisés</strong>, peu chers et remarquablement efficaces, comme <a href="https://extracttable.com/">ExtractTable.com</a>, créé par une jeune entreprise indienne. C’est celle que nous allons retenir.</li>
+<li>On peut aussi faire appel à des <strong>services plus spécialisés</strong>, peu chers et remarquablement efficaces, comme <a href="https://extracttable.com/">ExtractTable.com</a>, créé par une jeune entreprise indienne. C’est celle que nous allons retenir. Pour les besoins du cours vous pouvez utiliser la clé API ci-dessous.</li>
 </ul>
-<p>Pour les besoins du cours vous pouvez utiliser la clé API suivante :</p>
-<pre class="{sh}"><code>H1qZ3YHuNPJR6ueRTpcYEyphdrTilu8wZR3bxPAK</code></pre>
+<pre class="{sh}"><code>API_KEY = H1qZ3YHuNPJR6ueRTpcYEyphdrTilu8wZR3bxPAK</code></pre>
 <p><img src="../resources/plu-bio/extracttable.jpeg" class="img-fluid"></p>
-<p>Le fichier Excel en résultant est téléchargeable <a href="../resources/plu-bio/p51.pdf.xlsx">ici</a> si besoin.</p>
+<p>Le fichier Excel qui en résulte est téléchargeable <a href="../resources/plu-bio/p51.pdf.xlsx">ici</a> si besoin.</p>
 </section>
 <section id="nettoyage" class="level4">
 <h4 class="anchored" data-anchor-id="nettoyage">Nettoyage</h4>
@@ -416,7 +413,7 @@ convert D_05.jpg -crop 6492x4720+232+136 +repage crop/D_05.jpg
 <h4 class="anchored" data-anchor-id="géocodage-1">Géocodage</h4>
 <p>Pour géocoder le fichier, rendez-vous sur le <a href="https://adresse.data.gouv.fr/outils/csv">Géocodeur</a> de la Base Nationale Adresse.</p>
 <p><img src="../resources/plu-bio/geocodage_ban.jpeg" class="img-fluid"></p>
-<p>Le fichier géocodé est téléchargeable <a href="../resources/plu-bio/p51.pdf-clean.geocoded.xlsx">ici</a> en CSV si besoin.</p>
+<p>Le fichier géocodé est téléchargeable <a href="../resources/plu-bio/p51.pdf-clean.geocoded.csv">ici</a> en CSV si besoin.</p>
 </section>
 <section id="chargement" class="level4">
 <h4 class="anchored" data-anchor-id="chargement">Chargement</h4>
@@ -428,25 +425,25 @@ convert D_05.jpg -crop 6492x4720+232+136 +repage crop/D_05.jpg
 </section>
 <section id="vérifications" class="level4">
 <h4 class="anchored" data-anchor-id="vérifications">Vérifications</h4>
-<p>Il est bon de vérifier les imprécisions éventuelles dans le géocodage. Ainsi, le géocodeur a traduit l’adresse <code>1-3 rue de Cerisoles</code> par le <code>3 rue de Cerisoles</code>. En conséquence, le point n’est pas correctement placé. Fort heureusement, le géocodeur fournit des indications sur le degré de confiance à accorder aux résultats via le champ <code>result_score</code>.</p>
-<p><img src="../resources/plu-bio/imprecisions.png" class="img-fluid"></p>
+<p>Il est bon de vérifier les imprécisions éventuelles dans le géocodage. Ainsi, le géocodeur a traduit l’adresse <code>1-3 rue de Cerisoles</code> par le <code>3 rue de Cerisoles</code>. En conséquence, le point n’est pas correctement placé. Fort heureusement, le géocodeur fournit des indications sur le degré de confiance à accorder aux résultats via le champ <code>result_score</code>. On peut filtrer les enregistrements avec les scores les plus bas.</p>
+<p><img src="../resources/plu-bio/imprecisions.jpeg" class="img-fluid"></p>
 </section>
 </section>
-<section id="toutes-les-pages" class="level3">
-<h3 class="anchored" data-anchor-id="toutes-les-pages">Toutes les pages</h3>
+<section id="pleins-de-pages" class="level3">
+<h3 class="anchored" data-anchor-id="pleins-de-pages">Pleins de pages</h3>
 <p>Et si l’on devait traiter les 33 pages pour reconstituer l’ensemble du semis de points ? Quelques indications seulement sur ce que l’on pourrait faire :</p>
 <ul>
 <li>Utiliser l’API d’ExtractTable plutôt que l’interface graphique pour extraire en lot les données.</li>
 <li>Fusionner les fichiers CSV obtenus.</li>
-<li>Dédupliquer les lignes contenant plusieurs adresses en utilisant une expression régulière pour les détecter</li>
+<li>Dédupliquer les lignes en détectant les doubles adresses avec une expression régulière.</li>
 </ul>
-<p>Voici la <a href="https://umap.openstreetmap.fr/fr/map/plub-carte-des-emplacements-reserves-logements_940982">carte</a> ainsi constituée des emplacements réservés tels qu’ils étaient avant l’enquête publique, et la <a href="plub_carte_des_emplacements_reserves_logements_2023.geojson">couche</a> (au format GeoJSON) des données qu’elle représente.</p>
-<p>Identifiez-vous sur la feuille D5 des emplacements réservés qui ont disparu après l’enquête publique ?…</p>
+<p>Voici la <a href="https://umap.openstreetmap.fr/fr/map/plub-carte-des-emplacements-reserves-logements_940982">carte</a> des emplacements réservés tels qu’ils étaient avant l’enquête publique, que j’avais constituée en 2023. Voici également la <a href="plub_carte_des_emplacements_reserves_logements_2023.geojson">couche</a> (au format GeoJSON) des données qu’elle représente.</p>
+<p>Chargez cette couche dans QGIS. Identifiez-vous sur la feuille D5 des emplacements réservés qui ont disparu après l’enquête publique ?…</p>
 <details>
 <summary>
 Solution
 </summary>
-<p>Par exemple le 30 bis rue Copernic, à l’ouest, sans doute parce qu’il y avait déjà un <a href="https://www.studiohoxha.com/salle-de-sport-residence-paris-16/">projet engagé</a></p>
+<p>Par exemple le 30 bis rue Copernic, à l’ouest, sans doute parce qu’il y avait déjà un <a href="https://www.studiohoxha.com/salle-de-sport-residence-paris-16/">projet engagé</a>…</p>
 </details>
 </section>
 </section>
@@ -460,7 +457,7 @@ Solution
 <h3 class="anchored" data-anchor-id="bibliographie">Bibliographie</h3>
 <p>À plusieurs reprises, nous avons eu recours à des programmes en ligne de commande pour automatiser des tâches.</p>
 <p>Pour en savoir plus sur la ligne de commande et apprendre à maîtriser le côté obsur de l’informatique, je recommande le livre <a href="https://www.h-k.fr/minimax.info.003LDCPE"><em>La ligne de commande par l’exemple</em></a>, de Céline Chevalier, Sébastien Desreux, Vincent Fourmond (Paris, H&amp;K, 2013). Un ouvrage accessible, pédagogique et drôle.</p>
-<p>![](/resources/plu-bio/ligne_commande_par_exemple.jpg]</p>
+<p><img src="../resources/plu-bio/ligne_commande_par_exemple.jpg" class="img-fluid"></p>
 
 
 </section>

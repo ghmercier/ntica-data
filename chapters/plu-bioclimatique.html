@@ -318,7 +318,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Solution sans code : extraction avec un utilitaire en ligne comme <a href="https://supertool.org/fr/extract-urls-and-links-from-pdfs/">Supertool</a>.</li>
 <li>Solution avec code : extraction avec un mini script qui utilise la libraire <a href="https://github.com/pymupdf/pymupdf"><code>PyMuPDF</code></a>.</li>
 </ul>
-<div id="e8900f67" class="cell" data-execution_count="1">
+<div id="9b6a30fb" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pymupdf</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>doc <span class="op">=</span> pymupdf.<span class="bu">open</span>(<span class="st">'Consultation_des_planches_au_1_sur_2000.pdf'</span>)</span>
@@ -330,7 +330,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Voici un <a href="../resources/plu-bio/liste_urls.txt">fichier texte</a> avec la liste des liens extraits. Mais on voit qu’ils sont cassés : le prestataire IT de la Ville de Paris (dont le nom figure dans les métadonnées du PDF) a oublié de substituer au nom du serveur de test celui utilisé en production !</p>
 <p>On peut s’en charger grâce à la commande Find/Replace d’un éditeur de texte, ou à un coup de ligne de commande.</p>
-<pre class="{sh}"><code>cat liste_urls.txt | sed -e 's/k04-siteplubioclimatique.form.apps.paris.md/regles-urbanisme.paris.fr/'
+<pre class="{sh}"><code>cat liste_urls.txt | sed -e 's/k04-siteplubioclimatique.form.apps.paris.mdp/regles-urbanisme.paris.fr/'
 </code></pre>
 <p><img src="../resources/plu-bio/liste_urls_replace_all.jpeg" class="img-fluid"></p>
 <p>Ceci fait, il est possible de télécharger tous les fichiers avec une boucle en ligne de commande.</p>

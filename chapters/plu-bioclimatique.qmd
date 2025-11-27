@@ -196,7 +196,7 @@ On voit sur le site du PLU qu'un fichier avec la
 est disponible. 
 
 C'est un fichier PDF qui contient les liens vers chacune des 134 planches.
-Problème : il ne sont pas apparent… On doit donc les extraire.
+Problème : ils ne sont pas apparents… On doit donc les extraire.
 
 - Solution sans code : extraction avec un utilitaire en ligne comme 
   [Supertool](https://supertool.org/fr/extract-urls-and-links-from-pdfs/).

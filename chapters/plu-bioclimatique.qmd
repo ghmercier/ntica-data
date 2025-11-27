@@ -37,7 +37,8 @@ L'atlas est aujourd'hui accessible en ligne sur le site des
 
 Notre objectif va être d'afficher une des planches dans QGIS. On pourra
 ainsi superposer d'autres couches pour nos analyses. Pour cela, on va 
-télécharger l'image de la carte, la traiter et la géoréférencer.
+**télécharger** l'image de la carte, la **traiter** et la 
+**géoréférencer**.
 
 
 #### Téléchargement
@@ -395,7 +396,7 @@ si besoin.
 
 Le fichier CSV géocodé s'ouvre directement avec QGIS.
 
-- ** Couche > Ajouter une couche de texte délimité **
+- **Couche > Ajouter une couche de texte délimité**
 
 ![](/resources/plu-bio/semis_de_points_ok.jpeg)
 

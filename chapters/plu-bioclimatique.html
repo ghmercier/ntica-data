@@ -318,7 +318,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Solution sans code : extraction avec un utilitaire en ligne comme <a href="https://supertool.org/fr/extract-urls-and-links-from-pdfs/">Supertool</a>.</li>
 <li>Solution avec code : extraction avec un mini script qui utilise la libraire <a href="https://github.com/pymupdf/pymupdf"><code>PyMuPDF</code></a>.</li>
 </ul>
-<div id="fbc5fa72" class="cell" data-execution_count="1">
+<div id="74c946ed" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pymupdf</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>doc <span class="op">=</span> pymupdf.<span class="bu">open</span>(<span class="st">'Consultation_des_planches_au_1_sur_2000.pdf'</span>)</span>
@@ -385,7 +385,7 @@ convert D_05.jpg -crop 6492x4720+232+136 +repage crop/D_05.jpg
 <section id="conversion" class="level4">
 <h4 class="anchored" data-anchor-id="conversion">Conversion</h4>
 <p>En examinant la page, on s’aperçoit que le texte a été transformé en image lors de la création du PDF : on ne peut directement copier/coller, il faut au préalable une étape de reconnaissance optique de caractères (OCR en anglais) pour récupérer le texte.</p>
-<p><img src="../resources/plu-bio/pdf_mode_image.jpeg" class="img-fluid"></p>
+<p><img src="../resources/plu-bio/pdf_mode_image.jpeg" class="img-fluid" style="width:20.0%"></p>
 <p>Plusieurs options s’offrent à nous :</p>
 <ul>
 <li>Si on dispose d’<strong>Acrobat Pro</strong> (version payante du célèbre lecteur de PDF), on peut utiliser la fonction Scan et OCR.</li>
@@ -457,7 +457,7 @@ Solution
 <h3 class="anchored" data-anchor-id="bibliographie">Bibliographie</h3>
 <p>À plusieurs reprises, nous avons eu recours à des programmes en ligne de commande pour automatiser des tâches.</p>
 <p>Pour en savoir plus sur la ligne de commande et apprendre à maîtriser le côté obsur de l’informatique, je recommande le livre <a href="https://www.h-k.fr/minimax.info.003LDCPE"><em>La ligne de commande par l’exemple</em></a>, de Céline Chevalier, Sébastien Desreux, Vincent Fourmond (Paris, H&amp;K, 2013). Un ouvrage accessible, pédagogique et drôle.</p>
-<p><img src="../resources/plu-bio/ligne_commande_par_exemple.jpg" class="img-fluid"></p>
+<p><img src="../resources/plu-bio/ligne_commande_par_exemple.jpg" class="img-fluid" style="width:50.0%"></p>
 
 
 </section>

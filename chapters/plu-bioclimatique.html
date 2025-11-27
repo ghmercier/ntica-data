@@ -231,7 +231,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>L’atlas est aujourd’hui accessible en ligne sur le site des <a href="https://regles-urbanisme.paris.fr/">Règles d’urbanisme de Paris</a>.</p>
 <section id="une-planche" class="level3">
 <h3 class="anchored" data-anchor-id="une-planche">Une planche</h3>
-<p>Notre objectif va être d’afficher une des planches dans QGIS. On pourra ainsi superposer d’autres couches pour nos analyses. Pour cela, on va télécharger l’image de la carte, la traiter et la géoréférencer.</p>
+<p>Notre objectif va être d’afficher une des planches dans QGIS. On pourra ainsi superposer d’autres couches pour nos analyses. Pour cela, on va <strong>télécharger</strong> l’image de la carte, la <strong>traiter</strong> et la <strong>géoréférencer</strong>.</p>
 <section id="téléchargement" class="level4">
 <h4 class="anchored" data-anchor-id="téléchargement">Téléchargement</h4>
 <p>J’ai choisi la planche D-05, qui représente une partie du 8<sup>e</sup> arrondissement.</p>
@@ -318,7 +318,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Solution sans code : extraction avec un utilitaire en ligne comme <a href="https://supertool.org/fr/extract-urls-and-links-from-pdfs/">Supertool</a>.</li>
 <li>Solution avec code : extraction avec un mini script qui utilise la libraire <a href="https://github.com/pymupdf/pymupdf"><code>PyMuPDF</code></a>.</li>
 </ul>
-<div id="b1c09651" class="cell" data-execution_count="1">
+<div id="e8900f67" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pymupdf</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>doc <span class="op">=</span> pymupdf.<span class="bu">open</span>(<span class="st">'Consultation_des_planches_au_1_sur_2000.pdf'</span>)</span>
@@ -419,7 +419,7 @@ convert D_05.jpg -crop 6492x4720+232+136 +repage crop/D_05.jpg
 <h4 class="anchored" data-anchor-id="chargement">Chargement</h4>
 <p>Le fichier CSV géocodé s’ouvre directement avec QGIS.</p>
 <ul>
-<li>** Couche &gt; Ajouter une couche de texte délimité **</li>
+<li><strong>Couche &gt; Ajouter une couche de texte délimité</strong></li>
 </ul>
 <p><img src="../resources/plu-bio/semis_de_points_ok.jpeg" class="img-fluid"></p>
 </section>

@@ -227,7 +227,7 @@ On peut s'en charger grâce à la commande Find/Replace d'un éditeur de texte,
 ou à un coup de ligne de commande.
 
 ```{sh}
-cat liste_urls.txt | sed -e 's/k04-siteplubioclimatique.form.apps.paris.md/regles-urbanisme.paris.fr/'
+cat liste_urls.txt | sed -e 's/k04-siteplubioclimatique.form.apps.paris.mdp/regles-urbanisme.paris.fr/'
 
 ```
 

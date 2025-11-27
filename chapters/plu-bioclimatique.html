@@ -313,12 +313,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="téléchargement-1" class="level4">
 <h4 class="anchored" data-anchor-id="téléchargement-1">Téléchargement</h4>
 <p>On voit sur le site du PLU qu’un fichier avec la <a href="https://regles-urbanisme.paris.fr/plu-bioclimatique/servlet/plugins/document/resource?id=751&amp;id_attribute=93&amp;working_content=true">liste des planches</a> est disponible.</p>
-<p>C’est un fichier PDF qui contient les liens vers chacune des 134 planches. Problème : il ne sont pas apparent… On doit donc les extraire.</p>
+<p>C’est un fichier PDF qui contient les liens vers chacune des 134 planches. Problème : ils ne sont pas apparents… On doit donc les extraire.</p>
 <ul>
 <li>Solution sans code : extraction avec un utilitaire en ligne comme <a href="https://supertool.org/fr/extract-urls-and-links-from-pdfs/">Supertool</a>.</li>
 <li>Solution avec code : extraction avec un mini script qui utilise la libraire <a href="https://github.com/pymupdf/pymupdf"><code>PyMuPDF</code></a>.</li>
 </ul>
-<div id="74c946ed" class="cell" data-execution_count="1">
+<div id="b1c09651" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pymupdf</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>doc <span class="op">=</span> pymupdf.<span class="bu">open</span>(<span class="st">'Consultation_des_planches_au_1_sur_2000.pdf'</span>)</span>

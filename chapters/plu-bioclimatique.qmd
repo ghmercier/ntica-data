@@ -335,7 +335,7 @@ lors de la création du PDF : on ne peut directement copier/coller, il faut
 au préalable une étape de reconnaissance optique de caractères (OCR en
 anglais) pour récupérer le texte.
 
-![](/resources/plu-bio/pdf_mode_image.jpeg)
+![](/resources/plu-bio/pdf_mode_image.jpeg){width=20%}
 
 Plusieurs options s'offrent à nous : 
 
@@ -465,4 +465,4 @@ par l'exemple*](https://www.h-k.fr/minimax.info.003LDCPE), de Céline
 Chevalier, Sébastien Desreux, Vincent Fourmond (Paris, H&K, 2013). Un
 ouvrage accessible, pédagogique et drôle.
 
-![](/resources/plu-bio/ligne_commande_par_exemple.jpg)
+![](/resources/plu-bio/ligne_commande_par_exemple.jpg){width=50%}

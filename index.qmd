@@ -1,18 +1,25 @@
 ---
-title: "Travaux dirigés NTICA"
+title: "Module NTICA"
 format: html
 author:
   - name: Ghislain Mercier
     url: https://github.com/ghmercier
     email: ghislain.mercier@club-internet.fr
-date: "2025-11-25"
+date: "2026-09-24"
 ---
 
-Bienvenue à vous, chers élèves AMUR de la promo 2025/2026. Vous trouverez
-ci-dessous les liens vers les supports pour vous aider à manipuler et 
-cartographier des données. 
+Bienvenue à vous, chers élèves AMUR de la promo 2026/2027. Vous trouverez
+ci-dessous les liens vers les supports utilisés lors du module.
 
-## Préalable : le SSP Cloud
+- [Les outils du quotidien](/chapters/outils-quotidiens.html)
+- [Introduction à QGIS](/chapters/qgis-intro.html)
+
+<!--
+- [Traitement de fichiers CSV](/chapters/chapter1.html)
+- [TD PLU Bioclimatique](/chapters/plu-bioclimatique.html)
+-->
+
+<!-- ## Préalable : le SSP Cloud
 
 Certains supports sont interactifs. En cliquant sur le bouton prévu à cet effet
 en haut de la page, vous pourrez les lancer dans le Datalab de la plateforme
@@ -25,11 +32,4 @@ Cela présente plusieurs avantages :
 - Vous aurez accès directement aux données nécessaires 
 
 Il vous faudra préalablement créer un compte gratuitement, en indiquant votre
-adresse email `@eleves.enpc.fr`.
-
-## Les supports 
-
-- [Les outils du quotidien](/chapters/outils-quotidiens.html)
-- [Introduction à QGIS](/chapters/qgis-intro.html)
-- [Traitement de fichiers CSV](/chapters/chapter1.html)
-- [TD PLU Bioclimatique](/chapters/plu-bioclimatique.html)
+adresse email `@eleves.enpc.fr`. -->

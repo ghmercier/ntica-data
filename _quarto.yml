@@ -2,11 +2,8 @@ project:
   type: website
   render:
     - index.qmd
-    - chapters/chapter1.qmd
-    - chapters/plu-bioclimatique.qmd
     - chapters/outils-quotidiens.qmd
     - chapters/qgis-intro.qmd
-    - notebooks/notebook1.qmd
 
 website:
   page-navigation: true
@@ -21,8 +18,6 @@ website:
         href: index.qmd
       - chapters/outils-quotidiens.qmd
       - chapters/qgis-intro.qmd
-      - chapters/chapter1.qmd
-      - chapters/plu-bioclimatique.qmd
 
 format:
   html:

@@ -8,12 +8,10 @@ cartographique centré sur la CA Paris Vallée de la Marne, sur lequel nous
 allons superposer des couches vectorielles de description administrative du
 territoire.
 
-
-
 ## Installer QGIS
 
 QGIS est un logiciel SIG compatible avec Linux, Unix, Mac OS X, Windows et
-Android. La dernière version (3.44.3) disponible sur le
+Android. Nous allons utiliser la version LTS disponible sur le
 [site officiel](https://qgis.org/download/).
 
 Pour utiliser l'installateur officiel, il faut disposer des droits 
@@ -22,15 +20,11 @@ télécharger une version portable que l'on placera dans son répertoire
 utilisateur ou sur une clé USB. Une version portable de QGIS est disponible sur
 le blog [SIG & Territoires](https://www.sigterritoires.fr/index.php/version-portable-de-qgis-3-44-0/).
 
-
-
 ## Mise en place
 
 Lancer QGIS, créer un nouveau projet. 
 
 - **Projet → Nouveau**
-
-
 
 ### Fond de plan 
 
@@ -60,7 +54,6 @@ de QGIS.
 
 ![](/resources/intro-qgis/1_scr.jpg)
 
-
 Pour mieux voir les entités vectorielles que l'on ajoutera par la suite, on 
 peut déjà rendre le fond de plan transparent et le passer en niveau de gris.
 
@@ -72,13 +65,11 @@ Avec la couche sélectionnée :
 
 ![](/resources/intro-qgis/3_fond_plan.jpg)
 
-
 ### Couches vectorielles
 
 Télécharger la [géodatabase](/resources/intro-qgis/ade_simplifiee.gpkg) préparée spécialement 
 pour ce TP. Elle contient quelques données issues de la base 
 [AdminExpress](https://geoservices.ign.fr/adminexpress) de l'IGN.
-
 
 <details>
 <summary>Géodatabase, ESRI Shapefile ?</summary>
@@ -110,8 +101,6 @@ Avec la couche sélectionnée :
 - **Couche → Propriétés de la couche**
 - **Symbologie → Remplissage simple → Style de remplissage → Pas de remplissage**
 - **Étiquettes → Étiquettes simples → Valeur → `nom_officiel`**
-
-
 
 ## Manipulations
 
@@ -156,7 +145,6 @@ Sélectionner les trois communes de Champs-sur-Marne, Noisiel et Émerainville.
 
 ![](/resources/intro-qgis/5_selection_manuelle.jpg)
 
-
 ### Statistiques descriptives
 
 On peut calculer aisément certains agrégats (moyenne, médiane, etc.) sur les
@@ -169,14 +157,12 @@ attributs des entités sélectionnés.
 50 124 habitants (au 1er janvier 2022).
 </details>
 
-
 <details>
 <summary>Quelle est la superficie cadastrale totale de ces trois communes ?</summary>
 1 710 hectares.
 </details>
 
 ![](/resources/intro-qgis/6_statistiques.jpg)
-
 
 ### Calculs géométriques
 
@@ -195,7 +181,6 @@ Dans la fenêtre qui s'ouvre :
 * Renseigner la formule pour calculer le champ : area(@geometry)
 * Valider
 
-
 <details>
 <summary>
 Quelle sera l'unité du champ `superficie` ?
@@ -205,13 +190,11 @@ c'est le mètre. Le champ `superficie` sera donc exprimé en mètres-carrés.
 On pourra diviser par 10000 pour le convertir en hectares.
 </details>
 
-
 ![](/resources/intro-qgis/7_superficie.jpg)
 
 Le champ `superficie` figure bien désormais dans la table attributaire. 
 On peut calculer la superficie des trois communes de la même manière 
 qu'on a calculé celle de la population.
-
 
 <details>
 <summary>
@@ -220,12 +203,10 @@ Quelle est la superficie calculée totale de ces trois communes ?
 1 737,29 ha. L'écart est de 17,29 ha avec la superficie cadastrale, marge <1%.
 </details>
 
-
 On peut également utiliser l'outil de mesure de longueur 
 (<kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>M</kbd>) ou d'aires 
 (<kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>J</kbd>) 
 pour des calculs ponctuels sur la carte.
-
 
 
 ### Affichage par catégories
@@ -253,13 +234,10 @@ contient parfois deux numéros SIREN : certaines communes
 appartient bien à deux EPCI en même temps (Métropole du Grand Paris + EPT).
 </details>
 
-
-
 ### Sélection avancée
 
 On va désormais sélectionner toutes les communes appartenant à la CA Paris
 Vallée de la Marne en testant deux méthodes.
-
 
 #### Sélection par attributs
 
@@ -271,8 +249,6 @@ grâce à la sélection par expression (<kbd>CTRL</kbd>+<kbd>F3</kbd>)
 - **Expression → ["codes_siren_des_epci" = '200057958']**
 
 ![](/resources/intro-qgis/9_select_attr.jpg)
-
-
 
 #### Sélection par géométrie
 
@@ -294,8 +270,6 @@ Sélectionner ensuite le polygone représentant la CA Paris Vallée de la Marne.
 
 ![](/resources/intro-qgis/10_select_geo.jpg)
 
-
-
 ### Export
 
 Créons maintenant un couche contenant uniquement les 12 communes de la CA
@@ -306,8 +280,6 @@ géodatabase initiale.
 - **Exporter → Sauvegarder les entités sélectionnées sous**
 
 ![](/resources/intro-qgis/11_export.jpg)
-
-
 
 ### Jointure attributaire
 
@@ -338,8 +310,6 @@ Avec la couche des chefs-lieux sélectionnés :
 
 ![](/resources/intro-qgis/12_jointure.jpg)
 
-
-
 ### Affichage gradué
 
 On peut désormais modifier la symbologie et faire varier la taille des 
@@ -351,7 +321,6 @@ points en fonction de la valeur du champ population.
 - **Méthode → Taille**
 - **Mode → intervalle égal**
 
-
 <details>
 <summary>Discrétisation</summary>
 On comprend bien que le choix des seuils, du nombre de catégories, etc.
@@ -360,8 +329,6 @@ très différentes selon les choix opérés...
 </details>
 
 ![](/resources/intro-qgis/13_gradue.jpg)
-
-
 
 ## Export
 

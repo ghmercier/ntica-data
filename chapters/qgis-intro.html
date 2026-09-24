@@ -158,6 +158,12 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#affichage-gradué" id="toc-affichage-gradué" class="nav-link" data-scroll-target="#affichage-gradué">Affichage gradué</a></li>
   </ul></li>
   <li><a href="#export-1" id="toc-export-1" class="nav-link" data-scroll-target="#export-1">Export</a></li>
+  <li><a href="#utilisateurs-avancés" id="toc-utilisateurs-avancés" class="nav-link" data-scroll-target="#utilisateurs-avancés">Utilisateurs avancés</a></li>
+  <li><a href="#géoréférencement" id="toc-géoréférencement" class="nav-link" data-scroll-target="#géoréférencement">Géoréférencement</a>
+  <ul class="collapse">
+  <li><a href="#géocodage-dadresses" id="toc-géocodage-dadresses" class="nav-link" data-scroll-target="#géocodage-dadresses">Géocodage d’adresses</a></li>
+  <li><a href="#buffers-zones-tampons" id="toc-buffers-zones-tampons" class="nav-link" data-scroll-target="#buffers-zones-tampons">Buffers / zones tampons</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/ghmercier/ntica-data/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -272,7 +278,7 @@ Même si les intitulés des champs sont ici clairs, il est de bonne pratique de 
 <li>dans le menu déroulant, les modes de sélections sont possibles: rectangle de sélection, polygone, main levée, par rayon.</li>
 <li>des raccourcis-claviers utiles : <kbd>SHIFT</kbd> pour ajouter des objets à la sélection courante, <kbd>CTRL</kbd> pour les retrancher.</li>
 </ul>
-<p>Sélectionner les trois communes de Champs-sur-Marne, Noisiel et Émerainville.</p>
+<p>Sélectionner les trois communes de Champs-sur-Marne, Noisy-le-Grand et Émerainville.</p>
 <p><img src="../resources/intro-qgis/5_selection_manuelle.jpg" class="img-fluid"></p>
 </section>
 <section id="statistiques-descriptives" class="level3">
@@ -285,13 +291,13 @@ Même si les intitulés des champs sont ici clairs, il est de bonne pratique de 
 <summary>
 Quelle est la population totale de ces trois communes ?
 </summary>
-50 124 habitants (au 1er janvier 2022).
+105 829 habitants (au 1er janvier 2022).
 </details>
 <details>
 <summary>
 Quelle est la superficie cadastrale totale de ces trois communes ?
 </summary>
-1 710 hectares.
+2 570 hectares.
 </details>
 <p><img src="../resources/intro-qgis/6_statistiques.jpg" class="img-fluid"></p>
 </section>
@@ -299,7 +305,14 @@ Quelle est la superficie cadastrale totale de ces trois communes ?
 <h3 class="anchored" data-anchor-id="calculs-géométriques">Calculs géométriques</h3>
 <p>Un SIG est capable de calculer la superficie de chaque polygone. On va vérifier que la superficie calculée est cohérente avec la superficie cadastrale renseignée dans la table attributaire.</p>
 <p>Ouvrir la table d’attributs <kbd>F6</kbd>, puis la calculatrice de champs via le bouton en forme de boulier dans la barre d’outils, également <kbd>CTRL</kbd>+<kbd>I</kbd>.</p>
-<p>Dans la fenêtre qui s’ouvre : * Indiquer le nom du champ à créer (on peut l’appeler <code>superficie</code>) * Sélectionner la case <code>champ virtuel</code> (ie. le champ ne sera pas persistent) * Indiquer le type du champ (<code>entier</code>) * Renseigner la formule pour calculer le champ : area(<span class="citation" data-cites="geometry">@geometry</span>) * Valider</p>
+<p>Dans la fenêtre qui s’ouvre :</p>
+<ul>
+<li>Indiquer le nom du champ à créer (on peut l’appeler <code>superficie</code>)</li>
+<li>Sélectionner la case <code>champ virtuel</code> (ie. le champ ne sera pas persistent)</li>
+<li>Indiquer le type du champ (<code>entier</code>)</li>
+<li>Renseigner la formule pour calculer le champ : area(<span class="citation" data-cites="geometry">@geometry</span>)</li>
+<li>Valider</li>
+</ul>
 <details>
 <summary>
 Quelle sera l’unité du champ <code>superficie</code> ?
@@ -312,7 +325,7 @@ Il dépend bien sûr de l’unité employée par le SCR de la carte. Pour le nô
 <summary>
 Quelle est la superficie calculée totale de ces trois communes ?
 </summary>
-1 737,29 ha. L’écart est de 17,29 ha avec la superficie cadastrale, marge &lt;1%.
+2 620 ha. L’écart est de 50 ha avec la superficie cadastrale, marge 2%.
 </details>
 <p>On peut également utiliser l’outil de mesure de longueur (<kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>M</kbd>) ou d’aires (<kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>J</kbd>) pour des calculs ponctuels sur la carte.</p>
 </section>
@@ -393,11 +406,7 @@ Vous noterez dans la légende que le champ <code>codes_siren_des_epci</code> con
 <p>On peut désormais modifier la symbologie et faire varier la taille des points en fonction de la valeur du champ population.</p>
 <ul>
 <li><strong>Couche → Propriétés de la couche → Symbologie</strong></li>
-</ul>
-<ol start="2" type="1">
 <li>Sélectionner <code>gradué</code></li>
-</ol>
-<ul>
 <li><strong>Valeur → <code>xxx_population</code></strong></li>
 <li><strong>Méthode → Taille</strong></li>
 <li><strong>Mode → intervalle égal</strong></li>
@@ -421,8 +430,32 @@ On comprend bien que le choix des seuils, du nombre de catégories, etc. est str
 <p>Une fois tous les paramètres ajustés, exporter la carte en PDF.</p>
 <p><img src="../resources/intro-qgis/14_mise_en_page.jpg" class="img-fluid"></p>
 <p><img src="../resources/intro-qgis/15_export.jpg" class="img-fluid"></p>
+</section>
+<section id="utilisateurs-avancés" class="level2">
+<h2 class="anchored" data-anchor-id="utilisateurs-avancés">Utilisateurs avancés</h2>
+<p>Si vous avez fini le TD et que vous avez peur de vous ennuyez, voici quelques défis.</p>
+</section>
+<section id="géoréférencement" class="level2">
+<h2 class="anchored" data-anchor-id="géoréférencement">Géoréférencement</h2>
+<p>Saurez-vous retrouver le plan d’aménagement partiel du secteur 4 de Marne-la-Vallée de mars 1987, le géoréférencer et l’afficher dans QGIS ?</p>
+<p><img src="../resources/intro-qgis/16_secteur4.jpg" class="img-fluid"></p>
+<p>Indices :</p>
+<ul>
+<li>Une <a href="https://www.inventerlegrandparis.fr/seminaire-igp/seminaire-igp-2019-2020/amenager-la-banlieue-parisienne-production-et-evolution-des-grands-equipements-structurants/le-val-deurope-a-marne-la-vallee-variations-sur-un-parc-a-theme/">page internet</a> où trouver l’image source.</li>
+<li>Mettre la <a href="https://cartes.gouv.fr/rechercher-une-donnee/dataset/IGNF_BD-PARCELLAIRE">BD Parcellaire</a> en fond pour trouver des points de contrôle</li>
+<li>Le géoréférenceur est disponible via le menu <strong>Couches → Géoréférenceur</strong>.</li>
+<li>Les points de contrôle que j’ai utilisés sont <a href="../resources/intro-qgis/ill3-plan-masse-secteur-4-wing-chao-vs-jean-poulit-mars-1987.jpg.points">ici</a></li>
+</ul>
+<section id="géocodage-dadresses" class="level3">
+<h3 class="anchored" data-anchor-id="géocodage-dadresses">Géocodage d’adresses</h3>
+<p>Saurez-vous créer une semis de points à partir d’une liste d’adresse ?</p>
+</section>
+<section id="buffers-zones-tampons" class="level3">
+<h3 class="anchored" data-anchor-id="buffers-zones-tampons">Buffers / zones tampons</h3>
+<p>Saure-vous calculer des zones tampons ?</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

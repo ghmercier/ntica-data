@@ -141,7 +141,7 @@ On notera :
   des objets à la sélection courante, <kbd>CTRL</kbd> pour les 
   retrancher.
 
-Sélectionner les trois communes de Champs-sur-Marne, Noisiel et Émerainville.
+Sélectionner les trois communes de Champs-sur-Marne, Noisy-le-Grand et Émerainville.
 
 ![](/resources/intro-qgis/5_selection_manuelle.jpg)
 
@@ -154,12 +154,12 @@ attributs des entités sélectionnés.
 
 <details>
 <summary>Quelle est la population totale de ces trois communes ?</summary>
-50 124 habitants (au 1er janvier 2022).
+105 829 habitants (au 1er janvier 2022).
 </details>
 
 <details>
 <summary>Quelle est la superficie cadastrale totale de ces trois communes ?</summary>
-1 710 hectares.
+2 570 hectares.
 </details>
 
 ![](/resources/intro-qgis/6_statistiques.jpg)
@@ -175,11 +175,12 @@ via le bouton en forme de boulier dans la barre d'outils, également
 <kbd>CTRL</kbd>+<kbd>I</kbd>.
 
 Dans la fenêtre qui s'ouvre : 
-* Indiquer le nom du champ à créer (on peut l'appeler `superficie`)
-* Sélectionner la case `champ virtuel` (ie. le champ ne sera pas persistent)
-* Indiquer le type du champ (`entier`)
-* Renseigner la formule pour calculer le champ : area(@geometry)
-* Valider
+
+- Indiquer le nom du champ à créer (on peut l'appeler `superficie`)
+- Sélectionner la case `champ virtuel` (ie. le champ ne sera pas persistent)
+- Indiquer le type du champ (`entier`)
+- Renseigner la formule pour calculer le champ : area(@geometry)
+- Valider
 
 <details>
 <summary>
@@ -200,7 +201,7 @@ qu'on a calculé celle de la population.
 <summary>
 Quelle est la superficie calculée totale de ces trois communes ?
 </summary>
-1 737,29 ha. L'écart est de 17,29 ha avec la superficie cadastrale, marge <1%.
+2 620 ha. L'écart est de 50 ha avec la superficie cadastrale, marge 2%.
 </details>
 
 On peut également utiliser l'outil de mesure de longueur 
@@ -316,7 +317,7 @@ On peut désormais modifier la symbologie et faire varier la taille des
 points en fonction de la valeur du champ population.
 
 - **Couche → Propriétés de la couche → Symbologie**
-2. Sélectionner `gradué`
+- Sélectionner `gradué`
 - **Valeur → `xxx_population`**
 - **Méthode → Taille**
 - **Mode → intervalle égal**
@@ -349,3 +350,31 @@ Une fois tous les paramètres ajustés, exporter la carte en PDF.
 ![](/resources/intro-qgis/14_mise_en_page.jpg)
 
 ![](/resources/intro-qgis/15_export.jpg)
+
+## Utilisateurs avancés
+
+Si vous avez fini le TD et que vous avez peur de vous ennuyez, 
+voici quelques défis.
+
+## Géoréférencement
+
+Saurez-vous retrouver le plan d'aménagement partiel du secteur 4 de Marne-la-Vallée de mars 1987,
+le géoréférencer et l'afficher dans QGIS ?
+
+![](/resources/intro-qgis/16_secteur4.jpg)
+
+Indices :
+
+- Une [page internet](https://www.inventerlegrandparis.fr/seminaire-igp/seminaire-igp-2019-2020/amenager-la-banlieue-parisienne-production-et-evolution-des-grands-equipements-structurants/le-val-deurope-a-marne-la-vallee-variations-sur-un-parc-a-theme/) où trouver l'image source.
+- Mettre la [BD Parcellaire](https://cartes.gouv.fr/rechercher-une-donnee/dataset/IGNF_BD-PARCELLAIRE) en fond pour trouver des points de contrôle
+- Le géoréférenceur est disponible via le menu  **Couches → Géoréférenceur**.
+- Les points de contrôle que j'ai utilisés sont [ici](/resources/intro-qgis/ill3-plan-masse-secteur-4-wing-chao-vs-jean-poulit-mars-1987.jpg.points)
+
+### Géocodage d'adresses
+
+Saurez-vous créer une semis de points à partir d'une liste d'adresse ?
+
+### Buffers / zones tampons
+
+Saure-vous calculer des zones tampons ?
+

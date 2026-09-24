@@ -11,6 +11,8 @@ date: "2026-09-24"
 Bienvenue à vous, chers élèves AMUR de la promo 2026/2027. Vous trouverez
 ci-dessous les liens vers les supports utilisés lors du module.
 
+## 25 septembre 2026
+
 - [Les outils du quotidien](/chapters/outils-quotidiens.html)
 - [Introduction à QGIS](/chapters/qgis-intro.html)
 

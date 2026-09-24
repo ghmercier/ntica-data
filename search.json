@@ -54,17 +54,7 @@
     "href": "chapters/qgis-intro.html#utilisateurs-avancés",
     "title": "Introduction à QGIS",
     "section": "Utilisateurs avancés",
-    "text": "Utilisateurs avancés\nSi vous avez fini le TD et que vous avez peur de vous ennuyez, voici quelques défis.",
-    "crumbs": [
-      "Introduction à QGIS"
-    ]
-  },
-  {
-    "objectID": "chapters/qgis-intro.html#géoréférencement",
-    "href": "chapters/qgis-intro.html#géoréférencement",
-    "title": "Introduction à QGIS",
-    "section": "Géoréférencement",
-    "text": "Géoréférencement\nSaurez-vous retrouver le plan d’aménagement partiel du secteur 4 de Marne-la-Vallée de mars 1987, le géoréférencer et l’afficher dans QGIS ?\n\nIndices :\n\nUne page internet où trouver l’image source.\nMettre la BD Parcellaire en fond pour trouver des points de contrôle\nLe géoréférenceur est disponible via le menu Couches → Géoréférenceur.\nLes points de contrôle que j’ai utilisés sont ici\n\n\nGéocodage d’adresses\nSaurez-vous créer une semis de points à partir d’une liste d’adresse ?\n\n\nBuffers / zones tampons\nSaure-vous calculer des zones tampons ?",
+    "text": "Utilisateurs avancés\nSi vous avez fini le TD et que vous avez peur de vous ennuyez, voici quelques défis.\n\nGéoréférencement\nSaurez-vous retrouver le plan d’aménagement partiel du secteur 4 de Marne-la-Vallée de mars 1987, le géoréférencer et l’afficher dans QGIS ?\n\nIndices :\n\nUne page internet où trouver l’image source.\nMettre la BD Parcellaire en fond pour trouver des points de contrôle\nLe géoréférenceur est disponible via le menu Couches → Géoréférenceur.\nLes points de contrôle que j’ai utilisés sont ici\n\n\n\nGéocodage d’adresses\nSaurez-vous créer une semis de points à partir d’une liste d’adresse ?\n\n\nBuffers / zones tampons\nSaure-vous calculer des zones tampons ?",
     "crumbs": [
       "Introduction à QGIS"
     ]

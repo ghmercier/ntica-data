@@ -356,7 +356,7 @@ Une fois tous les paramètres ajustés, exporter la carte en PDF.
 Si vous avez fini le TD et que vous avez peur de vous ennuyez, 
 voici quelques défis.
 
-## Géoréférencement
+### Géoréférencement
 
 Saurez-vous retrouver le plan d'aménagement partiel du secteur 4 de Marne-la-Vallée de mars 1987,
 le géoréférencer et l'afficher dans QGIS ?

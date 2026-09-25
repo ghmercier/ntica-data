@@ -365,16 +365,35 @@ le géoréférencer et l'afficher dans QGIS ?
 
 Indices :
 
-- Une [page internet](https://www.inventerlegrandparis.fr/seminaire-igp/seminaire-igp-2019-2020/amenager-la-banlieue-parisienne-production-et-evolution-des-grands-equipements-structurants/le-val-deurope-a-marne-la-vallee-variations-sur-un-parc-a-theme/) où trouver l'image source.
-- Mettre la [BD Parcellaire](https://cartes.gouv.fr/rechercher-une-donnee/dataset/IGNF_BD-PARCELLAIRE) en fond pour trouver des points de contrôle
+- Une 
+  [page internet](https://www.inventerlegrandparis.fr/seminaire-igp/seminaire-igp-2019-2020/amenager-la-banlieue-parisienne-production-et-evolution-des-grands-equipements-structurants/le-val-deurope-a-marne-la-vallee-variations-sur-un-parc-a-theme/) 
+  où trouver l'image source.
+- Mettre la 
+  [BD Parcellaire](https://cartes.gouv.fr/rechercher-une-donnee/dataset/IGNF_BD-PARCELLAIRE) en fond 
+  pour trouver des points de contrôle.
 - Le géoréférenceur est disponible via le menu  **Couches → Géoréférenceur**.
-- Les points de contrôle que j'ai utilisés sont [ici](/resources/intro-qgis/ill3-plan-masse-secteur-4-wing-chao-vs-jean-poulit-mars-1987.jpg.points)
+- Les points de contrôle que j'ai utilisés sont 
+  [ici](/resources/intro-qgis/ill3-plan-masse-secteur-4-wing-chao-vs-jean-poulit-mars-1987.jpg.points).
 
 ### Géocodage d'adresses
 
-Saurez-vous créer une semis de points à partir d'une liste d'adresse ?
+Saurez-vous cartographier les bureaux de tabacs de la CA PVDM ?
+
+![](/resources/intro-qgis/17_tabacs.jpg)
+
+Indices :
+
+- Furetez sur data.gouv.fr.
+- Un géocodeur officiel est disponible via la 
+  [Base Adresse Nationale](https://adresse.data.gouv.fr/)
+- Analysez la qualité des données 
 
 ### Buffers / zones tampons
 
-Saure-vous calculer des zones tampons ?
+Saurez-vous cartographier les écoles de la CA PVDM qui sont situées à moins de 200 m d'un tabac ?
 
+![](/resources/intro-qgis/18_tabac200m.jpg)
+
+Indices :
+
+- Le jeu de données des écoles est sur data.gouv.fr

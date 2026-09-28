@@ -1,0 +1,182 @@
+[
+  {
+    "objectID": "chapters/qgis-intro.html",
+    "href": "chapters/qgis-intro.html",
+    "title": "Introduction à QGIS",
+    "section": "",
+    "text": "Dans ce chapitre, nous allons créer une première carte : un fond de plan cartographique centré sur la CA Paris Vallée de la Marne, sur lequel nous allons superposer des couches vectorielles de description administrative du territoire.",
+    "crumbs": [
+      "Introduction à QGIS"
+    ]
+  },
+  {
+    "objectID": "chapters/qgis-intro.html#installer-qgis",
+    "href": "chapters/qgis-intro.html#installer-qgis",
+    "title": "Introduction à QGIS",
+    "section": "Installer QGIS",
+    "text": "Installer QGIS\nQGIS est un logiciel SIG compatible avec Linux, Unix, Mac OS X, Windows et Android. Nous allons utiliser la version LTS disponible sur le site officiel.\nPour utiliser l’installateur officiel, il faut disposer des droits administrateurs sur l’ordinateur cible. Si on ne les a pas, on peut télécharger une version portable que l’on placera dans son répertoire utilisateur ou sur une clé USB. Une version portable de QGIS est disponible sur le blog SIG & Territoires.",
+    "crumbs": [
+      "Introduction à QGIS"
+    ]
+  },
+  {
+    "objectID": "chapters/qgis-intro.html#mise-en-place",
+    "href": "chapters/qgis-intro.html#mise-en-place",
+    "title": "Introduction à QGIS",
+    "section": "Mise en place",
+    "text": "Mise en place\nLancer QGIS, créer un nouveau projet.\n\nProjet → Nouveau\n\n\nFond de plan\nAjouter le fond de carte OpenStreetMap.\n\nCouche → Ajouter une couche → Ajouter une couche XYZ\nConnexions XYZ → OpenStreetMap\nAjouter\n\nDans le coin inférieur droit, remarquez qu’un SCR a été automatiquement défini : EPSG:3857. C’est celui de la première couche ajoutée.\nSi nous devions ajouter des couches exprimées dans un autre SCR, QGIS ferait la conversion de manière transparente, à condition qu’il puisse déterminer sans ambiguité le SCR de la couche fournie.\n\n\nSCR, Késako ?\n\nUn système de coordonnées de référence est le référentiel qui donne du sens aux valeurs numériques que prennent des coordonnées géographiques (latitude, longitude, altitude). On pourra se référer utilement à la documentation de QGIS.\n\n\nPour mieux voir les entités vectorielles que l’on ajoutera par la suite, on peut déjà rendre le fond de plan transparent et le passer en niveau de gris.\nAvec la couche sélectionnée :\n\nCouche → Propriétés de la couche\nTransparence → Opacité globale → 50%\nSymbologie → Rendu de couche → Niveaux de gris → [Par clarté]\n\n\n\n\nCouches vectorielles\nTélécharger la géodatabase préparée spécialement pour ce TP. Elle contient quelques données issues de la base AdminExpress de l’IGN.\n\n\nGéodatabase, ESRI Shapefile ?\n\nPlusieurs formats existent pour stocker de l’information géographique. QGIS travaille par défaut avec des géodatabases. Vous trouverez souvent des fichiers au format ESRI Shapefile. On retiendra qu’une géodatabase (extension gpkg) est capable de stocker plusieurs couches dans un même fichier, alors que le format ESRI Shapefile (extension principale shp) crée six différents fichiers pour stocker l’information d’une seule couche vectorielle. Pour les détails techniques, se référer à la documentation.\n\nAjouter la couche communes contenue dans la géodatabase.\n\nCouche → Ajouter une couche → Ajouter une couche vecteur\nSource → Jeux de données vectorielles\nAller chercher le ficher ade_simplifie.gpkg\nDans la fenêtre qui s’affiche, sélectionner la couche commune\n\n\nOn va modifier la symbologie de la couche pour ne conserver que les contours de chaque objet, sans ce vilain fond opaque, puis ajouter des étiquettes donnant le nom de la commune (on pourra personnaliser la police et le corps).\nAvec la couche sélectionnée :\n\nCouche → Propriétés de la couche\nSymbologie → Remplissage simple → Style de remplissage → Pas de remplissage\nÉtiquettes → Étiquettes simples → Valeur → nom_officiel",
+    "crumbs": [
+      "Introduction à QGIS"
+    ]
+  },
+  {
+    "objectID": "chapters/qgis-intro.html#manipulations",
+    "href": "chapters/qgis-intro.html#manipulations",
+    "title": "Introduction à QGIS",
+    "section": "Manipulations",
+    "text": "Manipulations\n\nExplorer les données\nÀ chaque objet de la couche communes correspondent des données. On peut les consulter avec l’outil Identifier des données accessible par la barre d’outils. Pour les communes, un champ important est le code_insee. C’est lui qui identifie la commune de manière unique, on en aura besoin ultérieurement.\n\n\nDe l’importance des métadonnées\n\nMême si les intitulés des champs sont ici clairs, il est de bonne pratique de toujours consulter les métadonnées d’une source pour s’assurer d’avoir bien tout compris. Dans le cas présent, on ira voir sur le site de l’IGN, à la page ADMIN Express.\n\n\nUne autre manière d’explorer la couche est d’afficher sa table d’attributs.\n\nCouche → Ouvrir la table d’attributs ou F6.\n\n\n\nSélection manuelle\nOn peut sélectionner manuellement une ou plusieurs entités à l’aide de l’outil de la barre des tâches.\nOn notera :\n\ndans le menu déroulant, les modes de sélections sont possibles: rectangle de sélection, polygone, main levée, par rayon.\ndes raccourcis-claviers utiles : SHIFT pour ajouter des objets à la sélection courante, CTRL pour les retrancher.\n\nSélectionner les trois communes de Champs-sur-Marne, Noisy-le-Grand et Émerainville.\n\n\n\nStatistiques descriptives\nOn peut calculer aisément certains agrégats (moyenne, médiane, etc.) sur les attributs des entités sélectionnés.\n\nVue → Résumé statistique\n\n\n\nQuelle est la population totale de ces trois communes ?\n\n105 829 habitants (au 1er janvier 2022).\n\n\n\nQuelle est la superficie cadastrale totale de ces trois communes ?\n\n2 570 hectares.\n\n\n\n\nCalculs géométriques\nUn SIG est capable de calculer la superficie de chaque polygone. On va vérifier que la superficie calculée est cohérente avec la superficie cadastrale renseignée dans la table attributaire.\nOuvrir la table d’attributs F6, puis la calculatrice de champs via le bouton en forme de boulier dans la barre d’outils, également CTRL+I.\nDans la fenêtre qui s’ouvre :\n\nIndiquer le nom du champ à créer (on peut l’appeler superficie)\nSélectionner la case champ virtuel (ie. le champ ne sera pas persistent)\nIndiquer le type du champ (entier)\nRenseigner la formule pour calculer le champ : area(@geometry)\nValider\n\n\n\nQuelle sera l’unité du champ superficie ?\n\nIl dépend bien sûr de l’unité employée par le SCR de la carte. Pour le nôtre, c’est le mètre. Le champ superficie sera donc exprimé en mètres-carrés. On pourra diviser par 10000 pour le convertir en hectares.\n\n\nLe champ superficie figure bien désormais dans la table attributaire. On peut calculer la superficie des trois communes de la même manière qu’on a calculé celle de la population.\n\n\nQuelle est la superficie calculée totale de ces trois communes ?\n\n2 620 ha. L’écart est de 50 ha avec la superficie cadastrale, marge 2%.\n\nOn peut également utiliser l’outil de mesure de longueur (CTRL+ALT+M) ou d’aires (CTRL+ALT+J) pour des calculs ponctuels sur la carte.\n\n\nAffichage par catégories\nOn va désormais colorer les communes différemment en fonction de l’EPCI auquel elles appartiennent.\n\nCouche → Propriétés de la couche → Symbologie → [catégorisé]\nValeur → [codes_siren_des_epci]\nSymboles → Remplissage simple → Style de remplissage → [continue]\nBouton Classer\nBouton Appliquer\n\nOn voit nettement se dessiner les 7 EPCI présents dans la base.\n\n\n\nMillefeuille administratif ?\n\nVous noterez dans la légende que le champ codes_siren_des_epci contient parfois deux numéros SIREN : certaines communes appartient bien à deux EPCI en même temps (Métropole du Grand Paris + EPT).\n\n\n\nSélection avancée\nOn va désormais sélectionner toutes les communes appartenant à la CA Paris Vallée de la Marne en testant deux méthodes.\n\nSélection par attributs\nOn peut sélectionner l’ensemble des entités de la couche des communes dont le champ code_siren_des_epci contient la valeur 200057958 grâce à la sélection par expression (CTRL+F3)\n\nÉditer → Sélection → Sélectionner des entités à l’aide d’une sélection\nExpression → [“codes_siren_des_epci” = ‘200057958’]\n\n\n\n\nSélection par géométrie\nOn peut aussi sélectionner l’ensemble des entités de la couche des communes qui sont situées à l’intérieur du polygone représentant la CA Paris Vallée de la Marne dans la couche des EPCI.\nPour cela, on va ajouter la couche vectorielle des EPCI qui figure dans la même géodatabase que la couche des communes et lui appliquer le style qui convient. Pour cela, se référer au début du TD.\nSélectionner ensuite le polygone représentant la CA Paris Vallée de la Marne.\n\nVecteur → Outils de recherche → Sélection par localisation\nSélectionner les entités depuis → ade_simplifiee - communes\nOù les entités → est à l'intérieur\nEn comparant les entité de → ade_simplifiee - epci\ncocher la case entités sélectionnées uniquement\n\n\n\n\n\nExport\nCréons maintenant un couche contenant uniquement les 12 communes de la CA Paris Vallée de la Marne. On sauvegardera cette couche dans notre géodatabase initiale.\n\nPanneau des couches →  clic-droit couche communes\nExporter → Sauvegarder les entités sélectionnées sous\n\n\n\n\nJointure attributaire\nReprésentons désormais les différences de population entre les communes.\nOn serait tenté de faire varier les couleurs des polygones du plus clair au plus foncé : les géomaticiens appellent ces cartes des cartes teintées, ou cartes choroplèthes. Mais pas de choroplèthes avec des données stock… on fera donc varier la taille de points représentant les communes.\nDans la géodatabase initiale, charger la couche chef_lieu_de_commune. Elle contient un semis de points, un pour chaque chef-lieu (c’est-à-dire la mairie).\nOuvrir la table attributaire : constater qu’il y a bien un champ code_insee_de_la_commune, mais pas (encore) de champ population… Qu’à cela ne tienne : on va l’ajouter, en joignant la table des chefs-lieux des communes à celle des communes.\nAvec la couche des chefs-lieux sélectionnés :\n\nCouche → Propriétés de la couche → Jointures\nCliquer le bouton +\nJoindre la couche → ade_simplifiee - communes, ade_simplifie\nChamp de jointure → code_insee\nChamp dans la couche cible → code_insee_de_la_commune\nChamps joints → population\n\n\n\n\nAffichage gradué\nOn peut désormais modifier la symbologie et faire varier la taille des points en fonction de la valeur du champ population.\n\nCouche → Propriétés de la couche → Symbologie\nSélectionner gradué\nValeur → xxx_population\nMéthode → Taille\nMode → intervalle égal\n\n\n\nDiscrétisation\n\nOn comprend bien que le choix des seuils, du nombre de catégories, etc. est stratégique, et qu’on peut faire dire à des mêmes données des choses très différentes selon les choix opérés…",
+    "crumbs": [
+      "Introduction à QGIS"
+    ]
+  },
+  {
+    "objectID": "chapters/qgis-intro.html#export-1",
+    "href": "chapters/qgis-intro.html#export-1",
+    "title": "Introduction à QGIS",
+    "section": "Export",
+    "text": "Export\nExportons notre carte en PDF. Il faut pour cela créer une mise en page.\n\nProjet → Nouvelle mise en page\n\nDans la fenêtre qui s’ouvre : - Insérer un bloc carte - Insérer un bloc de texte pour le titre - Insérer un bloc légende - Insérer une échelle graphique - Insérer une flèche indiquant le nord - …\nUne fois tous les paramètres ajustés, exporter la carte en PDF.",
+    "crumbs": [
+      "Introduction à QGIS"
+    ]
+  },
+  {
+    "objectID": "chapters/qgis-intro.html#utilisateurs-avancés",
+    "href": "chapters/qgis-intro.html#utilisateurs-avancés",
+    "title": "Introduction à QGIS",
+    "section": "Utilisateurs avancés",
+    "text": "Utilisateurs avancés\nSi vous avez fini le TD et que vous avez peur de vous ennuyez, voici quelques défis.\n\nGéoréférencement\nSaurez-vous retrouver le plan d’aménagement partiel du secteur 4 de Marne-la-Vallée de mars 1987, le géoréférencer et l’afficher dans QGIS ?\n\nIndices :\n\nUne page internet où trouver l’image source.\nMettre la BD Parcellaire en fond pour trouver des points de contrôle.\nLe géoréférenceur est disponible via le menu Couches → Géoréférenceur.\nLes points de contrôle que j’ai utilisés sont ici.\n\n\n\nGéocodage d’adresses\nSaurez-vous cartographier les bureaux de tabacs de la CA PVDM ?\n\nIndices :\n\nFuretez sur data.gouv.fr.\nUn géocodeur officiel est disponible via la Base Adresse Nationale\nAnalysez la qualité des données\n\n\n\nBuffers / zones tampons\nSaurez-vous cartographier les écoles de la CA PVDM qui sont situées à moins de 200 m d’un tabac ?\n\nIndices :\n\nLe jeu de données des écoles est sur data.gouv.fr",
+    "crumbs": [
+      "Introduction à QGIS"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Module NTICA",
+    "section": "",
+    "text": "Bienvenue à vous, chers élèves AMUR de la promo 2026/2027. Vous trouverez ci-dessous les liens vers les supports utilisés lors du module.",
+    "crumbs": [
+      "Accueil"
+    ]
+  },
+  {
+    "objectID": "index.html#septembre-2026",
+    "href": "index.html#septembre-2026",
+    "title": "Module NTICA",
+    "section": "25 septembre 2026",
+    "text": "25 septembre 2026\n\nLes outils du quotidien\nIntroduction à QGIS",
+    "crumbs": [
+      "Accueil"
+    ]
+  },
+  {
+    "objectID": "chapters/outils-quotidiens.html",
+    "href": "chapters/outils-quotidiens.html",
+    "title": "Les outils du quotidien",
+    "section": "",
+    "text": "En informatique, de nombreux logiciels libres et gratuits existent. Il répondent efficacement aux besoins de la vie courante et sont souvent bien meilleurs que les outils intégrés à Windows ou Mac OS.\nVoici quelques propositions. On pourra également se référer au catalogue publié par l’État des logiciels libres recommandés pour l’administration.",
+    "crumbs": [
+      "Les outils du quotidien"
+    ]
+  },
+  {
+    "objectID": "chapters/outils-quotidiens.html#compressiondécompression",
+    "href": "chapters/outils-quotidiens.html#compressiondécompression",
+    "title": "Les outils du quotidien",
+    "section": "Compression/décompression",
+    "text": "Compression/décompression\nRéduire le volume des données avant de les stocker ou de les transférer. Quelques formats usuels : zip, rar, 7z, tar.gz…\n\n7z, capable de traiter une grande variété de formats.",
+    "crumbs": [
+      "Les outils du quotidien"
+    ]
+  },
+  {
+    "objectID": "chapters/outils-quotidiens.html#visualisation-dimages",
+    "href": "chapters/outils-quotidiens.html#visualisation-dimages",
+    "title": "Les outils du quotidien",
+    "section": "Visualisation d’images",
+    "text": "Visualisation d’images\nNaviguer rapidement dans une série d’images.\n\nNomacs, existe en version portable.\nIrfanview, un visualisateur très léger.",
+    "crumbs": [
+      "Les outils du quotidien"
+    ]
+  },
+  {
+    "objectID": "chapters/outils-quotidiens.html#capture-décran",
+    "href": "chapters/outils-quotidiens.html#capture-décran",
+    "title": "Les outils du quotidien",
+    "section": "Capture d’écran",
+    "text": "Capture d’écran\nSauvegarder tout ou partie de son écran, en annotant rapidement ce que l’on voit.\n\nGreenshot, pour Windows.\nFlameshot, multi-plateformes.",
+    "crumbs": [
+      "Les outils du quotidien"
+    ]
+  },
+  {
+    "objectID": "chapters/outils-quotidiens.html#retouche-dimages",
+    "href": "chapters/outils-quotidiens.html#retouche-dimages",
+    "title": "Les outils du quotidien",
+    "section": "Retouche d’images",
+    "text": "Retouche d’images\nModifier des images raster : recadrer, redimensionner, ajuster les couleurs, etc.\n\nGimp, aussi efficace que Photoshop pour les besoins courants.",
+    "crumbs": [
+      "Les outils du quotidien"
+    ]
+  },
+  {
+    "objectID": "chapters/outils-quotidiens.html#dessin",
+    "href": "chapters/outils-quotidiens.html#dessin",
+    "title": "Les outils du quotidien",
+    "section": "Dessin",
+    "text": "Dessin\nDessiner en vectoriel (ex. repérer une parcelle sur une photo, ajouter des textes, etc.) plus proprement qu’en utilisant Paint ou Powerpoint.\n\nInkscape",
+    "crumbs": [
+      "Les outils du quotidien"
+    ]
+  },
+  {
+    "objectID": "chapters/outils-quotidiens.html#éditeur-de-texte",
+    "href": "chapters/outils-quotidiens.html#éditeur-de-texte",
+    "title": "Les outils du quotidien",
+    "section": "Éditeur de texte",
+    "text": "Éditeur de texte\nÉditer du texte brut (ie. sans mise en forme), avec des fonctionnalités avancées : coloration syntaxique, expressions régulières, etc.\n\nNotepad++, très complet.\nNotepad2, simple et efficace au quotidien.",
+    "crumbs": [
+      "Les outils du quotidien"
+    ]
+  },
+  {
+    "objectID": "chapters/outils-quotidiens.html#visionneuse-de-pdf",
+    "href": "chapters/outils-quotidiens.html#visionneuse-de-pdf",
+    "title": "Les outils du quotidien",
+    "section": "Visionneuse de PDF",
+    "text": "Visionneuse de PDF\nOuvrir rapidement des fichiers PDF.\n\nSumatra PDF, beaucoup plus léger qu’Acrobat Reader.",
+    "crumbs": [
+      "Les outils du quotidien"
+    ]
+  },
+  {
+    "objectID": "chapters/outils-quotidiens.html#édition-de-pdf",
+    "href": "chapters/outils-quotidiens.html#édition-de-pdf",
+    "title": "Les outils du quotidien",
+    "section": "Édition de PDF",
+    "text": "Édition de PDF\nDécouper ou fusionner des fichiers PDF.\n\nPDF Sam Basic",
+    "crumbs": [
+      "Les outils du quotidien"
+    ]
+  },
+  {
+    "objectID": "chapters/outils-quotidiens.html#cartographie",
+    "href": "chapters/outils-quotidiens.html#cartographie",
+    "title": "Les outils du quotidien",
+    "section": "Cartographie",
+    "text": "Cartographie\nFaire des cartes simples ou complexes.\n\nQGIS, client de référence, application de bureau.\nuMap, service en ligne pour des cartes simples et rapides.\nMagrit, un outil de cartographie thématique simple et intuitif développé par le CNRS.",
+    "crumbs": [
+      "Les outils du quotidien"
+    ]
+  }
+]

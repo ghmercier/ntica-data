@@ -1,7 +1,7 @@
 project:
   type: website
   execute-dir: project
-  render: # Add HERE new chapters and notebooks
+  render:
     - index.qmd
     - chapters/outils-quotidiens.qmd
     - chapters/qgis-intro.qmd
@@ -14,7 +14,7 @@ website:
   repo-actions: [ issue ]
   sidebar:
     search: false
-    contents: # Add HERE new chapters (but not the notebooks)
+    contents:
       - href: index.qmd
         text: Accueil
       - chapters/outils-quotidiens.qmd

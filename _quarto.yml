@@ -1,40 +1,30 @@
 project:
   type: website
   execute-dir: project
-  render: # Add HERE new chapters and new notebooks
+  render: # Add HERE new chapters and notebooks
     - index.qmd
-    - chapters/chapter1.qmd
-    - notebooks/notebook1.qmd
+    - chapters/outils-quotidiens.qmd
+    - chapters/qgis-intro.qmd
 
 website:
   page-navigation: true
-  title: "Template for training resources in Python"
-  # In the two URLs below:
-  # - replace AIML4OS by the Github account/organization your repository is hosted by;
-  # - replace AIML4OS-template-quarto-python by the name of your repository.
-  # If your repo is on the AIML4OS organization, change only the name of the repo.
-  site-url: "https://AIML4OS.github.io/AIML4OS-template-quarto-python"
-  repo-url: "https://github.com/AIML4OS/AIML4OS-template-quarto-python"
-  repo-actions: [edit, source, issue]
+  title: "Supports pédagogiques du module NTICA"
+  site-url: "https://ghmercier.github.io/ntica-data"
+  repo-url: "https://github.com/ghmercier/ntica-data"
+  repo-actions: [ issue ]
   sidebar:
-    search: true
+    search: false
     contents: # Add HERE new chapters (but not the notebooks)
       - href: index.qmd
-        text: Introduction
-      - href: chapters/chapter1.qmd
-        text: A complete example
-
+        text: Accueil
+      - chapters/outils-quotidiens.qmd
+      - chapters/qgis-intro.qmd
 format:
   html:
     theme:
       - cosmo
     css: styles.css
     toc: true
-    code-fold: true
+    code-fold: false
   ipynb:
     output: true
-
-
-filters:
-  - export-metadata.lua
-

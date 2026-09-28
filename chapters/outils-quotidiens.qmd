@@ -1,0 +1,82 @@
+---
+title: "Les outils du quotidien"
+format: html
+---
+
+En informatique, de nombreux logiciels libres et gratuits existent.
+Il répondent efficacement aux besoins de la vie courante et sont 
+souvent bien meilleurs que les outils intégrés à Windows ou Mac OS. 
+
+Voici quelques propositions. On pourra également se référer au
+[catalogue](https://code.gouv.fr/sill) publié par l'État 
+des logiciels libres recommandés pour l’administration.
+
+## Compression/décompression
+
+Réduire le volume des données avant de les stocker ou de les transférer.
+Quelques formats usuels : `zip`, `rar`, `7z`, `tar.gz`...
+
+- [7z](https://www.7-zip.org/), capable de traiter 
+  une grande variété de formats.
+
+## Visualisation d'images
+
+Naviguer rapidement dans une série d'images.
+
+- [Nomacs](https://nomacs.org/), existe en version portable.
+- [Irfanview](https://www.irfanview.com/), un visualisateur très léger.
+
+## Capture d'écran
+
+Sauvegarder tout ou partie de son écran, en annotant rapidement
+ce que l'on voit.
+
+- [Greenshot](https://getgreenshot.org/), pour Windows.
+- [Flameshot](https://flameshot.org/), multi-plateformes.
+
+## Retouche d'images
+
+Modifier des images raster : recadrer, redimensionner, 
+ajuster les couleurs, etc. 
+
+- [Gimp](https://www.gimp.org/), aussi efficace que Photoshop pour les 
+besoins courants.
+
+## Dessin 
+
+Dessiner en vectoriel (ex. repérer une parcelle sur une photo, ajouter des
+textes, etc.) plus proprement qu'en utilisant Paint ou Powerpoint.
+
+* [Inkscape](https://inkscape.org/)
+ 
+## Éditeur de texte
+
+Éditer du texte brut (ie. sans mise en forme), avec des fonctionnalités 
+avancées : coloration syntaxique, expressions régulières, etc.
+
+- [Notepad++](https://notepad-plus-plus.org/downloads/), très complet.
+- [Notepad2](https://www.flos-freeware.ch/notepad2.html), simple et 
+  efficace au quotidien.
+
+## Visionneuse de PDF
+
+Ouvrir rapidement des fichiers PDF.
+
+- [Sumatra PDF](https://www.sumatrapdfreader.org),
+  beaucoup plus léger qu’Acrobat Reader.
+
+## Édition de PDF
+
+Découper ou fusionner des fichiers PDF.
+
+- [PDF Sam Basic](https://pdfsam.org/fr/pdfsam-basic/)
+
+## Cartographie
+
+Faire des cartes simples ou complexes.
+
+- [QGIS](https://qgis.org/), client de référence, application de bureau.
+- [uMap](https://umap.openstreetmap.fr/), service en ligne pour des cartes 
+  simples et rapides.
+- [Magrit](https://magrit.cnrs.fr/), un outil de cartographie thématique
+  simple et intuitif développé par le CNRS.

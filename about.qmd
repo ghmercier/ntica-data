@@ -1,5 +1,6 @@
 ---
-title: "About"
+title: ""À propos"
 ---
 
-About this site
+Ce site a été construit par Ghislain Mercier pour les élèves du Master AMUR
+de l'École des Ponts.

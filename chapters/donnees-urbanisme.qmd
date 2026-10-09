@@ -75,7 +75,9 @@ Les élu.e.s souhaitent disposer d’une carte qui montre où le logement est ac
 2. Choisir uniquement les mutations intéressantes
     - Exemple : doit-on prendre en compte les ventes de locaux commerciaux ?  
 3. Calculer les variables sur les ventes
-    - Libre à vous de décider quelle variable représenter (évolution 2021-2025 ? prix au m2 ?) 
+    - Libre à vous de décider quelle variable représenter (évolution 2021-2025 ? prix au m2 ?)
+    - 1. `count("id_mutation", group_by:="id_mutation", filter:="type_local" IN ('Appartement','Maison','Local industriel. commercial ou assimilé')) = 1`
+    - 2. `"type_local" = 'Appartement'`
 4. Créer une grille et agréger les données des ventes sur la grille
 5. [Option] Ajouter un 2e cadre de carte avec le prix médian par commune
 

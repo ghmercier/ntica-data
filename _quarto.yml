@@ -5,6 +5,7 @@ project:
     - index.qmd
     - chapters/outils-quotidiens.qmd
     - chapters/qgis-intro.qmd
+    - chapters/donnees-urbanisme.qmd
 
 website:
   page-navigation: true
@@ -19,6 +20,7 @@ website:
         text: Accueil
       - chapters/outils-quotidiens.qmd
       - chapters/qgis-intro.qmd
+      - chapters/donnees-urbanisme.qmd
 format:
   html:
     theme:

@@ -1,0 +1,267 @@
+---
+title: "TD : Les données de l'urbanisme"
+format: html
+---
+
+Dans ce chapitre, nous allons créer une autre cartographie centrée sur la CA Paris Vallée de la Marne. 
+Ce TD nous donnera l'occasion d'explorer les données utiles aux projets d'urbanisme.
+
+## La théorie : réaliser une bonne cartographie et datavisualisation
+
+La première partie de ce TD est consacrée à quelques éléments théoriques
+sur la réalisation d'une cartographie.
+
+- [La présentation](https://docs.google.com/presentation/d/1J8PGZN9q6SQGWZza-YgJf6Sh1t5pbCED/edit?usp=sharing&ouid=117693329327247609271&rtpof=true&sd=true)
+- [La cartographie des données de l'urbanisme](https://airtable.com/appLNDVRmCaVB1Pdm/shrKHzp00EMiZP8OO/tblfQneujeIbnpkg0/viwb9g2b5MqoJHnj0)
+
+
+## L'activité
+
+Répartissez-vous en binômes, et choisissez un cas d'usage.
+
+L’objectif est de réaliser une cartographie pour venir compléter le diagnostic urbain de la CA Paris-Vallée de la Marne.
+Si le temps vous le permet, cette cartographie peut être accompagnée d'une ou plusieurs datavisualisations.
+ 
+### Ressources
+- [La présentation](https://docs.google.com/presentation/d/1J8PGZN9q6SQGWZza-YgJf6Sh1t5pbCED/edit?usp=sharing&ouid=117693329327247609271&rtpof=true&sd=true)
+- [La cartographie des données de l'urbanisme](https://airtable.com/appLNDVRmCaVB1Pdm/shrKHzp00EMiZP8OO/tblfQneujeIbnpkg0/viwb9g2b5MqoJHnj0)
+- [Les conseils laissés par vos camarades de la dernière promotion](https://docs.google.com/spreadsheets/d/134qR8oN5vrISO35oWDUH9LVhUs3q9PEKR0wD_xNtytU/edit?usp=sharing)
+- [Le travail effectué dans l'introduction à QGIS](/chapters/qgis-intro.html)
+
+### Documentez votre travail
+- [Ajoutez vos propres conseils dans l'onglet dédié](https://docs.google.com/spreadsheets/d/134qR8oN5vrISO35oWDUH9LVhUs3q9PEKR0wD_xNtytU/edit?usp=sharing)
+- [Déposez votre cartographie dans le dossier](https://drive.google.com/drive/folders/1IjSoepmjB-8jPEiiPwM8k6zvNa_SPCmC?usp=sharing)
+
+## Cas d'usage 1 : Densification autour des gares
+
+**Contexte** : Le SDRIF-E (approuvé par décret du 10 juin 2025) impose d’accroître d’au moins 15 % le nombre de logements dans les espaces urbanisés des communes situées à environ 2 km d’une gare, existante ou en projet (GPE inclus), 
+contre 13 % par défaut et 17 % dans les polarités de l’agglomération. Pour les quartiers des gares du GPE et d’Eole, il demande en plus de ne pas compromettre leur 
+potentiel de logements et de centralités, avec une offre diversifiée, des équipements renforcés, de la mixité fonctionnelle et une conception exemplaire. 
+
+Les élu.e.s des communes de Chelles se demandent 
+si leur PLU permet de répondre à cet objectif de densification. Aussi, ils souhaitent se concentrer sur la densification des périmètres autour de la future gare du Grand Paris Express.
+
+**Question des élu.e.s :** dans un rayon de 1 km autour de la gare, le PLU actuel permet-il de densifier, et où ?
+
+**Les étapes possibles :**
+
+1. Préparer le projet et placer la gare
+2. Récupérer les zones du PLU
+3. Tracer le périmètre de 1000 mètres autour de la gare
+4. Classer les zones sur la carte selon leur potentiel de densification
+    - Exemples : densification limitée = les tissus d'habitat que le PLU cherche à préserver comme « pavillonnaire »
+5. Mesurer et calculer les surfaces (tableau)
+    - Ajoutez un champ `surf_ha` calculé avec `$area / 10000`.
+    - Statistiques par catégories (ou un tableau croisé dans un tableur) : la surface totale par catégorie, puis le pourcentage du cercle.
+6. Exporter la carte avec le tableau des surfaces
+7. [Option] La CA PVM a une deuxième gare du Grand Paris Express : Noisy-Champs (RER A, ligne 15 Sud annoncée pour l'automne 2027, terminus de la ligne 16 fin 2028). Refaites la même analyse et comparez les deux quartiers de gare.
+
+**Les données :**
+
+- Les sources de données du cas d'usage sont accessibles dans [la cartographie des données de l'urbanisme](https://airtable.com/appLNDVRmCaVB1Pdm/shrKHzp00EMiZP8OO/tblfQneujeIbnpkg0/viwb9g2b5MqoJHnj0)
+- Pour le fond de carte, utilisez la couche [des communes de la CA PVM](/resources/donnees-urbanisme/ade_ca_pvm.gpkg), extraite de la base [AdminExpress](https://geoservices.ign.fr/adminexpress) de l'IGN.
+
+## Cas d'usage 2 : Comprendre le marché de l’immobilier au sein de la CAPVM
+
+**Contexte** : La CA Paris-Vallée de la Marne réunit des tissus urbains très différents : centres anciens et quartiers pavillonnaires (Chelles, Vaires-sur-Marne, Pontault-Combault), quartiers de la ville nouvelle de Marne-la-Vallée 
+(Noisiel, Lognes, Torcy, Champs-sur-Marne), et secteurs en mutation autour des futures gares du Grand Paris Express. 
+Les élu.e.s souhaitent disposer d’une carte qui montre où le logement est accessible et où il devient cher, à une échelle plus fine que la commune.
+
+**Question des élu.e.s :** comment le prix de l'immobilier au m² varie-t-il d’un quartier à l’autre de la CA PVM ?
+
+**Les étapes possibles :**
+
+1. Charger les ventes
+2. Choisir uniquement les mutations intéressantes
+    - Exemple : doit-on prendre en compte les ventes de locaux commerciaux ?  
+3. Calculer les variables sur les ventes
+    - Libre à vous de décider quelle variable représenter (évolution 2021-2025 ? prix au m2 ?)
+4. Créer une grille et agréger les données des ventes sur la grille
+5. [Option] Ajouter un 2e cadre de carte avec le prix médian par commune
+
+**Les données :**
+
+- Les sources de données du cas d'usage sont accessibles dans [la cartographie des données de l'urbanisme](https://airtable.com/appLNDVRmCaVB1Pdm/shrKHzp00EMiZP8OO/tblfQneujeIbnpkg0/viwb9g2b5MqoJHnj0)
+- Pour les ventes, utilisez la couche [DVF sur la CAPVM uniquement](/resources/donnees-urbanisme/dvf_ca_pvm_2021_2025_etudiants.gpkg), extraite à partir de cette [source](https://www.data.gouv.fr/datasets/demandes-de-valeurs-foncieres-geolocalisees).
+- Pour le fond de carte, utilisez la couche [des communes de la CA PVM](/resources/donnees-urbanisme/ade_ca_pvm.gpkg), extraite de la base [AdminExpress](https://geoservices.ign.fr/adminexpress) de l'IGN.
+
+**Les questions à se poser avant de foncer tête baissée dans les DVF**
+
+- A quoi correspond une ligne du jeu de données ? Une mutation ? Un bien ? Une vente ?
+- Quelle surface utiliser pour calculer le prix au m2 ? (regardez bien les taux de remplissage)
+- A quoi correspond le prix de la vente ?
+
+### Correction cas d'usage 2 : limites connues des DVF et comment les traiter
+
+#### Méthode A : avec les outils QGIS
+
+::: {.callout-warning}
+##### Attention
+
+La méthode A est lente : pour chacune des 41 508 lignes, QGIS peut refaire le comptage sur toute la couche (plusieurs minutes). Pour une méthode plus rapide, voir méthode B.
+:::
+
+##### Limite 1 : une vente occupe plusieurs lignes
+
+**Le problème.** Une ligne DVF correspond à un **bien** (appartement, cave, parking, terrain), pas à une vente.
+Toutes les lignes d'une vente partagent le même `id_mutation`, et **le prix total (`valeur_fonciere`) est recopié
+sur chaque ligne**.
+
+| Exemple | id_mutation | Lignes | Conséquence |
+|---|---|---|---|
+| Appartement à Chelles, 250 000 €, avril 2021 | `2021-1311764` | 3 (appartement + dépendance + terrain) | Vente comptée 3 fois si on ne dédoublonne pas |
+| Immeuble à Pontault-Combault, 1 893 048 €, juillet 2021 | `2021-1296940` | 18 (9 appartements + 9 dépendances) | Prix au m² absurde (1 893 048 / 44 m² = 43 000 €/m²) : vente groupée inutilisable |
+
+**La solution.** Ne garder que les ventes d'**un seul** logement (ou local), puis seulement la ligne de ce logement.
+
+**Étape 1 : compter les biens de chaque vente**
+
+1. Ouvrir la table attributaire de `dvf_ventes_brutes`.
+2. Ouvrir la **Calculatrice de champs** (icône boulier, ou Ctrl+I).
+3. Cocher **Créer un nouveau champ**.
+4. Nom du champ en sortie : `nb_biens` ; type : **Nombre entier**.
+5. Expression :
+
+   ```
+   count("id_mutation",
+         group_by:="id_mutation",
+         filter:="type_local" IN ('Appartement','Maison','Local industriel. commercial ou assimilé'))
+   ```
+
+6. Vérifier l'**Aperçu du résultat** sous la zone de saisie (un nombre doit s'afficher), puis **OK**.
+7. Enregistrer les modifications (icône crayon, puis enregistrer).
+
+
+> Ce que fait l'expression : pour chaque ligne, elle compte les logements et locaux de **la vente à laquelle
+> appartient cette ligne**. Le `filter` est indispensable : sans lui, les caves, parkings et lignes de terrain
+> seraient comptés, et on ne garderait que 587 ventes d'appartement au lieu de 6 352.
+
+**Étape 2 : ne garder qu'une ligne par vente**
+
+1. **Boîte à outils de traitements › Sélection de vecteur › Extraire par expression**.
+2. Couche source : `dvf_ventes_brutes`.
+3. Expression :
+
+   ```
+   "nature_mutation" = 'Vente'
+   AND "nb_biens" = 1
+   AND "type_local" IN ('Appartement','Maison','Local industriel. commercial ou assimilé')
+   ```
+
+4. Exécuter. Une **nouvelle couche** (« Correspondant ») est créée ; la couche d'origine ne change pas.
+
+Résultat attendu : une ligne par vente d'un seul logement ou local (la ligne de ce bien ; caves, parkings et
+terrains sont écartés). Maisons, appartements et locaux sont encore mélangés : c'est l'objet de la limite 2.
+
+> Attention : la **Calculatrice de champs** n'enlève jamais de ligne, elle ajoute une colonne.
+> Seul **Extraire par expression** (ou **Sélectionner par expression** suivi d'un export des entités
+> sélectionnées) retire des lignes.
+
+---
+
+##### Limite 2 : la surface bâtie ne mesure pas la même chose pour une maison et un appartement
+
+**Le problème.** `surface_reelle_bati` est la seule surface remplie partout (100 % des ventes d'appartements et de
+maisons, contre 60 % pour la surface Carrez des appartements et 11 % pour celle des maisons). C'est donc elle qu'on
+utilise pour le prix au m². Pour une maison, le prix au m² est **surestimé** : **le terrain est inclus dans le prix** (330 à 530 m² en médiane selon la taille de la maison), pas dans la surface ;
+
+**La solution.** Ne **jamais mélanger** maisons et appartements dans un même prix au m² : un type de bien par carte.
+
+**Étape 1 : ne garder qu'un type de bien** (sur la couche issue de la limite 1)
+
+1. **Extraire par expression** :
+
+   ```
+   "type_local" = 'Appartement'
+   ```
+
+Résultat attendu : **6 352 ventes**, une par vente d'appartement.
+
+**Étape 2 : calculer le prix au m²**
+
+1. Ouvrir la **Calculatrice de champs** sur la couche des 6 352 ventes.
+2. Créer un nouveau champ `prix_m2`, type **Nombre décimal (réel)**.
+3. Expression :
+
+   ```
+   "valeur_fonciere" / "surface_reelle_bati"
+   ```
+
+---
+
+##### Limite 3 : les prix des ventes comprennent des valeurs aberrantes (prix symboliques, erreurs de saisie)
+
+**Ecarter les valeurs aberrantes**
+
+1. **Extraire par expression** :
+
+   ```
+   "surface_reelle_bati" >= 10
+   AND "prix_m2" BETWEEN 1000 AND 10000
+   ```
+
+Résultat attendu : **6 320 ventes**
+
+---
+
+##### Limite 4 : le prix est celui de toute la vente, pas du seul bien
+
+**Le problème.** Une fois la ligne de l'appartement isolée, `valeur_fonciere` reste le **prix total payé** :
+il inclut la cave, le parking ou la part de terrain vendus avec, alors que la surface ne concerne que l'appartement.
+**91 % des ventes d'appartements retenues comprennent au moins une dépendance.** DVF ne donne pas la valeur de
+chaque bien : impossible de soustraire le prix du parking.
+
+S'il est difficile de trouver une solution à ce problème, **il est important de garder cette limite en tête.**
+
+---
+
+#### Méthode B : en SQL avec une couche virtuelle (rapide, en une seule étape)
+
+La requête SQL s'exécute en quelques secondes.
+
+1. Menu **Couche › Créer une couche › Nouvelle couche virtuelle…** > Nom de la couche `dvf_filtrer_groupe`
+2. Dans **Couches intégrées**, cliquer sur **Importer…**, choisir `dvf_ventes_brutes`, puis **OK**.
+   Vérifier que son **Nom local** est bien `dvf_ventes_brutes` : c'est le nom à utiliser dans la requête.
+   S'il est différent (par exemple `dvf_ca_pvm_2021_2025_etudiants — dvf_ventes_brutes`), le renommer
+   `dvf_ventes_brutes` en double-cliquant dessus.
+3. Coller la requête dans la zone **Requête** :
+
+    ```sql
+    SELECT *
+    FROM (
+        SELECT *, valeur_fonciere / surface_reelle_bati AS prix_m2
+        FROM dvf_ventes_brutes
+        WHERE nature_mutation = 'Vente'
+        AND type_local = 'Appartement'
+        AND surface_reelle_bati >= 10
+        AND id_mutation IN (
+            SELECT id_mutation
+            FROM dvf_ventes_brutes
+            WHERE type_local IN ('Appartement','Maison','Local industriel. commercial ou assimilé')
+            GROUP BY id_mutation
+            HAVING count(*) = 1
+        )
+    )
+    WHERE prix_m2 BETWEEN 1000 AND 10000
+    ```
+
+4. Dans **Géométrie**, choisir **Autodétecter** (ou : colonne `geom`, type Point, SCR EPSG:2154).
+5. Cliquer sur **Test** (aucune erreur ne doit s'afficher), puis sur **Ajouter**.
+6. Une couche virtuelle apparaît. Elle est recalculée à chaque affichage : la **sauvegarder en GeoPackage**
+   (clic droit › Exporter › Sauvegarder les entités sous…) et travailler ensuite sur ce fichier.
+
+Résultat attendu : **6 320 lignes**, avec un champ `prix_m2` prêt pour la jointure avec la grille.
+
+#### Récapitulatif de la chaîne de traitement
+
+| # | Outil QGIS | Expression |
+|---|---|---|
+| 0 | Couche brute | |
+| 1 | Calculatrice de champs (`nb_biens`, entier) | `count("id_mutation", group_by:="id_mutation", filter:="type_local" IN ('Appartement','Maison','Local industriel. commercial ou assimilé'))` |
+| 2 | Extraire par expression | `"nature_mutation" = 'Vente' AND "nb_biens" = 1 AND "type_local" IN ('Appartement','Maison','Local industriel. commercial ou assimilé')` |
+| 3 | Extraire par expression | `"type_local" = 'Appartement'` |
+| 4 | Calculatrice de champs (`prix_m2`, réel) | `"valeur_fonciere" / "surface_reelle_bati"` |
+| 5 | Extraire par expression | `"surface_reelle_bati" >= 10 AND "prix_m2" BETWEEN 1000 AND 10000` |
+| 1-5 | Couche virtuelle (méthode B) | Requête SQL « toute la chaîne » de la limite 1 |
+
+

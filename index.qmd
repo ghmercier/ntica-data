@@ -5,6 +5,9 @@ author:
   - name: Ghislain Mercier
     url: https://github.com/ghmercier
     email: ghislain.mercier@club-internet.fr
+  - name: Clément Mandron
+    url: https://github.com/clementmandron
+    email: cmandronpro@gmail.com
 date: "2026-09-24"
 ---
 
@@ -15,6 +18,10 @@ ci-dessous les liens vers les supports utilisés lors du module.
 
 - [Les outils du quotidien](/chapters/outils-quotidiens.html)
 - [Introduction à QGIS](/chapters/qgis-intro.html)
+
+## 9 octobre 2026
+
+- [TD : Les données de l'urbanisme](/chapters/donnees-urbanisme.html)
 
 <!--
 - [Traitement de fichiers CSV](/chapters/csv.html)

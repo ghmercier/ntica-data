@@ -1,82 +1,52 @@
 [
   {
-    "objectID": "chapters/qgis-intro.html",
-    "href": "chapters/qgis-intro.html",
-    "title": "Introduction à QGIS",
+    "objectID": "chapters/donnees-urbanisme.html",
+    "href": "chapters/donnees-urbanisme.html",
+    "title": "TD : Les données de l’urbanisme",
     "section": "",
-    "text": "Dans ce chapitre, nous allons créer une première carte : un fond de plan cartographique centré sur la CA Paris Vallée de la Marne, sur lequel nous allons superposer des couches vectorielles de description administrative du territoire.",
+    "text": "Dans ce chapitre, nous allons créer une autre cartographie centrée sur la CA Paris Vallée de la Marne. Ce TD nous donnera l’occasion d’explorer les données utiles aux projets d’urbanisme.",
     "crumbs": [
-      "Introduction à QGIS"
+      "TD : Les données de l'urbanisme"
     ]
   },
   {
-    "objectID": "chapters/qgis-intro.html#installer-qgis",
-    "href": "chapters/qgis-intro.html#installer-qgis",
-    "title": "Introduction à QGIS",
-    "section": "Installer QGIS",
-    "text": "Installer QGIS\nQGIS est un logiciel SIG compatible avec Linux, Unix, Mac OS X, Windows et Android. Nous allons utiliser la version LTS disponible sur le site officiel.\nPour utiliser l’installateur officiel, il faut disposer des droits administrateurs sur l’ordinateur cible. Si on ne les a pas, on peut télécharger une version portable que l’on placera dans son répertoire utilisateur ou sur une clé USB. Une version portable de QGIS est disponible sur le blog SIG & Territoires.",
+    "objectID": "chapters/donnees-urbanisme.html#la-théorie-réaliser-une-bonne-cartographie-et-datavisualisation",
+    "href": "chapters/donnees-urbanisme.html#la-théorie-réaliser-une-bonne-cartographie-et-datavisualisation",
+    "title": "TD : Les données de l’urbanisme",
+    "section": "La théorie : réaliser une bonne cartographie et datavisualisation",
+    "text": "La théorie : réaliser une bonne cartographie et datavisualisation\nLa première partie de ce TD est consacrée à quelques éléments théoriques sur la réalisation d’une cartographie.\n\nLa présentation\nLa cartographie des données de l’urbanisme",
     "crumbs": [
-      "Introduction à QGIS"
+      "TD : Les données de l'urbanisme"
     ]
   },
   {
-    "objectID": "chapters/qgis-intro.html#mise-en-place",
-    "href": "chapters/qgis-intro.html#mise-en-place",
-    "title": "Introduction à QGIS",
-    "section": "Mise en place",
-    "text": "Mise en place\nLancer QGIS, créer un nouveau projet.\n\nProjet → Nouveau\n\n\nFond de plan\nAjouter le fond de carte OpenStreetMap.\n\nCouche → Ajouter une couche → Ajouter une couche XYZ\nConnexions XYZ → OpenStreetMap\nAjouter\n\nDans le coin inférieur droit, remarquez qu’un SCR a été automatiquement défini : EPSG:3857. C’est celui de la première couche ajoutée.\nSi nous devions ajouter des couches exprimées dans un autre SCR, QGIS ferait la conversion de manière transparente, à condition qu’il puisse déterminer sans ambiguité le SCR de la couche fournie.\n\n\nSCR, Késako ?\n\nUn système de coordonnées de référence est le référentiel qui donne du sens aux valeurs numériques que prennent des coordonnées géographiques (latitude, longitude, altitude). On pourra se référer utilement à la documentation de QGIS.\n\n\nPour mieux voir les entités vectorielles que l’on ajoutera par la suite, on peut déjà rendre le fond de plan transparent et le passer en niveau de gris.\nAvec la couche sélectionnée :\n\nCouche → Propriétés de la couche\nTransparence → Opacité globale → 50%\nSymbologie → Rendu de couche → Niveaux de gris → [Par clarté]\n\n\n\n\nCouches vectorielles\nTélécharger la géodatabase préparée spécialement pour ce TP. Elle contient quelques données issues de la base AdminExpress de l’IGN.\n\n\nGéodatabase, ESRI Shapefile ?\n\nPlusieurs formats existent pour stocker de l’information géographique. QGIS travaille par défaut avec des géodatabases. Vous trouverez souvent des fichiers au format ESRI Shapefile. On retiendra qu’une géodatabase (extension gpkg) est capable de stocker plusieurs couches dans un même fichier, alors que le format ESRI Shapefile (extension principale shp) crée six différents fichiers pour stocker l’information d’une seule couche vectorielle. Pour les détails techniques, se référer à la documentation.\n\nAjouter la couche communes contenue dans la géodatabase.\n\nCouche → Ajouter une couche → Ajouter une couche vecteur\nSource → Jeux de données vectorielles\nAller chercher le ficher ade_simplifie.gpkg\nDans la fenêtre qui s’affiche, sélectionner la couche commune\n\n\nOn va modifier la symbologie de la couche pour ne conserver que les contours de chaque objet, sans ce vilain fond opaque, puis ajouter des étiquettes donnant le nom de la commune (on pourra personnaliser la police et le corps).\nAvec la couche sélectionnée :\n\nCouche → Propriétés de la couche\nSymbologie → Remplissage simple → Style de remplissage → Pas de remplissage\nÉtiquettes → Étiquettes simples → Valeur → nom_officiel",
+    "objectID": "chapters/donnees-urbanisme.html#lactivité",
+    "href": "chapters/donnees-urbanisme.html#lactivité",
+    "title": "TD : Les données de l’urbanisme",
+    "section": "L’activité",
+    "text": "L’activité\nRépartissez-vous en binômes, et choisissez un cas d’usage.\nL’objectif est de réaliser une cartographie pour venir compléter le diagnostic urbain de la CA Paris-Vallée de la Marne. Si le temps vous le permet, cette cartographie peut être accompagnée d’une ou plusieurs datavisualisations.\n\nRessources\n\nLa présentation\nLa cartographie des données de l’urbanisme\nLes conseils laissés par vos camarades de la dernière promotion\nLe travail effectué dans l’introduction à QGIS\n\n\n\nDocumentez votre travail\n\nAjoutez vos propres conseils dans l’onglet dédié\nDéposez votre cartographie dans le dossier",
     "crumbs": [
-      "Introduction à QGIS"
+      "TD : Les données de l'urbanisme"
     ]
   },
   {
-    "objectID": "chapters/qgis-intro.html#manipulations",
-    "href": "chapters/qgis-intro.html#manipulations",
-    "title": "Introduction à QGIS",
-    "section": "Manipulations",
-    "text": "Manipulations\n\nExplorer les données\nÀ chaque objet de la couche communes correspondent des données. On peut les consulter avec l’outil Identifier des données accessible par la barre d’outils. Pour les communes, un champ important est le code_insee. C’est lui qui identifie la commune de manière unique, on en aura besoin ultérieurement.\n\n\nDe l’importance des métadonnées\n\nMême si les intitulés des champs sont ici clairs, il est de bonne pratique de toujours consulter les métadonnées d’une source pour s’assurer d’avoir bien tout compris. Dans le cas présent, on ira voir sur le site de l’IGN, à la page ADMIN Express.\n\n\nUne autre manière d’explorer la couche est d’afficher sa table d’attributs.\n\nCouche → Ouvrir la table d’attributs ou F6.\n\n\n\nSélection manuelle\nOn peut sélectionner manuellement une ou plusieurs entités à l’aide de l’outil de la barre des tâches.\nOn notera :\n\ndans le menu déroulant, les modes de sélections sont possibles: rectangle de sélection, polygone, main levée, par rayon.\ndes raccourcis-claviers utiles : SHIFT pour ajouter des objets à la sélection courante, CTRL pour les retrancher.\n\nSélectionner les trois communes de Champs-sur-Marne, Noisy-le-Grand et Émerainville.\n\n\n\nStatistiques descriptives\nOn peut calculer aisément certains agrégats (moyenne, médiane, etc.) sur les attributs des entités sélectionnés.\n\nVue → Résumé statistique\n\n\n\nQuelle est la population totale de ces trois communes ?\n\n105 829 habitants (au 1er janvier 2022).\n\n\n\nQuelle est la superficie cadastrale totale de ces trois communes ?\n\n2 570 hectares.\n\n\n\n\nCalculs géométriques\nUn SIG est capable de calculer la superficie de chaque polygone. On va vérifier que la superficie calculée est cohérente avec la superficie cadastrale renseignée dans la table attributaire.\nOuvrir la table d’attributs F6, puis la calculatrice de champs via le bouton en forme de boulier dans la barre d’outils, également CTRL+I.\nDans la fenêtre qui s’ouvre :\n\nIndiquer le nom du champ à créer (on peut l’appeler superficie)\nSélectionner la case champ virtuel (ie. le champ ne sera pas persistent)\nIndiquer le type du champ (entier)\nRenseigner la formule pour calculer le champ : area(@geometry)\nValider\n\n\n\nQuelle sera l’unité du champ superficie ?\n\nIl dépend bien sûr de l’unité employée par le SCR de la carte. Pour le nôtre, c’est le mètre. Le champ superficie sera donc exprimé en mètres-carrés. On pourra diviser par 10000 pour le convertir en hectares.\n\n\nLe champ superficie figure bien désormais dans la table attributaire. On peut calculer la superficie des trois communes de la même manière qu’on a calculé celle de la population.\n\n\nQuelle est la superficie calculée totale de ces trois communes ?\n\n2 620 ha. L’écart est de 50 ha avec la superficie cadastrale, marge 2%.\n\nOn peut également utiliser l’outil de mesure de longueur (CTRL+ALT+M) ou d’aires (CTRL+ALT+J) pour des calculs ponctuels sur la carte.\n\n\nAffichage par catégories\nOn va désormais colorer les communes différemment en fonction de l’EPCI auquel elles appartiennent.\n\nCouche → Propriétés de la couche → Symbologie → [catégorisé]\nValeur → [codes_siren_des_epci]\nSymboles → Remplissage simple → Style de remplissage → [continue]\nBouton Classer\nBouton Appliquer\n\nOn voit nettement se dessiner les 7 EPCI présents dans la base.\n\n\n\nMillefeuille administratif ?\n\nVous noterez dans la légende que le champ codes_siren_des_epci contient parfois deux numéros SIREN : certaines communes appartient bien à deux EPCI en même temps (Métropole du Grand Paris + EPT).\n\n\n\nSélection avancée\nOn va désormais sélectionner toutes les communes appartenant à la CA Paris Vallée de la Marne en testant deux méthodes.\n\nSélection par attributs\nOn peut sélectionner l’ensemble des entités de la couche des communes dont le champ code_siren_des_epci contient la valeur 200057958 grâce à la sélection par expression (CTRL+F3)\n\nÉditer → Sélection → Sélectionner des entités à l’aide d’une sélection\nExpression → [“codes_siren_des_epci” = ‘200057958’]\n\n\n\n\nSélection par géométrie\nOn peut aussi sélectionner l’ensemble des entités de la couche des communes qui sont situées à l’intérieur du polygone représentant la CA Paris Vallée de la Marne dans la couche des EPCI.\nPour cela, on va ajouter la couche vectorielle des EPCI qui figure dans la même géodatabase que la couche des communes et lui appliquer le style qui convient. Pour cela, se référer au début du TD.\nSélectionner ensuite le polygone représentant la CA Paris Vallée de la Marne.\n\nVecteur → Outils de recherche → Sélection par localisation\nSélectionner les entités depuis → ade_simplifiee - communes\nOù les entités → est à l'intérieur\nEn comparant les entité de → ade_simplifiee - epci\ncocher la case entités sélectionnées uniquement\n\n\n\n\n\nExport\nCréons maintenant un couche contenant uniquement les 12 communes de la CA Paris Vallée de la Marne. On sauvegardera cette couche dans notre géodatabase initiale.\n\nPanneau des couches →  clic-droit couche communes\nExporter → Sauvegarder les entités sélectionnées sous\n\n\n\n\nJointure attributaire\nReprésentons désormais les différences de population entre les communes.\nOn serait tenté de faire varier les couleurs des polygones du plus clair au plus foncé : les géomaticiens appellent ces cartes des cartes teintées, ou cartes choroplèthes. Mais pas de choroplèthes avec des données stock… on fera donc varier la taille de points représentant les communes.\nDans la géodatabase initiale, charger la couche chef_lieu_de_commune. Elle contient un semis de points, un pour chaque chef-lieu (c’est-à-dire la mairie).\nOuvrir la table attributaire : constater qu’il y a bien un champ code_insee_de_la_commune, mais pas (encore) de champ population… Qu’à cela ne tienne : on va l’ajouter, en joignant la table des chefs-lieux des communes à celle des communes.\nAvec la couche des chefs-lieux sélectionnés :\n\nCouche → Propriétés de la couche → Jointures\nCliquer le bouton +\nJoindre la couche → ade_simplifiee - communes, ade_simplifie\nChamp de jointure → code_insee\nChamp dans la couche cible → code_insee_de_la_commune\nChamps joints → population\n\n\n\n\nAffichage gradué\nOn peut désormais modifier la symbologie et faire varier la taille des points en fonction de la valeur du champ population.\n\nCouche → Propriétés de la couche → Symbologie\nSélectionner gradué\nValeur → xxx_population\nMéthode → Taille\nMode → intervalle égal\n\n\n\nDiscrétisation\n\nOn comprend bien que le choix des seuils, du nombre de catégories, etc. est stratégique, et qu’on peut faire dire à des mêmes données des choses très différentes selon les choix opérés…",
+    "objectID": "chapters/donnees-urbanisme.html#cas-dusage-1-densification-autour-des-gares",
+    "href": "chapters/donnees-urbanisme.html#cas-dusage-1-densification-autour-des-gares",
+    "title": "TD : Les données de l’urbanisme",
+    "section": "Cas d’usage 1 : Densification autour des gares",
+    "text": "Cas d’usage 1 : Densification autour des gares\nContexte : Le SDRIF-E (approuvé par décret du 10 juin 2025) impose d’accroître d’au moins 15 % le nombre de logements dans les espaces urbanisés des communes situées à environ 2 km d’une gare, existante ou en projet (GPE inclus), contre 13 % par défaut et 17 % dans les polarités de l’agglomération. Pour les quartiers des gares du GPE et d’Eole, il demande en plus de ne pas compromettre leur potentiel de logements et de centralités, avec une offre diversifiée, des équipements renforcés, de la mixité fonctionnelle et une conception exemplaire.\nLes élu.e.s des communes de Chelles se demandent si leur PLU permet de répondre à cet objectif de densification. Aussi, ils souhaitent se concentrer sur la densification des périmètres autour de la future gare du Grand Paris Express.\nQuestion des élu.e.s : dans un rayon de 1 km autour de la gare, le PLU actuel permet-il de densifier, et où ?\nLes étapes possibles :\n\nPréparer le projet et placer la gare\nRécupérer les zones du PLU\nTracer le périmètre de 1000 mètres autour de la gare\nClasser les zones sur la carte selon leur potentiel de densification\n\nExemples : densification limitée = les tissus d’habitat que le PLU cherche à préserver comme « pavillonnaire »\n\nMesurer et calculer les surfaces (tableau)\n\nAjoutez un champ surf_ha calculé avec $area / 10000.\nStatistiques par catégories (ou un tableau croisé dans un tableur) : la surface totale par catégorie, puis le pourcentage du cercle.\n\nExporter la carte avec le tableau des surfaces\n[Option] La CA PVM a une deuxième gare du Grand Paris Express : Noisy-Champs (RER A, ligne 15 Sud annoncée pour l’automne 2027, terminus de la ligne 16 fin 2028). Refaites la même analyse et comparez les deux quartiers de gare.\n\nLes données :\n\nLes sources de données du cas d’usage sont accessibles dans la cartographie des données de l’urbanisme\nPour le fond de carte, utilisez la couche des communes de la CA PVM, extraite de la base AdminExpress de l’IGN.",
     "crumbs": [
-      "Introduction à QGIS"
+      "TD : Les données de l'urbanisme"
     ]
   },
   {
-    "objectID": "chapters/qgis-intro.html#export-1",
-    "href": "chapters/qgis-intro.html#export-1",
-    "title": "Introduction à QGIS",
-    "section": "Export",
-    "text": "Export\nExportons notre carte en PDF. Il faut pour cela créer une mise en page.\n\nProjet → Nouvelle mise en page\n\nDans la fenêtre qui s’ouvre : - Insérer un bloc carte - Insérer un bloc de texte pour le titre - Insérer un bloc légende - Insérer une échelle graphique - Insérer une flèche indiquant le nord - …\nUne fois tous les paramètres ajustés, exporter la carte en PDF.",
+    "objectID": "chapters/donnees-urbanisme.html#cas-dusage-2-comprendre-le-marché-de-limmobilier-au-sein-de-la-capvm",
+    "href": "chapters/donnees-urbanisme.html#cas-dusage-2-comprendre-le-marché-de-limmobilier-au-sein-de-la-capvm",
+    "title": "TD : Les données de l’urbanisme",
+    "section": "Cas d’usage 2 : Comprendre le marché de l’immobilier au sein de la CAPVM",
+    "text": "Cas d’usage 2 : Comprendre le marché de l’immobilier au sein de la CAPVM\nContexte : La CA Paris-Vallée de la Marne réunit des tissus urbains très différents : centres anciens et quartiers pavillonnaires (Chelles, Vaires-sur-Marne, Pontault-Combault), quartiers de la ville nouvelle de Marne-la-Vallée (Noisiel, Lognes, Torcy, Champs-sur-Marne), et secteurs en mutation autour des futures gares du Grand Paris Express. Les élu.e.s souhaitent disposer d’une carte qui montre où le logement est accessible et où il devient cher, à une échelle plus fine que la commune.\nQuestion des élu.e.s : comment le prix de l’immobilier au m² varie-t-il d’un quartier à l’autre de la CA PVM ?\nLes étapes possibles :\n\nCharger les ventes\nChoisir uniquement les mutations intéressantes\n\nExemple : doit-on prendre en compte les ventes de locaux commerciaux ?\n\n\nCalculer les variables sur les ventes\n\nLibre à vous de décider quelle variable représenter (évolution 2021-2025 ? prix au m2 ?)\n\nCréer une grille et agréger les données des ventes sur la grille\n[Option] Ajouter un 2e cadre de carte avec le prix médian par commune\n\nLes données :\n\nLes sources de données du cas d’usage sont accessibles dans la cartographie des données de l’urbanisme\nPour les ventes, utilisez la couche DVF sur la CAPVM uniquement, extraite à partir de cette source.\nPour le fond de carte, utilisez la couche des communes de la CA PVM, extraite de la base AdminExpress de l’IGN.\n\nLes questions à se poser avant de foncer tête baissée dans les DVF\n\nA quoi correspond une ligne du jeu de données ? Une mutation ? Un bien ? Une vente ?\nQuelle surface utiliser pour calculer le prix au m2 ? (regardez bien les taux de remplissage)\nA quoi correspond le prix de la vente ?\n\n\nCorrection cas d’usage 2 : limites connues des DVF et comment les traiter\n\nMéthode A : avec les outils QGIS\n\n\n\n\n\n\nWarningAttention\n\n\n\nLa méthode A est lente : pour chacune des 41 508 lignes, QGIS peut refaire le comptage sur toute la couche (plusieurs minutes). Pour une méthode plus rapide, voir méthode B.\n\n\n\nLimite 1 : une vente occupe plusieurs lignes\nLe problème. Une ligne DVF correspond à un bien (appartement, cave, parking, terrain), pas à une vente. Toutes les lignes d’une vente partagent le même id_mutation, et le prix total (valeur_fonciere) est recopié sur chaque ligne.\n\n\n\n\n\n\n\n\n\nExemple\nid_mutation\nLignes\nConséquence\n\n\n\n\nAppartement à Chelles, 250 000 €, avril 2021\n2021-1311764\n3 (appartement + dépendance + terrain)\nVente comptée 3 fois si on ne dédoublonne pas\n\n\nImmeuble à Pontault-Combault, 1 893 048 €, juillet 2021\n2021-1296940\n18 (9 appartements + 9 dépendances)\nPrix au m² absurde (1 893 048 / 44 m² = 43 000 €/m²) : vente groupée inutilisable\n\n\n\nLa solution. Ne garder que les ventes d’un seul logement (ou local), puis seulement la ligne de ce logement.\nÉtape 1 : compter les biens de chaque vente\n\nOuvrir la table attributaire de dvf_ventes_brutes.\nOuvrir la Calculatrice de champs (icône boulier, ou Ctrl+I).\nCocher Créer un nouveau champ.\nNom du champ en sortie : nb_biens ; type : Nombre entier.\nExpression :\ncount(\"id_mutation\",\n      group_by:=\"id_mutation\",\n      filter:=\"type_local\" IN ('Appartement','Maison','Local industriel. commercial ou assimilé'))\nVérifier l’Aperçu du résultat sous la zone de saisie (un nombre doit s’afficher), puis OK.\nEnregistrer les modifications (icône crayon, puis enregistrer).\n\n\nCe que fait l’expression : pour chaque ligne, elle compte les logements et locaux de la vente à laquelle appartient cette ligne. Le filter est indispensable : sans lui, les caves, parkings et lignes de terrain seraient comptés, et on ne garderait que 587 ventes d’appartement au lieu de 6 352.\n\nÉtape 2 : ne garder qu’une ligne par vente\n\nBoîte à outils de traitements › Sélection de vecteur › Extraire par expression.\nCouche source : dvf_ventes_brutes.\nExpression :\n\"nature_mutation\" = 'Vente'\nAND \"nb_biens\" = 1\nAND \"type_local\" IN ('Appartement','Maison','Local industriel. commercial ou assimilé')\nExécuter. Une nouvelle couche (« Correspondant ») est créée ; la couche d’origine ne change pas.\n\nRésultat attendu : une ligne par vente d’un seul logement ou local (la ligne de ce bien ; caves, parkings et terrains sont écartés). Maisons, appartements et locaux sont encore mélangés : c’est l’objet de la limite 2.\n\nAttention : la Calculatrice de champs n’enlève jamais de ligne, elle ajoute une colonne. Seul Extraire par expression (ou Sélectionner par expression suivi d’un export des entités sélectionnées) retire des lignes.\n\n\n\n\nLimite 2 : la surface bâtie ne mesure pas la même chose pour une maison et un appartement\nLe problème. surface_reelle_bati est la seule surface remplie partout (100 % des ventes d’appartements et de maisons, contre 60 % pour la surface Carrez des appartements et 11 % pour celle des maisons). C’est donc elle qu’on utilise pour le prix au m². Pour une maison, le prix au m² est surestimé : le terrain est inclus dans le prix (330 à 530 m² en médiane selon la taille de la maison), pas dans la surface ;\nLa solution. Ne jamais mélanger maisons et appartements dans un même prix au m² : un type de bien par carte.\nÉtape 1 : ne garder qu’un type de bien (sur la couche issue de la limite 1)\n\nExtraire par expression :\n\"type_local\" = 'Appartement'\n\nRésultat attendu : 6 352 ventes, une par vente d’appartement.\nÉtape 2 : calculer le prix au m²\n\nOuvrir la Calculatrice de champs sur la couche des 6 352 ventes.\nCréer un nouveau champ prix_m2, type Nombre décimal (réel).\nExpression :\n\"valeur_fonciere\" / \"surface_reelle_bati\"\n\n\n\n\nLimite 3 : les prix des ventes comprennent des valeurs aberrantes (prix symboliques, erreurs de saisie)\nEcarter les valeurs aberrantes\n\nExtraire par expression :\n\"surface_reelle_bati\" &gt;= 10\nAND \"prix_m2\" BETWEEN 1000 AND 10000\n\nRésultat attendu : 6 320 ventes\n\n\n\nLimite 4 : le prix est celui de toute la vente, pas du seul bien\nLe problème. Une fois la ligne de l’appartement isolée, valeur_fonciere reste le prix total payé : il inclut la cave, le parking ou la part de terrain vendus avec, alors que la surface ne concerne que l’appartement. 91 % des ventes d’appartements retenues comprennent au moins une dépendance. DVF ne donne pas la valeur de chaque bien : impossible de soustraire le prix du parking.\nS’il est difficile de trouver une solution à ce problème, il est important de garder cette limite en tête.\n\n\n\n\nMéthode B : en SQL avec une couche virtuelle (rapide, en une seule étape)\nLa requête SQL s’exécute en quelques secondes.\n\nMenu Couche › Créer une couche › Nouvelle couche virtuelle… &gt; Nom de la couche dvf_filtrer_groupe\nDans Couches intégrées, cliquer sur Importer…, choisir dvf_ventes_brutes, puis OK. Vérifier que son Nom local est bien dvf_ventes_brutes : c’est le nom à utiliser dans la requête. S’il est différent (par exemple dvf_ca_pvm_2021_2025_etudiants — dvf_ventes_brutes), le renommer dvf_ventes_brutes en double-cliquant dessus.\nColler la requête dans la zone Requête :\nSELECT *\nFROM (\n    SELECT *, valeur_fonciere / surface_reelle_bati AS prix_m2\n    FROM dvf_ventes_brutes\n    WHERE nature_mutation = 'Vente'\n    AND type_local = 'Appartement'\n    AND surface_reelle_bati &gt;= 10\n    AND id_mutation IN (\n        SELECT id_mutation\n        FROM dvf_ventes_brutes\n        WHERE type_local IN ('Appartement','Maison','Local industriel. commercial ou assimilé')\n        GROUP BY id_mutation\n        HAVING count(*) = 1\n    )\n)\nWHERE prix_m2 BETWEEN 1000 AND 10000\nDans Géométrie, choisir Autodétecter (ou : colonne geom, type Point, SCR EPSG:2154).\nCliquer sur Test (aucune erreur ne doit s’afficher), puis sur Ajouter.\nUne couche virtuelle apparaît. Elle est recalculée à chaque affichage : la sauvegarder en GeoPackage (clic droit › Exporter › Sauvegarder les entités sous…) et travailler ensuite sur ce fichier.\n\nRésultat attendu : 6 320 lignes, avec un champ prix_m2 prêt pour la jointure avec la grille.\n\n\nRécapitulatif de la chaîne de traitement\n\n\n\n\n\n\n\n\n#\nOutil QGIS\nExpression\n\n\n\n\n0\nCouche brute\n\n\n\n1\nCalculatrice de champs (nb_biens, entier)\ncount(\"id_mutation\", group_by:=\"id_mutation\", filter:=\"type_local\" IN ('Appartement','Maison','Local industriel. commercial ou assimilé'))\n\n\n2\nExtraire par expression\n\"nature_mutation\" = 'Vente' AND \"nb_biens\" = 1 AND \"type_local\" IN ('Appartement','Maison','Local industriel. commercial ou assimilé')\n\n\n3\nExtraire par expression\n\"type_local\" = 'Appartement'\n\n\n4\nCalculatrice de champs (prix_m2, réel)\n\"valeur_fonciere\" / \"surface_reelle_bati\"\n\n\n5\nExtraire par expression\n\"surface_reelle_bati\" &gt;= 10 AND \"prix_m2\" BETWEEN 1000 AND 10000\n\n\n1-5\nCouche virtuelle (méthode B)\nRequête SQL « toute la chaîne » de la limite 1",
     "crumbs": [
-      "Introduction à QGIS"
-    ]
-  },
-  {
-    "objectID": "chapters/qgis-intro.html#utilisateurs-avancés",
-    "href": "chapters/qgis-intro.html#utilisateurs-avancés",
-    "title": "Introduction à QGIS",
-    "section": "Utilisateurs avancés",
-    "text": "Utilisateurs avancés\nSi vous avez fini le TD et que vous avez peur de vous ennuyez, voici quelques défis.\n\nGéoréférencement\nSaurez-vous retrouver le plan d’aménagement partiel du secteur 4 de Marne-la-Vallée de mars 1987, le géoréférencer et l’afficher dans QGIS ?\n\nIndices :\n\nUne page internet où trouver l’image source.\nMettre la BD Parcellaire en fond pour trouver des points de contrôle.\nLe géoréférenceur est disponible via le menu Couches → Géoréférenceur.\nLes points de contrôle que j’ai utilisés sont ici.\n\n\n\nGéocodage d’adresses\nSaurez-vous cartographier les bureaux de tabacs de la CA PVDM ?\n\nIndices :\n\nFuretez sur data.gouv.fr.\nUn géocodeur officiel est disponible via la Base Adresse Nationale\nAnalysez la qualité des données\n\n\n\nBuffers / zones tampons\nSaurez-vous cartographier les écoles de la CA PVDM qui sont situées à moins de 200 m d’un tabac ?\n\nIndices :\n\nLe jeu de données des écoles est sur data.gouv.fr",
-    "crumbs": [
-      "Introduction à QGIS"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Module NTICA",
-    "section": "",
-    "text": "Bienvenue à vous, chers élèves AMUR de la promo 2026/2027. Vous trouverez ci-dessous les liens vers les supports utilisés lors du module.",
-    "crumbs": [
-      "Accueil"
-    ]
-  },
-  {
-    "objectID": "index.html#septembre-2026",
-    "href": "index.html#septembre-2026",
-    "title": "Module NTICA",
-    "section": "25 septembre 2026",
-    "text": "25 septembre 2026\n\nLes outils du quotidien\nIntroduction à QGIS",
-    "crumbs": [
-      "Accueil"
+      "TD : Les données de l'urbanisme"
     ]
   },
   {
@@ -177,6 +147,96 @@
     "text": "Cartographie\nFaire des cartes simples ou complexes.\n\nQGIS, client de référence, application de bureau.\nuMap, service en ligne pour des cartes simples et rapides.\nMagrit, un outil de cartographie thématique simple et intuitif développé par le CNRS.",
     "crumbs": [
       "Les outils du quotidien"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Module NTICA",
+    "section": "",
+    "text": "Bienvenue à vous, chers élèves AMUR de la promo 2026/2027. Vous trouverez ci-dessous les liens vers les supports utilisés lors du module.",
+    "crumbs": [
+      "Accueil"
+    ]
+  },
+  {
+    "objectID": "index.html#septembre-2026",
+    "href": "index.html#septembre-2026",
+    "title": "Module NTICA",
+    "section": "25 septembre 2026",
+    "text": "25 septembre 2026\n\nLes outils du quotidien\nIntroduction à QGIS",
+    "crumbs": [
+      "Accueil"
+    ]
+  },
+  {
+    "objectID": "index.html#octobre-2026",
+    "href": "index.html#octobre-2026",
+    "title": "Module NTICA",
+    "section": "9 octobre 2026",
+    "text": "9 octobre 2026\n\nTD : Les données de l’urbanisme",
+    "crumbs": [
+      "Accueil"
+    ]
+  },
+  {
+    "objectID": "chapters/qgis-intro.html",
+    "href": "chapters/qgis-intro.html",
+    "title": "Introduction à QGIS",
+    "section": "",
+    "text": "Dans ce chapitre, nous allons créer une première carte : un fond de plan cartographique centré sur la CA Paris Vallée de la Marne, sur lequel nous allons superposer des couches vectorielles de description administrative du territoire.",
+    "crumbs": [
+      "Introduction à QGIS"
+    ]
+  },
+  {
+    "objectID": "chapters/qgis-intro.html#installer-qgis",
+    "href": "chapters/qgis-intro.html#installer-qgis",
+    "title": "Introduction à QGIS",
+    "section": "Installer QGIS",
+    "text": "Installer QGIS\nQGIS est un logiciel SIG compatible avec Linux, Unix, Mac OS X, Windows et Android. Nous allons utiliser la version LTS disponible sur le site officiel.\nPour utiliser l’installateur officiel, il faut disposer des droits administrateurs sur l’ordinateur cible. Si on ne les a pas, on peut télécharger une version portable que l’on placera dans son répertoire utilisateur ou sur une clé USB. Une version portable de QGIS est disponible sur le blog SIG & Territoires.",
+    "crumbs": [
+      "Introduction à QGIS"
+    ]
+  },
+  {
+    "objectID": "chapters/qgis-intro.html#mise-en-place",
+    "href": "chapters/qgis-intro.html#mise-en-place",
+    "title": "Introduction à QGIS",
+    "section": "Mise en place",
+    "text": "Mise en place\nLancer QGIS, créer un nouveau projet.\n\nProjet → Nouveau\n\n\nFond de plan\nAjouter le fond de carte OpenStreetMap.\n\nCouche → Ajouter une couche → Ajouter une couche XYZ\nConnexions XYZ → OpenStreetMap\nAjouter\n\nDans le coin inférieur droit, remarquez qu’un SCR a été automatiquement défini : EPSG:3857. C’est celui de la première couche ajoutée.\nSi nous devions ajouter des couches exprimées dans un autre SCR, QGIS ferait la conversion de manière transparente, à condition qu’il puisse déterminer sans ambiguité le SCR de la couche fournie.\n\n\nSCR, Késako ?\n\nUn système de coordonnées de référence est le référentiel qui donne du sens aux valeurs numériques que prennent des coordonnées géographiques (latitude, longitude, altitude). On pourra se référer utilement à la documentation de QGIS.\n\n\nPour mieux voir les entités vectorielles que l’on ajoutera par la suite, on peut déjà rendre le fond de plan transparent et le passer en niveau de gris.\nAvec la couche sélectionnée :\n\nCouche → Propriétés de la couche\nTransparence → Opacité globale → 50%\nSymbologie → Rendu de couche → Niveaux de gris → [Par clarté]\n\n\n\n\nCouches vectorielles\nTélécharger la géodatabase préparée spécialement pour ce TP. Elle contient quelques données issues de la base AdminExpress de l’IGN.\n\n\nGéodatabase, ESRI Shapefile ?\n\nPlusieurs formats existent pour stocker de l’information géographique. QGIS travaille par défaut avec des géodatabases. Vous trouverez souvent des fichiers au format ESRI Shapefile. On retiendra qu’une géodatabase (extension gpkg) est capable de stocker plusieurs couches dans un même fichier, alors que le format ESRI Shapefile (extension principale shp) crée six différents fichiers pour stocker l’information d’une seule couche vectorielle. Pour les détails techniques, se référer à la documentation.\n\nAjouter la couche communes contenue dans la géodatabase.\n\nCouche → Ajouter une couche → Ajouter une couche vecteur\nSource → Jeux de données vectorielles\nAller chercher le ficher ade_simplifie.gpkg\nDans la fenêtre qui s’affiche, sélectionner la couche commune\n\n\nOn va modifier la symbologie de la couche pour ne conserver que les contours de chaque objet, sans ce vilain fond opaque, puis ajouter des étiquettes donnant le nom de la commune (on pourra personnaliser la police et le corps).\nAvec la couche sélectionnée :\n\nCouche → Propriétés de la couche\nSymbologie → Remplissage simple → Style de remplissage → Pas de remplissage\nÉtiquettes → Étiquettes simples → Valeur → nom_officiel",
+    "crumbs": [
+      "Introduction à QGIS"
+    ]
+  },
+  {
+    "objectID": "chapters/qgis-intro.html#manipulations",
+    "href": "chapters/qgis-intro.html#manipulations",
+    "title": "Introduction à QGIS",
+    "section": "Manipulations",
+    "text": "Manipulations\n\nExplorer les données\nÀ chaque objet de la couche communes correspondent des données. On peut les consulter avec l’outil Identifier des données accessible par la barre d’outils. Pour les communes, un champ important est le code_insee. C’est lui qui identifie la commune de manière unique, on en aura besoin ultérieurement.\n\n\nDe l’importance des métadonnées\n\nMême si les intitulés des champs sont ici clairs, il est de bonne pratique de toujours consulter les métadonnées d’une source pour s’assurer d’avoir bien tout compris. Dans le cas présent, on ira voir sur le site de l’IGN, à la page ADMIN Express.\n\n\nUne autre manière d’explorer la couche est d’afficher sa table d’attributs.\n\nCouche → Ouvrir la table d’attributs ou F6.\n\n\n\nSélection manuelle\nOn peut sélectionner manuellement une ou plusieurs entités à l’aide de l’outil de la barre des tâches.\nOn notera :\n\ndans le menu déroulant, les modes de sélections sont possibles: rectangle de sélection, polygone, main levée, par rayon.\ndes raccourcis-claviers utiles : SHIFT pour ajouter des objets à la sélection courante, CTRL pour les retrancher.\n\nSélectionner les trois communes de Champs-sur-Marne, Noisy-le-Grand et Émerainville.\n\n\n\nStatistiques descriptives\nOn peut calculer aisément certains agrégats (moyenne, médiane, etc.) sur les attributs des entités sélectionnés.\n\nVue → Résumé statistique\n\n\n\nQuelle est la population totale de ces trois communes ?\n\n105 829 habitants (au 1er janvier 2022).\n\n\n\nQuelle est la superficie cadastrale totale de ces trois communes ?\n\n2 570 hectares.\n\n\n\n\nCalculs géométriques\nUn SIG est capable de calculer la superficie de chaque polygone. On va vérifier que la superficie calculée est cohérente avec la superficie cadastrale renseignée dans la table attributaire.\nOuvrir la table d’attributs F6, puis la calculatrice de champs via le bouton en forme de boulier dans la barre d’outils, également CTRL+I.\nDans la fenêtre qui s’ouvre :\n\nIndiquer le nom du champ à créer (on peut l’appeler superficie)\nSélectionner la case champ virtuel (ie. le champ ne sera pas persistent)\nIndiquer le type du champ (entier)\nRenseigner la formule pour calculer le champ : area(@geometry)\nValider\n\n\n\nQuelle sera l’unité du champ superficie ?\n\nIl dépend bien sûr de l’unité employée par le SCR de la carte. Pour le nôtre, c’est le mètre. Le champ superficie sera donc exprimé en mètres-carrés. On pourra diviser par 10000 pour le convertir en hectares.\n\n\nLe champ superficie figure bien désormais dans la table attributaire. On peut calculer la superficie des trois communes de la même manière qu’on a calculé celle de la population.\n\n\nQuelle est la superficie calculée totale de ces trois communes ?\n\n2 620 ha. L’écart est de 50 ha avec la superficie cadastrale, marge 2%.\n\nOn peut également utiliser l’outil de mesure de longueur (CTRL+ALT+M) ou d’aires (CTRL+ALT+J) pour des calculs ponctuels sur la carte.\n\n\nAffichage par catégories\nOn va désormais colorer les communes différemment en fonction de l’EPCI auquel elles appartiennent.\n\nCouche → Propriétés de la couche → Symbologie → [catégorisé]\nValeur → [codes_siren_des_epci]\nSymboles → Remplissage simple → Style de remplissage → [continue]\nBouton Classer\nBouton Appliquer\n\nOn voit nettement se dessiner les 7 EPCI présents dans la base.\n\n\n\nMillefeuille administratif ?\n\nVous noterez dans la légende que le champ codes_siren_des_epci contient parfois deux numéros SIREN : certaines communes appartient bien à deux EPCI en même temps (Métropole du Grand Paris + EPT).\n\n\n\nSélection avancée\nOn va désormais sélectionner toutes les communes appartenant à la CA Paris Vallée de la Marne en testant deux méthodes.\n\nSélection par attributs\nOn peut sélectionner l’ensemble des entités de la couche des communes dont le champ code_siren_des_epci contient la valeur 200057958 grâce à la sélection par expression (CTRL+F3)\n\nÉditer → Sélection → Sélectionner des entités à l’aide d’une sélection\nExpression → [“codes_siren_des_epci” = ‘200057958’]\n\n\n\n\nSélection par géométrie\nOn peut aussi sélectionner l’ensemble des entités de la couche des communes qui sont situées à l’intérieur du polygone représentant la CA Paris Vallée de la Marne dans la couche des EPCI.\nPour cela, on va ajouter la couche vectorielle des EPCI qui figure dans la même géodatabase que la couche des communes et lui appliquer le style qui convient. Pour cela, se référer au début du TD.\nSélectionner ensuite le polygone représentant la CA Paris Vallée de la Marne.\n\nVecteur → Outils de recherche → Sélection par localisation\nSélectionner les entités depuis → ade_simplifiee - communes\nOù les entités → est à l'intérieur\nEn comparant les entité de → ade_simplifiee - epci\ncocher la case entités sélectionnées uniquement\n\n\n\n\n\nExport\nCréons maintenant un couche contenant uniquement les 12 communes de la CA Paris Vallée de la Marne. On sauvegardera cette couche dans notre géodatabase initiale.\n\nPanneau des couches →  clic-droit couche communes\nExporter → Sauvegarder les entités sélectionnées sous\n\n\n\n\nJointure attributaire\nReprésentons désormais les différences de population entre les communes.\nOn serait tenté de faire varier les couleurs des polygones du plus clair au plus foncé : les géomaticiens appellent ces cartes des cartes teintées, ou cartes choroplèthes. Mais pas de choroplèthes avec des données stock… on fera donc varier la taille de points représentant les communes.\nDans la géodatabase initiale, charger la couche chef_lieu_de_commune. Elle contient un semis de points, un pour chaque chef-lieu (c’est-à-dire la mairie).\nOuvrir la table attributaire : constater qu’il y a bien un champ code_insee_de_la_commune, mais pas (encore) de champ population… Qu’à cela ne tienne : on va l’ajouter, en joignant la table des chefs-lieux des communes à celle des communes.\nAvec la couche des chefs-lieux sélectionnés :\n\nCouche → Propriétés de la couche → Jointures\nCliquer le bouton +\nJoindre la couche → ade_simplifiee - communes, ade_simplifie\nChamp de jointure → code_insee\nChamp dans la couche cible → code_insee_de_la_commune\nChamps joints → population\n\n\n\n\nAffichage gradué\nOn peut désormais modifier la symbologie et faire varier la taille des points en fonction de la valeur du champ population.\n\nCouche → Propriétés de la couche → Symbologie\nSélectionner gradué\nValeur → xxx_population\nMéthode → Taille\nMode → intervalle égal\n\n\n\nDiscrétisation\n\nOn comprend bien que le choix des seuils, du nombre de catégories, etc. est stratégique, et qu’on peut faire dire à des mêmes données des choses très différentes selon les choix opérés…",
+    "crumbs": [
+      "Introduction à QGIS"
+    ]
+  },
+  {
+    "objectID": "chapters/qgis-intro.html#export-1",
+    "href": "chapters/qgis-intro.html#export-1",
+    "title": "Introduction à QGIS",
+    "section": "Export",
+    "text": "Export\nExportons notre carte en PDF. Il faut pour cela créer une mise en page.\n\nProjet → Nouvelle mise en page\n\nDans la fenêtre qui s’ouvre : - Insérer un bloc carte - Insérer un bloc de texte pour le titre - Insérer un bloc légende - Insérer une échelle graphique - Insérer une flèche indiquant le nord - …\nUne fois tous les paramètres ajustés, exporter la carte en PDF.",
+    "crumbs": [
+      "Introduction à QGIS"
+    ]
+  },
+  {
+    "objectID": "chapters/qgis-intro.html#utilisateurs-avancés",
+    "href": "chapters/qgis-intro.html#utilisateurs-avancés",
+    "title": "Introduction à QGIS",
+    "section": "Utilisateurs avancés",
+    "text": "Utilisateurs avancés\nSi vous avez fini le TD et que vous avez peur de vous ennuyez, voici quelques défis.\n\nGéoréférencement\nSaurez-vous retrouver le plan d’aménagement partiel du secteur 4 de Marne-la-Vallée de mars 1987, le géoréférencer et l’afficher dans QGIS ?\n\nIndices :\n\nUne page internet où trouver l’image source.\nMettre la BD Parcellaire en fond pour trouver des points de contrôle.\nLe géoréférenceur est disponible via le menu Couches → Géoréférenceur.\nLes points de contrôle que j’ai utilisés sont ici.\n\n\n\nGéocodage d’adresses\nSaurez-vous cartographier les bureaux de tabacs de la CA PVDM ?\n\nIndices :\n\nFuretez sur data.gouv.fr.\nUn géocodeur officiel est disponible via la Base Adresse Nationale\nAnalysez la qualité des données\n\n\n\nBuffers / zones tampons\nSaurez-vous cartographier les écoles de la CA PVDM qui sont situées à moins de 200 m d’un tabac ?\n\nIndices :\n\nLe jeu de données des écoles est sur data.gouv.fr",
+    "crumbs": [
+      "Introduction à QGIS"
     ]
   }
 ]

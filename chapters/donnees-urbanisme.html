@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.19">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>TD : Les données de l’urbanisme – Supports pédagogiques du module NTICA</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/qgis-intro.html" rel="prev">
+<link href="../resources/profile/logo-enpc-ip-rvb_vertical.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b626d73c4c936ccc3cb08be7d45d1df6.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-55617497126496852ff9f5a59253c640.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-55617497126496852ff9f5a59253c640.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-55617497126496852ff9f5a59253c640.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/donnees-urbanisme.html">TD : Les données de l’urbanisme</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../resources/profile/logo-enpc-ip-rvb_vertical.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../resources/profile/logo-enpc-ip-rvb_vertical.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Accueil</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/outils-quotidiens.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Les outils du quotidien</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/qgis-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction à QGIS</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/donnees-urbanisme.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">TD : Les données de l’urbanisme</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#la-théorie-réaliser-une-bonne-cartographie-et-datavisualisation" id="toc-la-théorie-réaliser-une-bonne-cartographie-et-datavisualisation" class="nav-link active" data-scroll-target="#la-théorie-réaliser-une-bonne-cartographie-et-datavisualisation">La théorie : réaliser une bonne cartographie et datavisualisation</a></li>
+  <li><a href="#lactivité" id="toc-lactivité" class="nav-link" data-scroll-target="#lactivité">L’activité</a>
+  <ul class="collapse">
+  <li><a href="#ressources" id="toc-ressources" class="nav-link" data-scroll-target="#ressources">Ressources</a></li>
+  <li><a href="#documentez-votre-travail" id="toc-documentez-votre-travail" class="nav-link" data-scroll-target="#documentez-votre-travail">Documentez votre travail</a></li>
+  </ul></li>
+  <li><a href="#cas-dusage-1-densification-autour-des-gares" id="toc-cas-dusage-1-densification-autour-des-gares" class="nav-link" data-scroll-target="#cas-dusage-1-densification-autour-des-gares">Cas d’usage 1 : Densification autour des gares</a></li>
+  <li><a href="#cas-dusage-2-comprendre-le-marché-de-limmobilier-au-sein-de-la-capvm" id="toc-cas-dusage-2-comprendre-le-marché-de-limmobilier-au-sein-de-la-capvm" class="nav-link" data-scroll-target="#cas-dusage-2-comprendre-le-marché-de-limmobilier-au-sein-de-la-capvm">Cas d’usage 2 : Comprendre le marché de l’immobilier au sein de la CAPVM</a>
+  <ul class="collapse">
+  <li><a href="#correction-cas-dusage-2-limites-connues-des-dvf-et-comment-les-traiter" id="toc-correction-cas-dusage-2-limites-connues-des-dvf-et-comment-les-traiter" class="nav-link" data-scroll-target="#correction-cas-dusage-2-limites-connues-des-dvf-et-comment-les-traiter">Correction cas d’usage 2 : limites connues des DVF et comment les traiter</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/ghmercier/ntica-data/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">TD : Les données de l’urbanisme</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Dans ce chapitre, nous allons créer une autre cartographie centrée sur la CA Paris Vallée de la Marne. Ce TD nous donnera l’occasion d’explorer les données utiles aux projets d’urbanisme.</p>
+<section id="la-théorie-réaliser-une-bonne-cartographie-et-datavisualisation" class="level2">
+<h2 class="anchored" data-anchor-id="la-théorie-réaliser-une-bonne-cartographie-et-datavisualisation">La théorie : réaliser une bonne cartographie et datavisualisation</h2>
+<p>La première partie de ce TD est consacrée à quelques éléments théoriques sur la réalisation d’une cartographie.</p>
+<ul>
+<li><a href="https://docs.google.com/presentation/d/1J8PGZN9q6SQGWZza-YgJf6Sh1t5pbCED/edit?usp=sharing&amp;ouid=117693329327247609271&amp;rtpof=true&amp;sd=true">La présentation</a></li>
+<li><a href="https://airtable.com/appLNDVRmCaVB1Pdm/shrKHzp00EMiZP8OO/tblfQneujeIbnpkg0/viwb9g2b5MqoJHnj0">La cartographie des données de l’urbanisme</a></li>
+</ul>
+</section>
+<section id="lactivité" class="level2">
+<h2 class="anchored" data-anchor-id="lactivité">L’activité</h2>
+<p>Répartissez-vous en binômes, et choisissez un cas d’usage.</p>
+<p>L’objectif est de réaliser une cartographie pour venir compléter le diagnostic urbain de la CA Paris-Vallée de la Marne. Si le temps vous le permet, cette cartographie peut être accompagnée d’une ou plusieurs datavisualisations.</p>
+<section id="ressources" class="level3">
+<h3 class="anchored" data-anchor-id="ressources">Ressources</h3>
+<ul>
+<li><a href="https://docs.google.com/presentation/d/1J8PGZN9q6SQGWZza-YgJf6Sh1t5pbCED/edit?usp=sharing&amp;ouid=117693329327247609271&amp;rtpof=true&amp;sd=true">La présentation</a></li>
+<li><a href="https://airtable.com/appLNDVRmCaVB1Pdm/shrKHzp00EMiZP8OO/tblfQneujeIbnpkg0/viwb9g2b5MqoJHnj0">La cartographie des données de l’urbanisme</a></li>
+<li><a href="https://docs.google.com/spreadsheets/d/134qR8oN5vrISO35oWDUH9LVhUs3q9PEKR0wD_xNtytU/edit?usp=sharing">Les conseils laissés par vos camarades de la dernière promotion</a></li>
+<li><a href="../chapters/qgis-intro.html">Le travail effectué dans l’introduction à QGIS</a></li>
+</ul>
+</section>
+<section id="documentez-votre-travail" class="level3">
+<h3 class="anchored" data-anchor-id="documentez-votre-travail">Documentez votre travail</h3>
+<ul>
+<li><a href="https://docs.google.com/spreadsheets/d/134qR8oN5vrISO35oWDUH9LVhUs3q9PEKR0wD_xNtytU/edit?usp=sharing">Ajoutez vos propres conseils dans l’onglet dédié</a></li>
+<li><a href="https://drive.google.com/drive/folders/1IjSoepmjB-8jPEiiPwM8k6zvNa_SPCmC?usp=sharing">Déposez votre cartographie dans le dossier</a></li>
+</ul>
+</section>
+</section>
+<section id="cas-dusage-1-densification-autour-des-gares" class="level2">
+<h2 class="anchored" data-anchor-id="cas-dusage-1-densification-autour-des-gares">Cas d’usage 1 : Densification autour des gares</h2>
+<p><strong>Contexte</strong> : Le SDRIF-E (approuvé par décret du 10 juin 2025) impose d’accroître d’au moins 15 % le nombre de logements dans les espaces urbanisés des communes situées à environ 2 km d’une gare, existante ou en projet (GPE inclus), contre 13 % par défaut et 17 % dans les polarités de l’agglomération. Pour les quartiers des gares du GPE et d’Eole, il demande en plus de ne pas compromettre leur potentiel de logements et de centralités, avec une offre diversifiée, des équipements renforcés, de la mixité fonctionnelle et une conception exemplaire.</p>
+<p>Les élu.e.s des communes de Chelles se demandent si leur PLU permet de répondre à cet objectif de densification. Aussi, ils souhaitent se concentrer sur la densification des périmètres autour de la future gare du Grand Paris Express.</p>
+<p><strong>Question des élu.e.s :</strong> dans un rayon de 1 km autour de la gare, le PLU actuel permet-il de densifier, et où ?</p>
+<p><strong>Les étapes possibles :</strong></p>
+<ol type="1">
+<li>Préparer le projet et placer la gare</li>
+<li>Récupérer les zones du PLU</li>
+<li>Tracer le périmètre de 1000 mètres autour de la gare</li>
+<li>Classer les zones sur la carte selon leur potentiel de densification
+<ul>
+<li>Exemples : densification limitée = les tissus d’habitat que le PLU cherche à préserver comme « pavillonnaire »</li>
+</ul></li>
+<li>Mesurer et calculer les surfaces (tableau)
+<ul>
+<li>Ajoutez un champ <code>surf_ha</code> calculé avec <code>$area / 10000</code>.</li>
+<li>Statistiques par catégories (ou un tableau croisé dans un tableur) : la surface totale par catégorie, puis le pourcentage du cercle.</li>
+</ul></li>
+<li>Exporter la carte avec le tableau des surfaces</li>
+<li>[Option] La CA PVM a une deuxième gare du Grand Paris Express : Noisy-Champs (RER A, ligne 15 Sud annoncée pour l’automne 2027, terminus de la ligne 16 fin 2028). Refaites la même analyse et comparez les deux quartiers de gare.</li>
+</ol>
+<p><strong>Les données :</strong></p>
+<ul>
+<li>Les sources de données du cas d’usage sont accessibles dans <a href="https://airtable.com/appLNDVRmCaVB1Pdm/shrKHzp00EMiZP8OO/tblfQneujeIbnpkg0/viwb9g2b5MqoJHnj0">la cartographie des données de l’urbanisme</a></li>
+<li>Pour le fond de carte, utilisez la couche <a href="../resources/donnees-urbanisme/ade_ca_pvm.gpkg">des communes de la CA PVM</a>, extraite de la base <a href="https://geoservices.ign.fr/adminexpress">AdminExpress</a> de l’IGN.</li>
+</ul>
+</section>
+<section id="cas-dusage-2-comprendre-le-marché-de-limmobilier-au-sein-de-la-capvm" class="level2">
+<h2 class="anchored" data-anchor-id="cas-dusage-2-comprendre-le-marché-de-limmobilier-au-sein-de-la-capvm">Cas d’usage 2 : Comprendre le marché de l’immobilier au sein de la CAPVM</h2>
+<p><strong>Contexte</strong> : La CA Paris-Vallée de la Marne réunit des tissus urbains très différents : centres anciens et quartiers pavillonnaires (Chelles, Vaires-sur-Marne, Pontault-Combault), quartiers de la ville nouvelle de Marne-la-Vallée (Noisiel, Lognes, Torcy, Champs-sur-Marne), et secteurs en mutation autour des futures gares du Grand Paris Express. Les élu.e.s souhaitent disposer d’une carte qui montre où le logement est accessible et où il devient cher, à une échelle plus fine que la commune.</p>
+<p><strong>Question des élu.e.s :</strong> comment le prix de l’immobilier au m² varie-t-il d’un quartier à l’autre de la CA PVM ?</p>
+<p><strong>Les étapes possibles :</strong></p>
+<ol type="1">
+<li>Charger les ventes</li>
+<li>Choisir uniquement les mutations intéressantes
+<ul>
+<li>Exemple : doit-on prendre en compte les ventes de locaux commerciaux ?<br>
+</li>
+</ul></li>
+<li>Calculer les variables sur les ventes
+<ul>
+<li>Libre à vous de décider quelle variable représenter (évolution 2021-2025 ? prix au m2 ?)</li>
+</ul></li>
+<li>Créer une grille et agréger les données des ventes sur la grille</li>
+<li>[Option] Ajouter un 2e cadre de carte avec le prix médian par commune</li>
+</ol>
+<p><strong>Les données :</strong></p>
+<ul>
+<li>Les sources de données du cas d’usage sont accessibles dans <a href="https://airtable.com/appLNDVRmCaVB1Pdm/shrKHzp00EMiZP8OO/tblfQneujeIbnpkg0/viwb9g2b5MqoJHnj0">la cartographie des données de l’urbanisme</a></li>
+<li>Pour les ventes, utilisez la couche <a href="../resources/donnees-urbanisme/dvf_ca_pvm_2021_2025_etudiants.gpkg">DVF sur la CAPVM uniquement</a>, extraite à partir de cette <a href="https://www.data.gouv.fr/datasets/demandes-de-valeurs-foncieres-geolocalisees">source</a>.</li>
+<li>Pour le fond de carte, utilisez la couche <a href="../resources/donnees-urbanisme/ade_ca_pvm.gpkg">des communes de la CA PVM</a>, extraite de la base <a href="https://geoservices.ign.fr/adminexpress">AdminExpress</a> de l’IGN.</li>
+</ul>
+<p><strong>Les questions à se poser avant de foncer tête baissée dans les DVF</strong></p>
+<ul>
+<li>A quoi correspond une ligne du jeu de données ? Une mutation ? Un bien ? Une vente ?</li>
+<li>Quelle surface utiliser pour calculer le prix au m2 ? (regardez bien les taux de remplissage)</li>
+<li>A quoi correspond le prix de la vente ?</li>
+</ul>
+<section id="correction-cas-dusage-2-limites-connues-des-dvf-et-comment-les-traiter" class="level3">
+<h3 class="anchored" data-anchor-id="correction-cas-dusage-2-limites-connues-des-dvf-et-comment-les-traiter">Correction cas d’usage 2 : limites connues des DVF et comment les traiter</h3>
+<section id="méthode-a-avec-les-outils-qgis" class="level4">
+<h4 class="anchored" data-anchor-id="méthode-a-avec-les-outils-qgis">Méthode A : avec les outils QGIS</h4>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Attention
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La méthode A est lente : pour chacune des 41 508 lignes, QGIS peut refaire le comptage sur toute la couche (plusieurs minutes). Pour une méthode plus rapide, voir méthode B.</p>
+</div>
+</div>
+<section id="limite-1-une-vente-occupe-plusieurs-lignes" class="level5">
+<h5 class="anchored" data-anchor-id="limite-1-une-vente-occupe-plusieurs-lignes">Limite 1 : une vente occupe plusieurs lignes</h5>
+<p><strong>Le problème.</strong> Une ligne DVF correspond à un <strong>bien</strong> (appartement, cave, parking, terrain), pas à une vente. Toutes les lignes d’une vente partagent le même <code>id_mutation</code>, et <strong>le prix total (<code>valeur_fonciere</code>) est recopié sur chaque ligne</strong>.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Exemple</th>
+<th>id_mutation</th>
+<th>Lignes</th>
+<th>Conséquence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Appartement à Chelles, 250 000 €, avril 2021</td>
+<td><code>2021-1311764</code></td>
+<td>3 (appartement + dépendance + terrain)</td>
+<td>Vente comptée 3 fois si on ne dédoublonne pas</td>
+</tr>
+<tr class="even">
+<td>Immeuble à Pontault-Combault, 1 893 048 €, juillet 2021</td>
+<td><code>2021-1296940</code></td>
+<td>18 (9 appartements + 9 dépendances)</td>
+<td>Prix au m² absurde (1 893 048 / 44 m² = 43 000 €/m²) : vente groupée inutilisable</td>
+</tr>
+</tbody>
+</table>
+<p><strong>La solution.</strong> Ne garder que les ventes d’<strong>un seul</strong> logement (ou local), puis seulement la ligne de ce logement.</p>
+<p><strong>Étape 1 : compter les biens de chaque vente</strong></p>
+<ol type="1">
+<li><p>Ouvrir la table attributaire de <code>dvf_ventes_brutes</code>.</p></li>
+<li><p>Ouvrir la <strong>Calculatrice de champs</strong> (icône boulier, ou Ctrl+I).</p></li>
+<li><p>Cocher <strong>Créer un nouveau champ</strong>.</p></li>
+<li><p>Nom du champ en sortie : <code>nb_biens</code> ; type : <strong>Nombre entier</strong>.</p></li>
+<li><p>Expression :</p>
+<pre><code>count("id_mutation",
+      group_by:="id_mutation",
+      filter:="type_local" IN ('Appartement','Maison','Local industriel. commercial ou assimilé'))</code></pre></li>
+<li><p>Vérifier l’<strong>Aperçu du résultat</strong> sous la zone de saisie (un nombre doit s’afficher), puis <strong>OK</strong>.</p></li>
+<li><p>Enregistrer les modifications (icône crayon, puis enregistrer).</p></li>
+</ol>
+<blockquote class="blockquote">
+<p>Ce que fait l’expression : pour chaque ligne, elle compte les logements et locaux de <strong>la vente à laquelle appartient cette ligne</strong>. Le <code>filter</code> est indispensable : sans lui, les caves, parkings et lignes de terrain seraient comptés, et on ne garderait que 587 ventes d’appartement au lieu de 6 352.</p>
+</blockquote>
+<p><strong>Étape 2 : ne garder qu’une ligne par vente</strong></p>
+<ol type="1">
+<li><p><strong>Boîte à outils de traitements › Sélection de vecteur › Extraire par expression</strong>.</p></li>
+<li><p>Couche source : <code>dvf_ventes_brutes</code>.</p></li>
+<li><p>Expression :</p>
+<pre><code>"nature_mutation" = 'Vente'
+AND "nb_biens" = 1
+AND "type_local" IN ('Appartement','Maison','Local industriel. commercial ou assimilé')</code></pre></li>
+<li><p>Exécuter. Une <strong>nouvelle couche</strong> (« Correspondant ») est créée ; la couche d’origine ne change pas.</p></li>
+</ol>
+<p>Résultat attendu : une ligne par vente d’un seul logement ou local (la ligne de ce bien ; caves, parkings et terrains sont écartés). Maisons, appartements et locaux sont encore mélangés : c’est l’objet de la limite 2.</p>
+<blockquote class="blockquote">
+<p>Attention : la <strong>Calculatrice de champs</strong> n’enlève jamais de ligne, elle ajoute une colonne. Seul <strong>Extraire par expression</strong> (ou <strong>Sélectionner par expression</strong> suivi d’un export des entités sélectionnées) retire des lignes.</p>
+</blockquote>
+<hr>
+</section>
+<section id="limite-2-la-surface-bâtie-ne-mesure-pas-la-même-chose-pour-une-maison-et-un-appartement" class="level5">
+<h5 class="anchored" data-anchor-id="limite-2-la-surface-bâtie-ne-mesure-pas-la-même-chose-pour-une-maison-et-un-appartement">Limite 2 : la surface bâtie ne mesure pas la même chose pour une maison et un appartement</h5>
+<p><strong>Le problème.</strong> <code>surface_reelle_bati</code> est la seule surface remplie partout (100 % des ventes d’appartements et de maisons, contre 60 % pour la surface Carrez des appartements et 11 % pour celle des maisons). C’est donc elle qu’on utilise pour le prix au m². Pour une maison, le prix au m² est <strong>surestimé</strong> : <strong>le terrain est inclus dans le prix</strong> (330 à 530 m² en médiane selon la taille de la maison), pas dans la surface ;</p>
+<p><strong>La solution.</strong> Ne <strong>jamais mélanger</strong> maisons et appartements dans un même prix au m² : un type de bien par carte.</p>
+<p><strong>Étape 1 : ne garder qu’un type de bien</strong> (sur la couche issue de la limite 1)</p>
+<ol type="1">
+<li><p><strong>Extraire par expression</strong> :</p>
+<pre><code>"type_local" = 'Appartement'</code></pre></li>
+</ol>
+<p>Résultat attendu : <strong>6 352 ventes</strong>, une par vente d’appartement.</p>
+<p><strong>Étape 2 : calculer le prix au m²</strong></p>
+<ol type="1">
+<li><p>Ouvrir la <strong>Calculatrice de champs</strong> sur la couche des 6 352 ventes.</p></li>
+<li><p>Créer un nouveau champ <code>prix_m2</code>, type <strong>Nombre décimal (réel)</strong>.</p></li>
+<li><p>Expression :</p>
+<pre><code>"valeur_fonciere" / "surface_reelle_bati"</code></pre></li>
+</ol>
+<hr>
+</section>
+<section id="limite-3-les-prix-des-ventes-comprennent-des-valeurs-aberrantes-prix-symboliques-erreurs-de-saisie" class="level5">
+<h5 class="anchored" data-anchor-id="limite-3-les-prix-des-ventes-comprennent-des-valeurs-aberrantes-prix-symboliques-erreurs-de-saisie">Limite 3 : les prix des ventes comprennent des valeurs aberrantes (prix symboliques, erreurs de saisie)</h5>
+<p><strong>Ecarter les valeurs aberrantes</strong></p>
+<ol type="1">
+<li><p><strong>Extraire par expression</strong> :</p>
+<pre><code>"surface_reelle_bati" &gt;= 10
+AND "prix_m2" BETWEEN 1000 AND 10000</code></pre></li>
+</ol>
+<p>Résultat attendu : <strong>6 320 ventes</strong></p>
+<hr>
+</section>
+<section id="limite-4-le-prix-est-celui-de-toute-la-vente-pas-du-seul-bien" class="level5">
+<h5 class="anchored" data-anchor-id="limite-4-le-prix-est-celui-de-toute-la-vente-pas-du-seul-bien">Limite 4 : le prix est celui de toute la vente, pas du seul bien</h5>
+<p><strong>Le problème.</strong> Une fois la ligne de l’appartement isolée, <code>valeur_fonciere</code> reste le <strong>prix total payé</strong> : il inclut la cave, le parking ou la part de terrain vendus avec, alors que la surface ne concerne que l’appartement. <strong>91 % des ventes d’appartements retenues comprennent au moins une dépendance.</strong> DVF ne donne pas la valeur de chaque bien : impossible de soustraire le prix du parking.</p>
+<p>S’il est difficile de trouver une solution à ce problème, <strong>il est important de garder cette limite en tête.</strong></p>
+<hr>
+</section>
+</section>
+<section id="méthode-b-en-sql-avec-une-couche-virtuelle-rapide-en-une-seule-étape" class="level4">
+<h4 class="anchored" data-anchor-id="méthode-b-en-sql-avec-une-couche-virtuelle-rapide-en-une-seule-étape">Méthode B : en SQL avec une couche virtuelle (rapide, en une seule étape)</h4>
+<p>La requête SQL s’exécute en quelques secondes.</p>
+<ol type="1">
+<li><p>Menu <strong>Couche › Créer une couche › Nouvelle couche virtuelle…</strong> &gt; Nom de la couche <code>dvf_filtrer_groupe</code></p></li>
+<li><p>Dans <strong>Couches intégrées</strong>, cliquer sur <strong>Importer…</strong>, choisir <code>dvf_ventes_brutes</code>, puis <strong>OK</strong>. Vérifier que son <strong>Nom local</strong> est bien <code>dvf_ventes_brutes</code> : c’est le nom à utiliser dans la requête. S’il est différent (par exemple <code>dvf_ca_pvm_2021_2025_etudiants — dvf_ventes_brutes</code>), le renommer <code>dvf_ventes_brutes</code> en double-cliquant dessus.</p></li>
+<li><p>Coller la requête dans la zone <strong>Requête</strong> :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> (</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">SELECT</span> <span class="op">*</span>, valeur_fonciere <span class="op">/</span> surface_reelle_bati <span class="kw">AS</span> prix_m2</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FROM</span> dvf_ventes_brutes</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">WHERE</span> nature_mutation <span class="op">=</span> <span class="st">'Vente'</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">AND</span> type_local <span class="op">=</span> <span class="st">'Appartement'</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">AND</span> surface_reelle_bati <span class="op">&gt;=</span> <span class="dv">10</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">AND</span> id_mutation <span class="kw">IN</span> (</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        <span class="kw">SELECT</span> id_mutation</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">FROM</span> dvf_ventes_brutes</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">WHERE</span> type_local <span class="kw">IN</span> (<span class="st">'Appartement'</span>,<span class="st">'Maison'</span>,<span class="st">'Local industriel. commercial ou assimilé'</span>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>        <span class="kw">GROUP</span> <span class="kw">BY</span> id_mutation</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        <span class="kw">HAVING</span> <span class="fu">count</span>(<span class="op">*</span>) <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> prix_m2 <span class="kw">BETWEEN</span> <span class="dv">1000</span> <span class="kw">AND</span> <span class="dv">10000</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>Dans <strong>Géométrie</strong>, choisir <strong>Autodétecter</strong> (ou : colonne <code>geom</code>, type Point, SCR EPSG:2154).</p></li>
+<li><p>Cliquer sur <strong>Test</strong> (aucune erreur ne doit s’afficher), puis sur <strong>Ajouter</strong>.</p></li>
+<li><p>Une couche virtuelle apparaît. Elle est recalculée à chaque affichage : la <strong>sauvegarder en GeoPackage</strong> (clic droit › Exporter › Sauvegarder les entités sous…) et travailler ensuite sur ce fichier.</p></li>
+</ol>
+<p>Résultat attendu : <strong>6 320 lignes</strong>, avec un champ <code>prix_m2</code> prêt pour la jointure avec la grille.</p>
+</section>
+<section id="récapitulatif-de-la-chaîne-de-traitement" class="level4">
+<h4 class="anchored" data-anchor-id="récapitulatif-de-la-chaîne-de-traitement">Récapitulatif de la chaîne de traitement</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>#</th>
+<th>Outil QGIS</th>
+<th>Expression</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>Couche brute</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>Calculatrice de champs (<code>nb_biens</code>, entier)</td>
+<td><code>count("id_mutation", group_by:="id_mutation", filter:="type_local" IN ('Appartement','Maison','Local industriel. commercial ou assimilé'))</code></td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>Extraire par expression</td>
+<td><code>"nature_mutation" = 'Vente' AND "nb_biens" = 1 AND "type_local" IN ('Appartement','Maison','Local industriel. commercial ou assimilé')</code></td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>Extraire par expression</td>
+<td><code>"type_local" = 'Appartement'</code></td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>Calculatrice de champs (<code>prix_m2</code>, réel)</td>
+<td><code>"valeur_fonciere" / "surface_reelle_bati"</code></td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>Extraire par expression</td>
+<td><code>"surface_reelle_bati" &gt;= 10 AND "prix_m2" BETWEEN 1000 AND 10000</code></td>
+</tr>
+<tr class="odd">
+<td>1-5</td>
+<td>Couche virtuelle (méthode B)</td>
+<td>Requête SQL « toute la chaîne » de la limite 1</td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/ghmercier\.github\.io\/ntica-data");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters/qgis-intro.html" class="pagination-link" aria-label="Introduction à QGIS">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Introduction à QGIS</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ghmercier/ntica-data/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

@@ -86,6 +86,7 @@ Les élu.e.s souhaitent disposer d’une carte qui montre où le logement est ac
 - Pour le fond de carte, utilisez la couche [des communes de la CA PVM](/resources/donnees-urbanisme/ade_ca_pvm.gpkg), extraite de la base [AdminExpress](https://geoservices.ign.fr/adminexpress) de l'IGN.
 
 **Les questions à se poser avant de foncer tête baissée dans les DVF**
+
 - A quoi correspond une ligne du jeu de données ? Une mutation ? Un bien ? Une vente ?
 - Quelle surface utiliser pour calculer le prix au m2 ? (regardez bien les taux de remplissage)
 - A quoi correspond le prix de la vente ?
@@ -130,8 +131,6 @@ sur chaque ligne**.
 6. Vérifier l'**Aperçu du résultat** sous la zone de saisie (un nombre doit s'afficher), puis **OK**.
 7. Enregistrer les modifications (icône crayon, puis enregistrer).
 
-Contrôle : trier la table par `id_mutation`. Les 18 lignes de `2021-1296940` doivent afficher `nb_biens = 9` ;
-les 3 lignes de `2021-1311764` doivent afficher `nb_biens = 1`.
 
 > Ce que fait l'expression : pour chaque ligne, elle compte les logements et locaux de **la vente à laquelle
 > appartient cette ligne**. Le `filter` est indispensable : sans lui, les caves, parkings et lignes de terrain
@@ -164,11 +163,7 @@ terrains sont écartés). Maisons, appartements et locaux sont encore mélangés
 
 **Le problème.** `surface_reelle_bati` est la seule surface remplie partout (100 % des ventes d'appartements et de
 maisons, contre 60 % pour la surface Carrez des appartements et 11 % pour celle des maisons). C'est donc elle qu'on
-utilise pour le prix au m². C'est bien la surface du logement **tous étages confondus**, pas l'emprise au sol :
-une maison de 5 pièces fait 102 m² en médiane. Mais pour une maison, le prix au m² est **surestimé** :
-
-- **le terrain est inclus dans le prix** (330 à 530 m² en médiane selon la taille de la maison), pas dans la surface ;
-- garage et dépendances sont dans le prix, pas dans la surface.
+utilise pour le prix au m². Pour une maison, le prix au m² est **surestimé** : **le terrain est inclus dans le prix** (330 à 530 m² en médiane selon la taille de la maison), pas dans la surface ;
 
 **La solution.** Ne **jamais mélanger** maisons et appartements dans un même prix au m² : un type de bien par carte.
 
@@ -205,7 +200,7 @@ Résultat attendu : **6 352 ventes**, une par vente d'appartement.
    AND "prix_m2" BETWEEN 1000 AND 10000
    ```
 
-Résultat attendu : **6 320 ventes** (dont une quarantaine sans coordonnées, qui ne tomberont dans aucune maille).
+Résultat attendu : **6 320 ventes**
 
 ---
 
@@ -216,13 +211,13 @@ il inclut la cave, le parking ou la part de terrain vendus avec, alors que la su
 **91 % des ventes d'appartements retenues comprennent au moins une dépendance.** DVF ne donne pas la valeur de
 chaque bien : impossible de soustraire le prix du parking.
 
-**S'il est difficile de trouver une solution à ce problème, il est important de garder cette limite en tête.**
+S'il est difficile de trouver une solution à ce problème, **il est important de garder cette limite en tête.**
 
 ---
 
 #### Méthode B : en SQL avec une couche virtuelle (rapide, en une seule étape)
 
-La requête SQL ne compte qu'une seule fois et s'exécute en quelques secondes.
+La requête SQL s'exécute en quelques secondes.
 
 1. Menu **Couche › Créer une couche › Nouvelle couche virtuelle…** > Nom de la couche `dvf_filtrer_groupe`
 2. Dans **Couches intégrées**, cliquer sur **Importer…**, choisir `dvf_ventes_brutes`, puis **OK**.
@@ -259,14 +254,14 @@ Résultat attendu : **6 320 lignes**, avec un champ `prix_m2` prêt pour la join
 
 #### Récapitulatif de la chaîne de traitement
 
-| # | Outil QGIS | Expression | Lignes |
-|---|---|---|---|
-| 0 | Couche brute | | 41 508 |
-| 1 | Calculatrice de champs (`nb_biens`, entier) | `count("id_mutation", group_by:="id_mutation", filter:="type_local" IN ('Appartement','Maison','Local industriel. commercial ou assimilé'))` | 41 508 |
-| 2 | Extraire par expression | `"nature_mutation" = 'Vente' AND "nb_biens" = 1 AND "type_local" IN ('Appartement','Maison','Local industriel. commercial ou assimilé')` | à recompter |
-| 3 | Extraire par expression | `"type_local" = 'Appartement'` | 6 352 |
-| 4 | Calculatrice de champs (`prix_m2`, réel) | `"valeur_fonciere" / "surface_reelle_bati"` | 6 352 |
-| 5 | Extraire par expression | `"surface_reelle_bati" >= 10 AND "prix_m2" BETWEEN 1000 AND 10000` | 6 320 |
-| 1-5 | Couche virtuelle (méthode B) | Requête SQL « toute la chaîne » de la limite 1 | 6 320 |
+| # | Outil QGIS | Expression |
+|---|---|---|
+| 0 | Couche brute | |
+| 1 | Calculatrice de champs (`nb_biens`, entier) | `count("id_mutation", group_by:="id_mutation", filter:="type_local" IN ('Appartement','Maison','Local industriel. commercial ou assimilé'))` |
+| 2 | Extraire par expression | `"nature_mutation" = 'Vente' AND "nb_biens" = 1 AND "type_local" IN ('Appartement','Maison','Local industriel. commercial ou assimilé')` |
+| 3 | Extraire par expression | `"type_local" = 'Appartement'` |
+| 4 | Calculatrice de champs (`prix_m2`, réel) | `"valeur_fonciere" / "surface_reelle_bati"` |
+| 5 | Extraire par expression | `"surface_reelle_bati" >= 10 AND "prix_m2" BETWEEN 1000 AND 10000` |
+| 1-5 | Couche virtuelle (méthode B) | Requête SQL « toute la chaîne » de la limite 1 |
 
 

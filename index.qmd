@@ -5,6 +5,9 @@ author:
   - name: Ghislain Mercier
     url: https://github.com/ghmercier
     email: ghislain.mercier@club-internet.fr
+  - name: Clément Mandron
+    url: https://github.com/clementmandron
+    email: cmandronpro@gmail.com
 date: "2026-09-24"
 ---
 

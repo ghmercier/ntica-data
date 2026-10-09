@@ -34,9 +34,14 @@ Si le temps vous le permet, cette cartographie peut être accompagnée d'une ou 
 
 ### Cas d'usage 1 : Densification autour des gares
 
-**Contexte** : Le SDRIF-E (approuvé par décret du 10 juin 2025) impose d’accroître d’au moins 15 % le nombre de logements dans les espaces urbanisés des communes situées à environ 2 km d’une gare, existante ou en projet (GPE inclus), contre 13 % par défaut et 17 % dans les polarités de l’agglomération. Pour les quartiers des gares du GPE et d’Eole, il demande en plus de ne pas compromettre leur potentiel de logements et de centralités, avec une offre diversifiée, des équipements renforcés, de la mixité fonctionnelle et une conception exemplaire. Les élu.e.s des communes de Chelles se demandent si leur PLU permet de répondre à cet objectif de densification. Aussi, ils souhaitent se concentrer sur la densification des périmètres autour de la future gare du Grand Paris Express.
+**Contexte** : Le SDRIF-E (approuvé par décret du 10 juin 2025) impose d’accroître d’au moins 15 % le nombre de logements dans les espaces urbanisés des communes situées à environ 2 km d’une gare, existante ou en projet (GPE inclus), 
+contre 13 % par défaut et 17 % dans les polarités de l’agglomération. Pour les quartiers des gares du GPE et d’Eole, il demande en plus de ne pas compromettre leur 
+potentiel de logements et de centralités, avec une offre diversifiée, des équipements renforcés, de la mixité fonctionnelle et une conception exemplaire. 
 
-**Une question possible :** dans un rayon de 1 km autour de la gare, le PLU actuel permet-il de densifier, et où ?
+Les élu.e.s des communes de Chelles se demandent 
+si leur PLU permet de répondre à cet objectif de densification. Aussi, ils souhaitent se concentrer sur la densification des périmètres autour de la future gare du Grand Paris Express.
+
+**Question des élu.e.s :** dans un rayon de 1 km autour de la gare, le PLU actuel permet-il de densifier, et où ?
 
 **Les étapes possibles :**
 
@@ -62,7 +67,7 @@ Si le temps vous le permet, cette cartographie peut être accompagnée d'une ou 
 (Noisiel, Lognes, Torcy, Champs-sur-Marne), et secteurs en mutation autour des futures gares du Grand Paris Express. 
 Les élu.e.s souhaitent disposer d’une carte qui montre où le logement est accessible et où il devient cher, à une échelle plus fine que la commune.
 
-**Une question possible :** comment le prix des appartements au m² varie-t-il d’un quartier à l’autre de la CA PVM ?
+**Question des élu.e.s :** comment le prix de l'immobilier au m² varie-t-il d’un quartier à l’autre de la CA PVM ?
 
 **Les étapes possibles :**
 

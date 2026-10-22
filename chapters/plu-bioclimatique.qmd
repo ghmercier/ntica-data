@@ -202,9 +202,11 @@ essayer d'utiliser les outils d'intelligence artificielle pour réaliser ces tâ
 Schématiquement, il existe deux moyens d'utiliser les IA pour le traitement de données : 
 
 Le **premier** est d'utiliser directement les outils IA "chat" (Claude, ChatGPT, Vibe...). Voir l'exemple ci-dessous, où 
-on a demandé directement dans Claude d'extraire les liens de la liste de toutes les planches. Claude a effectivement produit 
-un .csv exportable avec les planches extraites. En réalité, ce n'est pas le LLM seul qui a extrait les liens, mais il a généré
-du code, puis l'a exécuté en autonomie pour le faire (on le voit dans les détails de la capture d'écran).
+on a demandé à Claude d'extraire les liens de la liste de toutes les planches. Claude a produit 
+un .csv exportable avec les planches extraites. 
+
+En réalité, ce n'est pas le LLM seul qui a extrait les liens, mais il a généré
+du code, puis l'a exécuté (on le voit dans les détails de la capture d'écran).
 C'est ce qui nous mène au deuxième moyen de traiter de la donnée avec l'IA.
 
 
@@ -216,6 +218,8 @@ qui effectuera l'extraction. **Même sans connaissance en Python,** vous pouvez 
 qui s'affichent et arriver à votre but (en tout cas pour les traitements simples).
 
 
+![](/resources/plu-bio/claude2.png)
+
 #### Téléchargement
 
 On voit sur le site du PLU qu'un fichier avec la
@@ -223,12 +227,28 @@ On voit sur le site du PLU qu'un fichier avec la
 est disponible. 
 
 C'est un fichier PDF qui contient les liens vers chacune des 134 planches.
-Problème : ils ne sont pas apparents… On doit donc les extraire.
+Problème : ils ne sont pas apparents… On doit donc les extraire. 
+Vous remarquerez que les liens extraits sont cassés : le 
+prestataire IT de la Ville de Paris (dont le nom figure dans les 
+métadonnées du PDF) a oublié de substituer au nom du serveur de test 
+celui utilisé en production !
 
-- Solution sans code : extraction avec un utilitaire en ligne comme 
-  [Supertool](https://supertool.org/fr/extract-urls-and-links-from-pdfs/).
-- Solution avec code : à vous de jouer avec l'aide de l'outil IA de votre choix.
+**À vous de jouer, utilisez l'IA pour produire un script Python pour :**
 
+1. Extraire les liens
+2. Les corriger
+
+Par exemple, le lien extrait :
+
+```
+https://k04-siteplubioclimatique.form.apps.paris.mdp/plu-bioclimatique/servlet/plugins/document/resource?id=131&id_attribute=93&working_content=true
+```
+
+doit devenir :
+
+```
+https://regles-urbanisme.paris.fr/plu-bioclimatique/servlet/plugins/document/resource?id=131&id_attribute=93&working_content=true
+```
 
 <details>
 
@@ -236,12 +256,8 @@ Problème : ils ne sont pas apparents… On doit donc les extraire.
 
 Voici un 
 [fichier texte](/resources/plu-bio/liste_urls.txt)
-avec la liste des liens déjà extraits. Mais on voit qu'ils sont cassés : le 
-prestataire IT de la Ville de Paris (dont le nom figure dans les 
-métadonnées du PDF) a oublié de substituer au nom du serveur de test 
-celui utilisé en production !
-
-On peut s'en charger grâce à la commande Find/Replace d'un éditeur de texte, mais ce serait long.
+avec la liste des liens déjà extraits. Pour remplacer les liens cassés pour peut utiliser
+la commande Find/Replace d'un éditeur de texte, mais ce serait long.
 
 ![](/resources/plu-bio/liste_urls_replace_all.jpeg)
 
@@ -278,12 +294,18 @@ d'automatiser la conversion en JPG et le rognage du cartouche.
 
 Photoshop sait très bien le faire, GIMP également, mais avec un plugin. 
 
-Essayez de générer du code pour traiter les 134 planches. Il faudra :
+**Essayez de générer du code pour traiter les 134 planches.**
+
+Il faudra :
 
 - Convertir les planches PDF en JPG, à une résolution de **300 dpi**
-- Rogner les planches. Pour vous aider, à 300 dpi, la zone à conserver
-  fait 6492 × 4720 pixels et commence à 232 pixels du bord gauche et
-  136 pixels du bord haut (`6492x4720+232+136` en syntaxe ImageMagick)
+- Rogner les planches pour ne garder que la carte
+
+À 300 dpi, la carte mesure **6492 × 4720 pixels** et commence à
+**232 pixels** du bord gauche et **136 pixels** du bord haut. Le rognage
+doit être exact, sinon les fichiers World décaleront les planches : testez
+d'abord sur `D_05.pdf`, le résultat doit avoir la même taille que
+[`D_05.jpg`](https://www.normalesup.org/~gmercier/D_05.jpg).
 
 <details>
 
@@ -384,8 +406,8 @@ planche donne sa position dans la grille :
 En partant de `D_05`, on peut donc écrire automatiquement un fichier World
 à côté de chaque image du dossier `crop`. 
 
-À vous de jouer : générez un script qui crée les fichiers World dans le même dossier que les images
-rognées.
+**À vous de jouer : générez un script qui crée les fichiers World dans le même dossier que les images
+rognées.**
 
 <details>
 
@@ -558,7 +580,9 @@ enregistrements avec les scores les plus bas.
 ### Plein de pages
 
 Et si l'on devait traiter les 33 pages pour reconstituer l'ensemble du semis
-de points ? C'est ce que vous pouvez essayer de faire avec un script Python, à l'aide de l'IA.
+de points ? 
+
+**C'est ce que vous pouvez essayer de faire avec un script Python.**
 
 Voici la [carte](https://umap.openstreetmap.fr/fr/map/plub-carte-des-emplacements-reserves-logements_940982) 
 des emplacements réservés tels qu'ils étaient avant l'enquête publique,

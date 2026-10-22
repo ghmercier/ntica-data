@@ -139,7 +139,7 @@ inférieurs à 10 pixels.
 
 ![](/resources/plu-bio/points-de-controles.jpeg)
 
-Les points de contrôles utilisés dans l'image ci-dessous sont téléchargeables
+Les points de contrôles utilisés dans l'image ci-dessus sont téléchargeables
 [ici](/resources/plu-bio/D_05.jpg.points). On peut les charger si on le 
 souhaite.
 
@@ -189,6 +189,32 @@ voulait géoréférencer **toutes** les planches du PLU ? Il y a heureusement
 des solutions pour automatiser ce qu'on vient de faire manuellement,
 on va les esquisser ci-dessous.
 
+Le traitement des planches consiste donc en quatre étapes :
+
+1. Le téléchargement
+2. Le traitement : convertir et découper les planches
+3. Le géoréférencement : créer les fichiers World
+4. Le chargement dans QGIS
+
+Pour les trois premières étapes, vous avez une correction disponible en ligne de commande. Néanmoins, vous allez d'abord
+essayer d'utiliser les outils d'intelligence artificielle pour réaliser ces tâches. 
+
+Schématiquement, il existe deux moyens d'utiliser les IA pour le traitement de données : 
+
+Le **premier** est d'utiliser directement les outils IA "chat" (Claude, ChatGPT, Vibe...). Voir l'exemple ci-dessous, où 
+on a demandé directement dans Claude d'extraire les liens de la liste de toutes les planches. Claude a effectivement produit 
+un .csv exportable avec les planches extraites. En réalité, ce n'est pas le LLM seul qui a extrait les liens, mais il a généré
+du code, puis l'a exécuté en autonomie pour le faire (on le voit dans les détails de la capture d'écran).
+C'est ce qui nous mène au deuxième moyen de traiter de la donnée avec l'IA.
+
+
+![](/resources/plu-bio/claude1.png)
+
+
+Le **second** est d'utiliser les outils pour générer du code Python que l'on va exécuter sur nos ordinateurs. C'est ce code
+qui effectuera l'extraction. **Même sans connaissance en Python,** vous pouvez utiliser l'IA pour vous guider, comprendre les erreurs
+qui s'affichent et arriver à votre but (en tout cas pour les traitements simples).
+
 
 #### Téléchargement
 
@@ -201,39 +227,23 @@ Problème : ils ne sont pas apparents… On doit donc les extraire.
 
 - Solution sans code : extraction avec un utilitaire en ligne comme 
   [Supertool](https://supertool.org/fr/extract-urls-and-links-from-pdfs/).
-- Solution avec code : extraction avec un mini script en ligne de commande qui utilise la 
-  libraire [`PyMuPDF`](https://github.com/pymupdf/pymupdf).
-- Solution avec code et l'aide d'un LLM : demander un assistant IA (ChatGPT, Claude, Vibe...) 
-d'écrire des scripts Python pour effectuer les traitements
+- Solution avec code : à vous de jouer avec l'aide de l'outil IA de votre choix.
 
-
-
-```{python}
-import pymupdf
-
-doc = pymupdf.open('Consultation_des_planches_au_1_sur_2000.pdf')
-
-for page in doc:
-   for link in page.get_links():
-       url = link['uri']
-       # Do something with url
-
-```
-
-Voici un 
-[fichier texte](/resources/plu-bio/liste_urls.txt)
-avec la liste des liens extraits. Mais on voit qu'ils sont cassés : le 
-prestataire IT de la Ville de Paris (dont le nom figure dans les 
-métadonnées du PDF) a oublié de substituer au nom du serveur de test 
-celui utilisé en production !
-
-On peut s'en charger grâce à la commande Find/Replace d'un éditeur de texte
-
-![](/resources/plu-bio/liste_urls_replace_all.jpeg)
 
 <details>
 
 <summary>Correction : en ligne de commande</summary>
+
+Voici un 
+[fichier texte](/resources/plu-bio/liste_urls.txt)
+avec la liste des liens déjà extraits. Mais on voit qu'ils sont cassés : le 
+prestataire IT de la Ville de Paris (dont le nom figure dans les 
+métadonnées du PDF) a oublié de substituer au nom du serveur de test 
+celui utilisé en production !
+
+On peut s'en charger grâce à la commande Find/Replace d'un éditeur de texte, mais ce serait long.
+
+![](/resources/plu-bio/liste_urls_replace_all.jpeg)
 
 Il est également possible de changer les liens et télécharger tous les fichiers avec une boucle
 en ligne de commande. On crée d'abord un fichier `liste_urls_corrigees.txt`
@@ -266,8 +276,20 @@ Sous macOS, `wget` n'est pas toujours installé : on peut le remplacer par
 Toutes les planches PDF sont bâties sur le même modèle, il est donc aisé
 d'automatiser la conversion en JPG et le rognage du cartouche.
 
-Photoshop sait très bien le faire, GIMP également, mais avec un plugin. Le
-plus rapide est d'utiliser
+Photoshop sait très bien le faire, GIMP également, mais avec un plugin. 
+
+Essayez de générer du code pour traiter les 134 planches. Il faudra :
+
+- Convertir les planches PDF en JPG, à une résolution de **300 dpi**
+- Rogner les planches. Pour vous aider, à 300 dpi, la zone à conserver
+  fait 6492 × 4720 pixels et commence à 232 pixels du bord gauche et
+  136 pixels du bord haut (`6492x4720+232+136` en syntaxe ImageMagick)
+
+<details>
+
+<summary>Correction : en ligne de commande</summary>
+
+Le plus rapide est d'utiliser
 [ImageMagick](https://imagemagick.org/)
 en ligne de commande. Pour lire des PDF, il a aussi besoin de
 [Ghostscript](https://ghostscript.com/).
@@ -295,7 +317,7 @@ sudo apt install imagemagick ghostscript
 
 **Conversion et rognage**
 
-Pour les curieux, la commande pour convertir et recadrer un seul fichier
+Pour vous aider, la commande pour convertir et recadrer un seul fichier
 PDF, par exemple `D_05.pdf` :
 
 ```bash
@@ -323,6 +345,7 @@ done
 Pour vérifier que tout est passé, il doit y avoir 134 images dans le
 dossier `crop`.
 
+</details>
 
 #### Géoréférencement
 
@@ -343,13 +366,71 @@ Faisons le test sur un exemple :
 - Télécharger le fichier [`E_05.jpg`](https://www.normalesup.org/~gmercier/E_05.jpg).
 - Copier le fichier `D_05.wld` en un fichier `E_05.wld`
 - Ouvrir le fichier `E_05.wld` et ajouter 1000 au nombre de la 5e ligne
-- Ajouter la couche `E_05.jpg` dans QGIS : **Couches > Ajouter une couche 
-  Raster**
+- Ajouter la couche `E_05.jpg` dans QGIS : **Couche > Ajouter une couche
+  raster**
 
 Miracle : la couche est parfaitement ajustée !
 
 ![](/resources/plu-bio/ajustement_parfait.jpeg)
 
+Il ne reste plus qu'à généraliser à toutes les planches. Le nom de chaque
+planche donne sa position dans la grille :
+
+- la **lettre** indique la colonne : chaque lettre décale la planche de
+  1000 m vers l'est (5^e^ ligne du fichier World) ;
+- le **numéro** indique la ligne : chaque numéro décale la planche de
+  750 m vers le sud (6^e^ ligne, que l'on diminue).
+
+En partant de `D_05`, on peut donc écrire automatiquement un fichier World
+à côté de chaque image du dossier `crop`. 
+
+À vous de jouer : générez un script qui crée les fichiers World dans le même dossier que les images
+rognées.
+
+<details>
+
+<summary>Correction : en ligne de commande</summary>
+
+*Sous Windows (PowerShell)*
+
+```powershell
+$A = 0.16930172784192851; $D = -0.16935420946301658   # échelle (fichier de D_05)
+$E0 = 647770.36883201031; $F0 = 6864154.76399315055   # coin supérieur gauche de D_05
+Get-ChildItem crop\*.jpg | ForEach-Object {
+  $lettre, $numero = $_.BaseName -split '_'                  # "E_05" -> "E", "05"
+  $E = $E0 + ([int][char]$lettre - [int][char]'D') * 1000    # 1000 m par lettre vers l'est
+  $F = $F0 - ([int]$numero - 5) * 750                        # 750 m par numéro vers le sud
+  "$A`n0`n0`n$D`n$E`n$F" | Set-Content "crop\$($_.BaseName).wld"
+}
+```
+
+*Sous macOS / Linux*
+
+```bash
+for f in crop/*.jpg; do
+  nom=$(basename "$f" .jpg)                     # ex : E_05
+  awk -v l="${nom%_*}" -v n="${nom#*_}" 'BEGIN {
+    E = 647770.36883201 + (index("ABCDEFGHIJKLM", l) - 4) * 1000
+    F = 6864154.76399315 - (n - 5) * 750
+    printf "0.16930172784192851\n0\n0\n-0.16935420946301658\n%.8f\n%.8f\n", E, F
+  }' > "crop/$nom.wld"
+done
+```
+
+`awk` sert ici à faire les calculs avec des décimales, ce que bash ne sait
+pas faire seul.
+
+Le dossier `crop` doit maintenant contenir 134 fichiers `.wld`, et
+`E_05.wld` doit être identique à celui créé à la main.
+
+</details>
+
+#### Chargement
+
+Pour afficher toutes les planches dans QGIS, sélectionner toutes les images
+`.jpg` du dossier `crop` dans l'explorateur de fichiers et les
+glisser-déposer dans QGIS. On obtient 134 couches, chacune à sa place :
+le PLU complet de Paris est recalé.
 
 
 ## Les emplacements réservés
@@ -405,7 +486,7 @@ Plusieurs options s'offrent à nous :
 
 - Si on dispose d'**Acrobat Pro** (version payante du célèbre lecteur de PDF),
   on peut utiliser la fonction Scan et OCR.
-- Si on aime les GAFAM, on peut recourir à **un LLM généraliste** comme
+- On peut recourir à **un LLM généraliste** comme
   ChatGPT, Gemini, DeepSeek ou Le Chat.
 
 ![](/resources/plu-bio/ocr_gemini.jpeg)
@@ -474,25 +555,19 @@ enregistrements avec les scores les plus bas.
 
 
 
-### Pleins de pages
+### Plein de pages
 
 Et si l'on devait traiter les 33 pages pour reconstituer l'ensemble du semis
-de points ? Quelques indications seulement sur ce que l'on pourrait faire : 
-
-- Utiliser l'API d'ExtractTable plutôt que l'interface graphique pour
-  extraire en lot les données.
-- Fusionner les fichiers CSV obtenus.
-- Dédupliquer les lignes en détectant les doubles adresses avec une
-  expression régulière. 
+de points ? C'est ce que vous pouvez essayer de faire avec un script Python, à l'aide de l'IA.
 
 Voici la [carte](https://umap.openstreetmap.fr/fr/map/plub-carte-des-emplacements-reserves-logements_940982) 
 des emplacements réservés tels qu'ils étaient avant l'enquête publique,
 que j'avais constituée en 2023. Voici également la
-[couche](plub_carte_des_emplacements_reserves_logements_2023.geojson)
+[couche](/resources/plu-bio/plub_carte_des_emplacements_reserves_logements_2023.geojson)
 (au format GeoJSON) des données qu'elle représente.
 
-Chargez cette couche dans QGIS. Identifiez-vous sur la feuille D5 des
-emplacements réservés qui ont disparu après l'enquête publique ?…
+Chargez cette couche dans QGIS. Pouvez-vous identifier, sur la feuille D5,
+des emplacements réservés qui ont disparu après l'enquête publique ?…
 
 <details>
 
@@ -520,7 +595,7 @@ sur le site de la Ville de Paris
 commande pour automatiser des tâches.
 
 Pour en savoir plus sur la ligne de commande et apprendre à maîtriser le
-côté obsur de l'informatique, je recommande le livre [*La ligne de commande
+côté obscur de l'informatique, je recommande le livre [*La ligne de commande
 par l'exemple*](https://www.h-k.fr/minimax.info.003LDCPE), de Céline
 Chevalier, Sébastien Desreux, Vincent Fourmond (Paris, H&K, 2013). Un
 ouvrage accessible, pédagogique et drôle.

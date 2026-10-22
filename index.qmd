@@ -23,9 +23,12 @@ ci-dessous les liens vers les supports utilisés lors du module.
 
 - [TD : Les données de l'urbanisme](/chapters/donnees-urbanisme.html)
 
+## 23 octobre 2026
+
+- [TD : PLU Bioclimatique](/chapters/plu-bioclimatique.html)
+
 <!--
 - [Traitement de fichiers CSV](/chapters/csv.html)
-- [TD PLU Bioclimatique](/chapters/plu-bioclimatique.html)
 -->
 
 <!-- ## Préalable : le SSP Cloud

@@ -6,6 +6,7 @@ project:
     - chapters/outils-quotidiens.qmd
     - chapters/qgis-intro.qmd
     - chapters/donnees-urbanisme.qmd
+    - chapters/plu-bioclimatique.qmd
 
 website:
   page-navigation: true
@@ -21,6 +22,7 @@ website:
       - chapters/outils-quotidiens.qmd
       - chapters/qgis-intro.qmd
       - chapters/donnees-urbanisme.qmd
+      - chapters/plu-bioclimatique.qmd
 format:
   html:
     theme:

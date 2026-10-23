@@ -36,14 +36,14 @@ d'effets négatifs sur notre cerveau, comme l'accumulation d'une
 
 **Quelques conseils :**
 
--**Gardez toujours en tête l'objectif**. Posez-vous régulièrement la
-question de ce que vous souhaitez réaliser. Prenez le temps de 
-l'écrire (crayon à la main!) et de découper votre problème en étapes.
-- Quand vous sentez que l'IA vous "enferme" dans un tunnel sans solution, 
-**détachez-vous de la piste en cours**. Par exemple, ouvrez une nouvelle
-conversation ou faites une recherche web classique.
+- **Gardez toujours en tête l'objectif**. Posez-vous régulièrement la
+  question de ce que vous souhaitez réaliser. Prenez le temps de
+  l'écrire (crayon à la main !) et de découper votre problème en étapes.
+- Quand vous sentez que l'IA vous "enferme" dans un tunnel sans solution,
+  **détachez-vous de la piste en cours**. Par exemple, ouvrez une nouvelle
+  conversation ou faites une recherche web classique.
 - Ne laissez pas l'IA tout traiter dans un seul script réactualisé de nombreuses
-fois. **Découpez votre travail en plusieurs étapes avec 1 script = 1 étape.**
+  fois. **Découpez votre travail en plusieurs étapes avec 1 script = 1 étape.**
 
 ::: {.callout-tip}
 NB : ce cours ne concerne pas l'utilisation d'agents de code directement

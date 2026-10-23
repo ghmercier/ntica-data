@@ -199,6 +199,8 @@ Le traitement des planches consiste donc en quatre étapes :
 Pour les trois premières étapes, vous avez une correction disponible en ligne de commande. Néanmoins, vous allez d'abord
 essayer d'utiliser les outils d'intelligence artificielle pour réaliser ces tâches. 
 
+#### Utiliser l'IA pour de traitement de données
+
 Schématiquement, il existe deux moyens d'utiliser les IA pour le traitement de données : 
 
 Le **premier** est d'utiliser directement les outils IA "chat" (Claude, ChatGPT, Vibe...). Voir l'exemple ci-dessous, où 
@@ -219,6 +221,8 @@ qui s'affichent et arriver à votre but (en tout cas pour les traitements simple
 
 
 ![](/resources/plu-bio/claude2.png)
+
+**Pour vous aider dans l'utilisation de Python, consultez l'[introduction à Python pour le traitement de données](python-intro.qmd).**
 
 #### Téléchargement
 
@@ -615,6 +619,10 @@ sur le site de la Ville de Paris
 
 ### Bibliographie
 
+Pour continuer à apprendre QGIS, le site [TutoQGIS](https://tutoqgis.cnrs.fr/)
+du CNRS propose des tutoriels complets et progressifs, des bases jusqu'aux
+traitements avancés.
+
 À plusieurs reprises, nous avons eu recours à des programmes en ligne de
 commande pour automatiser des tâches.
 
@@ -625,3 +633,5 @@ Chevalier, Sébastien Desreux, Vincent Fourmond (Paris, H&K, 2013). Un
 ouvrage accessible, pédagogique et drôle.
 
 ![](/resources/plu-bio/ligne_commande_par_exemple.jpg){width=50%}
+
+

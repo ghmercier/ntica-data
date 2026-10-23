@@ -26,6 +26,7 @@ ci-dessous les liens vers les supports utilisés lors du module.
 ## 23 octobre 2026
 
 - [TD : PLU Bioclimatique](/chapters/plu-bioclimatique.html)
+- [Introduction à Python pour le traitement de données](/chapters/python-intro.html)
 
 <!--
 - [Traitement de fichiers CSV](/chapters/csv.html)

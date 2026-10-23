@@ -7,6 +7,7 @@ project:
     - chapters/qgis-intro.qmd
     - chapters/donnees-urbanisme.qmd
     - chapters/plu-bioclimatique.qmd
+    - chapters/python-intro.qmd
 
 website:
   page-navigation: true
@@ -23,6 +24,7 @@ website:
       - chapters/qgis-intro.qmd
       - chapters/donnees-urbanisme.qmd
       - chapters/plu-bioclimatique.qmd
+      - chapters/python-intro.qmd
 format:
   html:
     theme:

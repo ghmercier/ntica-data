@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.19">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Introduction à Python pour le traitement de données – Supports pédagogiques du module NTICA</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/plu-bioclimatique.html" rel="prev">
+<link href="../resources/profile/logo-enpc-ip-rvb_vertical.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b626d73c4c936ccc3cb08be7d45d1df6.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-55617497126496852ff9f5a59253c640.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-55617497126496852ff9f5a59253c640.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-55617497126496852ff9f5a59253c640.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/python-intro.html">Introduction à Python pour le traitement de données</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../resources/profile/logo-enpc-ip-rvb_vertical.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../resources/profile/logo-enpc-ip-rvb_vertical.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Accueil</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/outils-quotidiens.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Les outils du quotidien</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/qgis-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction à QGIS</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/donnees-urbanisme.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">TD : Les données de l’urbanisme</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/plu-bioclimatique.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">TD PLU Bioclimatique</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/python-intro.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Introduction à Python pour le traitement de données</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#avant-de-vous-lancer" id="toc-avant-de-vous-lancer" class="nav-link active" data-scroll-target="#avant-de-vous-lancer">Avant de vous lancer</a></li>
+  <li><a href="#utiliser-python-sur-son-ordinateur" id="toc-utiliser-python-sur-son-ordinateur" class="nav-link" data-scroll-target="#utiliser-python-sur-son-ordinateur">Utiliser Python sur son ordinateur</a>
+  <ul class="collapse">
+  <li><a href="#installer-un-éditeur-de-code" id="toc-installer-un-éditeur-de-code" class="nav-link" data-scroll-target="#installer-un-éditeur-de-code">Installer un éditeur de code</a></li>
+  <li><a href="#installer-python" id="toc-installer-python" class="nav-link" data-scroll-target="#installer-python">Installer Python</a></li>
+  <li><a href="#créer-et-exécuter-votre-premier-script" id="toc-créer-et-exécuter-votre-premier-script" class="nav-link" data-scroll-target="#créer-et-exécuter-votre-premier-script">Créer et exécuter votre premier script</a></li>
+  </ul></li>
+  <li><a href="#ne-pas-se-décourager-des-erreurs" id="toc-ne-pas-se-décourager-des-erreurs" class="nav-link" data-scroll-target="#ne-pas-se-décourager-des-erreurs">Ne pas se décourager des erreurs</a>
+  <ul class="collapse">
+  <li><a href="#python-nest-pas-installé" id="toc-python-nest-pas-installé" class="nav-link" data-scroll-target="#python-nest-pas-installé">Python n’est pas installé</a></li>
+  <li><a href="#la-librairie-nest-pas-installée" id="toc-la-librairie-nest-pas-installée" class="nav-link" data-scroll-target="#la-librairie-nest-pas-installée">La librairie n’est pas installée</a></li>
+  <li><a href="#pip-install-tapé-dans-python-au-lieu-du-terminal" id="toc-pip-install-tapé-dans-python-au-lieu-du-terminal" class="nav-link" data-scroll-target="#pip-install-tapé-dans-python-au-lieu-du-terminal"><code>pip install</code> tapé dans Python au lieu du terminal</a></li>
+  <li><a href="#le-fichier-nest-pas-dans-le-bon-dossier" id="toc-le-fichier-nest-pas-dans-le-bon-dossier" class="nav-link" data-scroll-target="#le-fichier-nest-pas-dans-le-bon-dossier">Le fichier n’est pas dans le bon dossier</a></li>
+  <li><a href="#le-chemin-windows-contient-des" id="toc-le-chemin-windows-contient-des" class="nav-link" data-scroll-target="#le-chemin-windows-contient-des">Le chemin Windows contient des <code>\</code></a></li>
+  <li><a href="#le-fichier-.py-nest-pas-sauvegardé" id="toc-le-fichier-.py-nest-pas-sauvegardé" class="nav-link" data-scroll-target="#le-fichier-.py-nest-pas-sauvegardé">Le fichier .py n’est pas sauvegardé</a></li>
+  <li><a href="#erreur-dindentation-après-un-copier-coller" id="toc-erreur-dindentation-après-un-copier-coller" class="nav-link" data-scroll-target="#erreur-dindentation-après-un-copier-coller">Erreur d’indentation après un copier-coller</a></li>
+  </ul></li>
+  <li><a href="#références" id="toc-références" class="nav-link" data-scroll-target="#références">Références</a>
+  <ul class="collapse">
+  <li><a href="#bibliographie" id="toc-bibliographie" class="nav-link" data-scroll-target="#bibliographie">Bibliographie</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/ghmercier/ntica-data/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Introduction à Python pour le traitement de données</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Python est un langage informatique très utilisé dans le traitement des données. Il possède plusieurs avantages qui ont contribué à sa notoriété :</p>
+<ul>
+<li>il est lisible (les fonctions sont en anglais)</li>
+<li>sa communauté est très hétérogène et dynamique</li>
+<li>c’est un langage couteau-suisse : les <a href="https://info.blaisepascal.fr/les-bibliotheques-python/">librairies</a> permettent de réaliser des tâches très diverses (traitement de PDF, d’images, création de cartes…).</li>
+</ul>
+<p>Par exemple, ses librairies de traitement de données sont très répandues : pandas, numpy, seaborn…</p>
+<p>Aussi, <strong>le développement des IA génératives</strong> permet à des personnes non ou peu sachantes de produire du code fonctionnel sans trop de difficultés. Si maintenir ce code dans la durée ou en faire un outil partagé est une autre paire de manches, pouvoir accélérer le traitement de données ou de document est une vraie opportunité.</p>
+<p>Nous vous encourageons néanmoins à vous former à l’apprentissage du code - <a href="https://pythonds.linogaliana.fr/content/getting-started/#car-coder-cest-r%C3%A9soudre-un-probl%C3%A8me-ding%C3%A9nierie">voir quelques arguments ici</a></p>
+<section id="avant-de-vous-lancer" class="level2">
+<h2 class="anchored" data-anchor-id="avant-de-vous-lancer">Avant de vous lancer</h2>
+<p>Si la production de code par l’IA peut avoir un effet bluffant, veillez à garder un bon niveau de maîtrise pour votre apprentissage. En effet, l’utilisation de l’IA a un certain nombre d’effets négatifs sur notre cerveau, comme l’accumulation d’une “dette cognitive” (voir <a href="https://arxiv.org/abs/2506.08872">Kosmyna et al.&nbsp;(2025)</a>).</p>
+<p><strong>Quelques conseils :</strong></p>
+<ul>
+<li><strong>Gardez toujours en tête l’objectif</strong>. Posez-vous régulièrement la question de ce que vous souhaitez réaliser. Prenez le temps de l’écrire (crayon à la main !) et de découper votre problème en étapes.</li>
+<li>Quand vous sentez que l’IA vous “enferme” dans un tunnel sans solution, <strong>détachez-vous de la piste en cours</strong>. Par exemple, ouvrez une nouvelle conversation ou faites une recherche web classique.</li>
+<li>Ne laissez pas l’IA tout traiter dans un seul script réactualisé de nombreuses fois. <strong>Découpez votre travail en plusieurs étapes avec 1 script = 1 étape.</strong></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>NB : ce cours ne concerne pas l’utilisation d’agents de code directement dans les éditeurs de code.</p>
+</div>
+</div>
+</section>
+<section id="utiliser-python-sur-son-ordinateur" class="level2">
+<h2 class="anchored" data-anchor-id="utiliser-python-sur-son-ordinateur">Utiliser Python sur son ordinateur</h2>
+<section id="installer-un-éditeur-de-code" class="level3">
+<h3 class="anchored" data-anchor-id="installer-un-éditeur-de-code">Installer un éditeur de code</h3>
+<p>Un éditeur de code est un traitement de texte pensé pour le code : coloration, autocomplétion, terminal intégré… Nous utiliserons <a href="https://code.visualstudio.com/">Visual Studio Code</a> (VS Code), gratuit et très répandu.</p>
+<ol type="1">
+<li>Téléchargez VS Code depuis <a href="https://code.visualstudio.com/">code.visualstudio.com</a> et installez-le avec les options par défaut.</li>
+<li>Ouvrez VS Code, cliquez sur l’icône <strong>Extensions</strong> dans la barre de gauche (les quatre carrés), cherchez <strong>Python</strong> et installez l’extension publiée par Microsoft.</li>
+</ol>
+<p><img src="../resources/python-intro/vscode1.png" class="img-fluid" alt="Installation de l'extension Python dans VS Code"></p>
+<p>Petit tour d’horizon de VS Code :</p>
+<ul>
+<li>L’explorateur de fichiers (un dossier de votre ordinateur)</li>
+<li>Le terminal</li>
+<li>La zone où on édite les scripts (python ou autre)</li>
+</ul>
+<p><img src="../resources/python-intro/vscode3.png" class="img-fluid" alt="Interface de VS Code : explorateur de fichiers, éditeur de code et terminal"></p>
+</section>
+<section id="installer-python" class="level3">
+<h3 class="anchored" data-anchor-id="installer-python">Installer Python</h3>
+<ol type="1">
+<li><p>Téléchargez la dernière version de Python sur <a href="https://www.python.org/downloads/">python.org</a>.</p></li>
+<li><p>Lancez l’installateur. Sous Windows, <strong>cochez la case « Add python.exe to PATH »</strong> en bas de la première fenêtre avant de cliquer sur <em>Install Now</em>. Sans cela, votre ordinateur ne trouvera pas Python.</p></li>
+<li><p>Vérifiez l’installation : dans VS Code, ouvrez un terminal (<em>Terminal &gt; New Terminal</em>) et tapez :</p></li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">--version</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Le terminal doit afficher la version installée, par exemple <code>Python 3.13.1</code>. Sur Mac, utilisez <code>python3</code> au lieu de <code>python</code>.</p>
+<p><img src="../resources/python-intro/vscode2.png" class="img-fluid" alt="Ouverture d'un terminal dans VS Code via le menu Terminal > New Terminal"></p>
+<p><img src="../resources/python-intro/vscode4.png" class="img-fluid" alt="Terminal affichant la version de Python installée"></p>
+</section>
+<section id="créer-et-exécuter-votre-premier-script" class="level3">
+<h3 class="anchored" data-anchor-id="créer-et-exécuter-votre-premier-script">Créer et exécuter votre premier script</h3>
+<ol type="1">
+<li>Créez un dossier pour vos travaux, par exemple <code>ntica</code>, puis ouvrez-le dans VS Code (<em>File &gt; Open Folder</em>). C’est dans ce dossier que vous placerez vos scripts <strong>et</strong> vos fichiers de données.</li>
+<li>Créez un fichier <code>premier_script.py</code> (<em>File &gt; New File</em>) et écrivez :</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Bonjour, je fais du Python !"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol start="3" type="1">
+<li>Sauvegardez (<code>Ctrl+S</code>).</li>
+<li>Exécutez le script dans le terminal :</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> premier_script.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Le message s’affiche dans le terminal : votre premier script fonctionne !</p>
+<p><img src="../resources/python-intro/vscode5.png" class="img-fluid" alt="Exécution du script premier_script.py dans le terminal"></p>
+<p>Pour utiliser un code généré par l’IA, la démarche est la même : collez-le dans un nouveau fichier <code>.py</code>, sauvegardez, exécutez.</p>
+</section>
+</section>
+<section id="ne-pas-se-décourager-des-erreurs" class="level2">
+<h2 class="anchored" data-anchor-id="ne-pas-se-décourager-des-erreurs">Ne pas se décourager des erreurs</h2>
+<p>Votre utilisation de Python va <strong>forcément</strong> générer des erreurs. Ne vous laissez pas décourager par leur apparition. Certaines sont très fréquentes et subsistent, même pour des développeurs plus expérimentés. En voici quelques-unes communes :</p>
+<section id="python-nest-pas-installé" class="level3">
+<h3 class="anchored" data-anchor-id="python-nest-pas-installé">Python n’est pas installé</h3>
+<pre><code>python : Le terme « python » n'est pas reconnu comme nom d'applet de commande,
+fonction, fichier de script ou programme exécutable.</code></pre>
+<p><strong>Solution :</strong> installer Python depuis <a href="https://www.python.org/downloads/">python.org</a>. Sous Windows, cochez bien la case <strong>« Add python.exe to PATH »</strong> lors de l’installation, puis fermez et rouvrez le terminal.</p>
+</section>
+<section id="la-librairie-nest-pas-installée" class="level3">
+<h3 class="anchored" data-anchor-id="la-librairie-nest-pas-installée">La librairie n’est pas installée</h3>
+<pre><code>ModuleNotFoundError: No module named 'pandas'</code></pre>
+<p><strong>Solution :</strong> installer la librairie dans le terminal :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install pandas</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Attention, le nom à installer diffère parfois du nom importé dans le code : <code>import fitz</code> s’installe avec <code>pip install pymupdf</code>. En cas de doute, demandez à l’IA.</p>
+</section>
+<section id="pip-install-tapé-dans-python-au-lieu-du-terminal" class="level3">
+<h3 class="anchored" data-anchor-id="pip-install-tapé-dans-python-au-lieu-du-terminal"><code>pip install</code> tapé dans Python au lieu du terminal</h3>
+<pre><code>&gt;&gt;&gt; pip install pandas
+  File "&lt;stdin&gt;", line 1
+    pip install pandas
+        ^^^^^^^
+SyntaxError: invalid syntax</code></pre>
+<p><strong>Solution :</strong> les chevrons <code>&gt;&gt;&gt;</code> indiquent que vous êtes dans l’interpréteur Python. Quittez-le avec <code>exit()</code>, puis relancez la commande dans le terminal.</p>
+</section>
+<section id="le-fichier-nest-pas-dans-le-bon-dossier" class="level3">
+<h3 class="anchored" data-anchor-id="le-fichier-nest-pas-dans-le-bon-dossier">Le fichier n’est pas dans le bon dossier</h3>
+<pre><code>FileNotFoundError: [Errno 2] No such file or directory: 'liste_planches.pdf'</code></pre>
+<p><strong>Solution :</strong> le code cherche le fichier dans le dossier depuis lequel vous lancez le script. Placez le fichier dans le même dossier que le script et placez-vous dans ce dossier avec <code>cd</code>, ou indiquez le chemin complet du fichier dans le code.</p>
+</section>
+<section id="le-chemin-windows-contient-des" class="level3">
+<h3 class="anchored" data-anchor-id="le-chemin-windows-contient-des">Le chemin Windows contient des <code>\</code></h3>
+<pre><code>SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in
+position 2-3: truncated \UXXXXXXXX escape</code></pre>
+<p><strong>Solution :</strong> sous Python, <code>\</code> est un caractère spécial. Écrivez le chemin avec des <code>/</code> (<code>"C:/Users/moi/plu/liste_planches.pdf"</code>) ou ajoutez un <code>r</code> devant (<code>r"C:\Users\moi\plu\liste_planches.pdf"</code>).</p>
+</section>
+<section id="le-fichier-.py-nest-pas-sauvegardé" class="level3">
+<h3 class="anchored" data-anchor-id="le-fichier-.py-nest-pas-sauvegardé">Le fichier .py n’est pas sauvegardé</h3>
+<p>Pas de message d’erreur ici : le script tourne, mais avec l’ancienne version du code, ou ne fait rien du tout s’il est vide.</p>
+<p><strong>Solution :</strong> sauvegardez avec <code>Ctrl+S</code> avant chaque exécution. Dans VS Code, un rond blanc sur l’onglet signale un fichier non sauvegardé ; vous pouvez activer <em>File &gt; Auto Save</em> pour ne plus y penser.</p>
+</section>
+<section id="erreur-dindentation-après-un-copier-coller" class="level3">
+<h3 class="anchored" data-anchor-id="erreur-dindentation-après-un-copier-coller">Erreur d’indentation après un copier-coller</h3>
+<pre><code>IndentationError: unexpected indent</code></pre>
+<p><strong>Solution :</strong> en Python, les espaces en début de ligne ont un sens. Recopiez le code en entier plutôt que par morceaux, sans ajouter ni retirer d’espaces.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Dans tous les cas, <strong>copiez le message d’erreur complet</strong> et collez-le à l’IA avec votre code : c’est le moyen le plus rapide de comprendre et de corriger le problème.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="références" class="level2">
+<h2 class="anchored" data-anchor-id="références">Références</h2>
+<section id="bibliographie" class="level3">
+<h3 class="anchored" data-anchor-id="bibliographie">Bibliographie</h3>
+<ul>
+<li><a href="https://pythonds.linogaliana.fr/content/getting-started/">Python pour la data science</a>, cours de Lino Galiana (ENSAE) : partie « Premiers pas »</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/ghmercier\.github\.io\/ntica-data");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters/plu-bioclimatique.html" class="pagination-link" aria-label="TD PLU Bioclimatique">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">TD PLU Bioclimatique</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ghmercier/ntica-data/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
